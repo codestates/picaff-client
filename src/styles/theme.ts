@@ -13,7 +13,7 @@ const device = {
 const color = {
   BrownC: '#604C4C',
   StrongBrownC: '#362415',
-  WhiteC: '#FFFCFC',
+  WhiteC: '#FFFEFC',
   PointC: '#0B421A',
   BackC: '#F7F7F4',
   NavC: '#F2F1E5',
