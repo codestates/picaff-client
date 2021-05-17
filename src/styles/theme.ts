@@ -4,15 +4,15 @@ import MenuBtn from './buttons/MenuBtn'
 import UserBtn from './buttons/UserBtn'
 
 const deviceSizes = {
-  mobile: '375px',
-  tablet: '768px',
-  laptop: '1024px',
+  mobile: 375,
+  tablet: 768,
+  laptop: 1024,
 }
 
 const device = {
-  mobile: `screen and (max-width: ${deviceSizes.mobile})`,
-  tablet: `screen and (max-width: ${deviceSizes.tablet})`,
-  laptop: `screen and (max-width: ${deviceSizes.laptop})`,
+  mobile: `screen and (max-width: ${deviceSizes.mobile}px)`,
+  tablet: `screen and (max-width: ${deviceSizes.tablet}px)`,
+  laptop: `screen and (max-width: ${deviceSizes.laptop}px)`,
 }
 
 const color = {
