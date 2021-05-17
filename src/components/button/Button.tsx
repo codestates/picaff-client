@@ -1,0 +1,23 @@
+import React from 'react'
+import theme from 'styles/theme'
+
+type Type = {
+  style: 'MainBtnBrown' | 'MenuBtn' | 'UserBtn' | 'MainBtnIvory'
+  type?: 'button' | 'submit' | 'reset'
+  handleClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+}
+
+const { MainBtnBrown, MenuBtn, UserBtn, MainBtnIvory } = theme
+
+export default function Button({ style, type, handleClick }: Type) {
+  switch (style) {
+    case 'MainBtnBrown':
+      return <MainBtnBrown type={type} onClick={handleClick} />
+    case 'MenuBtn':
+      return <MenuBtn type={type} onClick={handleClick} />
+    case 'UserBtn':
+      return <UserBtn type={type} onClick={handleClick} />
+    case 'MainBtnIvory':
+      return <MainBtnIvory type={type} onClick={handleClick} />
+  }
+}
