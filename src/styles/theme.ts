@@ -1,3 +1,8 @@
+import MainBtnBrown from './buttons/MainBtnBrown'
+import MainBtnIvory from './buttons/MainBtnIvory'
+import MenuBtn from './buttons/MenuBtn'
+import UserBtn from './buttons/UserBtn'
+
 const deviceSizes = {
   mobile: '375px',
   tablet: '768px',
@@ -22,6 +27,10 @@ const color = {
 const theme = {
   device,
   color,
+  MainBtnBrown,
+  MainBtnIvory,
+  MenuBtn,
+  UserBtn,
 }
 
 export default theme
