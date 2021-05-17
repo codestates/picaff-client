@@ -22,6 +22,6 @@ export default function Image({ style, handleClick }: Type) {
     case 'ItemImage':
       return <ItemImage />
     case 'ButtonImage':
-      return <ButtonImage />
+      return <ButtonImage onClick={handleClick} />
   }
 }
