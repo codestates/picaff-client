@@ -10,4 +10,5 @@ export type CheckEmail = {
   isPassEmail: boolean
   serialNum: string | undefined
   inputNum: string | undefined
+  disabled: boolean
 }

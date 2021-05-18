@@ -14,10 +14,10 @@ export const InputContainer = styled.div`
   & > .email {
     position: absolute;
     width: calc(30% - 15px);
-    height: calc(45%);
+    height: calc(34%);
     font-size: 0.9rem;
     right: 3px;
-    top: 1.6rem;
+    top: 1.95rem;
   }
 
   & > input {

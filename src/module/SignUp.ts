@@ -1,7 +1,5 @@
 export const checkPassword = (password: string): boolean | string => {
   if (!password) return '비밀번호를 입력하세요'
-  if (password && /^(?=.*[#@+\-$!%*?&])/gi.test(password))
-    return '비밀번호는 특수문자로 시작할 수 없습니다'
   if (password && !/.{8,}/gi.test(password)) return '비밀밀번호는 8자 이상이여야 합니다'
   if (
     password &&

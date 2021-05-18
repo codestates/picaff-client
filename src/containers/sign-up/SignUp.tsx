@@ -14,6 +14,7 @@ export default function SignUp() {
     isPassEmail: false,
     serialNum: '',
     inputNum: '',
+    disabled: false,
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,12 +39,16 @@ export default function SignUp() {
       setAlertMessage('이메일 인증이 필요합니다')
     } else if (!User.name) {
       setAlertMessage('이름을 입력해주세요')
-    } else if (User.password) {
+    } else if (!User.password) {
+      console.log('wrong')
+      setAlertMessage('비밀번호를 입력해주세요')
+    } else if (User.password && typeof checkPassword(User.password) !== 'boolean') {
       const checkPW = checkPassword(User.password)
-      typeof checkPW === 'string' ? setAlertMessage(checkPW) : ''
+      typeof checkPW === 'string' && setAlertMessage(checkPW)
     } else if (User.password !== User.ConfirmPassword) {
       setAlertMessage('비밀번호가 일치하지 않습니다')
     } else {
+      setAlertMessage('')
       const { name: userName, email, password } = User
       const res = await axios.post('http://localhost:4000/user/signin', {
         email,
@@ -63,6 +68,10 @@ export default function SignUp() {
 
   const handleEmailSend = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
+    setcheckSerial({
+      ...checkSerial,
+      isSend: true,
+    })
     if (!email) {
       alert('email을 입력해주세요')
     } else {
@@ -81,9 +90,11 @@ export default function SignUp() {
 
   const handleEmailConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
+    console.log(checkSerial.inputNum, checkSerial.serialNum)
     if (!checkSerial.serialNum) {
       alert('메일을 다시 요청해주세요')
       setcheckSerial({
+        disabled: false,
         inputNum: '',
         isSend: false,
         serialNum: '',
@@ -94,9 +105,8 @@ export default function SignUp() {
         alert('인증 되었습니다')
         setcheckSerial({
           ...checkSerial,
+          disabled: true,
           isPassEmail: true,
-          inputNum: '',
-          serialNum: '',
         })
       } else {
         alert('올바른 인증번호를 입력해주세요')
@@ -114,24 +124,22 @@ export default function SignUp() {
           <div className='email'>
             <Button style='MenuBtn' type='button' value='인증요청' handleClick={handleEmailSend} />
           </div>
-          {checkSerial.isSend && (
-            <InputForm>
-              <label className='Input label'>인증번호</label>
-              <input
-                type='text'
-                onChange={handleChange}
-                name='serial'
-                value={checkSerial.inputNum}
-              />
-              <Button
-                style='MainBtnIvory'
-                type='button'
-                value='인증'
-                handleClick={handleEmailConfirm}
-              />
-            </InputForm>
-          )}
         </InputForm>
+        {checkSerial.isSend && (
+          <InputForm>
+            <label className='Input label'>인증번호</label>
+            <input
+              type='text'
+              onChange={handleChange}
+              name='serial'
+              value={checkSerial.inputNum}
+              disabled={checkSerial.disabled}
+            />
+            <div className='email'>
+              <Button style='MenuBtn' type='button' value='인증' handleClick={handleEmailConfirm} />
+            </div>
+          </InputForm>
+        )}
         <InputForm>
           <label className='Input label'>name</label>
           <input type='text' onChange={handleChange} name='name' value={name} />
