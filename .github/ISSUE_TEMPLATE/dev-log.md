@@ -1,8 +1,8 @@
 ---
 name: Dev-log
-about: dev-log template
-title: ''
-labels: ''
+about: daily work-log template
+title: "[\U0001F4DD Dev-log] ㅇㅇㅇ / 2021-00-00"
+labels: work-log
 assignees: ''
 
 ---

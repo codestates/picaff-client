@@ -1,8 +1,8 @@
 ---
 name: Error Handling Card
 about: error handling card template
-title: ''
-labels: ''
+title: "[Error-handling] "
+labels: bug
 assignees: ''
 
 ---

@@ -3,7 +3,7 @@ name: Code Review
 about: daily code review template
 title: "[Code Review] 2021-"
 labels: code-review
-assignees: miraecod, Lucky-kor, jeonghun-project, byronkim
+assignees: byronkim, jeonghun-project, Lucky-kor, miraecod
 
 ---
 
