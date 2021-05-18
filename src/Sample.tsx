@@ -1,17 +1,9 @@
-import SignIn from 'containers/sign-in/SignIn'
+import SignUp from 'containers/sign-up/SignUp'
 
 export default function Sample() {
   return (
     <div>
-      <SignIn />
-      <div style={{ width: '100%', height: '100%' }}>
-        <video className='video' muted autoPlay>
-          <source src='coffee1_VP9.webm' />
-        </video>
-        <video className='video' muted autoPlay>
-          <source src='coffee2_VP9.webm' />
-        </video>
-      </div>
+      <SignUp />
     </div>
   )
 }

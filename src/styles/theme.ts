@@ -29,6 +29,7 @@ const color = {
 const theme = {
   device,
   color,
+  deviceSizes,
   MainBtnBrown,
   MainBtnIvory,
   MenuBtn,

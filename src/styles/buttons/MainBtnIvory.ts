@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 const MainBtnIvory = styled.button`
-  width: 300px;
-  height: 75px;
-  font-size: 1.6rem;
+  width: 100%;
+  height: 100%;
+  font-size: inherit;
   background-color: ${({ theme }) => theme.color.BackC};
   color: ${({ theme }) => theme.color.BrownC};
   border: transparent;
