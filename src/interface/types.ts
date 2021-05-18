@@ -1,5 +1,5 @@
 export type User = {
-  name: string
-  email: string
-  password: string
+  name: string | undefined
+  email: string | undefined
+  password: string | undefined
 }
