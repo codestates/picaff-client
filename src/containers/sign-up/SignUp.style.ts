@@ -5,6 +5,7 @@ export const SignUpContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 30vw;
+  height: 100%;
   max-width: ${({ theme }) => theme.deviceSizes.mobile - 50}px;
   min-width: ${({ theme }) => theme.deviceSizes.mobile - 75}px;
   align-items: center;
@@ -21,8 +22,12 @@ export const SignUpContainer = styled.div`
   }
 
   & .button {
+    width: 90%;
+    height: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0rem auto;
+    margin-top: 1rem;
   }
 `

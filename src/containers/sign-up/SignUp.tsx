@@ -112,12 +112,7 @@ export default function SignUp() {
           <label className='Input label'>Email</label>
           <input type='email' onChange={handleChange} name='email' value={email} />
           <div className='email'>
-            <Button
-              style='MainBtnIvory'
-              type='button'
-              value='인증요청'
-              handleClick={handleEmailSend}
-            />
+            <Button style='MenuBtn' type='button' value='인증요청' handleClick={handleEmailSend} />
           </div>
           {checkSerial.isSend && (
             <InputForm>

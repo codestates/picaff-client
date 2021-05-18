@@ -7,7 +7,7 @@ const MainBtnIvory = styled.button`
   background-color: ${({ theme }) => theme.color.BackC};
   color: ${({ theme }) => theme.color.BrownC};
   border: transparent;
-  border-radius: 20px;
+  border-radius: 10px;
   outline: none;
   cursor: pointer;
 
