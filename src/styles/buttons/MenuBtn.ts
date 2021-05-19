@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 const MenuBtn = styled.button`
-  width: 200px;
-  height: 45px;
-  font-size: 1.4rem;
+  width: 100%;
+  height: 100%;
+  font-size: inherit;
   background-color: transparent;
   color: ${({ theme }) => theme.color.PointC};
   border: transparent;

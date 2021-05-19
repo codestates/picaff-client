@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 const UserBtn = styled.button`
-  width: 150px;
-  height: 45px;
-  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+  font-size: inherit;
   background-color: ${({ theme }) => theme.color.PointC};
   color: ${({ theme }) => theme.color.WhiteC};
   border: transparent;

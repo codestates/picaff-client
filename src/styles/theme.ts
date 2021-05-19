@@ -24,11 +24,13 @@ const color = {
   PointC: '#0B421A',
   BackC: '#F7F7F4',
   NavC: '#F2F1E5',
+  YelloC: '#EAC784',
 }
 
 const theme = {
   device,
   color,
+  deviceSizes,
   MainBtnBrown,
   MainBtnIvory,
   MenuBtn,
