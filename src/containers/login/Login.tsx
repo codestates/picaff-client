@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { User } from 'interface'
 import axios from 'axios'
-
 import { LoginContainer } from './Login.style'
 import InputForm from 'components/input-form/InputForm'
 import Button from 'components/button/Button'
-import googlelogo from './google.png'
-import kakaologo from './kakao.png'
+import Oauth from 'components/social-Oauth/Oauth'
 
 export default function SignIn() {
   const [user, setUser] = useState<User>({ name: '', email: '', password: '' })
@@ -64,16 +62,7 @@ export default function SignIn() {
           <div className='user_login'>
             <Button style='MainBtnBrown' value='Login' handleClick={handleLogin} />
           </div>
-          <div className='social_login'>
-            <button id='google'>
-              <img className='logo' src={googlelogo} />
-              <div className='title'>Login with Google</div>
-            </button>
-            <button id='kakao'>
-              <img className='logo' src={kakaologo} />
-              <div className='title'>Login with Kakao</div>
-            </button>
-          </div>
+          <Oauth />
         </div>
         <span className='greeting'>are you new member?</span>
         <div className='box_signup'>

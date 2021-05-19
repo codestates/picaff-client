@@ -1,9 +1,8 @@
-import SignUp from 'containers/sign-up/SignUp'
-
+import SignIn from 'containers/login/Login'
 export default function Sample() {
   return (
     <div>
-      <SignUp />
+      <SignIn />
     </div>
   )
 }
