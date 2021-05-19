@@ -7,12 +7,8 @@ export const LoginContainer = styled.div`
   margin: auto;
   width: 100%;
   height: 100%;
-
-  & > form {
-    width: 20%;
-    height: 100%;
-    background-color: ${({ theme }) => theme.color.BackC};
-  }
+  max-width: ${({ theme }) => theme.deviceSizes.mobile - 50}px;
+  min-width: ${({ theme }) => theme.deviceSizes.mobile - 75}px;
 
   h2 {
     margin-bottom: 1.7rem;
@@ -37,51 +33,6 @@ export const LoginContainer = styled.div`
       justify-content: center;
       margin-bottom: 0.5rem;
       height: 3.5rem;
-    }
-
-    .social_login {
-      display: flex;
-      flex-direction: column;
-
-      #google,
-      #kakao {
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 0.5rem;
-        height: 3.5rem;
-        border-radius: 10px;
-        border: none;
-        cursor: pointer;
-        outline: none;
-
-        & > img {
-          display: flex;
-          justify-content: center;
-          flex: 0 1 auto;
-          margin-top: 0.8rem;
-          padding-left: 1rem;
-          height: 1.9rem;
-        }
-
-        & > div {
-          display: flex;
-          justify-content: center;
-          flex: 1 1 auto;
-          margin-top: 1.2rem;
-          padding-right: 2.2rem;
-          font-size: 1rem;
-          font-weight: 600;
-        }
-      }
-
-      #google {
-        background-color: #ffffff;
-        color: #6e6e6e;
-      }
-
-      #kakao {
-        background-color: #fee500;
-      }
     }
   }
 
