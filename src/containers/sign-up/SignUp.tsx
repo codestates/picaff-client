@@ -141,11 +141,11 @@ export default function SignUp() {
           </InputForm>
         )}
         <InputForm>
-          <label className='Input label'>name</label>
+          <label className='Input label'>Name</label>
           <input type='text' onChange={handleChange} name='name' value={name} />
         </InputForm>
         <InputForm>
-          <label className='Input label'>password</label>
+          <label className='Input label'>Password</label>
           <input type='password' onChange={handleChange} name='password' value={password} />
         </InputForm>
         <InputForm>
