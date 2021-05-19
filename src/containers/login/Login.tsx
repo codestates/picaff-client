@@ -5,6 +5,7 @@ import { LoginContainer } from './Login.style'
 import InputForm from 'components/input-form/InputForm'
 import Button from 'components/button/Button'
 import Oauth from 'components/social-Oauth/Oauth'
+import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
 
 export default function SignIn() {
   const [user, setUser] = useState<User>({ name: '', email: '', password: '' })
@@ -18,7 +19,8 @@ export default function SignIn() {
     })
   }
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
     if (email === '' || password === '') {
       setAlertMessage('아이디와 비밀번호를 모두 입력해주세요')
     } else {
@@ -43,6 +45,10 @@ export default function SignIn() {
     }
   }
 
+  const handleGoogleLogin = async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+    console.log(res)
+  }
+
   const { email, password } = user
 
   return (
@@ -62,7 +68,7 @@ export default function SignIn() {
           <div className='user_login'>
             <Button style='MainBtnBrown' value='Login' handleClick={handleLogin} />
           </div>
-          <Oauth />
+          <Oauth responseGoogle={handleGoogleLogin} />
         </div>
         <span className='greeting'>are you new member?</span>
         <div className='box_signup'>

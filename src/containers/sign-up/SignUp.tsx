@@ -40,7 +40,6 @@ export default function SignUp() {
     } else if (!User.name) {
       setAlertMessage('이름을 입력해주세요')
     } else if (!User.password) {
-      console.log('wrong')
       setAlertMessage('비밀번호를 입력해주세요')
     } else if (User.password && typeof checkPassword(User.password) !== 'boolean') {
       const checkPW = checkPassword(User.password)
@@ -75,7 +74,6 @@ export default function SignUp() {
     if (!email) {
       alert('email을 입력해주세요')
     } else {
-      console.log(email)
       const res = await axios.post('http://localhost:4000/user/email', { email })
       const { serialnum } = res.data
 
