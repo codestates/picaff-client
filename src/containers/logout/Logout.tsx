@@ -14,16 +14,13 @@ export default function SignOut() {
         },
       })
       .then((/* res */) => {
-        // if (res.body.message === '로그아웃에 성공하였습니다.') {
-        console.log('로그아웃 완료')
+        // if (res.status === 200) {
+        // main으로 라우팅
         // } else {
-        console.log('로그아웃 실패')
+        // 페이지 새로고침
         // }
       })
   }
 
-  return (
-    <Button style='UserBtn' value='Logout' handleClick={handleLogout}></Button>
-    // 버튼 클릭시 main 페이지로 라우팅
-  )
+  return <Button style='UserBtn' value='Logout' handleClick={handleLogout}></Button>
 }
