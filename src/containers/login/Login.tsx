@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { User, UserInfo } from 'interface'
+import { User, UserInfo, KakaoLoginResponse } from 'interface'
 import axios from 'axios'
 import { LoginContainer } from './Login.style'
 import InputForm from 'components/input-form/InputForm'
 import Button from 'components/button/Button'
 import Oauth from 'components/social-Oauth/Oauth'
 import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
+import { requestOauth } from 'module/Oauth'
 
 type LogiProps = {
   setUserInfo: (UserInfo: UserInfo) => void
@@ -14,6 +15,7 @@ type LogiProps = {
 export default function SignIn({ setUserInfo }: LogiProps) {
   const [user, setUser] = useState<User>({ name: '', email: '', password: '' })
   const [alertMessage, setAlertMessage] = useState<string>('')
+  const [isLogin, setisLogin] = useState<boolean>(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -22,6 +24,15 @@ export default function SignIn({ setUserInfo }: LogiProps) {
       [name]: value,
     })
   }
+
+  // useEffect(() => {
+  //   if (isLogin) {
+  //     redirect
+  //   }
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [isLogin])
 
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -49,21 +60,23 @@ export default function SignIn({ setUserInfo }: LogiProps) {
     }
   }
 
-  const handleGoogleLogin = async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+  const handleGoogleLogin = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     if ('tokenId' in res) {
-      const { accessToken: access_token, tokenId: token_id } = res
-
-      const response = await axios.post(
-        'http:localhost:4000/user/google',
-        { access_token, token_id },
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
-      )
-      console.log(response.data)
-      const UserInfo = response.data as UserInfo
-      UserInfo ? setUserInfo(UserInfo) : alert('로그인에 실패하였습니다')
+      const { accessToken: access_token, tokenId: id_token } = res
+      requestOauth('http:localhost:4000/user/google', { access_token, id_token }, (userInfo) => {
+        setUserInfo(userInfo)
+        setisLogin(true)
+      })
     }
+  }
+
+  const handleKakaoLogin = async (res: KakaoLoginResponse) => {
+    console.log(res)
+    const { access_token } = res
+    requestOauth('http:localhost:4000/user/kakao', { access_token }, (userInfo) => {
+      setUserInfo(userInfo)
+      setisLogin(true)
+    })
   }
 
   const { email, password } = user
@@ -85,7 +98,7 @@ export default function SignIn({ setUserInfo }: LogiProps) {
           <div className='user_login'>
             <Button style='MainBtnBrown' value='Login' handleClick={handleLogin} />
           </div>
-          <Oauth responseGoogle={handleGoogleLogin} />
+          <Oauth responseGoogle={handleGoogleLogin} responseKakao={handleKakaoLogin} />
         </div>
         <span className='greeting'>are you new member?</span>
         <div className='box_signup'>
