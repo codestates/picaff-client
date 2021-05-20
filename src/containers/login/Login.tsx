@@ -7,6 +7,7 @@ import Button from 'components/button/Button'
 import Oauth from 'components/social-Oauth/Oauth'
 import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
 import { requestOauth } from 'module/Oauth'
+import { Redirect } from 'react-router-dom'
 
 type LogiProps = {
   setUserInfo: (UserInfo: UserInfo) => void
@@ -24,15 +25,6 @@ export default function SignIn({ setUserInfo }: LogiProps) {
       [name]: value,
     })
   }
-
-  // useEffect(() => {
-  //   if (isLogin) {
-  //     redirect
-  //   }
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [isLogin])
 
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -105,6 +97,7 @@ export default function SignIn({ setUserInfo }: LogiProps) {
           <button id='signup'>Sign-up</button>
         </div>
       </form>
+      {isLogin ? <Redirect to='/dashboard' /> : ''}
     </LoginContainer>
   )
 }

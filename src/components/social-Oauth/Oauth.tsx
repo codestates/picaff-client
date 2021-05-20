@@ -27,7 +27,7 @@ export default function Oauth({ responseGoogle, responseKakao }: Oauth) {
         />
         <KakaoLogin
           token={process.env.REACT_APP_KAKAO_API_KEY as string}
-          onSuccess={(res) => responseKakao(res.response)}
+          onSuccess={({ response }) => responseKakao(response)}
           onFail={console.error}
           onLogout={console.log}
           render={(ele) => (
