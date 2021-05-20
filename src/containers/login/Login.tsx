@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { User } from 'interface'
+import { User, UserInfo } from 'interface'
 import axios from 'axios'
 import { LoginContainer } from './Login.style'
 import InputForm from 'components/input-form/InputForm'
@@ -7,7 +7,11 @@ import Button from 'components/button/Button'
 import Oauth from 'components/social-Oauth/Oauth'
 import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
 
-export default function SignIn() {
+type LogiProps = {
+  setUserInfo: (UserInfo: UserInfo) => void
+}
+
+export default function SignIn({ setUserInfo }: LogiProps) {
   const [user, setUser] = useState<User>({ name: '', email: '', password: '' })
   const [alertMessage, setAlertMessage] = useState<string>('')
 
@@ -46,7 +50,20 @@ export default function SignIn() {
   }
 
   const handleGoogleLogin = async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
-    console.log(res)
+    if ('tokenId' in res) {
+      const { accessToken: access_token, tokenId: token_id } = res
+
+      const response = await axios.post(
+        'http:localhost:4000/user/google',
+        { access_token, token_id },
+        {
+          headers: { 'Content-Type': 'application/json' },
+        }
+      )
+      console.log(response.data)
+      const UserInfo = response.data as UserInfo
+      UserInfo ? setUserInfo(UserInfo) : alert('로그인에 실패하였습니다')
+    }
   }
 
   const { email, password } = user

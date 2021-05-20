@@ -18,8 +18,8 @@ export default function Oauth({ responseGoogle }: Oauth) {
             </button>
           )}
           onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={'single_host_origin'}
+          onFailure={(res) => alert(res.error)}
+          cookiePolicy={'code'}
         />
         <button id='kakao'>
           <img className='logo' src='./images/kakao.png' />

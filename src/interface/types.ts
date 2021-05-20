@@ -12,3 +12,14 @@ export type CheckEmail = {
   inputNum: string | undefined
   disabled: boolean
 }
+
+type Authorization = {
+  accessToken: string
+}
+
+export type UserInfo = {
+  email: string
+  name: string
+  id: number
+  author: Authorization
+}
