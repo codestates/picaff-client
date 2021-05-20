@@ -5,11 +5,6 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import Button from 'components/button/Button'
 import Logo from './logo.png'
 
-// type ActionType = {
-//   // active: boolean
-//   handleClick?: (e: React.MouseEventHandler<HTMLButtonElement>) => void
-// }
-
 export default function Navbar() {
   const [isActive, setIsActive] = useState<boolean>(false)
 
