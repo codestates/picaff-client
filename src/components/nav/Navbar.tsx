@@ -1,30 +1,25 @@
-// import React, { useRef } from 'react'
+import { useState } from 'react'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 import { NavComponent } from './Navbar.style'
-import { IoMdArrowDropdownCircle } from 'react-icons/io'
+import { GiHamburgerMenu } from 'react-icons/gi'
 import Button from 'components/button/Button'
 import Logo from './logo.png'
-import handleToggle from './Toggle'
+
+// type ActionType = {
+//   // active: boolean
+//   handleClick?: (e: React.MouseEventHandler<HTMLButtonElement>) => void
+// }
 
 export default function Navbar() {
-  // const toggleBtn = useRef<HTMLButtonElement>()
-  // const menu = useRef<HTMLUListElement>()
-  // const user = useRef<HTMLUListElement>()
-
-  // toggleBtn.current.addEventListener('click', () => {
-  //   menu.current.classList.toggle('active')
-  //   user.current.classList.toggle('active')
-  // })
-
-  const handleClick = () => {
-    handleToggle()
-  }
+  const [isActive, setIsActive] = useState<boolean>(false)
 
   return (
     <Router>
-      <NavComponent className='navbar'>
-        <img className='navbar_logo' src={Logo} />
-        <ul className='navbar_menu' /*ref={menu}*/>
+      <NavComponent isActive={isActive} className='navbar'>
+        <Link to='/'>
+          <img className='navbar_logo' src={Logo} />
+        </Link>
+        <ul className='navbar_menu'>
           <Link to='/' id='home'>
             <Button style='MenuBtn' type='button' value='HOME' />
           </Link>
@@ -35,16 +30,17 @@ export default function Navbar() {
             <Button style='MenuBtn' type='button' value='PICAFF MAGAZINE' />
           </Link>
         </ul>
-        <ul className='navbar_user' /*ref={user}*/>
+        <ul className='navbar_user'>
+          {/* 유저버튼은 페이지당 필요한 개수만큼 link 및 value 지정해서 사용 */}
           <Link to=''>
-            <Button style='UserBtn' type='button' value='Login' />
+            <Button style='UserBtn' type='button' value='' />
           </Link>
           <Link to=''>
-            <Button style='UserBtn' type='button' value='Sign-up' />
+            <Button style='UserBtn' type='button' value='' />
           </Link>
         </ul>
-        <button className='navbar_toggleBtn' onClick={handleClick} /*ref={toggleBtn}*/>
-          <IoMdArrowDropdownCircle />
+        <button className='navbar_toggleBtn' onClick={() => setIsActive(!isActive)}>
+          <GiHamburgerMenu />
         </button>
       </NavComponent>
     </Router>
