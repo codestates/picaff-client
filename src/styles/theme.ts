@@ -25,6 +25,7 @@ const color = {
   BackC: '#F7F7F4',
   NavC: '#F2F1E5',
   YelloC: '#EAC784',
+  GreyC: '#696b6a',
 }
 
 const theme = {

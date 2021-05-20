@@ -11,7 +11,7 @@ const MenuBtn = styled.button`
   cursor: pointer;
 
   &:hover {
-    color: #696b6a;
+    color: ${({ theme }) => theme.color.GreyC};
   }
 `
 
