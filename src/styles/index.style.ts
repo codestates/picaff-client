@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyled = styled.div`
+export const GlobalStyled = createGlobalStyle`
   body html {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
@@ -11,7 +11,4 @@ export const GlobalStyled = styled.div`
     background-color: #f7f7f4;
   }
 
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-  }
 `
