@@ -1,8 +1,14 @@
-import SignIn from 'containers/login/Login'
+import Select from 'components/select-test/Select'
+
 export default function Sample() {
   return (
     <div>
-      <SignIn />
+      <Select
+        title='여기에 질문을 입력하세요'
+        handleTestResult={(n) => {
+          console.log(n)
+        }}
+      />
     </div>
   )
 }
