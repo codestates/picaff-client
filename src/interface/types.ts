@@ -32,3 +32,8 @@ export interface KakaoLoginResponse {
   refresh_token_expires_in: number
   scope: string
 }
+
+export type Test = {
+  title: string
+  value: number
+}

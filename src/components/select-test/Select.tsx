@@ -2,9 +2,17 @@ import { SelectContainer } from './Select.style'
 
 type Select = {
   title: string
+  handleTestResult: (select: string) => void
 }
 
-export default function Select({ title }: Select) {
+export default function Select({ title, handleTestResult }: Select) {
+  const idx: string[] = ['매우 아니다', '', '', '', '매우 좋아한다']
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    const index = e.currentTarget.getAttribute('value')
+    index && handleTestResult(index)
+  }
   return (
     <SelectContainer>
       <svg className='icon-source'>
@@ -21,30 +29,16 @@ export default function Select({ title }: Select) {
         </div>
         <div className='selectcontainer'>
           <p dir='rtl'>
-            <button title='5' className='rate'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                xmlnsXlink='http://www.w3.org/1990/link'
-                viewBox='0 0 24 24'>
-                <use xlinkHref='#star' className='icon-star' />
-              </svg>
-            </button>
-            <button title='4' className='rate'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                xmlnsXlink='http://www.w3.org/1990/link'
-                viewBox='0 0 24 24'>
-                <use xlinkHref='#star' className='icon-star' />
-              </svg>
-            </button>
-            <button title='3' className='rate'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                xmlnsXlink='http://www.w3.org/1990/link'
-                viewBox='0 0 24 24'>
-                <use xlinkHref='#star' className='icon-star' />
-              </svg>
-            </button>
+            {idx.map((i, idx) => (
+              <button title={i} value={idx} className='rate' onClick={handleClick}>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  xmlnsXlink='http://www.w3.org/1990/link'
+                  viewBox='0 0 24 24'>
+                  <use xlinkHref='#star' className='icon-star' />
+                </svg>
+              </button>
+            ))}
           </p>
         </div>
       </div>

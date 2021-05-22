@@ -7,22 +7,35 @@ export const SelectContainer = styled.section`
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  height: 100%;
+  width: 40vw;
+  margin: 0 auto;
 
   h1,
   p {
-    margin: 0 auto;
+    margin: auto auto;
     color: ${({ theme }) => theme.color.YelloC};
     font-weight: normal;
     text-align: center;
+    transition: color 0.5s;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
   }
 
-  .icon-source {
-    display: none;
+  & .selectcontainer {
+    height: 100%;
+    border-radius: 15px;
+    background-color: ${({ theme }) => theme.color.NavC};
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    margin-top: 1rem;
   }
 
   .icon-star {
     stroke-width: 1;
-    stroke: rgba(242, 242, 194, 1);
+    stroke: ${({ theme }) => theme.color.PointC};
     stroke-dasharray: 84;
     stroke-dashoffset: 85;
     stroke-opacity: 0.2;
@@ -33,6 +46,10 @@ export const SelectContainer = styled.section`
     transition: fill 0.3s;
     transform: rotate(-30deg);
     transform-origin: center;
+  }
+
+  .icon-source {
+    display: none;
   }
 
   .rate:hover {
@@ -53,12 +70,12 @@ export const SelectContainer = styled.section`
     position: relative;
     display: inline-block;
     box-sizing: border-box;
-    width: 7rem;
-    height: 8rem;
-    padding: 2rem 1rem;
+    width: 6rem;
+    height: 7rem;
+    padding: 2rem 0.5rem;
     border: none;
     background-color: transparent;
-    color: ${({ theme }) => theme.color.YelloC};
+    color: ${({ theme }) => theme.color.BrownC};
     font-family: inherit;
     transition: opacity 0.3s;
     -webkit-appearance: none;
@@ -70,17 +87,18 @@ export const SelectContainer = styled.section`
       width: 100%;
       height: 100%;
       transition: transform 0.3s;
+      background-color: transparent;
     }
     &::before {
       position: absolute;
-      bottom: -0.5rem;
+      bottom: 0rem;
       left: 0;
       right: 0;
       display: block;
       margin: auto;
       opacity: 0;
       content: attr(title);
-      transition: color 1s;
+      transition: color 0.5s;
       opacity: 1;
     }
 
