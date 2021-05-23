@@ -3,9 +3,10 @@ import { SelectContainer } from './Select.style'
 type Select = {
   title: string
   handleTestResult: (select: string) => void
+  preSelect: number | null
 }
 
-export default function Select({ title, handleTestResult }: Select) {
+export default function Select({ title, handleTestResult, preSelect }: Select) {
   const idx: string[] = ['매우 아니다', '', '', '', '매우 좋아한다']
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -13,6 +14,7 @@ export default function Select({ title, handleTestResult }: Select) {
     const index = e.currentTarget.getAttribute('value')
     index && handleTestResult(index)
   }
+
   return (
     <SelectContainer>
       <svg className='icon-source'>
@@ -30,7 +32,12 @@ export default function Select({ title, handleTestResult }: Select) {
         <div className='selectcontainer'>
           <p dir='rtl'>
             {idx.map((i, idx) => (
-              <button title={i} value={idx} className='rate' onClick={handleClick}>
+              <button
+                title={i}
+                value={idx}
+                className={idx === preSelect ? 'active rate' : 'rate'}
+                onClick={handleClick}
+                key={idx}>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   xmlnsXlink='http://www.w3.org/1990/link'

@@ -8,8 +8,12 @@ export const SelectContainer = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   height: 100%;
-  width: 40vw;
+  width: 60%;
   margin: 0 auto;
+  min-width: ${({ theme }) => theme.deviceSizes.mobile + 'px'};
+  & > div {
+    width: 100%;
+  }
 
   h1,
   p {
@@ -31,6 +35,19 @@ export const SelectContainer = styled.section`
     padding-top: 1rem;
     padding-bottom: 2rem;
     margin-top: 1rem;
+  }
+
+  .active .icon-star {
+    fill: rgba(242, 242, 194, 1);
+    stroke-opacity: 1;
+  }
+  .active {
+    &::after {
+      transform: scale(1.4);
+    }
+    & svg {
+      animation: rateHover 0.5s ease-out forwards;
+    }
   }
 
   .icon-star {

@@ -35,5 +35,11 @@ export interface KakaoLoginResponse {
 
 export type Test = {
   title: string
-  value: number
+  score: number | null
 }
+
+export type Score = {
+  score: number | null
+}
+
+export type TestResult = {}
