@@ -13,6 +13,26 @@ export type CheckEmail = {
   disabled: boolean
 }
 
+type Authorization = {
+  accessToken: string
+}
+
+export type UserInfo = {
+  email: string
+  name: string
+  id: number
+  author: Authorization
+}
+
+export interface KakaoLoginResponse {
+  token_type: string
+  access_token: string
+  expires_in: string
+  refresh_token: string
+  refresh_token_expires_in: number
+  scope: string
+}
+
 export type CoffeeResult = {
   coffeeName: string
   coffeeCharacter: {

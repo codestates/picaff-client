@@ -3,7 +3,7 @@ name: KPT Reflection
 about: every mon & thurs 5pm
 title: "[KPT Team Reflection] 2021-"
 labels: KPT reflection
-assignees: miraecod, Lucky-kor, jeonghun-project, byronkim
+assignees: byronkim, jeonghun-project, Lucky-kor, miraecod
 
 ---
 
