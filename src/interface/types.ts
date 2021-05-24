@@ -12,3 +12,24 @@ export type CheckEmail = {
   inputNum: string | undefined
   disabled: boolean
 }
+
+export type CoffeeResult = {
+  coffeeName: string
+  coffeeCharacter: {
+    sweetness: number
+    sourness: number
+    balance: number
+    body: number
+    aroma: number
+    afterTaste: number
+  }
+}
+
+export type ProductResult = {
+  productName: string
+  productCharacter: {
+    accessibility: number
+    convenience: number
+    effectiveness: number
+  }
+}
