@@ -50,13 +50,13 @@ export interface TestResult {
   type: 'machine' | 'coffee'
   imageUrl: string
   categoryId: number
-  itemCharacter?: ItemCharacter
+  itemCharacter?: ProductCharacter
   coffeCharactre?: CoffeeCharacter
   isLiked: boolean
   tag: Tag[]
 }
 
-type ItemCharacter = {
+type ProductCharacter = {
   id: number
   accessibility: number
   convenience: number
@@ -76,4 +76,25 @@ type CoffeeCharacter = {
 type Tag = {
   id: number
   tagname: string
+}
+
+export type CoffeeResult = {
+  coffeeName: string
+  coffeeCharacter: {
+    sweetness: number
+    sourness: number
+    balance: number
+    body: number
+    aroma: number
+    afterTaste: number
+  }
+}
+
+export type ProductResult = {
+  productName: string
+  productCharacter: {
+    accessibility: number
+    convenience: number
+    effectiveness: number
+  }
 }
