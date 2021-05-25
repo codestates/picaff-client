@@ -1,7 +1,7 @@
 import Button from 'components/button/Button'
 import EndedTest from 'components/result/EndedTest'
 import Select from 'components/select-test/Select'
-import { Test } from 'interface'
+import { Test, TestResult } from 'interface'
 import { convertArray, test } from 'module/test'
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
@@ -35,10 +35,7 @@ export default function TestImpls() {
     e.preventDefault()
     setindex(idx - 1)
   }
-  const handleSubmit = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    data: any /* : TestResult */ // 타입 정해지면 타입 들어가야함
-  ) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: TestResult) => {
     e.preventDefault()
     const history = useHistory()
     history.push('/testresult', data)

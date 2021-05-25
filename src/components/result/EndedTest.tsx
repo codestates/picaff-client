@@ -1,4 +1,5 @@
 import Button from 'components/button/Button'
+import { TestResult } from 'interface'
 import { getTestResult } from 'module/TestResult'
 import React, { useEffect, useState } from 'react'
 import { EndedTestContainer } from './EndedTest.style'
@@ -9,7 +10,7 @@ type TestFinish = {
 }
 
 export default function EndedTest({ handleSubmit, score }: TestFinish) {
-  const [data, setdata] = useState<any | null>(/* <TestResult | null> */ null)
+  const [data, setdata] = useState<TestResult | null>(null)
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
@@ -17,7 +18,7 @@ export default function EndedTest({ handleSubmit, score }: TestFinish) {
   }
 
   useEffect(() => {
-    setdata(getTestResult(score))
+    ;async () => setdata(await getTestResult(score))
   }, [])
 
   return (

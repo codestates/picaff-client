@@ -42,4 +42,38 @@ export type Score = {
   score: number | null
 }
 
-export type TestResult = {}
+export interface TestResult {
+  id: number
+  itemName: string
+  itemPrice: number
+  itemDetail: string
+  type: 'machine' | 'coffee'
+  imageUrl: string
+  categoryId: number
+  itemCharacter?: ItemCharacter
+  coffeCharactre?: CoffeeCharacter
+  isLiked: boolean
+  tag: Tag[]
+}
+
+type ItemCharacter = {
+  id: number
+  accessibility: number
+  convenience: number
+  effectiveness: number
+}
+
+type CoffeeCharacter = {
+  id: number
+  sweetness: number
+  sourness: number
+  balance: number
+  body: number
+  aroma: number
+  afterTaste: number
+}
+
+type Tag = {
+  id: number
+  tagname: string
+}
