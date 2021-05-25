@@ -1,8 +1,9 @@
-import SignIn from 'containers/login/Login'
+import TestImpls from 'containers/testpage/TestImpls'
+
 export default function Sample() {
   return (
     <div>
-      <SignIn setUserInfo={(user) => console.log(user)} />
+      <TestImpls />
     </div>
   )
 }

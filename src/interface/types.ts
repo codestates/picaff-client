@@ -33,6 +33,51 @@ export interface KakaoLoginResponse {
   scope: string
 }
 
+export type Test = {
+  title: string
+  score: number | null
+}
+
+export type Score = {
+  score: number | null
+}
+
+export interface TestResult {
+  id: number
+  itemName: string
+  itemPrice: number
+  itemDetail: string
+  type: 'machine' | 'coffee'
+  imageUrl: string
+  categoryId: number
+  itemCharacter?: ProductCharacter
+  coffeCharactre?: CoffeeCharacter
+  isLiked: boolean
+  tag: Tag[]
+}
+
+type ProductCharacter = {
+  id: number
+  accessibility: number
+  convenience: number
+  effectiveness: number
+}
+
+type CoffeeCharacter = {
+  id: number
+  sweetness: number
+  sourness: number
+  balance: number
+  body: number
+  aroma: number
+  afterTaste: number
+}
+
+type Tag = {
+  id: number
+  tagname: string
+}
+
 export type CoffeeResult = {
   coffeeName: string
   coffeeCharacter: {
