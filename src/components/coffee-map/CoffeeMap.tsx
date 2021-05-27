@@ -1,6 +1,6 @@
-import { GoogleMap, LoadScript, Polygon } from '@react-google-maps/api'
+import { GoogleMap, LoadScript, OverlayView, Polygon } from '@react-google-maps/api'
 import { MapOption, TestResult } from 'interface'
-import { RequestAllItem } from 'module/Coffeemap'
+import { GetMapOptions, RequestAllItem } from 'module/Coffeemap'
 import { ConvertLatLng } from 'module/Polygon'
 import { useEffect, useState } from 'react'
 import { CoffeeMapContainer } from './CoffeeMap.style'
@@ -54,28 +54,7 @@ export default function CoffeeMap({ /*handleRegionClick ,*/ type }: maptype) {
   }
 
   useEffect(() => {
-    switch (type) {
-      case 'All':
-        setMapOption({ zoom: 3, center: { lat: 5, lng: 170.644 } })
-        break
-      case 'GT':
-        setMapOption({ zoom: 7, center: { lat: 15.555556, lng: -90.334815 } })
-        break
-      case 'KE':
-        setMapOption({ zoom: 6, center: { lat: 0.268061, lng: 37.0798023 } })
-        break
-      case 'CO':
-        setMapOption({ zoom: 6, center: { lat: 4.308886, lng: -73.100973 } })
-        break
-      case 'ET':
-        setMapOption({ zoom: 6, center: { lat: 9.10802, lng: 39.710975 } })
-        break
-      case 'BR':
-        setMapOption({ zoom: 5, center: { lat: -8.097442, lng: -58.317086 } })
-        break
-      default:
-        ''
-    }
+    setMapOption(GetMapOptions(type))
   }, [])
 
   const onLoad = () => {
@@ -112,32 +91,39 @@ export default function CoffeeMap({ /*handleRegionClick ,*/ type }: maptype) {
           }}>
           {PolygonData &&
             PolygonData.map((el: google.maps.LatLng[] | google.maps.LatLng[][], idx) => (
-              <Polygon
-                paths={el}
-                onMouseOver={() => handleMouseOver(idx)}
-                onClick={() => handleRegionClick(RegionArr[idx])}
-                onLoad={(data) => console.log(data)}
-                onUnmount={() => console.log('unload')}
-                options={
-                  idx === index
-                    ? {
-                        fillColor: '#362415',
-                        strokeColor: '#0B421A',
-                        strokeOpacity: 1,
-                        fillOpacity: 0.1,
-                        zIndex: 9999,
-                        strokeWeight: 2,
-                      }
-                    : {
-                        fillColor: '#604C4C',
-                        strokeColor: '#362415',
-                        strokeOpacity: 1,
-                        fillOpacity: 0.2,
-                        zIndex: 9998,
-                        strokeWeight: 1,
-                      }
-                }
-              />
+              <>
+                <Polygon
+                  paths={el}
+                  onMouseOver={() => handleMouseOver(idx)}
+                  onClick={() => handleRegionClick(RegionArr[idx])}
+                  onLoad={(data) => console.log(data)}
+                  onUnmount={() => console.log('unload')}
+                  options={
+                    idx === index
+                      ? {
+                          fillColor: '#362415',
+                          strokeColor: '#0B421A',
+                          strokeOpacity: 1,
+                          fillOpacity: 0.1,
+                          zIndex: 9999,
+                          strokeWeight: 2,
+                        }
+                      : {
+                          fillColor: '#604C4C',
+                          strokeColor: '#362415',
+                          strokeOpacity: 1,
+                          fillOpacity: 0.2,
+                          zIndex: 9998,
+                          strokeWeight: 1,
+                        }
+                  }
+                />
+                <OverlayView
+                  position={GetMapOptions(RegionArr[index]).center}
+                  mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
+                  <div>{RegionArr[index]}</div>
+                </OverlayView>
+              </>
             ))}
         </GoogleMap>
       </LoadScript>
