@@ -1,7 +1,7 @@
 import Button from 'components/button/Button'
 import EndedTest from 'components/result/EndedTest'
 import Select from 'components/select-test/Select'
-import { Test, TestResult } from 'interface'
+import { Test, itemResult } from 'interface'
 import { convertArray, test } from 'module/test'
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
@@ -38,7 +38,7 @@ export default function TestImpls() {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: TestResult) => {
     e.preventDefault()
     const history = useHistory()
-    history.push('/testresult', data)
+    history.push('/itemResult', data)
   }
 
   return (

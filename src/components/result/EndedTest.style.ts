@@ -6,7 +6,7 @@ export const EndedTestContainer = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  top: 0px;
+  top: 10%;
   height: 100%;
   z-index: 9999;
   overflow: hidden;
