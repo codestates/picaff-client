@@ -1,6 +1,6 @@
 import Button from 'components/button/Button'
 import { itemResult } from 'interface'
-import { getitemResult } from 'module/itemResult'
+import { getitemResult } from 'module/TestResult'
 import React, { useEffect, useState } from 'react'
 import { EndedTestContainer } from './EndedTest.style'
 

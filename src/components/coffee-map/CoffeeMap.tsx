@@ -16,9 +16,8 @@ const initdata: itemResult = {
   itemName: '',
   itemPrice: 0,
   itemDetail: '',
-  type: 'machine',
+  type: 'product',
   imageUrl: '',
-  categoryId: 0,
   isLiked: false,
   tag: [{ id: 0, tagname: '' }],
 }
