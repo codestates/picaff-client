@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 import { NavComponent } from './Navbar.style'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import Button from 'components/button/Button'
-import Logo from './logo.png'
 
 export default function Navbar() {
   const [isActive, setIsActive] = useState<boolean>(false)
@@ -12,7 +11,7 @@ export default function Navbar() {
     <Router>
       <NavComponent isActive={isActive} className='navbar'>
         <Link to='/'>
-          <img className='navbar_logo' src={Logo} />
+          <img className='navbar_logo' src='./images/logo.png' />
         </Link>
         <ul className='navbar_menu'>
           <Link to='/' id='home'>

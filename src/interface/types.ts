@@ -50,6 +50,7 @@ export interface TestResult {
   type: 'machine' | 'coffee'
   imageUrl: string
   categoryId: number
+  iso?: string
   itemCharacter?: ProductCharacter
   coffeCharactre?: CoffeeCharacter
   isLiked: boolean
@@ -97,4 +98,9 @@ export type ProductResult = {
     convenience: number
     effectiveness: number
   }
+}
+
+export type MapOption = {
+  zoom: number
+  center: { lat: number; lng: number }
 }

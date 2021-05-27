@@ -14,7 +14,7 @@ export default function Oauth({ responseGoogle, responseKakao }: Oauth) {
     <SocialLogin>
       <div className='social_login'>
         <GoogleLogin
-          clientId={process.env.REACT_APP_GOOLE_CLIENT_ID as string}
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID as string}
           render={(Ele) => (
             <button id='google' onClick={Ele.onClick}>
               <img className='logo' src='./images/google.png' />
