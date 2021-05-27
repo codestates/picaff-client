@@ -1,5 +1,5 @@
 import { GoogleMap, LoadScript, OverlayView, Polygon } from '@react-google-maps/api'
-import { MapOption, TestResult } from 'interface'
+import { MapOption, itemResult } from 'interface'
 import { GetMapOptions, RequestAllItem } from 'module/Coffeemap'
 import { ConvertLatLng } from 'module/Polygon'
 import { useEffect, useState } from 'react'
@@ -11,7 +11,7 @@ type maptype = {
   handleRegionClick?: (Region: string) => void
 }
 
-const initdata: TestResult = {
+const initdata: itemResult = {
   id: 0,
   itemName: '',
   itemPrice: 0,
@@ -33,8 +33,8 @@ export default function CoffeeMap({ /*handleRegionClick ,*/ type }: maptype) {
     center: { lat: 5, lng: 170.644 },
   })
   // 상위 container에서 관리 되면 좋을거 같습니다.
-  const [CoffeeDataArr, setCoffeeDataArr] = useState<TestResult[]>([])
-  const [CoffeeData, setCoffeeData] = useState<TestResult>(initdata)
+  const [CoffeeDataArr, setCoffeeDataArr] = useState<itemResult[]>([])
+  const [CoffeeData, setCoffeeData] = useState<itemResult>(initdata)
 
   // 테스트 결과페이지에서 props로 전체 커피 데이터를 받아오는 로직입니다
   useEffect(() => {

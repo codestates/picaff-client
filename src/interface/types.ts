@@ -21,7 +21,6 @@ export type UserInfo = {
   email: string
   name: string
   id: number
-  author: Authorization
 }
 
 export interface KakaoLoginResponse {
@@ -43,18 +42,22 @@ export type Score = {
 }
 
 export interface TestResult {
+  testResultId: number
+  productResult: itemResult
+  coffeeResult: itemResult
+}
+
+export type itemResult = {
   id: number
   itemName: string
   itemPrice: number
   itemDetail: string
-  type: 'machine' | 'coffee'
+  type: 'product' | 'coffee'
   imageUrl: string
-  categoryId: number
-  iso?: string
-  itemCharacter?: ProductCharacter
-  coffeCharactre?: CoffeeCharacter
+  productCharacter?: ProductCharacter
+  coffeeCharacter?: CoffeeCharacter
   isLiked: boolean
-  tag: Tag[]
+  tag: Tags[]
 }
 
 type ProductCharacter = {
@@ -74,7 +77,7 @@ type CoffeeCharacter = {
   afterTaste: number
 }
 
-type Tag = {
+export type Tags = {
   id: number
   tagname: string
 }
