@@ -43,18 +43,24 @@ export type Score = {
 }
 
 export interface TestResult {
+  testResultId: number
+  productResult: itemResult
+  coffeeResult: itemResult
+}
+
+export type itemResult = {
   id: number
   itemName: string
   itemPrice: number
   itemDetail: string
-  type: 'machine' | 'coffee'
+  type: 'product' | 'coffee'
   imageUrl: string
   categoryId: number
   iso?: string
   itemCharacter?: ProductCharacter
   coffeCharactre?: CoffeeCharacter
   isLiked: boolean
-  tag: Tag[]
+  tag: Tags[]
 }
 
 type ProductCharacter = {
@@ -74,30 +80,19 @@ type CoffeeCharacter = {
   afterTaste: number
 }
 
-type Tag = {
+export type Tags = {
   id: number
-  tagname: string
+  tagName: string
 }
 
-export type CoffeeResult = {
+export type CoffeeResultType = {
   coffeeName: string
-  coffeeCharacter: {
-    sweetness: number
-    sourness: number
-    balance: number
-    body: number
-    aroma: number
-    afterTaste: number
-  }
+  coffeeCharacter: CoffeeCharacter
 }
 
-export type ProductResult = {
+export type ProductResultType = {
   productName: string
-  productCharacter: {
-    accessibility: number
-    convenience: number
-    effectiveness: number
-  }
+  productCharacter: ProductCharacter
 }
 
 export type MapOption = {
