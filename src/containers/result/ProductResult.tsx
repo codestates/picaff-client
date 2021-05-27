@@ -17,7 +17,7 @@ export default function ProductResult({ data }: Props) {
   const radarInfo: ProductResultType | undefined = data.productCharacter && {
     productName: data.itemName,
     productCharacter: {
-      //   id: data.productCharacter.id,
+      id: data.productCharacter.id,
       accessibility: data.productCharacter.accessibility,
       convenience: data.productCharacter.convenience,
       effectiveness: data.productCharacter.effectiveness,

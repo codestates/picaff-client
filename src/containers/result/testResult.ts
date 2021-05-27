@@ -12,7 +12,7 @@ export const data: TestResult = {
     imageUrl: 'https://www.product.com',
     categoryId: 2,
     productCharacter: {
-      // id: 1,
+      id: 1,
       accessibility: 4,
       convenience: 4,
       effectiveness: 5,
@@ -29,6 +29,7 @@ export const data: TestResult = {
     imageUrl: 'https://www.coffee.com',
     categoryId: 1,
     coffeeCharacter: {
+      id: 1,
       sweetness: 3,
       sourness: 3,
       balance: 4,

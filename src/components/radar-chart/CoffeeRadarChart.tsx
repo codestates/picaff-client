@@ -1,5 +1,5 @@
 import RadarChartComponent from './CoffeeRadarChart.style'
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 import { Radar } from 'react-chartjs-2'
 import { ChartData } from 'chart.js'
 import { CoffeeResultType } from 'interface'
@@ -12,15 +12,17 @@ type Props = {
 export default function CoffeeRadarChart({ radarInfo }: Props) {
   const chartRef = useRef().current
 
-  // 최종적으로 차트에 들어갈 상태
-  const [CoffeeRadarData] = useState<ChartData>(RadarData)
+  // 최종적으로 차트에 들어갈 데이터 (RadarData = 데이터 포맷)
+  const CoffeeRadarData: ChartData = RadarData
 
   // coffeeName 지정
   CoffeeRadarData.datasets[0].label = radarInfo.coffeeName
 
   // coffeeCharacter 순회하면서 data에 추가
   for (let key in radarInfo.coffeeCharacter) {
-    CoffeeRadarData.datasets[0].data.push(radarInfo.coffeeCharacter[key])
+    if (key !== 'id') {
+      CoffeeRadarData.datasets[0].data.push(radarInfo.coffeeCharacter[key])
+    }
   }
 
   return (

@@ -11,7 +11,7 @@ export default function CoffeeResult({ data }: Props) {
   const radarInfo: CoffeeResultType | undefined = data.coffeeCharacter && {
     coffeeName: data.itemName,
     coffeeCharacter: {
-      // id: data.coffeeCharacter.id,
+      id: data.coffeeCharacter.id,
       sweetness: data.coffeeCharacter.sweetness,
       sourness: data.coffeeCharacter.sourness,
       balance: data.coffeeCharacter.balance,
