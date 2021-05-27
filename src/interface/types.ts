@@ -56,8 +56,9 @@ export type itemResult = {
   type: 'product' | 'coffee'
   imageUrl: string
   categoryId: number
-  productCharacter?: ProductCharacter
-  coffeeCharacter?: CoffeeCharacter
+  iso?: string
+  itemCharacter?: ProductCharacter
+  coffeCharactre?: CoffeeCharacter
   isLiked: boolean
   tag: Tags[]
 }
@@ -92,4 +93,9 @@ export type CoffeeResultType = {
 export type ProductResultType = {
   productName: string
   productCharacter: ProductCharacter
+}
+
+export type MapOption = {
+  zoom: number
+  center: { lat: number; lng: number }
 }

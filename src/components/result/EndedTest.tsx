@@ -18,7 +18,11 @@ export default function EndedTest({ handleSubmit, score }: TestFinish) {
   }
 
   useEffect(() => {
-    ;async () => setdata(await getTestResult(score))
+    async function ResData() {
+      setdata(await getTestResult(score))
+    }
+
+    ResData()
   }, [])
 
   return (
