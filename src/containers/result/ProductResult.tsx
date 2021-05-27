@@ -12,7 +12,6 @@ type Props = {
 
 export default function ProductResult({ data }: Props) {
   const [selectedTag, setSelectedTag] = useState<number>(0)
-  //   const [itemList, setItemList] = useState<itemResult>({})
 
   const radarInfo: ProductResultType | undefined = data.productCharacter && {
     productName: data.itemName,
