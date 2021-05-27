@@ -8,7 +8,7 @@ export const data: TestResult = {
     itemName: 'French Press',
     itemPrice: 5000,
     itemDetail: 'special machine used to make coffee',
-    type: 'machine',
+    type: 'product',
     imageUrl: 'https://www.product.com',
     categoryId: 2,
     productCharacter: {

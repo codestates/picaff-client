@@ -53,7 +53,7 @@ export type itemResult = {
   itemName: string
   itemPrice: number
   itemDetail: string
-  type: 'machine' | 'coffee'
+  type: 'product' | 'coffee'
   imageUrl: string
   categoryId: number
   productCharacter?: ProductCharacter
@@ -63,14 +63,14 @@ export type itemResult = {
 }
 
 type ProductCharacter = {
-  // id: number
+  id: number
   accessibility: number
   convenience: number
   effectiveness: number
 }
 
 type CoffeeCharacter = {
-  // id: number
+  id: number
   sweetness: number
   sourness: number
   balance: number
