@@ -3,10 +3,7 @@ import styled from 'styled-components'
 export const CoffeeResultContainer = styled.div`
   display: flex;
   flex-direction: column;
-
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 10px;
   border: 3px solid ${({ theme }) => theme.color.PointC};
 
   .section_result {

@@ -4,7 +4,7 @@ import { TestResult } from 'interface'
 import Navbar from 'components/nav/Navbar'
 import CoffeeResult from './CoffeeResult'
 import ProductResult from './ProductResult'
-// import { IoIosPaperPlane } from 'react-icons/io'
+import { IoIosPaperPlane } from 'react-icons/io'
 import { data } from './testResult'
 
 export default function Result() {
@@ -14,23 +14,27 @@ export default function Result() {
   return (
     <ResultContainer isTabActive={isTabActive}>
       <Navbar />
-      <div className='content'>
-        <div className='section_btn'>
-          <button className='coffee' onClick={() => setIsTabActive(true)}>
-            Coffee
-          </button>
-          <button className='product' onClick={() => setIsTabActive(false)}>
-            Product
-          </button>
+      <div className='top_container'>
+        <div className='content'>
+          <div className='section_btn'>
+            <button className='coffee' onClick={() => setIsTabActive(true)}>
+              Coffee
+            </button>
+            <button className='product' onClick={() => setIsTabActive(false)}>
+              Product
+            </button>
+          </div>
+          {isTabActive ? (
+            <CoffeeResult data={coffeeResult} />
+          ) : (
+            <ProductResult data={productResult} />
+          )}
         </div>
-        {/* <button className='share'>
+      </div>
+      <div className='section_share'>
+        <button className='btn_share'>
           <IoIosPaperPlane />
-        </button> */}
-        {isTabActive ? (
-          <CoffeeResult data={coffeeResult} />
-        ) : (
-          <ProductResult data={productResult} />
-        )}
+        </button>
       </div>
     </ResultContainer>
   )
