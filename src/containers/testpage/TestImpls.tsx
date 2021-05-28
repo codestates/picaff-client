@@ -28,14 +28,13 @@ export default function TestImpls() {
   useEffect(() => {
     if (scoreArr[0] !== null) setindex(index + 1)
     scoreArr.indexOf(null) === -1 ? setisDone(true) : ''
-    console.log(scoreArr)
   }, [scoreArr])
 
   const handleBackBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, idx: number) => {
     e.preventDefault()
     setindex(idx - 1)
   }
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: TestResult) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: itemResult) => {
     e.preventDefault()
     const history = useHistory()
     history.push('/itemResult', data)
