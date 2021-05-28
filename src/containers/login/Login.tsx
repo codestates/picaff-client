@@ -6,7 +6,7 @@ import Button from 'components/button/Button'
 import Oauth from 'components/social-Oauth/Oauth'
 import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
 import { requestOauth } from 'module/Oauth'
-import { Redirect, RedirectProps, useHistory, useLocation } from 'react-router-dom'
+import { RedirectProps, useHistory, useLocation } from 'react-router-dom'
 import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 
 export default function SignIn() {
@@ -21,7 +21,6 @@ export default function SignIn() {
     auth: { accessToken: '' },
   })
   const [alertMessage, setAlertMessage] = useState<string>('')
-  const [isLogin, setisLogin] = useState<boolean>(false)
   const { email, password } = user
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +49,6 @@ export default function SignIn() {
     } else {
       await requestOauth('https://localhost:4000/user/signin', { email, password }, (userInfo) => {
         setUserInfo(userInfo)
-        setisLogin(true)
       })
     }
   }
@@ -63,7 +61,6 @@ export default function SignIn() {
         { access_token, id_token },
         (userInfo) => {
           setUserInfo(userInfo)
-          setisLogin(true)
         }
       )
     }
@@ -74,7 +71,6 @@ export default function SignIn() {
     const { access_token } = res
     await requestOauth('http:localhost:4000/user/kakao', { access_token }, (userInfo) => {
       setUserInfo(userInfo)
-      setisLogin(true)
     })
   }
 
@@ -102,7 +98,6 @@ export default function SignIn() {
           <button id='signup'>Sign-up</button>
         </div>
       </form>
-      {isLogin ? <Redirect to='/dashboard' /> : ''}
     </LoginContainer>
   )
 }
