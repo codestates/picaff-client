@@ -83,28 +83,17 @@ type CoffeeCharacter = {
 
 export type Tags = {
   id: number
-  tagname: string
+  tagName: string
 }
 
-export type CoffeeResult = {
+export type CoffeeResultType = {
   coffeeName: string
-  coffeeCharacter: {
-    sweetness: number
-    sourness: number
-    balance: number
-    body: number
-    aroma: number
-    afterTaste: number
-  }
+  coffeeCharacter: CoffeeCharacter
 }
 
-export type ProductResult = {
+export type ProductResultType = {
   productName: string
-  productCharacter: {
-    accessibility: number
-    convenience: number
-    effectiveness: number
-  }
+  productCharacter: ProductCharacter
 }
 
 export type MapOption = {
