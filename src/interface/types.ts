@@ -57,8 +57,8 @@ export type itemResult = {
   imageUrl: string
   categoryId: number
   iso?: string
-  itemCharacter?: ProductCharacter
-  coffeCharactre?: CoffeeCharacter
+  productCharacter?: ProductCharacter
+  coffeeCharacter?: CoffeeCharacter
   isLiked: boolean
   tag: Tags[]
 }
