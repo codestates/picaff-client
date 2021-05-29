@@ -10,7 +10,7 @@ export const data: TestResult = {
     itemDetail: 'special machine used to make coffee',
     type: 'product',
     imageUrl: 'https://www.product.com',
-    categoryId: 2,
+    iso: '',
     productCharacter: {
       id: 1,
       accessibility: 4,
@@ -27,7 +27,7 @@ export const data: TestResult = {
     itemDetail: 'starbucky',
     type: 'coffee',
     imageUrl: 'https://www.coffee.com',
-    categoryId: 1,
+    iso: 'KE',
     coffeeCharacter: {
       id: 1,
       sweetness: 3,

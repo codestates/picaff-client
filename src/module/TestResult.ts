@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { itemResult } from 'interface'
+import { TestResult } from 'interface'
 
-export const getitemResult = async (score: (number | null)[]): Promise<itemResult> => {
-  const res = await axios.post<itemResult>('http://localhost:4000/test', score, {
+export const getitemResult = async (score: (number | null)[]): Promise<TestResult> => {
+  const res = await axios.post<TestResult>('http://localhost:4000/test', score, {
     headers: { 'Content-Type': 'application/json' },
     // token 보내줘야함
   })

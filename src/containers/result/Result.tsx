@@ -5,10 +5,14 @@ import Navbar from 'components/nav/Navbar'
 import CoffeeResult from './CoffeeResult'
 import ProductResult from './ProductResult'
 import { IoIosPaperPlane } from 'react-icons/io'
-import { data } from './testResult'
+// import { data } from './testResult'
 
-export default function Result() {
-  const { coffeeResult, productResult }: TestResult = data
+type Props = {
+  TestResult: TestResult
+}
+
+export default function Result({ TestResult }: Props) {
+  const { coffeeResult, productResult }: TestResult = TestResult
   const [isTabActive, setIsTabActive] = useState<boolean>(true)
 
   return (
