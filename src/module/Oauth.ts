@@ -5,10 +5,14 @@ type requestType = {
   access_token: string
   id_token?: string
 }
+type LoginInfo = {
+  email: string
+  password: string
+}
 
 export const requestOauth = async (
   endpoint: string,
-  data: requestType,
+  data: requestType | LoginInfo,
   callback: (userInfo: UserInfo) => void
 ) => {
   const response = await axios.post<UserInfo>(endpoint, data, {

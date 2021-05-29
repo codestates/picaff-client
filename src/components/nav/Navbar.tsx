@@ -27,10 +27,10 @@ export default function Navbar() {
       </ul>
       <ul className='navbar_user'>
         {/* 유저버튼은 페이지당 필요한 개수만큼 link 및 value 지정해서 사용 */}
-        <Link to=''>
+        <Link to='/login'>
           <Button style='UserBtn' type='button' value='로그인' />
         </Link>
-        <Link to=''>
+        <Link to='/signup'>
           <Button style='UserBtn' type='button' value='회원가입' />
         </Link>
       </ul>

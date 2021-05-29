@@ -1,7 +1,7 @@
 import Button from 'components/button/Button'
 import EndedTest from 'components/result/EndedTest'
 import Select from 'components/select-test/Select'
-import { Test, TestResult } from 'interface'
+import { Test, itemResult } from 'interface'
 import { convertArray, test } from 'module/test'
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
@@ -28,17 +28,16 @@ export default function TestImpls() {
   useEffect(() => {
     if (scoreArr[0] !== null) setindex(index + 1)
     scoreArr.indexOf(null) === -1 ? setisDone(true) : ''
-    console.log(scoreArr)
   }, [scoreArr])
 
   const handleBackBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, idx: number) => {
     e.preventDefault()
     setindex(idx - 1)
   }
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: TestResult) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: itemResult) => {
     e.preventDefault()
     const history = useHistory()
-    history.push('/testresult', data)
+    history.push('/itemResult', data)
   }
 
   return (

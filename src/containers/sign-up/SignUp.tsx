@@ -5,6 +5,7 @@ import { SignUpContainer } from './SignUp.style'
 import { User, CheckEmail } from 'interface'
 import axios from 'axios'
 import { checkPassword } from '../../module/index'
+import { useHistory, useLocation } from 'react-router'
 
 export default function SignUp() {
   const [User, setUser] = useState<User>({ name: '', email: '', password: '', ConfirmPassword: '' })
@@ -16,6 +17,8 @@ export default function SignUp() {
     inputNum: '',
     disabled: false,
   })
+  const history = useHistory()
+  const location = useLocation()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -56,8 +59,7 @@ export default function SignUp() {
       })
 
       if (res.status === 201) {
-        //router login
-        // return <Redirect to='/login' />
+        history.push('/login', { from: location })
       } else if (res.status === 404) {
         alert('다시 시도해주세요')
         // 페이지 새로고침
