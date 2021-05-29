@@ -5,7 +5,6 @@ import { Test, TestResult } from 'interface'
 import { convertArray, test } from 'module/test'
 import { useState, useEffect } from 'react'
 import { SliderContainer } from './Test.style'
-import Result from 'containers/result/Result'
 
 export default function TestImpls() {
   const [testData, setTest] = useState<Test[]>(test)
@@ -34,12 +33,9 @@ export default function TestImpls() {
     e.preventDefault()
     setindex(idx - 1)
   }
-  const handleSubmit = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    data: TestResult
-  ): JSX.Element => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: TestResult) => {
     e.preventDefault()
-    return <Result TestResult={data} />
+    history.pushState(data, 'TestResult', '/result')
   }
 
   return (
