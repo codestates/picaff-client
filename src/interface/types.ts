@@ -13,15 +13,17 @@ export type CheckEmail = {
   disabled: boolean
 }
 
-type Authorization = {
-  accessToken: string
+export type Authorization = {
+  accessToken: string | null
+  signin?: (accessToken: string, cb: () => void) => void
+  signout?: (cb: () => void) => void
 }
 
 export type UserInfo = {
   email: string
   name: string
   id: number
-  author: Authorization
+  auth?: Authorization
 }
 
 export interface KakaoLoginResponse {
@@ -55,8 +57,7 @@ export type itemResult = {
   itemDetail: string
   type: 'product' | 'coffee'
   imageUrl: string
-  categoryId: number
-  iso?: string
+  iso?: 'KE' | 'GT' | 'CO' | 'ET' | 'BR' | 'All'
   productCharacter?: ProductCharacter
   coffeeCharacter?: CoffeeCharacter
   isLiked: boolean
