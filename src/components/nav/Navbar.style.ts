@@ -65,6 +65,7 @@ export const NavComponent = styled.nav<NavbarType>`
   .navbar_toggleBtn {
     display: none;
     position: absolute;
+    top: 25px;
     right: 20px;
     font-size: 2rem;
     background-color: transparent;
@@ -78,7 +79,7 @@ export const NavComponent = styled.nav<NavbarType>`
     flex-direction: column;
     align-items: flex-start;
     padding: 15px;
-    height: 100%;
+    height: ${({ isActive }) => (isActive ? '50%' : '13%')};
 
     .navbar_logo {
       margin: 5px 0;
@@ -121,6 +122,7 @@ export const NavComponent = styled.nav<NavbarType>`
 
       & > a {
         width: 100%;
+        margin: 5px;
       }
 
       & > a > button {
