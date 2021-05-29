@@ -8,11 +8,12 @@ import { ButtonImage } from 'components/image/ButtonImg'
 type Type = {
   style: 'TestImage' | 'LikeImage' | 'ThumbnailNewsImage' | 'ItemImage' | 'ButtonImage'
   type?: 'button'
-  handleClick?: (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => void
   src?: string
+  handleClick?: (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => void
+  onClick: () => void
 }
 
-export default function Image({ style, handleClick, src }: Type) {
+export default function Image({ style, src, handleClick, onClick }: Type) {
   switch (style) {
     case 'TestImage':
       return <TestImage onClick={handleClick} />
@@ -23,6 +24,6 @@ export default function Image({ style, handleClick, src }: Type) {
     case 'ItemImage':
       return <ItemImage />
     case 'ButtonImage':
-      return <ButtonImage onClick={handleClick} src={src} />
+      return <ButtonImage onClick={onClick} src={src} />
   }
 }
