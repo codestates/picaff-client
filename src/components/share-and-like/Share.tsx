@@ -5,7 +5,11 @@ import shareTwitter from 'module/ShareTwitter'
 import shareFacebook from 'module/ShareFacebook'
 import shareNaverBlog from 'module/ShareNaverBlog'
 
-export default function Share() {
+type Props = {
+  isShareOpen: boolean
+}
+
+export default function Share({ isShareOpen }: Props) {
   useEffect(() => {
     const script = document.createElement('script')
     script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
@@ -17,11 +21,11 @@ export default function Share() {
   }, [])
 
   return (
-    <ShareComponent>
-      <img src='icon-kakaotalk.png' onClick={shareKakao} id='btnKakao'></img>
-      <img src='icon-naverblog.png' onClick={shareNaverBlog}></img>
-      <img src='icon-twitter.png' onClick={shareTwitter}></img>
-      <img src='icon-facebook.png' onClick={shareFacebook}></img>
+    <ShareComponent isShareOpen={isShareOpen}>
+      <img src='./icons/kakaotalk.png' onClick={() => shareKakao()} id='btnKakao'></img>
+      <img src='./icons/naverblog.png' onClick={() => shareNaverBlog()}></img>
+      <img src='./icons/twitter.png' onClick={() => shareTwitter()}></img>
+      <img src='./icons/facebook.png' onClick={() => shareFacebook()}></img>
     </ShareComponent>
   )
 }

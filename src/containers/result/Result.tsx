@@ -1,19 +1,21 @@
 import { ResultContainer } from './Result.style'
 import { useState } from 'react'
 import { TestResult } from 'interface'
-import Navbar from 'components/nav/Navbar'
 import CoffeeResult from './CoffeeResult'
 import ProductResult from './ProductResult'
 import { IoIosPaperPlane } from 'react-icons/io'
-import { data } from './testResult'
 
-export default function Result() {
+type Props = {
+  data: TestResult
+}
+
+export default function Result({ data }: Props) {
   const { coffeeResult, productResult }: TestResult = data
-  const [isTabActive, setIsTabActive] = useState<boolean>(true)
+
+  const [isTabActive, setIsTabActive] = useState<boolean>(false)
 
   return (
     <ResultContainer isTabActive={isTabActive}>
-      <Navbar />
       <div className='top_container'>
         <div className='content'>
           <div className='section_btn'>

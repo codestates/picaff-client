@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { CoffeeResultContainer } from './CoffeeResult.style'
 import { itemResult, CoffeeResultType, Tags } from 'interface'
 import CoffeeRadarChart from 'components/radar-chart/CoffeeRadarChart'
+import CoffeeItem from 'containers/item/CoffeeItem'
 import Tag from 'components/button/Tag'
 
 type Props = {
@@ -8,6 +10,8 @@ type Props = {
 }
 
 export default function CoffeeResult({ data }: Props) {
+  const [selectedItem] = useState<itemResult>(data)
+
   const radarInfo: CoffeeResultType | undefined = data.coffeeCharacter && {
     coffeeName: data.itemName,
     coffeeCharacter: {
@@ -36,6 +40,7 @@ export default function CoffeeResult({ data }: Props) {
         {radarInfo && <CoffeeRadarChart radarInfo={radarInfo} />}
       </section>
       <section className='section_map'>지도</section>
+      <CoffeeItem selectedItem={selectedItem} />
     </CoffeeResultContainer>
   )
 }
