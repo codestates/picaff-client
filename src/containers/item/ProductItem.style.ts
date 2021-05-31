@@ -1,19 +1,49 @@
 import styled from 'styled-components'
 
-type ProductItemType = {
-  isItemClicked: boolean
-}
-
-export const ProductItemContainer = styled.div<ProductItemType>`
-  display: ${({ isItemClicked }) => (isItemClicked ? 'flex' : 'none')};
+export const ProductItemContainer = styled.div`
+  position: absolute;
+  display: flex;
   flex-direction: column;
+  width: 100vw;
+  left: 0px;
+  top: 120vh;
+  z-index: 999;
+  overflow: hidden;
+  background: #ffdfb9;
+  animation: slide 1s ease-out;
 
-  width: 70%;
+  & .back1 {
+    position: absolute;
+    top: -40vh;
+    height: 60vh;
+    width: 200%;
+    z-index: -1;
+    transform-origin: 50% 0%;
+    transform: rotate(-5deg);
+    background-position: 400% 400%;
+    background: linear-gradient(-45deg, #921416, #eacda3, #f46b45, #eea849);
+    background-size: 400% 400%;
+    background-repeat: no-repeat;
+    animation: gradient 5s ease infinite;
+  }
+
+  & .closebtn {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 0px;
+    margin-right: 5%;
+    & .close {
+      font-size: 60px;
+    }
+  }
 
   .top_container {
     display: flex;
     flex-direction: column;
     width: 100%;
+    border: 2px solid green;
+    overflow: hidden;
   }
 
   .section_top {
@@ -119,6 +149,30 @@ export const ProductItemContainer = styled.div<ProductItemType>`
 
     .shareandlike {
       position: static;
+    }
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+      rotate: rotate(5deg);
+    }
+    50% {
+      background-position: 100% 50%;
+      rotate: rotate(100deg);
+    }
+    100% {
+      background-position: 0% 50%;
+      rotate: rotate(5deg);
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateY(-100vh);
+    }
+    100% {
+      transform: translateY(0vh);
     }
   }
 `

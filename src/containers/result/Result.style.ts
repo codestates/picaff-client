@@ -21,7 +21,7 @@ export const ResultContainer = styled.div<IsTabActiveType>`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: 80vw;
   }
 
   .section_btn {
