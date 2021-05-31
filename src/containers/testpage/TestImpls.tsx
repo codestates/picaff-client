@@ -40,6 +40,9 @@ export default function TestImpls() {
 
   return (
     <SliderContainer index={index}>
+      <div className='bar'>
+        <div className='progress' />
+      </div>
       <div className='slider'>
         {testData.map((el, idx) => (
           <div className='slide' key={idx}>
