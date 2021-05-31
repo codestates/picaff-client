@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const LandingComponent = styled.section`
   position: relative;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   background: linear-gradient(#f2f1e5, 85%, #ffe6bd);
@@ -13,6 +13,7 @@ export const LandingComponent = styled.section`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
     & h1 {
       font-weight: 900;
       color: ${({ theme }) => theme.color.PointC};
@@ -30,6 +31,8 @@ export const LandingComponent = styled.section`
   & .buttonContainer {
     width: 190px;
     height: 2rem;
+    margin-bottom: 3rem;
+    z-index: 102;
   }
 
   & .VideoContainer {
