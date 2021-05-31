@@ -47,7 +47,7 @@ export default function SignIn() {
     if (!email || !password) {
       setAlertMessage('아이디와 비밀번호를 모두 입력해주세요')
     } else {
-      await requestOauth('https://localhost:4000/user/signin', { email, password }, (userInfo) => {
+      await requestOauth('http://localhost:4000/user/signin', { email, password }, (userInfo) => {
         setUserInfo(userInfo)
       })
     }
