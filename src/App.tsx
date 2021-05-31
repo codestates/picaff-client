@@ -9,6 +9,7 @@ import SignUp from 'containers/sign-up/SignUp'
 import SignIn from 'containers/login/Login'
 import Main from 'containers/main/Main'
 import Result from 'containers/result/Result'
+import Mypage from 'containers/mypage/Mypage'
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
             </Route>
             <Route path='/signup'>
               <SignUp />
+            </Route>
+            <Route path='/mypage'>
+              <Mypage />
             </Route>
           </Switch>
         </Router>
