@@ -13,7 +13,6 @@ export default function Result({ TestResult }: Props) {
   const { coffeeResult, productResult }: TestResult = TestResult
   const [isTabActive, setIsTabActive] = useState<boolean>(true)
 
-
   return (
     <ResultContainer isTabActive={isTabActive}>
       <div className='top_container'>
