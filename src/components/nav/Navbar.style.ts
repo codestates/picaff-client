@@ -11,6 +11,7 @@ export const NavComponent = styled.nav<NavbarType>`
   background-color: ${({ theme }) => theme.color.NavC};
   padding: 0 24px 0 24px;
   height: 80px;
+  margin-left: 10px;
 
   .navbar_logo {
     width: 70px;
@@ -24,7 +25,6 @@ export const NavComponent = styled.nav<NavbarType>`
     display: flex;
     align-items: center;
     padding-left: 0;
-    margin: 0;
 
     & > a {
       width: 100%;
@@ -65,6 +65,7 @@ export const NavComponent = styled.nav<NavbarType>`
   .navbar_toggleBtn {
     display: none;
     position: absolute;
+    margin: 20px 0px 0px 0px;
     right: 20px;
     font-size: 2rem;
     background-color: transparent;
@@ -77,8 +78,8 @@ export const NavComponent = styled.nav<NavbarType>`
   @media ${({ theme }) => theme.device.tablet} {
     flex-direction: column;
     align-items: flex-start;
-    padding: 15px;
-    height: 100%;
+    padding: 5px 0;
+    height: ${({ isActive }) => (isActive ? '450px' : 'fit-content')};
 
     .navbar_logo {
       margin: 5px 0;
