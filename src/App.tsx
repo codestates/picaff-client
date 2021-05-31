@@ -1,13 +1,14 @@
 import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme'
 import Navbar from 'components/nav/Navbar'
-import Landing from 'components/main/Landing'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import TestImpls from 'containers/testpage/TestImpls'
 import Sample from 'Sample'
 import ProvideAuth from 'containers/ProvideAuth/ProvideAuth'
 import SignUp from 'containers/sign-up/SignUp'
 import SignIn from 'containers/login/Login'
+import Main from 'containers/main/Main'
+import Result from 'containers/result/Result'
 
 function App() {
   return (
@@ -17,13 +18,16 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path='/'>
-              <Landing />
+              <Main />
             </Route>
             <Route path='/test'>
               <TestImpls />
             </Route>
             <Route path='/sample'>
               <Sample />
+            </Route>
+            <Route path='/result'>
+              <Result />
             </Route>
             <Route path='/login'>
               <SignIn />

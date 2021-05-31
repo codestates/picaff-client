@@ -11,6 +11,7 @@ export const NavComponent = styled.nav<NavbarType>`
   background-color: ${({ theme }) => theme.color.NavC};
   padding: 0 24px 0 24px;
   height: 80px;
+  margin-left: 10px;
 
   .navbar_logo {
     width: 70px;
@@ -24,7 +25,6 @@ export const NavComponent = styled.nav<NavbarType>`
     display: flex;
     align-items: center;
     padding-left: 0;
-    margin: 0;
 
     & > a {
       width: 100%;

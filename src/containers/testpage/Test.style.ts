@@ -5,10 +5,19 @@ type Index = {
 }
 
 export const SliderContainer = styled.div<Index>`
+  position: absolute;
   margin: 0 auto;
-  overflow: hidden;
   width: 100%;
-
+  height: 100%;
+  margin-top: 3rem;
+  & .progress {
+    position: relative;
+    top: -3rem;
+    background-color: ${({ theme }) => theme.color.PointC};
+    width: ${({ index }) => ((index + 1) / 11) * 100}%;
+    height: 3px;
+    transition: width 1s;
+  }
   & > .slider {
     white-space: nowrap;
     transition: ease 1000ms;

@@ -8,9 +8,11 @@ export const CoffeeResultContainer = styled.div`
 
   .section_result {
     display: flex;
-    flex: 1 1 0;
     margin: 10px;
+    height: 90vh;
     border: 2px solid lightgrey;
+    justify-items: center;
+    align-items: center;
 
     .radarChart,
     .description {
@@ -26,6 +28,8 @@ export const CoffeeResultContainer = styled.div`
   .description {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
 
     & > div {
       width: 95%;
@@ -48,7 +52,9 @@ export const CoffeeResultContainer = styled.div`
 
   .section_map {
     display: flex;
-    flex: 1 1 0;
+    position: relative;
+    height: 100vh;
+
     justify-content: center;
     align-items: center;
     margin: 10px;

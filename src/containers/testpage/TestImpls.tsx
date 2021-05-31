@@ -5,13 +5,14 @@ import { Test, TestResult } from 'interface'
 import { convertArray, test } from 'module/test'
 import { useState, useEffect } from 'react'
 import { SliderContainer } from './Test.style'
+import { useHistory } from 'react-router'
 
 export default function TestImpls() {
   const [testData, setTest] = useState<Test[]>(test)
   const [index, setindex] = useState<number>(0)
   const [isDone, setisDone] = useState<boolean>(false)
   const [scoreArr, setscoreArr] = useState<(number | null)[]>(convertArray(testData, 'score'))
-
+  const history = useHistory()
   const handleNextBtn = (score: number, idx: number) => {
     setTest([
       ...testData.slice(0, idx),
@@ -35,11 +36,15 @@ export default function TestImpls() {
   }
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: TestResult) => {
     e.preventDefault()
-    history.pushState(data, 'TestResult', '/result')
+    console.log(data)
+    history.push('/result', data)
   }
 
   return (
     <SliderContainer index={index}>
+      <div className='bar'>
+        <div className='progress' />
+      </div>
       <div className='slider'>
         {testData.map((el, idx) => (
           <div className='slide' key={idx}>

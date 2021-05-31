@@ -1,7 +1,7 @@
 import CoffeeMap from 'components/coffee-map/CoffeeMap'
-import Result from 'containers/result/Result'
 import { TestResult } from 'interface'
 import React from 'react'
+import { useHistory } from 'react-router'
 import { TestResultListContainer } from './TestResultList.style'
 
 type Props = {
@@ -9,12 +9,10 @@ type Props = {
 }
 
 export default function TestResultList({ testResult }: Props) {
-  const handleClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    data: TestResult
-  ): JSX.Element => {
+  const history = useHistory()
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: TestResult) => {
     e.preventDefault()
-    return <Result TestResult={data} />
+    history.push('/result', data)
   }
   return (
     <TestResultListContainer>
