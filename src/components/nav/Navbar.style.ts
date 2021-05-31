@@ -65,7 +65,7 @@ export const NavComponent = styled.nav<NavbarType>`
   .navbar_toggleBtn {
     display: none;
     position: absolute;
-    margin: 20px 0px 0px 0px;
+    top: 25px;
     right: 20px;
     font-size: 2rem;
     background-color: transparent;
@@ -78,8 +78,8 @@ export const NavComponent = styled.nav<NavbarType>`
   @media ${({ theme }) => theme.device.tablet} {
     flex-direction: column;
     align-items: flex-start;
-    padding: 5px 0;
-    height: ${({ isActive }) => (isActive ? '450px' : 'fit-content')};
+    padding: 15px;
+    height: ${({ isActive }) => (isActive ? '50%' : '13%')};
 
     .navbar_logo {
       margin: 5px 0;
@@ -122,6 +122,7 @@ export const NavComponent = styled.nav<NavbarType>`
 
       & > a {
         width: 100%;
+        margin: 5px;
       }
 
       & > a > button {
