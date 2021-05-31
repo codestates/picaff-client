@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const LoginContainer = styled.div`
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +12,7 @@ export const LoginContainer = styled.div`
   min-width: ${({ theme }) => theme.deviceSizes.mobile - 75}px;
 
   h2 {
+    margin-top: 1.7rem;
     margin-bottom: 1.7rem;
     text-align: center;
     color: ${({ theme }) => theme.color.BrownC};
@@ -41,7 +43,7 @@ export const LoginContainer = styled.div`
     justify-content: center;
     margin-bottom: 1rem;
     color: ${({ theme }) => theme.color.PointC};
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 
   .box_signup {

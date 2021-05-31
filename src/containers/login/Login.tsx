@@ -74,10 +74,15 @@ export default function SignIn() {
     })
   }
 
+  const handleclick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    history.push('/signup')
+  }
+
   return (
     <LoginContainer>
       <form>
-        <h2>Nice to see you again!</h2>
+        <h2>로그인</h2>
         <InputForm>
           <label className='Input label'>Email Address</label>
           <input type='email' name='email' value={email} onChange={handleChange} />
@@ -95,7 +100,9 @@ export default function SignIn() {
         </div>
         <span className='greeting'>are you new member?</span>
         <div className='box_signup'>
-          <button id='signup'>Sign-up</button>
+          <button onClick={handleclick} id='signup'>
+            Sign-up
+          </button>
         </div>
       </form>
     </LoginContainer>

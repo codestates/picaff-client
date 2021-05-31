@@ -2,8 +2,9 @@ import { useState } from 'react'
 import { CoffeeResultContainer } from './CoffeeResult.style'
 import { itemResult, CoffeeResultType, Tags } from 'interface'
 import CoffeeRadarChart from 'components/radar-chart/CoffeeRadarChart'
-import CoffeeItem from 'containers/item/CoffeeItem'
+// import CoffeeItem from 'containers/item/CoffeeItem'
 import Tag from 'components/button/Tag'
+import CoffeeMap from 'components/coffee-map/CoffeeMap'
 
 type Props = {
   data: itemResult
@@ -29,7 +30,9 @@ export default function CoffeeResult({ data }: Props) {
     <CoffeeResultContainer className='section_coffee'>
       <section className='section_result'>
         <div className='description'>
-          <div className='box_map'>지도 확대</div>
+          <div className='box_map'>
+            <CoffeeMap type={selectedItem.iso || 'All'} />
+          </div>
           <div className='box_tag'>
             {data.tag.map((singleTag: Tags) => (
               <Tag style='ClearTag' key={singleTag.id} value={singleTag.tagName} />
@@ -39,8 +42,10 @@ export default function CoffeeResult({ data }: Props) {
         </div>
         {radarInfo && <CoffeeRadarChart radarInfo={radarInfo} />}
       </section>
-      <section className='section_map'>지도</section>
-      <CoffeeItem selectedItem={selectedItem} />
+      <section className='section_map'>
+        <CoffeeMap type={'All'} />
+      </section>
+      {/* <CoffeeItem selectedItem={selectedItem} /> */}
     </CoffeeResultContainer>
   )
 }
