@@ -24,11 +24,15 @@ export default function Result() {
               Product
             </button>
           </div>
-          {isTabActive ? (
-            <CoffeeResult data={coffeeResult} />
-          ) : (
-            <ProductResult data={productResult} />
-          )}
+          <div className='section_flex'>
+            <section className='empty_left'></section>
+            {isTabActive ? (
+              <CoffeeResult data={coffeeResult} />
+            ) : (
+              <ProductResult data={productResult} />
+            )}
+            <section className='empty_right'></section>
+          </div>
         </div>
       </div>
       <div className='section_share'>

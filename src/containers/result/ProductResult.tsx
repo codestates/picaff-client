@@ -7,12 +7,14 @@ import Tag from 'components/button/Tag'
 import Image from 'components/image/Image'
 import axios from 'axios'
 
+import { productTempArr } from 'interface/sampledata'
+
 type Props = {
   data: itemResult
 }
 
 export default function ProductResult({ data }: Props) {
-  const [allItems, setAllItems] = useState<itemResult[]>([])
+  const [allItems, setAllItems] = useState<itemResult[]>(productTempArr)
   const [selectedItem, setSelectedItem] = useState<itemResult>(data)
   const [isItemClicked, setIsItemClicked] = useState<boolean>(false)
   // const [selectedTag, setSelectedTag] = useState<number>(0)
@@ -62,7 +64,7 @@ export default function ProductResult({ data }: Props) {
   //   getSelectedTags()
   // }, [])
 
-  return (
+  return !isItemClicked ? (
     <ProductResultContainer className='section_product'>
       <section className='section_result'>
         <div className='description'>
@@ -99,7 +101,8 @@ export default function ProductResult({ data }: Props) {
           </div>
         ))}
       </section>
-      <ProductItem selectedItem={selectedItem} />
     </ProductResultContainer>
+  ) : (
+    <ProductItem selectedItem={selectedItem} isItemClicked={isItemClicked} />
   )
 }

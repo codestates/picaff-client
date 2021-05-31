@@ -3,17 +3,14 @@ import styled from 'styled-components'
 export const ProductResultContainer = styled.div`
   display: flex;
   flex-direction: column;
-
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border: 3px solid ${({ theme }) => theme.color.PointC};
+  width: 100%;
 
   .section_result {
     display: flex;
     flex: 1 1 0;
-    margin: 10px;
     border: 2px solid lightgrey;
+    width: 100%;
+    height: 100%;
 
     .radarChart,
     .description {
@@ -21,8 +18,9 @@ export const ProductResultContainer = styled.div`
       flex: 1 1 0;
       justify-content: center;
       align-items: center;
-      margin: 10px;
       border: 2px solid orange;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -31,8 +29,8 @@ export const ProductResultContainer = styled.div`
     flex-direction: column;
 
     & > div {
-      width: 95%;
-      margin: 5px;
+      width: 100%;
+      margin: 5px 0;
       border: 2px solid lightblue;
     }
 
@@ -44,7 +42,7 @@ export const ProductResultContainer = styled.div`
       height: 100%;
 
       img {
-        width: 400px;
+        width: 100%;
         border-radius: 5px;
       }
     }
@@ -54,7 +52,7 @@ export const ProductResultContainer = styled.div`
     }
 
     .box_text {
-      flex: 1.5 1 0;
+      flex: 1 1 0;
     }
   }
 
@@ -63,8 +61,8 @@ export const ProductResultContainer = styled.div`
     flex: 1 1 0;
     justify-content: center;
     align-items: center;
-    margin: 10px;
     border: 2px solid lightgrey;
+    width: 100%;
 
     img {
       -webkit-filter: grayscale(100%);
@@ -74,6 +72,7 @@ export const ProductResultContainer = styled.div`
       -o-filter: grayscale(100%);
       -o-transition: 0.3s ease-in-out;
       border-radius: 5px;
+      width: 100%;
     }
 
     img:hover {
@@ -83,6 +82,13 @@ export const ProductResultContainer = styled.div`
       -moz-transition: 0.3s ease-in-out;
       -o-filter: grayscale(0%);
       -o-transition: 0.3s ease-in-out;
+    }
+  }
+
+  @media ${({ theme }) => theme.device.tablet} {
+    .section_image {
+      display: flex;
+      flex-direction: column;
     }
   }
 `
