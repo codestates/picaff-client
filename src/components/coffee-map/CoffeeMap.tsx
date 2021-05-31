@@ -1,6 +1,6 @@
 import { GoogleMap, LoadScript, OverlayView, Polygon } from '@react-google-maps/api'
-import { MapOption, itemResult } from 'interface'
-import { GetMapOptions, RequestAllItem } from 'module/Coffeemap'
+import { MapOption } from 'interface'
+import { GetMapOptions } from 'module/Coffeemap'
 import { ConvertLatLng } from 'module/Polygon'
 import { useEffect, useState } from 'react'
 import { CoffeeMapContainer } from './CoffeeMap.style'
@@ -11,19 +11,7 @@ type maptype = {
   handleRegionClick?: (Region: string) => void
 }
 
-const initdata: itemResult = {
-  id: 0,
-  itemName: '',
-  itemPrice: 0,
-  itemDetail: '',
-  type: 'product',
-  imageUrl: '',
-  iso: '',
-  isLiked: false,
-  tag: [{ id: 0, tagName: '' }],
-}
-
-export default function CoffeeMap({ /*handleRegionClick ,*/ type }: maptype) {
+export default function CoffeeMap({ type, handleRegionClick }: maptype) {
   const [PolygonData, setPolygonData] =
     useState<(google.maps.LatLng[] | google.maps.LatLng[][])[] | undefined>(undefined)
   const [index, setindex] = useState<number>(0)
@@ -32,26 +20,6 @@ export default function CoffeeMap({ /*handleRegionClick ,*/ type }: maptype) {
     zoom: 3,
     center: { lat: 5, lng: 170.644 },
   })
-  // 상위 container에서 관리 되면 좋을거 같습니다.
-  const [CoffeeDataArr, setCoffeeDataArr] = useState<itemResult[]>([])
-  const [CoffeeData, setCoffeeData] = useState<itemResult>(initdata)
-
-  // 테스트 결과페이지에서 props로 전체 커피 데이터를 받아오는 로직입니다
-  useEffect(() => {
-    async function GetCoffeData() {
-      setCoffeeDataArr(await RequestAllItem('coffee'))
-    }
-
-    GetCoffeData()
-  }, [])
-
-  // 이함수는 테스트 결과 페이지에서 맵을 불러올때 사용해야할 것 같습니다
-  const handleRegionClick = (Region: string) => {
-    console.log(Region, type, CoffeeData)
-    CoffeeDataArr.map((coffee) => {
-      coffee.iso === Region ? setCoffeeData(coffee) : ''
-    })
-  }
 
   useEffect(() => {
     setMapOption(GetMapOptions(type))
@@ -95,7 +63,7 @@ export default function CoffeeMap({ /*handleRegionClick ,*/ type }: maptype) {
                 <Polygon
                   paths={el}
                   onMouseOver={() => handleMouseOver(idx)}
-                  onClick={() => handleRegionClick(RegionArr[idx])}
+                  onClick={handleRegionClick && (() => handleRegionClick(RegionArr[idx]))}
                   onLoad={(data) => console.log(data)}
                   onUnmount={() => console.log('unload')}
                   options={

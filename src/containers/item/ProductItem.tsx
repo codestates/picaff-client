@@ -3,12 +3,13 @@ import { itemResult, ProductResultType } from 'interface'
 import { ProductItemContainer } from './ProductItem.style'
 import ShareAndLike from 'components/share-and-like/ShareAndLike'
 import ProductRadarChart from 'components/radar-chart/ProductRadarChart'
-
+import { AiFillCloseCircle } from 'react-icons/ai'
 type Props = {
   selectedItem: itemResult
+  handlechecked: () => void
 }
 
-export default function ProductItem({ selectedItem }: Props) {
+export default function ProductItem({ selectedItem, handlechecked }: Props) {
   const [renderItem] = useState<itemResult>(selectedItem)
 
   const { itemName, itemDetail, imageUrl, productCharacter } = selectedItem
@@ -25,7 +26,13 @@ export default function ProductItem({ selectedItem }: Props) {
 
   return (
     <ProductItemContainer>
+      <div className='closebtn'>
+        <button className='close' onClick={handlechecked}>
+          <AiFillCloseCircle />
+        </button>
+      </div>
       <div className='top_container'>
+        <div className='back1' />
         <section className='section_top'>
           <div className='section_top_photo'>
             <img src={imageUrl} alt=''></img>
