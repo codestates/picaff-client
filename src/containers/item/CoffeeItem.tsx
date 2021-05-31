@@ -3,12 +3,14 @@ import { CoffeeResultType, itemResult } from 'interface'
 import { CoffeeItemContainer } from './CoffeeItem.style'
 import ShareAndLike from 'components/share-and-like/ShareAndLike'
 import CoffeeRadarChart from 'components/radar-chart/CoffeeRadarChart'
+import { AiFillCloseCircle } from 'react-icons/ai'
 
 type Props = {
   selectedItem: itemResult
+  handlechecked: () => void
 }
 
-export default function CoffeeItem({ selectedItem }: Props) {
+export default function CoffeeItem({ selectedItem, handlechecked }: Props) {
   const [renderItem] = useState<itemResult>(selectedItem)
 
   const { itemName, itemDetail, coffeeCharacter } = selectedItem
@@ -28,7 +30,13 @@ export default function CoffeeItem({ selectedItem }: Props) {
 
   return (
     <CoffeeItemContainer>
+      <div className='closebtn'>
+        <button className='close' onClick={handlechecked}>
+          <AiFillCloseCircle />
+        </button>
+      </div>
       <div className='top_container'>
+        <div className='back1' />
         <section className='section_top'>
           <div className='section_top_map'>
             <div className='map'>확대 지도</div>

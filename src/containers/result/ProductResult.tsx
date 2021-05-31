@@ -6,13 +6,14 @@ import ProductItem from 'containers/item/ProductItem'
 import Tag from 'components/button/Tag'
 import Image from 'components/image/Image'
 import axios from 'axios'
+import { productTempArr } from 'interface/sampledata'
 
 type Props = {
   data: itemResult
 }
 
 export default function ProductResult({ data }: Props) {
-  const [allItems, setAllItems] = useState<itemResult[]>([])
+  const [allItems, setAllItems] = useState<itemResult[]>(productTempArr)
   const [selectedItem, setSelectedItem] = useState<itemResult>(data)
   const [isItemClicked, setIsItemClicked] = useState<boolean>(false)
   // const [selectedTag, setSelectedTag] = useState<number>(0)
@@ -63,43 +64,52 @@ export default function ProductResult({ data }: Props) {
   // }, [])
 
   return (
-    <ProductResultContainer className='section_product'>
-      <section className='section_result'>
-        <div className='description'>
-          <div className='box_image'>
-            <img src={data.imageUrl}></img>
+    <>
+      <ProductResultContainer className='section_product'>
+        <section className='section_result'>
+          <div className='description'>
+            <div className='box_image'>
+              <img src={data.imageUrl}></img>
+            </div>
+            <div className='box_tag'>
+              {data.tag.map((singleTag: Tags) => (
+                <Tag
+                  style='ClearTag'
+                  key={singleTag.id}
+                  value={singleTag.tagName}
+                  // onClick={() => setSelectedTag(singleTag.id)}
+                />
+              ))}
+            </div>
+            <div className='box_text'>{data.itemDetail}</div>
           </div>
-          <div className='box_tag'>
-            {data.tag.map((singleTag: Tags) => (
-              <Tag
-                style='ClearTag'
-                key={singleTag.id}
-                value={singleTag.tagName}
-                // onClick={() => setSelectedTag(singleTag.id)}
+          {radarInfo && <ProductRadarChart radarInfo={radarInfo} />}
+        </section>
+        <section className='section_image'>
+          {allItems.map((singleItem: itemResult) => (
+            <div>
+              <Image
+                style='ButtonImage'
+                type='button'
+                key={singleItem.id}
+                src={singleItem.imageUrl}
+                onClick={() => {
+                  setSelectedItem(singleItem)
+                  setIsItemClicked(!isItemClicked)
+                }}
               />
-            ))}
-          </div>
-          <div className='box_text'>{data.itemDetail}</div>
-        </div>
-        {radarInfo && <ProductRadarChart radarInfo={radarInfo} />}
-      </section>
-      <section className='section_image'>
-        {allItems.map((singleItem: itemResult) => (
-          <div>
-            <Image
-              style='ButtonImage'
-              type='button'
-              key={singleItem.id}
-              src={singleItem.imageUrl}
-              onClick={() => {
-                setSelectedItem(singleItem)
-                setIsItemClicked(!isItemClicked)
-              }}
+            </div>
+          ))}
+          {isItemClicked ? (
+            <ProductItem
+              selectedItem={selectedItem}
+              handlechecked={() => setIsItemClicked(!selectedItem)}
             />
-          </div>
-        ))}
-      </section>
-      <ProductItem selectedItem={selectedItem} />
-    </ProductResultContainer>
+          ) : (
+            ''
+          )}
+        </section>
+      </ProductResultContainer>
+    </>
   )
 }

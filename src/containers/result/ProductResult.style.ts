@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ProductResultContainer = styled.div`
   display: flex;
   flex-direction: column;
-
+  height: 200vh;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -61,6 +61,7 @@ export const ProductResultContainer = styled.div`
   .section_image {
     display: flex;
     flex: 1 1 0;
+    height: 100vh;
     justify-content: center;
     align-items: center;
     margin: 10px;
@@ -84,6 +85,13 @@ export const ProductResultContainer = styled.div`
       -o-filter: grayscale(0%);
       -o-transition: 0.3s ease-in-out;
     }
+  }
+
+  & .ItemModal {
+    height: 100vh;
+    position: absolute;
+    transform: translateY(100vh);
+    transition: transform 2s;
   }
 `
 
