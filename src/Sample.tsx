@@ -1,9 +1,9 @@
-import CoffeeMap from 'components/coffee-map/CoffeeMap'
+import Mypage from 'containers/mypage/Mypage'
 
 export default function Sample() {
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <CoffeeMap type='All' />
+      <Mypage />
     </div>
   )
 }

@@ -1,20 +1,20 @@
 import Button from 'components/button/Button'
-import { itemResult } from 'interface'
+import { TestResult } from 'interface'
 import { getitemResult } from 'module/TestResult'
 import React, { useEffect, useState } from 'react'
 import { EndedTestContainer } from './EndedTest.style'
 
 type TestFinish = {
-  handleSubmit: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: any) => void
+  handleSubmit: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: TestResult) => void
   score: (number | null)[]
 }
 
 export default function EndedTest({ handleSubmit, score }: TestFinish) {
-  const [data, setdata] = useState<itemResult | null>(null)
+  const [data, setdata] = useState<TestResult | null>(null)
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    handleSubmit(e, data)
+    data && handleSubmit(e, data)
   }
 
   useEffect(() => {

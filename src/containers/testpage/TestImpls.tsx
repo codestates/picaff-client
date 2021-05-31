@@ -1,10 +1,9 @@
 import Button from 'components/button/Button'
-import EndedTest from 'components/result/EndedTest'
+import EndedTest from 'components/Test-end/EndedTest'
 import Select from 'components/select-test/Select'
-import { Test, itemResult } from 'interface'
+import { Test, TestResult } from 'interface'
 import { convertArray, test } from 'module/test'
 import { useState, useEffect } from 'react'
-import { useHistory } from 'react-router'
 import { SliderContainer } from './Test.style'
 
 export default function TestImpls() {
@@ -34,10 +33,9 @@ export default function TestImpls() {
     e.preventDefault()
     setindex(idx - 1)
   }
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: itemResult) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: TestResult) => {
     e.preventDefault()
-    const history = useHistory()
-    history.push('/itemResult', data)
+    history.pushState(data, 'TestResult', '/result')
   }
 
   return (

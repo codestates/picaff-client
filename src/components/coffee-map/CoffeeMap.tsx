@@ -18,8 +18,9 @@ const initdata: itemResult = {
   itemDetail: '',
   type: 'product',
   imageUrl: '',
+  iso: '',
   isLiked: false,
-  tag: [{ id: 0, tagname: '' }],
+  tag: [{ id: 0, tagName: '' }],
 }
 
 export default function CoffeeMap({ /*handleRegionClick ,*/ type }: maptype) {

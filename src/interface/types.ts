@@ -57,7 +57,7 @@ export type itemResult = {
   itemDetail: string
   type: 'product' | 'coffee'
   imageUrl: string
-  iso?: 'KE' | 'GT' | 'CO' | 'ET' | 'BR' | 'All'
+  iso: 'KE' | 'GT' | 'CO' | 'ET' | 'BR' | 'All' | ''
   productCharacter?: ProductCharacter
   coffeeCharacter?: CoffeeCharacter
   isLiked: boolean

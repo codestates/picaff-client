@@ -6,13 +6,13 @@ import ProductResult from './ProductResult'
 import { IoIosPaperPlane } from 'react-icons/io'
 
 type Props = {
-  data: TestResult
+  TestResult: TestResult
 }
 
-export default function Result({ data }: Props) {
-  const { coffeeResult, productResult }: TestResult = data
+export default function Result({ TestResult }: Props) {
+  const { coffeeResult, productResult }: TestResult = TestResult
+  const [isTabActive, setIsTabActive] = useState<boolean>(true)
 
-  const [isTabActive, setIsTabActive] = useState<boolean>(false)
 
   return (
     <ResultContainer isTabActive={isTabActive}>
