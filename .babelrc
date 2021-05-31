@@ -2,11 +2,11 @@
   "env": {
     "development": {
       "presets": ["@babel/preset-react", "@babel/preset-typescript", "@babel/preset-env"],
-      "plugins": []
+      "plugins": ["@babel/plugin-syntax-dynamic-import"]
     },
     "production": {
       "presets": ["@babel/preset-react", "@babel/preset-typescript", "@babel/preset-env"],
-      "plugins": []
+      "plugins": ["@babel/plugin-syntax-dynamic-import"]
     }
   }
 }

@@ -1,8 +1,15 @@
 import styled from 'styled-components'
 
-export const BtnComponent = styled.div`
+type BtnComponentProps = {
+  isLiked: boolean
+}
+
+export const BtnComponent = styled.div<BtnComponentProps>`
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 30%;
+  right: 5%;
 
   width: 75px;
   height: 150px;
@@ -32,7 +39,7 @@ export const BtnComponent = styled.div`
 
   & > .like {
     margin-bottom: 15px;
-    color: #ed3232;
+    color: ${({ isLiked, theme }) => (isLiked ? theme.color.PointC : '#ed3232')};
   }
 `
 

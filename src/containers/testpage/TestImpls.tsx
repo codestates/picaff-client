@@ -1,18 +1,18 @@
 import Button from 'components/button/Button'
-import EndedTest from 'components/result/EndedTest'
+import EndedTest from 'components/Test-end/EndedTest'
 import Select from 'components/select-test/Select'
 import { Test, TestResult } from 'interface'
 import { convertArray, test } from 'module/test'
 import { useState, useEffect } from 'react'
-import { useHistory } from 'react-router'
 import { SliderContainer } from './Test.style'
+import { useHistory } from 'react-router'
 
 export default function TestImpls() {
   const [testData, setTest] = useState<Test[]>(test)
   const [index, setindex] = useState<number>(0)
   const [isDone, setisDone] = useState<boolean>(false)
   const [scoreArr, setscoreArr] = useState<(number | null)[]>(convertArray(testData, 'score'))
-
+  const history = useHistory()
   const handleNextBtn = (score: number, idx: number) => {
     setTest([
       ...testData.slice(0, idx),
@@ -28,7 +28,6 @@ export default function TestImpls() {
   useEffect(() => {
     if (scoreArr[0] !== null) setindex(index + 1)
     scoreArr.indexOf(null) === -1 ? setisDone(true) : ''
-    console.log(scoreArr)
   }, [scoreArr])
 
   const handleBackBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, idx: number) => {
@@ -37,12 +36,15 @@ export default function TestImpls() {
   }
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: TestResult) => {
     e.preventDefault()
-    const history = useHistory()
-    history.push('/testresult', data)
+    console.log(data)
+    history.push('/result', data)
   }
 
   return (
     <SliderContainer index={index}>
+      <div className='bar'>
+        <div className='progress' />
+      </div>
       <div className='slider'>
         {testData.map((el, idx) => (
           <div className='slide' key={idx}>

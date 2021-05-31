@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 
+// type ButtonImageType = {
+//   isItemClicked: boolean
+// }
+
 export const ButtonImage = styled.img`
-  width: 250px;
-  height: 150px;
-  border: 3px solid #696b6a;
+  width: 100%;
+  margin: 0;
+  padding: 2px;
+  border: 2px solid ${({ theme }) => theme.color.GrayC};
   border-radius: 5px;
   cursor: pointer;
 `

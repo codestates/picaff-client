@@ -13,15 +13,17 @@ export type CheckEmail = {
   disabled: boolean
 }
 
-type Authorization = {
-  accessToken: string
+export type Authorization = {
+  accessToken: string | null
+  signin?: (accessToken: string, cb: () => void) => void
+  signout?: (cb: () => void) => void
 }
 
 export type UserInfo = {
   email: string
   name: string
   id: number
-  author: Authorization
+  auth?: Authorization
 }
 
 export interface KakaoLoginResponse {
@@ -43,18 +45,23 @@ export type Score = {
 }
 
 export interface TestResult {
+  testResultId: number
+  productResult: itemResult
+  coffeeResult: itemResult
+}
+
+export type itemResult = {
   id: number
   itemName: string
   itemPrice: number
   itemDetail: string
-  type: 'machine' | 'coffee'
+  type: 'product' | 'coffee'
   imageUrl: string
-  categoryId: number
-  iso?: string
-  itemCharacter?: ProductCharacter
-  coffeCharactre?: CoffeeCharacter
+  iso: 'KE' | 'GT' | 'CO' | 'ET' | 'BR' | 'All' | ''
+  productCharacter?: ProductCharacter
+  coffeeCharacter?: CoffeeCharacter
   isLiked: boolean
-  tag: Tag[]
+  tag: Tags[]
 }
 
 type ProductCharacter = {
@@ -74,30 +81,19 @@ type CoffeeCharacter = {
   afterTaste: number
 }
 
-type Tag = {
+export type Tags = {
   id: number
-  tagname: string
+  tagName: string
 }
 
-export type CoffeeResult = {
+export type CoffeeResultType = {
   coffeeName: string
-  coffeeCharacter: {
-    sweetness: number
-    sourness: number
-    balance: number
-    body: number
-    aroma: number
-    afterTaste: number
-  }
+  coffeeCharacter: CoffeeCharacter
 }
 
-export type ProductResult = {
+export type ProductResultType = {
   productName: string
-  productCharacter: {
-    accessibility: number
-    convenience: number
-    effectiveness: number
-  }
+  productCharacter: ProductCharacter
 }
 
 export type MapOption = {

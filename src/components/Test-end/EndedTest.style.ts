@@ -30,6 +30,8 @@ export const EndedTestContainer = styled.div`
   }
 
   & button {
+    position: absolute;
+    top: 440px;
     width: 160px;
     height: 80px;
   }

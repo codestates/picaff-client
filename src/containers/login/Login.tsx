@@ -1,22 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { User, UserInfo, KakaoLoginResponse } from 'interface'
-import axios from 'axios'
 import { LoginContainer } from './Login.style'
 import InputForm from 'components/input-form/InputForm'
 import Button from 'components/button/Button'
 import Oauth from 'components/social-Oauth/Oauth'
 import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
 import { requestOauth } from 'module/Oauth'
-import { Redirect } from 'react-router-dom'
+import { RedirectProps, useHistory, useLocation } from 'react-router-dom'
+import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 
-type LogiProps = {
-  setUserInfo: (UserInfo: UserInfo) => void
-}
-
-export default function SignIn({ setUserInfo }: LogiProps) {
+export default function SignIn() {
+  const history = useHistory()
+  const location = useLocation<RedirectProps>()
+  const auth = useAuth()
   const [user, setUser] = useState<User>({ name: '', email: '', password: '' })
+  const [userInfo, setUserInfo] = useState<UserInfo>({
+    id: 0,
+    name: '',
+    email: '',
+    auth: { accessToken: '' },
+  })
   const [alertMessage, setAlertMessage] = useState<string>('')
-  const [isLogin, setisLogin] = useState<boolean>(false)
+  const { email, password } = user
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -26,57 +31,58 @@ export default function SignIn({ setUserInfo }: LogiProps) {
     })
   }
 
+  useEffect(() => {
+    if (auth.signin && userInfo.auth) {
+      const accessToken = userInfo.auth ? userInfo.auth.accessToken : ''
+      if (accessToken) {
+        const { from } = location.state || { from: { pathname: '/' } }
+        auth.signin(accessToken, () => history.replace({ pathname: from }))
+      }
+    }
+  }, [userInfo])
+
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    if (email === '' || password === '') {
+
+    if (!email || !password) {
       setAlertMessage('아이디와 비밀번호를 모두 입력해주세요')
     } else {
-      await axios
-        .post(
-          'https://localhost:4000/user/signin',
-          { email, password },
-          {
-            headers: { 'Content-Type': 'application/json', 'withCredentials': true },
-          }
-        )
-        .then((res) => {
-          // ?: 로그인 요청 성공
-          if (res.headers) {
-            // 토큰 저장
-            // ?: 로그인 요청 실패
-          } else {
-            // setAlertMessage('아이디와 비밀번호를 확인해주세요')
-          }
-        })
-        .catch((err) => console.error(err))
+      await requestOauth('https://localhost:4000/user/signin', { email, password }, (userInfo) => {
+        setUserInfo(userInfo)
+      })
     }
   }
 
-  const handleGoogleLogin = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+  const handleGoogleLogin = async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     if ('tokenId' in res) {
       const { accessToken: access_token, tokenId: id_token } = res
-      requestOauth('http:localhost:4000/user/google', { access_token, id_token }, (userInfo) => {
-        setUserInfo(userInfo)
-        setisLogin(true)
-      })
+      await requestOauth(
+        'http:localhost:4000/user/google',
+        { access_token, id_token },
+        (userInfo) => {
+          setUserInfo(userInfo)
+        }
+      )
     }
   }
 
   const handleKakaoLogin = async (res: KakaoLoginResponse) => {
     console.log(res)
     const { access_token } = res
-    requestOauth('http:localhost:4000/user/kakao', { access_token }, (userInfo) => {
+    await requestOauth('http:localhost:4000/user/kakao', { access_token }, (userInfo) => {
       setUserInfo(userInfo)
-      setisLogin(true)
     })
   }
 
-  const { email, password } = user
+  const handleclick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    history.push('/signup')
+  }
 
   return (
     <LoginContainer>
       <form>
-        <h2>Nice to see you again!</h2>
+        <h2>로그인</h2>
         <InputForm>
           <label className='Input label'>Email Address</label>
           <input type='email' name='email' value={email} onChange={handleChange} />
@@ -94,10 +100,11 @@ export default function SignIn({ setUserInfo }: LogiProps) {
         </div>
         <span className='greeting'>are you new member?</span>
         <div className='box_signup'>
-          <button id='signup'>Sign-up</button>
+          <button onClick={handleclick} id='signup'>
+            Sign-up
+          </button>
         </div>
       </form>
-      {isLogin ? <Redirect to='/dashboard' /> : ''}
     </LoginContainer>
   )
 }

@@ -5,6 +5,7 @@ import { SignUpContainer } from './SignUp.style'
 import { User, CheckEmail } from 'interface'
 import axios from 'axios'
 import { checkPassword } from '../../module/index'
+import { useHistory, useLocation } from 'react-router'
 
 export default function SignUp() {
   const [User, setUser] = useState<User>({ name: '', email: '', password: '', ConfirmPassword: '' })
@@ -16,6 +17,8 @@ export default function SignUp() {
     inputNum: '',
     disabled: false,
   })
+  const history = useHistory()
+  const location = useLocation()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -56,8 +59,7 @@ export default function SignUp() {
       })
 
       if (res.status === 201) {
-        //router login
-        // return <Redirect to='/login' />
+        history.push('/login', { from: location })
       } else if (res.status === 404) {
         alert('다시 시도해주세요')
         // 페이지 새로고침
@@ -112,9 +114,15 @@ export default function SignUp() {
     }
   }
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    history.push('/login')
+  }
+
   const { name, email, password, ConfirmPassword } = User
   return (
     <SignUpContainer>
+      <h2> 회원가입 </h2>
       <form onSubmit={handleSubmit}>
         <InputForm>
           <label className='Input label'>Email</label>
@@ -163,7 +171,13 @@ export default function SignUp() {
         <div className='button'>
           <Button style='MainBtnBrown' type='submit' value='Sign Up' />
         </div>
+        <span className='greeting'>are you exist Account?</span>
       </form>
+      <div className='box_signup'>
+        <button onClick={handleClick} id='signup'>
+          Sign-in
+        </button>
+      </div>
     </SignUpContainer>
   )
 }
