@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 
 export const MainContainer = styled.div`
-  position: fixed;
-  top: 0;
-  width: 100%;
+  width: 100vw;
+  height: calc(100vh - 80px);
 `
 
 export default MainContainer

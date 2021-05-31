@@ -15,7 +15,7 @@ export const NavComponent = styled.nav<NavbarType>`
   .navbar_logo {
     width: 70px;
     height: 70px;
-    padding-top: 5px;
+    margin-top: 5px;
     cursor: pointer;
   }
 
