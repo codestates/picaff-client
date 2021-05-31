@@ -3,16 +3,15 @@ import styled from 'styled-components'
 export const CoffeeResultContainer = styled.div`
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+  width: 100%;
   height: 200vh;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border: 3px solid ${({ theme }) => theme.color.PointC};
 
   .section_result {
     display: flex;
     flex: 1 1 0;
     margin: 10px;
+    height: 100vh;
     border: 2px solid lightgrey;
 
     .radarChart,
@@ -21,8 +20,9 @@ export const CoffeeResultContainer = styled.div`
       flex: 1 1 0;
       justify-content: center;
       align-items: center;
-      margin: 10px;
       border: 2px solid orange;
+      width: 100%;
+      height: 100%;
     }
   }
   & .closebtn {
@@ -43,21 +43,24 @@ export const CoffeeResultContainer = styled.div`
     height: 100%;
 
     & > div {
-      width: 95%;
+      width: 100%;
       margin: 5px;
       border: 2px solid lightblue;
     }
 
     .box_map {
       flex: 3 1 0;
+      width: 100%;
     }
 
     .box_tag {
       flex: 1 1 0;
+      width: 100%;
     }
 
     .box_text {
-      flex: 1.5 1 0;
+      flex: 1 1 0;
+      width: 100%;
     }
   }
 
@@ -69,12 +72,17 @@ export const CoffeeResultContainer = styled.div`
     align-items: center;
     margin: 10px;
     border: 2px solid lightgrey;
+
+    & .ItemModal {
+      height: 100vh;
+      position: absolute;
+      transform: translateY(100vh);
+      transition: transform 2s;
+    }
   }
-  & .ItemModal {
-    height: 100vh;
-    position: absolute;
-    transform: translateY(100vh);
-    transition: transform 2s;
+
+  @media ${({ theme }) => theme.device.tablet} {
+    width: 100%;
   }
 `
 
