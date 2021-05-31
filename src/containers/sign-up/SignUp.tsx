@@ -114,9 +114,15 @@ export default function SignUp() {
     }
   }
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    history.push('/login')
+  }
+
   const { name, email, password, ConfirmPassword } = User
   return (
     <SignUpContainer>
+      <h2> 회원가입 </h2>
       <form onSubmit={handleSubmit}>
         <InputForm>
           <label className='Input label'>Email</label>
@@ -165,7 +171,13 @@ export default function SignUp() {
         <div className='button'>
           <Button style='MainBtnBrown' type='submit' value='Sign Up' />
         </div>
+        <span className='greeting'>are you exist Account?</span>
       </form>
+      <div className='box_signup'>
+        <button onClick={handleClick} id='signup'>
+          Sign-in
+        </button>
+      </div>
     </SignUpContainer>
   )
 }

@@ -5,10 +5,10 @@ type IsTabActiveType = {
 }
 
 export const ResultContainer = styled.div<IsTabActiveType>`
-  height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.BackC};
+  height: 200vh;
 
   .top_container {
     display: flex;

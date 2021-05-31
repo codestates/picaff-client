@@ -9,7 +9,7 @@ export const RequestAllItem = async (type: 'coffee' | 'product') => {
 export const GetMapOptions = (type: string): MapOption => {
   switch (type) {
     case 'All':
-      return { zoom: 3, center: { lat: 5, lng: 170.644 } }
+      return { zoom: 3, center: { lat: 5, lng: -20.644 } }
     case 'GT':
       return { zoom: 4, center: { lat: 15.555556, lng: -90.334815 } }
     case 'KE':

@@ -4,15 +4,13 @@ import { TestResult } from 'interface'
 import CoffeeResult from './CoffeeResult'
 import ProductResult from './ProductResult'
 import { IoIosPaperPlane } from 'react-icons/io'
+import { useLocation } from 'react-router'
 
-type Props = {
-  TestResult: TestResult
-}
-
-export default function Result({ TestResult }: Props) {
+export default function Result() {
+  const location = useLocation<TestResult>()
+  const TestResult = location.state
   const { coffeeResult, productResult }: TestResult = TestResult
   const [isTabActive, setIsTabActive] = useState<boolean>(true)
-
 
   return (
     <ResultContainer isTabActive={isTabActive}>

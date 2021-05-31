@@ -1,5 +1,6 @@
 import Button from 'components/button/Button'
 import { TestResult } from 'interface'
+import { testResultTempArr } from 'interface/sampledata'
 import { getitemResult } from 'module/TestResult'
 import React, { useEffect, useState } from 'react'
 import { EndedTestContainer } from './EndedTest.style'
@@ -11,7 +12,6 @@ type TestFinish = {
 
 export default function EndedTest({ handleSubmit, score }: TestFinish) {
   const [data, setdata] = useState<TestResult | null>(null)
-
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     data && handleSubmit(e, data)
@@ -19,6 +19,10 @@ export default function EndedTest({ handleSubmit, score }: TestFinish) {
 
   useEffect(() => {
     async function ResData() {
+      // 임시 data용
+      await setTimeout(() => {
+        setdata(testResultTempArr[0])
+      }, 3000)
       setdata(await getitemResult(score))
     }
 
