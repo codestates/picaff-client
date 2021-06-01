@@ -50,6 +50,7 @@ export const ProductResultContainer = styled.div`
           padding-left: 16px;
           margin-top: 30px;
           font-size: 1.1rem;
+          font-family: 'NanumSquareRoundR';
         }
 
         .tag {
@@ -64,7 +65,7 @@ export const ProductResultContainer = styled.div`
       flex: 1.4 1 0;
       width: 100%;
       margin-left: -70px;
-      margin-right: 10px;
+      margin-right: 30px;
 
       .radarChart {
         margin-top: 200px;
