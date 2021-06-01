@@ -13,8 +13,8 @@ type MenuProps = {
 
 export const RecipeContainer = styled.div<MenuProps>`
   width: 100%;
-  height: 100%;
-  background-color: ${({ theme }) => theme.color.BackC};
+  height: 100vh;
+  background-color: ${({ theme }) => theme.color.NavC};
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -22,12 +22,12 @@ export const RecipeContainer = styled.div<MenuProps>`
   margin: auto;
   overflow: hidden;
 
-  --main-bg-color: ${({ theme }) => theme.color.WhiteC};
+  --main-bg-color: ${({ theme }) => theme.color.YelloC};
   --cup-color: #6e6b68;
-  --cup-width: 24vw;
-  --cup-height: 19vw;
+  --cup-width: 22vw;
+  --cup-height: 17vw;
   --cup-handle-width: 5vw;
-  --cup-handle-height: 13vh;
+  --cup-handle-height: 7vw;
   --cup-border-width: 2vw;
   --cup-inside-width: calc(var(--cup-width) - var(--cup-border-width));
   --cup-inside-height: calc(var(--cup-height) - var(--cup-border-width));
@@ -60,13 +60,14 @@ export const RecipeContainer = styled.div<MenuProps>`
   .coffee_name {
     text-align: center;
     color: ${({ theme }) => theme.color.StrongBrownC};
-    font-size: 3.5rem;
-    margin-top: -100px;
+    font-size: 4rem;
+    margin-top: -80px;
+    margin-bottom: 10px;
   }
 
   .options {
     display: flex;
-    margin-top: -90px;
+    margin-top: -80px;
 
     & > button {
       user-select: none;
@@ -275,6 +276,52 @@ export const RecipeContainer = styled.div<MenuProps>`
     --whipped_cream-bottom: -100%;
     --chocolate-bottom: -100%;
     --ice_cream-bottom: -100%;
+  }
+
+  @media ${({ theme }) => theme.device.tablet} {
+    display: flex;
+    flex-direction: column;
+
+    .container {
+      flex: 0.8 1 0;
+    }
+
+    .coffee_name {
+      font-size: 2rem;
+    }
+
+    .filling div {
+      font-size: 0.8rem;
+    }
+
+    .options {
+      flex: 1 1 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+
+      & > button {
+        width: 100%;
+        font-size: 0.9rem;
+        border-radius: 0px;
+        text-align: center;
+
+        &#americano {
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          border-bottom-left-radius: 0px;
+        }
+
+        &#espresso {
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          border-top-right-radius: 0px;
+        }
+      }
+    }
   }
 `
 
