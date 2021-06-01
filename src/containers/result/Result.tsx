@@ -3,7 +3,9 @@ import { useState } from 'react'
 import { TestResult } from 'interface'
 import CoffeeResult from './CoffeeResult'
 import ProductResult from './ProductResult'
-import { IoIosPaperPlane } from 'react-icons/io'
+// import { IoIosPaperPlane } from 'react-icons/io'
+import { MdShare } from 'react-icons/md'
+
 import { useLocation } from 'react-router'
 
 export default function Result() {
@@ -18,27 +20,23 @@ export default function Result() {
         <div className='content'>
           <div className='section_btn'>
             <button className='coffee' onClick={() => setIsTabActive(true)}>
-              Coffee
+              COFFEE
             </button>
             <button className='product' onClick={() => setIsTabActive(false)}>
-              Product
+              PRODUCT
             </button>
           </div>
-          <div className='section_flex'>
-            <section className='empty_left'></section>
-            {isTabActive ? (
-              <CoffeeResult data={coffeeResult} />
-            ) : (
-              <ProductResult data={productResult} />
-            )}
-            <section className='empty_right'></section>
+          <div className='section_share'>
+            <button className='btn_share'>
+              <MdShare />
+            </button>
           </div>
+          {isTabActive ? (
+            <CoffeeResult data={coffeeResult} />
+          ) : (
+            <ProductResult data={productResult} />
+          )}
         </div>
-      </div>
-      <div className='section_share'>
-        <button className='btn_share'>
-          <IoIosPaperPlane />
-        </button>
       </div>
     </ResultContainer>
   )

@@ -11,7 +11,7 @@ export const NavComponent = styled.nav<NavbarType>`
   background-color: ${({ theme }) => theme.color.NavC};
   padding: 0 24px 0 24px;
   height: 80px;
-  margin-left: 10px;
+  padding-left: 10px;
 
   .navbar_logo {
     width: 70px;
@@ -78,13 +78,7 @@ export const NavComponent = styled.nav<NavbarType>`
   @media ${({ theme }) => theme.device.tablet} {
     flex-direction: column;
     align-items: flex-start;
-    padding: 15px;
-    height: ${({ isActive }) => (isActive ? '50%' : '13%')};
-
-    .navbar_logo {
-      margin: 5px 0;
-      cursor: pointer;
-    }
+    height: ${({ isActive }) => (isActive ? '50%' : '80px')};
 
     .navbar_menu {
       display: ${({ isActive }) => (isActive ? 'flex' : 'none')};
