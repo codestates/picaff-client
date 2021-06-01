@@ -6,10 +6,18 @@ export const RequestAllItem = async (type: 'coffee' | 'product') => {
   return res.data
 }
 
-export const GetMapOptions = (type: string): MapOption => {
+export const GetMapOptions = (type: string, width?: string): MapOption => {
   switch (type) {
     case 'All':
+      if (width === 'S') {
+        return { zoom: 1, center: { lat: 5, lng: -20.644 } }
+      } else if (width === 'M') {
+        return { zoom: 1, center: { lat: 5, lng: -20.644 } }
+      } else if (width === 'L') {
+        return { zoom: 2, center: { lat: 5, lng: -20.644 } }
+      }
       return { zoom: 3, center: { lat: 5, lng: -20.644 } }
+      break
     case 'GT':
       return { zoom: 4, center: { lat: 15.555556, lng: -90.334815 } }
     case 'KE':

@@ -23,7 +23,7 @@ export default function TestResultList({ testResult }: Props) {
               <img alt='' src={el.productResult.imageUrl} />
             </div>
             <div className='image'>
-              <CoffeeMap type={el.coffeeResult.iso || 'All'} />
+              <CoffeeMap type={el.coffeeResult.iso || 'All'} coffee={el.coffeeResult} />
             </div>
           </div>
         ))

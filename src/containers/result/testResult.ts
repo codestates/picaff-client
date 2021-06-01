@@ -27,7 +27,7 @@ export const data: TestResult = {
     itemDetail: 'starbucky',
     type: 'coffee',
     imageUrl: 'https://www.coffee.com',
-    iso: 'KE',
+    iso: 'BR',
     coffeeCharacter: {
       id: 1,
       sweetness: 3,
