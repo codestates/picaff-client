@@ -5,8 +5,8 @@ import styled from 'styled-components'
 // }
 
 export const ButtonImage = styled.img`
-  width: 230px;
-  margin: 0 5px;
+  width: 100%;
+  margin: 0;
   padding: 2px;
   border: 2px solid ${({ theme }) => theme.color.GrayC};
   border-radius: 5px;

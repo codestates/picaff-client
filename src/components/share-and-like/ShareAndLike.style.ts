@@ -7,9 +7,9 @@ type BtnComponentProps = {
 export const BtnComponent = styled.div<BtnComponentProps>`
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 400px;
-  right: 200px;
+  position: absolute;
+  top: 30%;
+  right: 5%;
 
   width: 75px;
   height: 150px;

@@ -35,7 +35,7 @@ export default function ShareAndLike({ renderItem }: Props) {
   }
 
   return (
-    <BtnComponent isLiked={isLiked}>
+    <BtnComponent isLiked={isLiked} className='shareandlike'>
       <button className='share' onClick={() => setIsShareOpen(!isShareOpen)}>
         <MdShare />
       </button>

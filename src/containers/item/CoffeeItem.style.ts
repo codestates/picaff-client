@@ -1,15 +1,37 @@
 import styled from 'styled-components'
 
 export const CoffeeItemContainer = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  left: 0px;
+  top: 120vh;
+  z-index: 999;
+  overflow: hidden;
+  background: #ffdfb9;
+  animation: slide 1s ease-out;
 
-  width: 1000px;
+  & .back1 {
+    position: absolute;
+    top: -40vh;
+    height: 60vh;
+    width: 200%;
+    z-index: -1;
+    transform-origin: 50% 0%;
+    transform: rotate(-5deg);
+    background-position: 400% 400%;
+    background: linear-gradient(-45deg, #921416, #eacda3, #f46b45, #eea849);
+    background-size: 400% 400%;
+    background-repeat: no-repeat;
+    animation: gradient 5s ease infinite;
+  }
 
   .top_container {
     display: flex;
     flex-direction: column;
     border: 2px solid green;
+    overflow: hidden;
   }
 
   .section_top {
@@ -111,6 +133,15 @@ export const CoffeeItemContainer = styled.div`
           border: 2px solid skyblue;
         }
       }
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateY(-100vh);
+    }
+    100% {
+      transform: translateY(0vh);
     }
   }
 `
