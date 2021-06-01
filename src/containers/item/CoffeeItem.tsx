@@ -12,7 +12,6 @@ type Props = {
 
 export default function CoffeeItem({ selectedItem, handlechecked }: Props) {
   const [renderItem] = useState<itemResult>(selectedItem)
-
   const { itemName, itemDetail, coffeeCharacter } = selectedItem
 
   const radarInfo: CoffeeResultType | undefined = coffeeCharacter && {
