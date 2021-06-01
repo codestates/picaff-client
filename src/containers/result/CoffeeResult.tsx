@@ -7,6 +7,7 @@ import Tag from 'components/button/Tag'
 import CoffeeMap from 'components/coffee-map/CoffeeMap'
 import CoffeeItem from 'containers/item/CoffeeItem'
 import { RequestAllItem } from 'module/Coffeemap'
+import { coffeetempArr } from 'interface/sampledata'
 
 type Props = {
   data: itemResult
@@ -18,7 +19,8 @@ const initdata: itemResult = {
   itemPrice: 0,
   itemDetail: '',
   type: 'product',
-  imageUrl: '',
+  imageUrl:
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Kenya.svg/600px-Flag_of_Kenya.svg.png',
   iso: '',
   isLiked: false,
   tag: [{ id: 0, tagName: '' }],
@@ -27,8 +29,10 @@ const initdata: itemResult = {
 export default function CoffeeResult({ data }: Props) {
   const [selectedItem] = useState<itemResult>(data)
   const [isItemClicked, setIsItemClicked] = useState<boolean>(false)
-  const [CoffeeDataArr, setCoffeeDataArr] = useState<itemResult[]>([])
+  const [CoffeeDataArr, setCoffeeDataArr] = useState<itemResult[]>(coffeetempArr)
   const [CoffeeData, setCoffeeData] = useState<itemResult>(initdata)
+
+  console.log(data)
 
   const radarInfo: CoffeeResultType | undefined = data.coffeeCharacter && {
     coffeeName: data.itemName,
@@ -88,7 +92,7 @@ export default function CoffeeResult({ data }: Props) {
         <div className='box_radar'>{radarInfo && <CoffeeRadarChart radarInfo={radarInfo} />}</div>
       </section>
       <section className='section_map'>
-        <CoffeeMap type={'All'} handleRegionClick={handleRegionClick} />
+        <CoffeeMap type={'All'} handleRegionClick={handleRegionClick} coffee={CoffeeDataArr} />
       </section>
       {isItemClicked ? (
         <CoffeeItem

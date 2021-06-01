@@ -1,5 +1,6 @@
 import { GoogleMap, LoadScript, OverlayView, Polygon } from '@react-google-maps/api'
-import { MapOption } from 'interface'
+import Overlay from 'components/ovelay/Overlay'
+import { itemResult, MapOption } from 'interface'
 import { GetMapOptions } from 'module/Coffeemap'
 import { ConvertLatLng } from 'module/Polygon'
 import { useEffect, useState } from 'react'
@@ -9,29 +10,72 @@ import { default as coord } from './polygon.json'
 type maptype = {
   type: 'KE' | 'GT' | 'CO' | 'ET' | 'BR' | 'All'
   handleRegionClick?: (Region: string) => void
+  coffee: itemResult[] | itemResult
 }
 
-export default function CoffeeMap({ type, handleRegionClick }: maptype) {
+const getWindowDimension = (): number => {
+  const { innerWidth: width } = window
+  return width
+}
+
+export default function CoffeeMap({ type, handleRegionClick, coffee }: maptype) {
   const [PolygonData, setPolygonData] =
     useState<(google.maps.LatLng[] | google.maps.LatLng[][])[] | undefined>(undefined)
   const [index, setindex] = useState<number>(0)
-  const [RegionArr, setRegionArr] = useState<string[]>([])
+  const [RegionArr, setRegionArr] = useState<{ country: string; iso: string }[]>([])
   const [mapOption, setMapOption] = useState<MapOption>({
     zoom: 3,
     center: { lat: 5, lng: 170.644 },
   })
-
+  const [screenwidth, setscreenwidth] = useState<number>(getWindowDimension())
   useEffect(() => {
     setMapOption(GetMapOptions(type))
+
+    function handleResize() {
+      setscreenwidth(getWindowDimension())
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
+
+  useEffect(() => {
+    if (screenwidth <= 375) {
+      setMapOption(GetMapOptions(type, 'S'))
+    } else if (screenwidth <= 768) {
+      setMapOption(GetMapOptions(type, 'M'))
+    } else if (screenwidth <= 1440) {
+      setMapOption(GetMapOptions(type, 'L'))
+    } else if (screenwidth > 1440) {
+      setMapOption(GetMapOptions(type, 'XL'))
+    }
+  }, [screenwidth])
+
+  useEffect(() => {
+    if (type !== 'All') {
+      RegionArr.forEach((el, idx) => {
+        if (el.iso === type) {
+          setindex(idx)
+        }
+      })
+    }
+  }, [RegionArr])
 
   const onLoad = () => {
     const result = coord.map<google.maps.LatLng[] | google.maps.LatLng[][]>((el) =>
       ConvertLatLng(el)
     )
-    setRegionArr(coord.map<string>((el) => el.iso))
+    setRegionArr(
+      coord.map<{ country: string; iso: string }>((el) => ({
+        country: el.country,
+        iso: el.iso,
+      }))
+    )
     setPolygonData(result)
   }
+
   const handleMouseOver = (idx: number) => {
     setindex(idx)
   }
@@ -53,7 +97,7 @@ export default function CoffeeMap({ type, handleRegionClick }: maptype) {
             mapId: 'ae2e13f24821623f',
             disableDefaultUI: true,
             disableDoubleClickZoom: true,
-            minZoom: 2.3,
+            minZoom: 1,
             scrollwheel: false,
             draggable: false,
           }}>
@@ -62,9 +106,13 @@ export default function CoffeeMap({ type, handleRegionClick }: maptype) {
               <>
                 <Polygon
                   paths={el}
-                  onMouseOver={() => handleMouseOver(idx)}
-                  onClick={handleRegionClick && (() => handleRegionClick(RegionArr[idx]))}
-                  onLoad={(data) => console.log(data)}
+                  onMouseOver={type === 'All' ? () => handleMouseOver(idx) : undefined}
+                  onClick={
+                    type === 'All'
+                      ? handleRegionClick && (() => handleRegionClick(RegionArr[idx].iso))
+                      : undefined
+                  }
+                  onLoad={() => console.log('loaddone')}
                   onUnmount={() => console.log('unload')}
                   options={
                     idx === index
@@ -87,9 +135,12 @@ export default function CoffeeMap({ type, handleRegionClick }: maptype) {
                   }
                 />
                 <OverlayView
-                  position={GetMapOptions(RegionArr[index]).center}
+                  position={GetMapOptions(RegionArr[index].iso).center}
                   mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
-                  <div>{RegionArr[index]}</div>
+                  <Overlay
+                    coffeeItem={Array.isArray(coffee) ? coffee[idx] : coffee}
+                    name={RegionArr[index].country}
+                  />
                 </OverlayView>
               </>
             ))}

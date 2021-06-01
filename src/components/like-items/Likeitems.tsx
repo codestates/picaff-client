@@ -20,7 +20,7 @@ export default function Likeitems({ Items }: Items) {
         if (el.iso !== '') {
           return (
             <div className='itemContainer' key={idx} onClick={(e) => handleClick(e, el)}>
-              <CoffeeMap type={el.iso || 'All'} />
+              <CoffeeMap type={el.iso || 'All'} coffee={el} />
             </div>
           )
         } else {
