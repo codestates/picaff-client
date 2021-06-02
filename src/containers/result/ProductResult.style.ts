@@ -146,20 +146,6 @@ export const ProductResultContainer = styled.div`
         filter: grayscale(0%);
         transition: 0.3s ease-in-out;
       }
-
-      #first,
-      #third {
-        padding-left: 25vh;
-      }
-
-      #second,
-      #fourth {
-        padding-right: 15vh;
-      }
-    }
-
-    .image_box:nth-child(3) {
-      padding-bottom: 8vh;
     }
   }
 
