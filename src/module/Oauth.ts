@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 import { TestResult, UserInfo } from 'interface'
 
 type requestType = {
@@ -23,20 +24,25 @@ export const requestOauth = async (
   const response = await axios.post<UserInfo>(endpoint, data, {
     headers: { 'Content-Type': 'application/json', 'Credential': true },
   })
-  console.log(response.data)
+  console.log(response)
   const userInfo = response.data
   userInfo ? callback(userInfo) : alert('로그인에 실패하였습니다')
 }
 
-export const saveBeforeTest = async (testResult: TestResult, accessToken: string) => {
-  const res = await axios.post(
+export const saveBeforeTest = async (
+  testResult: TestResult,
+  accessToken: string | null
+): Promise<void> => {
+  const res = await axios.patch(
     'http://localhost/user/test',
     { testId: testResult.testResultId },
     {
       headers: { Authorization: `Bearer ${accessToken}` },
     }
   )
-  if (res.status === 401) {
+  const auth = useAuth()
+  if (res.status === 401 && auth.refreshAccessToken) {
+    await auth.refreshAccessToken()
+    await saveBeforeTest(testResult, auth.accessToken)
   }
-  return res
 }

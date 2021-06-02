@@ -38,10 +38,13 @@ export default function SignIn() {
   useEffect(() => {
     if (auth.signin && userInfo.auth) {
       const accessToken = userInfo.auth ? userInfo.auth.accessToken : ''
-      if (accessToken) {
-        const { from, testResult } = location.state || { from: { pathname: '/' } }
-        saveBeforeTest(testResult, accessToken)
-        auth.signin(accessToken, () => history.replace({ pathname: from }))
+      const refreshToken = userInfo.auth ? userInfo.auth.refreshToken : ''
+      if (accessToken && refreshToken) {
+        const { from } = location.state || { from: '/' }
+        if (location.state && 'testResult' in location.state) {
+          saveBeforeTest(location.state.testResult, accessToken)
+        }
+        auth.signin(accessToken, refreshToken, () => history.replace({ pathname: from }))
       }
     }
   }, [userInfo])
@@ -52,7 +55,7 @@ export default function SignIn() {
     if (!email || !password) {
       setAlertMessage('아이디와 비밀번호를 모두 입력해주세요')
     } else {
-      await requestOauth('https://localhost:4000/user/signin', { email, password }, (userInfo) => {
+      await requestOauth('http://localhost:4000/user/signin', { email, password }, (userInfo) => {
         setUserInfo(userInfo)
       })
     }
