@@ -1,15 +1,16 @@
 import { useState } from 'react'
-import { itemResult, ProductResultType } from 'interface'
+import { itemResult, ProductResultType, TestResult } from 'interface'
 import { ProductItemContainer } from './ProductItem.style'
 import ShareAndLike from 'components/share-and-like/ShareAndLike'
 import ProductRadarChart from 'components/radar-chart/ProductRadarChart'
 import { AiFillCloseCircle } from 'react-icons/ai'
 type Props = {
+  TestResult: TestResult
   selectedItem: itemResult
   handlechecked: () => void
 }
 
-export default function ProductItem({ selectedItem, handlechecked }: Props) {
+export default function ProductItem({ TestResult, selectedItem, handlechecked }: Props) {
   const [renderItem] = useState<itemResult>(selectedItem)
 
   const { itemName, itemDetail, imageUrl, productCharacter } = selectedItem
@@ -59,7 +60,7 @@ export default function ProductItem({ selectedItem, handlechecked }: Props) {
           </div> */}
         </section>
       </div>
-      <ShareAndLike renderItem={renderItem} />
+      <ShareAndLike testResult={TestResult} renderItem={renderItem} />
     </ProductItemContainer>
   )
 }

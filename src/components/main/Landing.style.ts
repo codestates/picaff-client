@@ -13,6 +13,7 @@ export const LandingComponent = styled.section`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
     & h1 {
       font-weight: 900;
       color: ${({ theme }) => theme.color.PointC};
