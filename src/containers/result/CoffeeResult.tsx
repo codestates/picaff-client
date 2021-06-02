@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { CoffeeResultContainer } from './CoffeeResult.style'
-import { itemResult, CoffeeResultType, Tags } from 'interface'
+import { itemResult, CoffeeResultType, Tags, TestResult } from 'interface'
 import CoffeeRadarChart from 'components/radar-chart/CoffeeRadarChart'
 // import CoffeeItem from 'containers/item/CoffeeItem'
 import Tag from 'components/button/Tag'
@@ -10,7 +10,7 @@ import { RequestAllItem } from 'module/Coffeemap'
 import { coffeetempArr } from 'interface/sampledata'
 
 type Props = {
-  data: itemResult
+  TestResult: TestResult
 }
 
 const initdata: itemResult = {
@@ -26,24 +26,24 @@ const initdata: itemResult = {
   tag: [{ id: 0, tagName: '' }],
 }
 
-export default function CoffeeResult({ data }: Props) {
-  const [selectedItem] = useState<itemResult>(data)
+export default function CoffeeResult({ TestResult }: Props) {
+  const [selectedItem] = useState<itemResult>(TestResult.coffeeResult)
   const [isItemClicked, setIsItemClicked] = useState<boolean>(false)
   const [CoffeeDataArr, setCoffeeDataArr] = useState<itemResult[]>(coffeetempArr)
   const [CoffeeData, setCoffeeData] = useState<itemResult>(initdata)
+  const [selectedTag, setSelectedTag] = useState<string>('')
 
-  console.log(data)
-
-  const radarInfo: CoffeeResultType | undefined = data.coffeeCharacter && {
-    coffeeName: data.itemName,
+  const { coffeeCharacter } = selectedItem
+  const radarInfo: CoffeeResultType | undefined = coffeeCharacter && {
+    coffeeName: selectedItem.itemName,
     coffeeCharacter: {
-      id: data.coffeeCharacter.id,
-      sweetness: data.coffeeCharacter.sweetness,
-      sourness: data.coffeeCharacter.sourness,
-      balance: data.coffeeCharacter.balance,
-      body: data.coffeeCharacter.body,
-      aroma: data.coffeeCharacter.aroma,
-      afterTaste: data.coffeeCharacter.afterTaste,
+      id: coffeeCharacter.id,
+      sweetness: coffeeCharacter.sweetness,
+      sourness: coffeeCharacter.sourness,
+      balance: coffeeCharacter.balance,
+      body: coffeeCharacter.body,
+      aroma: coffeeCharacter.aroma,
+      afterTaste: coffeeCharacter.afterTaste,
     },
   }
 
@@ -66,28 +66,43 @@ export default function CoffeeResult({ data }: Props) {
     })
   }
 
+  const handleTagClick = (tag: Tags) => {
+    setSelectedTag(tag.tagName)
+  }
+
   return (
     <CoffeeResultContainer className='section_coffee'>
       <section className='section_result'>
         <div className='description'>
           <div className='box_map'>
-            <CoffeeMap type={selectedItem.iso || 'All'} coffee={data} />
+            <CoffeeMap type={selectedItem.iso || 'All'} coffee={selectedItem} />
           </div>
           <div className='box_tag'>
-            {data.tag.map((singleTag: Tags) => (
-              <Tag style='ClearTag' key={singleTag.id} value={singleTag.tagName} />
+            {selectedItem.tag.map((singleTag: Tags) => (
+              <Tag
+                style='ClearTag'
+                key={singleTag.id}
+                value={singleTag.tagName}
+                onClick={() => handleTagClick(singleTag)}
+              />
             ))}
           </div>
-          <div className='box_text'>{data.itemDetail}</div>
+          <div className='box_text'>{selectedItem.itemDetail}</div>
         </div>
         {radarInfo && <CoffeeRadarChart radarInfo={radarInfo} />}
       </section>
       <section className='section_map'>
-        <CoffeeMap type={'All'} handleRegionClick={handleRegionClick} coffee={CoffeeDataArr} />
+        <CoffeeMap
+          type={'All'}
+          handleRegionClick={handleRegionClick}
+          coffee={CoffeeDataArr}
+          selectedTag={selectedTag}
+        />
       </section>
       {isItemClicked ? (
         <CoffeeItem
-          selectedItem={CoffeeData}
+          TestResult={TestResult}
+          CoffeeData={CoffeeData}
           handlechecked={() => setIsItemClicked(!isItemClicked)}
         />
       ) : (

@@ -66,23 +66,19 @@ export const ProductResultContainer = styled.div`
     width: 100%;
 
     img {
-      -webkit-filter: grayscale(100%);
-      -webkit-transition: 0.3s ease-in-out;
-      -moz-filter: grayscale(100%);
-      -moz-transition: 0.3s ease-in-out;
-      -o-filter: grayscale(100%);
-      -o-transition: 0.3s ease-in-out;
+      filter: grayscale(100%);
+      transition: 0.3s ease-in-out;
       border-radius: 5px;
       width: 100%;
     }
 
     img:hover {
-      -webkit-filter: grayscale(0%);
-      -webkit-transition: 0.3s ease-in-out;
-      -moz-filter: grayscale(0%);
-      -moz-transition: 0.3s ease-in-out;
-      -o-filter: grayscale(0%);
-      -o-transition: 0.3s ease-in-out;
+      filter: grayscale(0%);
+      transition: 0.3s ease-in-out;
+    }
+    & .active > img {
+      filter: grayscale(0%);
+      transition: 0.3s ease-in-out;
     }
   }
 

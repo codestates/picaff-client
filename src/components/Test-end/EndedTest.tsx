@@ -1,4 +1,5 @@
 import Button from 'components/button/Button'
+import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 import { TestResult } from 'interface'
 import { testResultTempArr } from 'interface/sampledata'
 import { getitemResult } from 'module/TestResult'
@@ -16,14 +17,14 @@ export default function EndedTest({ handleSubmit, score }: TestFinish) {
     e.preventDefault()
     data && handleSubmit(e, data)
   }
-
+  const auth = useAuth()
   useEffect(() => {
     async function ResData() {
       // 임시 data용
       await setTimeout(() => {
         setdata(testResultTempArr[0])
       }, 3000)
-      setdata(await getitemResult(score))
+      setdata(await getitemResult(score, auth.accessToken))
     }
 
     ResData()

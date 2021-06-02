@@ -1,6 +1,6 @@
 import { ProductResultContainer } from './ProductResult.style'
 import { useEffect, useState } from 'react'
-import { itemResult, ProductResultType, Tags } from 'interface'
+import { itemResult, ProductResultType, Tags, TestResult } from 'interface'
 import ProductRadarChart from 'components/radar-chart/ProductRadarChart'
 import ProductItem from 'containers/item/ProductItem'
 import Tag from 'components/button/Tag'
@@ -9,22 +9,22 @@ import axios from 'axios'
 import { productTempArr } from 'interface/sampledata'
 
 type Props = {
-  data: itemResult
+  TestResult: TestResult
 }
 
-export default function ProductResult({ data }: Props) {
+export default function ProductResult({ TestResult }: Props) {
   const [allItems, setAllItems] = useState<itemResult[]>(productTempArr)
-  const [selectedItem, setSelectedItem] = useState<itemResult>(data)
+  const [selectedItem, setSelectedItem] = useState<itemResult>(TestResult.productResult)
   const [isItemClicked, setIsItemClicked] = useState<boolean>(false)
-  // const [selectedTag, setSelectedTag] = useState<number>(0)
+  const [selectedTag, setSelectedTag] = useState<string>('')
 
-  const radarInfo: ProductResultType | undefined = data.productCharacter && {
-    productName: data.itemName,
+  const radarInfo: ProductResultType | undefined = selectedItem.productCharacter && {
+    productName: selectedItem.itemName,
     productCharacter: {
-      id: data.productCharacter.id,
-      accessibility: data.productCharacter.accessibility,
-      convenience: data.productCharacter.convenience,
-      effectiveness: data.productCharacter.effectiveness,
+      id: selectedItem.productCharacter.id,
+      accessibility: selectedItem.productCharacter.accessibility,
+      convenience: selectedItem.productCharacter.convenience,
+      effectiveness: selectedItem.productCharacter.effectiveness,
     },
   }
 
@@ -63,46 +63,59 @@ export default function ProductResult({ data }: Props) {
   //   getSelectedTags()
   // }, [])
 
+  const handleTagClick = (tag: Tags) => {
+    setSelectedTag(tag.tagName)
+  }
+
   return (
     <>
       <ProductResultContainer className='section_product'>
         <section className='section_result'>
           <div className='description'>
             <div className='box_image'>
-              <img src={data.imageUrl}></img>
+              <img src={selectedItem.imageUrl}></img>
             </div>
             <div className='box_tag'>
-              {data.tag.map((singleTag: Tags) => (
+              {selectedItem.tag.map((singleTag: Tags) => (
                 <Tag
                   style='ClearTag'
                   key={singleTag.id}
                   value={singleTag.tagName}
-                  // onClick={() => setSelectedTag(singleTag.id)}
+                  onClick={() => handleTagClick(singleTag)}
                 />
               ))}
             </div>
-            <div className='box_text'>{data.itemDetail}</div>
+            <div className='box_text'>{selectedItem.itemDetail}</div>
           </div>
           {radarInfo && <ProductRadarChart radarInfo={radarInfo} />}
         </section>
         <section className='section_image'>
-          {allItems.map((singleItem: itemResult) => (
-            <div>
-              <Image
-                style='ButtonImage'
-                type='button'
-                key={singleItem.id}
-                src={singleItem.imageUrl}
-                onClick={() => {
-                  setSelectedItem(singleItem)
-                  setIsItemClicked(!isItemClicked)
-                }}
-              />
-            </div>
-          ))}
+          {allItems.map((singleItem: itemResult) => {
+            let active = false
+            for (let i = 0; i < singleItem.tag.length; i++) {
+              if (selectedTag === singleItem.tag[i].tagName) {
+                active = true
+              }
+            }
+            return (
+              <div className={active ? 'active' : ''}>
+                <Image
+                  style='ButtonImage'
+                  type='button'
+                  key={singleItem.id}
+                  src={singleItem.imageUrl}
+                  onClick={() => {
+                    setSelectedItem(singleItem)
+                    setIsItemClicked(!isItemClicked)
+                  }}
+                />
+              </div>
+            )
+          })}
           {isItemClicked ? (
             <ProductItem
               selectedItem={selectedItem}
+              TestResult={TestResult}
               handlechecked={() => setIsItemClicked(!selectedItem)}
             />
           ) : (

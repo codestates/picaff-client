@@ -9,7 +9,6 @@ import { useLocation } from 'react-router'
 export default function Result() {
   const location = useLocation<TestResult>()
   const TestResult = location.state
-  const { coffeeResult, productResult }: TestResult = TestResult
   const [isTabActive, setIsTabActive] = useState<boolean>(true)
 
   return (
@@ -27,9 +26,9 @@ export default function Result() {
           <div className='section_flex'>
             <section className='empty_left'></section>
             {isTabActive ? (
-              <CoffeeResult data={coffeeResult} />
+              <CoffeeResult TestResult={TestResult} />
             ) : (
-              <ProductResult data={productResult} />
+              <ProductResult TestResult={TestResult} />
             )}
             <section className='empty_right'></section>
           </div>

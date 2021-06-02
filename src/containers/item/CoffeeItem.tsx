@@ -1,18 +1,19 @@
 import { useState } from 'react'
-import { CoffeeResultType, itemResult } from 'interface'
+import { CoffeeResultType, itemResult, TestResult } from 'interface'
 import { CoffeeItemContainer } from './CoffeeItem.style'
 import ShareAndLike from 'components/share-and-like/ShareAndLike'
 import CoffeeRadarChart from 'components/radar-chart/CoffeeRadarChart'
 import { AiFillCloseCircle } from 'react-icons/ai'
 
 type Props = {
-  selectedItem: itemResult
+  TestResult: TestResult
+  CoffeeData: itemResult
   handlechecked: () => void
 }
 
-export default function CoffeeItem({ selectedItem, handlechecked }: Props) {
-  const [renderItem] = useState<itemResult>(selectedItem)
-  const { itemName, itemDetail, coffeeCharacter } = selectedItem
+export default function CoffeeItem({ CoffeeData, TestResult, handlechecked }: Props) {
+  const [renderItem] = useState<itemResult>(CoffeeData)
+  const { itemName, itemDetail, coffeeCharacter } = CoffeeData
 
   const radarInfo: CoffeeResultType | undefined = coffeeCharacter && {
     coffeeName: itemName,
@@ -62,7 +63,7 @@ export default function CoffeeItem({ selectedItem, handlechecked }: Props) {
           </div>
         </section>
       </div>
-      <ShareAndLike renderItem={renderItem} />
+      <ShareAndLike renderItem={renderItem} testResult={TestResult} />
     </CoffeeItemContainer>
   )
 }
