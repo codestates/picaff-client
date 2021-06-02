@@ -10,7 +10,7 @@ type ModifyProps = {
 }
 
 export default function Modify({ userInfo }: ModifyProps) {
-  const { name, email } = userInfo
+  const { userName, email } = userInfo
   const auth = useAuth()
   const history = useHistory()
   const handleSignOut = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -21,7 +21,7 @@ export default function Modify({ userInfo }: ModifyProps) {
 
   const handleSignOff = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    const res = await axios.delete('http://localhost:4000/user', {
+    const res = await axios.delete('https://localhost:4000/user', {
       headers: { Authorization: auth.accessToken },
     })
 
@@ -35,7 +35,7 @@ export default function Modify({ userInfo }: ModifyProps) {
     <ModifyContainer>
       <div>
         <span>name</span>
-        <h2>{name}</h2>
+        <h2>{userName}</h2>
       </div>
       <div>
         <span>email</span>

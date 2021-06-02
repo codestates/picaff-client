@@ -1,12 +1,12 @@
 import MainContainer from './Main.style'
 import Landing from 'components/main/Landing'
-import Magazine from 'components/main/Magazine'
+import Recipe from 'containers/recipe/Recipe'
 
 export default function Main() {
   return (
     <MainContainer>
       <Landing />
-      <Magazine />
+      <Recipe />
     </MainContainer>
   )
 }

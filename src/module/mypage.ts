@@ -13,7 +13,7 @@ export const requestUserInfo = async (
   type: 'user' | 'test' | 'coffee' | 'product',
   callback: (data: UserInfo | itemResult[] | TestResult[]) => void
 ) => {
-  const response = await axios.get<Res>('http://localhost:4000/user', {
+  const response = await axios.get<Res>('https://localhost:4000/user', {
     headers: {
       'Content-Type': 'application/json',
       'Credential': true,

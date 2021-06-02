@@ -12,7 +12,7 @@ import { MypageContainer } from './Mypage.style'
 export default function Mypage() {
   const [UserInfo, setUserInfo] = useState<UserInfo>({
     email: 'email',
-    name: 'name',
+    userName: 'userName',
     id: 0,
     auth: { accessToken: '' },
   })
@@ -45,7 +45,7 @@ export default function Mypage() {
     setisModify(!isModify)
   }
 
-  const { email, name } = UserInfo
+  const { email, userName } = UserInfo
   return (
     <>
       {isModify ? (
@@ -56,7 +56,7 @@ export default function Mypage() {
             <Button handleClick={handleClick} type='button' style='UserBtn' value='회원정보 변경' />
           </div>
           <span>name</span>
-          <h1>{name}</h1>
+          <h1>{userName}</h1>
           <span>email</span>
           <h1>{email}</h1>
           <div>

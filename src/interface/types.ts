@@ -21,7 +21,7 @@ export type Authorization = {
 
 export type UserInfo = {
   email: string
-  name: string
+  userName: string
   id: number
   auth?: Authorization
 }
