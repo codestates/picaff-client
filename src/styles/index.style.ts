@@ -1,32 +1,20 @@
 import { createGlobalStyle } from 'styled-components'
 import './fonts/fonts.css'
-import YGjalnan from './fonts/YGjalnan.ttf'
-import NanumSquareRoundR from './fonts/NanumSquareRoundR.ttf'
 
 export const GlobalStyled = createGlobalStyle`
-  @font-face {
-    font-family: 'YGjalnan';
-    src: local('YGjalnan'),
-    url(${YGjalnan}) format('woff');
-    font-weight: 300;
+  @font-face { 
+    font-family: 'yg-jalnan'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); 
+    font-weight: normal; 
     font-style: normal;
   }
-
-  @font-face {
-    font-family: 'NanumSquareRoundR';
-    src: local('NanumSquareRoundR'),
-    url(${NanumSquareRoundR}) format('ttf');
-    font-weight: 300;
-    font-style: normal;
-  }
-
 
   * {
     margin: 0;
     box-sizing: border-box;
     background-color: transparent;
     padding: 0;
-    font-family: 'YGjalnan';
+    font-family: 'yg-jalnan';
   }
 
   html, body, {
@@ -34,13 +22,11 @@ export const GlobalStyled = createGlobalStyle`
   }
 
   h1 {
-    font-family: 'YGjalnan';
     letter-spacing: 2px;
     font-size: 1.5rem;
   }
 
   p {
-    font-family: 'YGjalnan';
     letter-spacing: 1px;
     line-height: 1.7rem;
   }
@@ -49,6 +35,5 @@ export const GlobalStyled = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #FFFEFC;
-    font-family: 'NanumSquareRoundR';
   }
 `
