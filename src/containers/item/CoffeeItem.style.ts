@@ -4,9 +4,10 @@ export const CoffeeItemContainer = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
+  height: 100vh;
   left: 0px;
-  top: 120vh;
+  top: 100vh;
   z-index: 999;
   overflow: hidden;
   background: #ffdfb9;
@@ -27,111 +28,90 @@ export const CoffeeItemContainer = styled.div`
     animation: gradient 5s ease infinite;
   }
 
-  .top_container {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid green;
-    overflow: hidden;
-  }
-
-  .section_top {
-    flex: 1 1 0;
-
+  .section_result {
     display: flex;
     flex-direction: row;
-    border: 2px solid magenta;
+    height: 100%;
   }
 
-  .section_top_map {
+  .section_left {
     flex: 1 1 0;
+    height: 100vh;
+    border: 1px solid yellow;
 
+    .box_map {
+      height: 40%;
+      margin: 0;
+      border: 1px solid lightblue;
+    }
+
+    .box_market {
+      height: 60%;
+      border: 1px solid lightblue;
+
+      .marketTable {
+        width: 90%;
+        border: 1px solid white;
+
+        .singleList {
+          display: flex;
+
+          & > img {
+            width: 8%;
+            border-radius: 50%;
+          }
+
+          & > .itemInfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+
+
+        }
+      }
+    }
+  }
+
+  .section_right {
+    flex: 1 1 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid orange;
+    height: 100vh;
 
-    .map {
-      padding: 10px;
-      width: 400px;
-      border: 2px solid skyblue;
-    }
-
-    .title {
-      border: 2px solid skyblue;
-    }
-  }
-
-  .section_top_chart {
-    flex: 1 1 0;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid orange;
-
-    & > div {
-      height: 80%;
-      border: 2px solid skyblue;
-    }
-
-    & > span {
-      border: 2px solid skyblue;
-    }
-  }
-
-  .section_bottom {
-    flex: 1 1 0;
-
-    display: flex;
-    flex-direction: row;
-    border: 2px solid magenta;
-  }
-
-  .section_bottom_left {
-    flex: 1 1 0;
-    border: 2px solid orange;
-
-    .title {
+    .box_desc {
+      flex: 1 1 0;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border: 2px solid skyblue;
-    }
+      margin: 0;
 
-    .description {
-      border: 2px solid skyblue;
-    }
-  }
-
-  .section_bottom_right {
-    flex: 1 1 0;
-    border: 2px solid orange;
-
-    .market {
-      display: flex;
-      flex-direction: row;
-      border: 2px solid skyblue;
-      height: 100%;
-
-      & > img {
+      .name {
         flex: 1 1 0;
-        border: 2px solid navy;
+        font-size: 3.5rem;
+        margin-top: auto;
+        padding-top: 6vh;
       }
 
-      & > div {
+      .text {
+        flex: 1.5 1 0;
+        padding-right: 10vw;
+        font-size: 1.2rem;
+        font-family: 'NanumSquareRoundR';
+      }
+
+      .tag {
         flex: 1 1 0;
+      }
+    }
 
-        display: flex;
-        flex-direction: column;
-        border: 2px solid navy;
-
-        & > span {
-          flex: 1 1 0;
-          border: 2px solid skyblue;
-        }
+    .box_radar {
+      flex: 1 1 0;
+      width: 75%;
+      height: 60%;
+      
+      .radarChart {
+        margin: 0;
+        padding-left: 10vw;
       }
     }
   }
@@ -142,6 +122,50 @@ export const CoffeeItemContainer = styled.div`
     }
     100% {
       transform: translateY(0vh);
+    }
+  }
+
+  @media ${({ theme }) => theme.device.laptop} {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .section_result {
+      display: flex;
+      flex-direction: column;
+
+      .section_right {
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: column;
+    
+        .box_desc {
+          
+    
+          .name {
+            font-size: 3.5rem;
+            
+          }
+    
+          .text {
+            padding: 0;
+            font-size: 1.3rem;
+          }
+    
+          .tag {
+          }
+        }
+    
+        .box_radar {
+          flex: 1 1 0;
+          margin: 0;
+
+          .radarChart {
+            padding: 0;
+          }
+        }
     }
   }
 `
