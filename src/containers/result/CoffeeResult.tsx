@@ -70,7 +70,7 @@ export default function CoffeeResult({ data }: Props) {
     <CoffeeResultContainer className='section_coffee'>
       <section className='section_result'>
         <div className='box_map'>
-          <CoffeeMap type={selectedItem.iso || 'All'} />
+          <CoffeeMap type={selectedItem.iso || 'All'} coffee={data} />
         </div>
         <div className='parent_desc'>
           <div className='box_desc'>
