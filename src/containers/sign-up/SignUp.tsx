@@ -52,7 +52,7 @@ export default function SignUp() {
     } else {
       setAlertMessage('')
       const { name: userName, email, password } = User
-      const res = await axios.post('http://localhost:4000/user/signin', {
+      const res = await axios.post('http://localhost:4000/user/signup', {
         email,
         userName,
         password,
