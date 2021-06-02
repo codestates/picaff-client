@@ -37,4 +37,5 @@ export const RadarOptions = {
       size: 12,
     },
   },
+  maintainAspectRatio: false,
 }

@@ -1,6 +1,6 @@
 import Button from 'components/button/Button'
+import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 import { TestResult } from 'interface'
-// import { testResultTempArr } from 'interface/sampledata'
 import { getitemResult } from 'module/TestResult'
 import React, { useEffect, useState } from 'react'
 import { EndedTestContainer } from './EndedTest.style'
@@ -16,7 +16,7 @@ export default function EndedTest({ handleSubmit, score }: TestFinish) {
     e.preventDefault()
     data && handleSubmit(e, data)
   }
-
+  const auth = useAuth()
   useEffect(() => {
     async function ResData() {
       // 임시 data용
@@ -24,7 +24,7 @@ export default function EndedTest({ handleSubmit, score }: TestFinish) {
       //   // setdata(testResultTempArr[0])
       // }, 3000)
       console.log('score is here@@@@@@@@@@@@@', score)
-      setdata(await getitemResult(score))
+      setdata(await getitemResult(score, auth.accessToken))
     }
 
     ResData()

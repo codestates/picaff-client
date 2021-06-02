@@ -10,10 +10,8 @@ type Props = {
 }
 
 export default function ProductRadarChart({ radarInfo }: Props) {
-  const chartRef = useRef().current
-
+  const chartRef = useRef<HTMLCanvasElement>()
   const [ProductRadarData, setProductRadarData] = useState<ChartData>(RadarData)
-
   const { accessibility, convenience, effectiveness } = radarInfo.productCharacter
 
   useEffect(() => {

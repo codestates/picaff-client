@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { User, UserInfo, KakaoLoginResponse } from 'interface'
+import { User, UserInfo, KakaoLoginResponse, TestResult } from 'interface'
 import { LoginContainer } from './Login.style'
 import InputForm from 'components/input-form/InputForm'
 import Button from 'components/button/Button'
 import Oauth from 'components/social-Oauth/Oauth'
 import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
-import { requestOauth } from 'module/Oauth'
+import { requestOauth, saveBeforeTest } from 'module/Oauth'
 import { RedirectProps, useHistory, useLocation } from 'react-router-dom'
 import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 
+interface Props extends RedirectProps {
+  testResult: TestResult
+}
+
 export default function SignIn() {
   const history = useHistory()
-  const location = useLocation<RedirectProps>()
+  const location = useLocation<Props>()
   const auth = useAuth()
   const [user, setUser] = useState<User>({ name: '', email: '', password: '' })
   const [userInfo, setUserInfo] = useState<UserInfo>({
@@ -34,9 +38,13 @@ export default function SignIn() {
   useEffect(() => {
     if (auth.signin && userInfo.auth) {
       const accessToken = userInfo.auth ? userInfo.auth.accessToken : ''
-      if (accessToken) {
-        const { from } = location.state || { from: { pathname: '/' } }
-        auth.signin(accessToken, () => history.replace({ pathname: from }))
+      const refreshToken = userInfo.auth ? userInfo.auth.refreshToken : ''
+      if (accessToken && refreshToken) {
+        const { from } = location.state || { from: '/' }
+        if (location.state && 'testResult' in location.state) {
+          saveBeforeTest(location.state.testResult, accessToken)
+        }
+        auth.signin(accessToken, refreshToken, () => history.replace({ pathname: from }))
       }
     }
   }, [userInfo])
@@ -47,7 +55,7 @@ export default function SignIn() {
     if (!email || !password) {
       setAlertMessage('아이디와 비밀번호를 모두 입력해주세요')
     } else {
-      await requestOauth('https://localhost:4000/user/signin', { email, password }, (userInfo) => {
+      await requestOauth('http://localhost:4000/user/signin', { email, password }, (userInfo) => {
         setUserInfo(userInfo)
       })
     }

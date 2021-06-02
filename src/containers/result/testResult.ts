@@ -9,7 +9,7 @@ export const data: TestResult = {
     itemPrice: 5000,
     itemDetail: 'special machine used to make coffee',
     type: 'product',
-    imageUrl: 'https://www.product.com',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,
@@ -26,7 +26,7 @@ export const data: TestResult = {
     itemPrice: 2000,
     itemDetail: 'starbucky',
     type: 'coffee',
-    imageUrl: 'https://www.coffee.com',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'BR',
     coffeeCharacter: {
       id: 1,
