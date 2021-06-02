@@ -73,23 +73,32 @@ export default function CoffeeResult({ TestResult }: Props) {
   return (
     <CoffeeResultContainer className='section_coffee'>
       <section className='section_result'>
-        <div className='description'>
-          <div className='box_map'>
-            <CoffeeMap type={selectedItem.iso || 'All'} coffee={selectedItem} />
-          </div>
-          <div className='box_tag'>
-            {selectedItem.tag.map((singleTag: Tags) => (
-              <Tag
-                style='ClearTag'
-                key={singleTag.id}
-                value={singleTag.tagName}
-                onClick={() => handleTagClick(singleTag)}
-              />
-            ))}
-          </div>
-          <div className='box_text'>{selectedItem.itemDetail}</div>
+        <div className='box_map'>
+          <CoffeeMap type={selectedItem.iso || 'All'} coffee={selectedItem} />
         </div>
-        {radarInfo && <CoffeeRadarChart radarInfo={radarInfo} />}
+        <div className='parent_desc'>
+          <div className='box_desc'>
+            <div className='name'>{selectedItem.itemName}</div>
+            <div className='text'>
+              {selectedItem.itemDetail}는 부드럽고 향이 풍부하며 묵직한 바디감을 즐길 수 있는
+              원두입니다. 브라질은 세계 최대 규모의 커피 생산국이며, 대규모 농장에서 경작하는 경우가
+              많습니다. 약한 산미와 비교적 묵직한 바디감으로 블랜딩커피의 베이스로도 자주 사용되며,
+              신맛을 싫어하시는 분들이 많이 찾으시는 커피입니다. 브라질 고유의 Pulped-natural
+              가공방식과 동글동글하고 납작한 콩의 외관이 브라질 커피의 또다른 특징입니다.
+            </div>
+            <div className='tag'>
+              {selectedItem.tag.map((singleTag: Tags) => (
+                <Tag
+                  style='ClearTag'
+                  key={singleTag.id}
+                  value={singleTag.tagName}
+                  onClick={() => handleTagClick(singleTag)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className='box_radar'>{radarInfo && <CoffeeRadarChart radarInfo={radarInfo} />}</div>
       </section>
       <section className='section_map'>
         <CoffeeMap

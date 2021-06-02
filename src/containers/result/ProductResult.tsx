@@ -68,14 +68,16 @@ export default function ProductResult({ TestResult }: Props) {
   }
 
   return (
-    <>
-      <ProductResultContainer className='section_product'>
-        <section className='section_result'>
-          <div className='description'>
-            <div className='box_image'>
-              <img src={selectedItem.imageUrl}></img>
-            </div>
-            <div className='box_tag'>
+    <ProductResultContainer className='section_product'>
+      <section className='section_result'>
+        <div className='box_image'>
+          <img src={selectedItem.imageUrl}></img>
+        </div>
+        <div className='parent_desc'>
+          <div className='box_desc'>
+            <div className='name'>{selectedItem.itemName}</div>
+            <div className='text'>{selectedItem.itemDetail}</div>
+            <div className='tag'>
               {selectedItem.tag.map((singleTag: Tags) => (
                 <Tag
                   style='ClearTag'
@@ -85,12 +87,14 @@ export default function ProductResult({ TestResult }: Props) {
                 />
               ))}
             </div>
-            <div className='box_text'>{selectedItem.itemDetail}</div>
           </div>
-          {radarInfo && <ProductRadarChart radarInfo={radarInfo} />}
-        </section>
-        <section className='section_image'>
-          {allItems.map((singleItem: itemResult) => {
+        </div>
+        <div className='box_radar'>{radarInfo && <ProductRadarChart radarInfo={radarInfo} />}</div>
+      </section>
+      <section className='section_image'>
+        <div className='title'>더욱 다양한 용품들을 만나보세요.</div>
+        <div className='image_box'>
+          {allItems.map((singleItem: itemResult, idx) => {
             let active = false
             for (let i = 0; i < singleItem.tag.length; i++) {
               if (selectedTag === singleItem.tag[i].tagName) {
@@ -98,31 +102,36 @@ export default function ProductResult({ TestResult }: Props) {
               }
             }
             return (
-              <div className={active ? 'active' : ''}>
-                <Image
-                  style='ButtonImage'
-                  type='button'
-                  key={singleItem.id}
-                  src={singleItem.imageUrl}
-                  onClick={() => {
-                    setSelectedItem(singleItem)
-                    setIsItemClicked(!isItemClicked)
-                  }}
-                />
+              <div className='itemContainer'>
+                <div className={active ? `image ${idx} active` : `image ${idx}`}>
+                  <Image
+                    style='ButtonImage'
+                    type='button'
+                    key={singleItem.id}
+                    src={singleItem.imageUrl}
+                    onClick={() => {
+                      setSelectedItem(singleItem)
+                      setIsItemClicked(!isItemClicked)
+                    }}
+                  />
+                </div>
+                <div className='singleName'>
+                  <span>{singleItem.itemName}</span>
+                </div>
               </div>
             )
           })}
-          {isItemClicked ? (
-            <ProductItem
-              selectedItem={selectedItem}
-              TestResult={TestResult}
-              handlechecked={() => setIsItemClicked(!selectedItem)}
-            />
-          ) : (
-            ''
-          )}
-        </section>
-      </ProductResultContainer>
-    </>
+        </div>
+      </section>
+      {isItemClicked ? (
+        <ProductItem
+          selectedItem={selectedItem}
+          TestResult={TestResult}
+          handlechecked={() => setIsItemClicked(!selectedItem)}
+        />
+      ) : (
+        ''
+      )}
+    </ProductResultContainer>
   )
 }
