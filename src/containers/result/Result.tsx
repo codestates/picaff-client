@@ -11,7 +11,6 @@ import { useLocation } from 'react-router'
 export default function Result() {
   const location = useLocation<TestResult>()
   const TestResult = location.state
-  const { coffeeResult, productResult }: TestResult = TestResult
   const [isTabActive, setIsTabActive] = useState<boolean>(true)
 
   return (
@@ -32,9 +31,9 @@ export default function Result() {
             </button>
           </div>
           {isTabActive ? (
-            <CoffeeResult data={coffeeResult} />
+            <CoffeeResult TestResult={TestResult} />
           ) : (
-            <ProductResult data={productResult} />
+            <ProductResult TestResult={TestResult} />
           )}
         </div>
       </div>

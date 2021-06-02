@@ -11,19 +11,23 @@ export const ProductResultContainer = styled.div`
     display: flex;
     flex-direction: row;
     height: 81vh;
+    width: 100%;
 
     .box_image {
-      flex: 1 1 0;
+      flex: 1 1 1;
       height: 60%;
-      margin-left: 90px;
+      margin-left: 5%;
+      min-width: 418px;
 
       & > img {
         height: 90%;
+        width: 100%;
+        object-fit: contain;
       }
     }
 
     .parent_desc {
-      flex: 1.4 1 0;
+      flex: 1.4 1 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -62,15 +66,16 @@ export const ProductResultContainer = styled.div`
     }
 
     .box_radar {
-      flex: 1.4 1 0;
-      width: 100%;
+      flex: 1.4 1 2;
       margin-left: -70px;
       margin-right: 30px;
+      height: 70vh;
+      width: 100%;
+      margin-top: 200px;
 
       .radarChart {
-        margin-top: 200px;
         height: 100%;
-        width: 100%;
+        width: 40vw;
       }
     }
   }
@@ -82,11 +87,12 @@ export const ProductResultContainer = styled.div`
     width: 100%;
     height: 100vh;
     justify-content: center;
+    align-items: center;
 
     .title {
       flex: 0.5 1 0;
       display: flex;
-      justify-content: start;
+      justify-content: center;
       align-items: center;
       margin-top: 7vh;
       margin-left: 18vw;
@@ -94,57 +100,52 @@ export const ProductResultContainer = styled.div`
     }
 
     .image_box {
-      flex: 2 1 0;
-      display: flex;
-      flex-direction: row;
+      margin-top: 5vh;
+      column-count: 2;
+      column-gap: 2rem;
+      align-items: center;
+
+      .itemContainer {
+        height: 40vh;
+        display: flex;
+        flex-direction: row;
+        max-width: 600px;
+        min-width: 280px;
+      }
 
       .image {
+        position: relative;
         display: flex;
         align-items: center;
-        margin-left: 10vh;
-
-        img {
-          -webkit-filter: grayscale(100%);
-          -webkit-transition: 0.3s ease-in-out;
-          -moz-filter: grayscale(100%);
-          -moz-transition: 0.3s ease-in-out;
-          -o-filter: grayscale(100%);
-          -o-transition: 0.3s ease-in-out;
-          border-radius: 5px;
-          width: 50%;
-        }
-
-        img:hover {
-          -webkit-filter: grayscale(0%);
-          -webkit-transition: 0.3s ease-in-out;
-          -moz-filter: grayscale(0%);
-          -moz-transition: 0.3s ease-in-out;
-          -o-filter: grayscale(0%);
-          -o-transition: 0.3s ease-in-out;
-        }
-
-        .singleName {
-          display: flex;
-          align-items: center;
-          font-size: 1.5rem;
-          margin-left: 3vh;
-          margin-top: 15vh;
-        }
+        margin-left: 10%;
+        margin-bottom: 2rem;
+        width: 100%;
+        min-width: 280px;
+      }
+      & .singleName {
+        position: relative;
+        display: block;
+        align-items: center;
+        font-size: 1.5rem;
+        margin-left: 3vw;
+        margin-top: 15vh;
       }
 
-      #first,
-      #third {
-        padding-left: 25vh;
+      img {
+        filter: grayscale(100%);
+        transition: 0.3s ease-in-out;
+        border-radius: 5px;
+        width: 100%;
       }
 
-      #second,
-      #fourth {
-        padding-right: 15vh;
+      img:hover {
+        filter: grayscale(0%);
+        transition: 0.3s ease-in-out;
       }
-    }
-
-    .image_box:nth-child(3) {
-      padding-bottom: 8vh;
+      & .active > img {
+        filter: grayscale(0%);
+        transition: 0.3s ease-in-out;
+      }
     }
   }
 
@@ -199,13 +200,14 @@ export const ProductResultContainer = styled.div`
 
       .box_radar {
         width: 100%;
-        height: 30%;
+        height: 50vh;
         display: flex;
         justify-content: center;
+        position: relative;
+        margin: 0;
 
         .radarChart {
           width: 100%;
-          margin: 0;
         }
       }
     }
@@ -218,22 +220,35 @@ export const ProductResultContainer = styled.div`
       position: relative;
 
       .title {
-        height: 30%;
+        height: 10%;
         margin: 0;
       }
 
       .image_box {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
+        column-count: 1;
+        .itemContainer {
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          margin-bottom: 5%;
 
-        #first,
-        #second,
-        #third,
-        #fourth {
-          justify-content: center;
-          margin: 0;
-          padding: 0;
+          .image {
+            width: 80%;
+            height: 80%;
+            & img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          & .singleName {
+            position: relative;
+            display: block;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-left: 3vw;
+            margin-top: 0rem;
+            margin-bottom: 0.5rem;
+          }
         }
       }
 

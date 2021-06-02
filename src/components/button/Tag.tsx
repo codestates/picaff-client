@@ -3,7 +3,7 @@ import theme from 'styles/theme'
 type Type = {
   style: 'GreenTag' | 'ClearTag'
   value: string
-  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  onClick?: () => void
 }
 
 const { GreenTag, ClearTag } = theme

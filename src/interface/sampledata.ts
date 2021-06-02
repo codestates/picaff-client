@@ -9,7 +9,7 @@ export const testResultTempArr: TestResult[] = [
       itemPrice: 5000,
       itemDetail: 'special machine used to make coffee',
       type: 'product',
-      imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: '',
       productCharacter: {
         id: 1,
@@ -26,7 +26,7 @@ export const testResultTempArr: TestResult[] = [
       itemPrice: 2000,
       itemDetail: 'starbucky',
       type: 'coffee',
-      imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: 'KE',
       coffeeCharacter: {
         id: 1,
@@ -49,7 +49,7 @@ export const testResultTempArr: TestResult[] = [
       itemPrice: 5000,
       itemDetail: 'special machine used to make coffee',
       type: 'product',
-      imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: '',
       productCharacter: {
         id: 1,
@@ -66,7 +66,7 @@ export const testResultTempArr: TestResult[] = [
       itemPrice: 2000,
       itemDetail: 'starbucky',
       type: 'coffee',
-      imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: 'KE',
       coffeeCharacter: {
         id: 1,
@@ -90,7 +90,7 @@ export const coffeetempArr: itemResult[] = [
     itemPrice: 2000,
     itemDetail: 'starbucky',
     type: 'coffee',
-    imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'KE',
     coffeeCharacter: {
       id: 1,
@@ -110,7 +110,7 @@ export const coffeetempArr: itemResult[] = [
     itemPrice: 2000,
     itemDetail: 'starbucky',
     type: 'coffee',
-    imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'ET',
     coffeeCharacter: {
       id: 1,
@@ -130,7 +130,7 @@ export const coffeetempArr: itemResult[] = [
     itemPrice: 2000,
     itemDetail: 'starbucky',
     type: 'coffee',
-    imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'BR',
     coffeeCharacter: {
       id: 1,
@@ -150,8 +150,8 @@ export const coffeetempArr: itemResult[] = [
     itemPrice: 2000,
     itemDetail: 'starbucky',
     type: 'coffee',
-    imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
-    iso: 'BR',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    iso: 'KE',
     coffeeCharacter: {
       id: 1,
       sweetness: 3,
@@ -170,8 +170,28 @@ export const coffeetempArr: itemResult[] = [
     itemPrice: 2000,
     itemDetail: 'starbucky',
     type: 'coffee',
-    imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
-    iso: 'BR',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    iso: 'KE',
+    coffeeCharacter: {
+      id: 1,
+      sweetness: 3,
+      sourness: 3,
+      balance: 4,
+      body: 5,
+      aroma: 4,
+      afterTaste: 5,
+    },
+    isLiked: true,
+    tag: [{ id: 3, tagName: 'wellmade' }],
+  },
+  {
+    id: 1,
+    itemName: 'Starbucks Coffee',
+    itemPrice: 2000,
+    itemDetail: 'starbucky',
+    type: 'coffee',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    iso: 'KE',
     coffeeCharacter: {
       id: 1,
       sweetness: 3,
@@ -193,7 +213,7 @@ export const productTempArr: itemResult[] = [
     itemPrice: 5000,
     itemDetail: 'special machine used to make coffee',
     type: 'product',
-    imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,
@@ -210,7 +230,7 @@ export const productTempArr: itemResult[] = [
     itemPrice: 5000,
     itemDetail: 'special machine used to make coffee',
     type: 'product',
-    imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,
@@ -227,7 +247,7 @@ export const productTempArr: itemResult[] = [
     itemPrice: 5000,
     itemDetail: 'special machine used to make coffee',
     type: 'product',
-    imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,
@@ -244,7 +264,7 @@ export const productTempArr: itemResult[] = [
     itemPrice: 5000,
     itemDetail: 'special machine used to make coffee',
     type: 'product',
-    imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CoffeeResultType, itemResult, Tags, CrawlingType } from 'interface'
+import { CoffeeResultType, itemResult, TestResult, Tags, CrawlingType } from 'interface'
 import { CoffeeItemContainer } from './CoffeeItem.style'
 import ShareAndLike from 'components/share-and-like/ShareAndLike'
 import CoffeeRadarChart from 'components/radar-chart/CoffeeRadarChart'
@@ -10,14 +10,15 @@ import { crawlingDataSample } from 'interface/sampledata'
 // import axios from 'axios'
 
 type Props = {
-  selectedItem: itemResult
+  TestResult: TestResult
+  CoffeeData: itemResult
   handlechecked: () => void
 }
 
-export default function CoffeeItem({ selectedItem, handlechecked }: Props) {
-  const [renderItem] = useState<itemResult>(selectedItem)
+export default function CoffeeItem({ CoffeeData, TestResult, handlechecked }: Props) {
+  const [renderItem] = useState<itemResult>(CoffeeData)
   const [crawledData] = useState<CrawlingType[]>(crawlingDataSample)
-  const { itemName, itemDetail, tag, coffeeCharacter } = selectedItem
+  const { itemName, itemDetail, tag, coffeeCharacter } = CoffeeData
 
   const radarInfo: CoffeeResultType | undefined = coffeeCharacter && {
     coffeeName: itemName,
@@ -59,7 +60,7 @@ export default function CoffeeItem({ selectedItem, handlechecked }: Props) {
 
         <div className='section_left'>
           <div className='box_map'>
-            <CoffeeMap type={selectedItem.iso || 'All'} coffee={selectedItem} />
+            <CoffeeMap type={CoffeeData.iso || 'All'} coffee={CoffeeData} />
           </div>
           <div className='box_market'>
             <div className='marketTable'>
@@ -89,7 +90,7 @@ export default function CoffeeItem({ selectedItem, handlechecked }: Props) {
           <div className='box_radar'>{radarInfo && <CoffeeRadarChart radarInfo={radarInfo} />}</div>
         </div>
       </div>
-      <ShareAndLike renderItem={renderItem} />
+      <ShareAndLike renderItem={renderItem} testResult={TestResult} />
     </CoffeeItemContainer>
   )
 }
