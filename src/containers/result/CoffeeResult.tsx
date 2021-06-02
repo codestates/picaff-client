@@ -74,11 +74,7 @@ export default function CoffeeResult({ TestResult }: Props) {
     <CoffeeResultContainer className='section_coffee'>
       <section className='section_result'>
         <div className='box_map'>
-<<<<<<< HEAD
-          <CoffeeMap type={selectedItem.iso || 'All'} coffee={data} />
-=======
           <CoffeeMap type={selectedItem.iso || 'All'} coffee={selectedItem} />
->>>>>>> e13b63401fd50daa94c3c8e4d1214571c4b5d4a4
         </div>
         <div className='parent_desc'>
           <div className='box_desc'>

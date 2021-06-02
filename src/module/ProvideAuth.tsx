@@ -28,7 +28,7 @@ export function useProvideAuth() {
     const refreshToken = sessionStorage.getItem('refreshToken')
     if (refreshToken) {
       const res = await axios.post(
-        'http://localhost:4000/user/token',
+        'https://localhost:4000/user/token',
         { refreshToken },
         { headers: { Credential: true } }
       )

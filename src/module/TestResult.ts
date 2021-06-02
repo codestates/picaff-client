@@ -20,7 +20,7 @@ export const getitemResult = async (
 ): Promise<TestResult> => {
   const Token = accessToken ? `Bearer ${accessToken}` : null
   const res = await axios.post<TestResult>(
-    'http://localhost:4000/test',
+    'https://localhost:4000/test',
     { score },
     {
       headers: { 'Content-Type': 'application/json', 'Authorization': Token },
