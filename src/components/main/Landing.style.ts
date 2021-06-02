@@ -66,6 +66,7 @@ export const LandingComponent = styled.section`
     position: relative;
     margin: auto;
     width: 65vw;
+    height: 40vh;
     @media ${({ theme }) => theme.device.tablet} {
       width: 80vw;
     }

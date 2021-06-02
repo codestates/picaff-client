@@ -24,7 +24,7 @@ export function useProvideAuth() {
     cb()
   }
 
-  const refreshAccessToken = async () => {
+  const refreshAccessToken = async (): Promise<string | null> => {
     const refreshToken = sessionStorage.getItem('refreshToken')
     if (refreshToken) {
       const res = await axios.post(
@@ -36,6 +36,7 @@ export function useProvideAuth() {
       sessionStorage.setItem('accessToken', JSON.stringify(res.data.cssessToken))
       setaccessToken(res.data.cssessToken)
     }
+    return accessToken
   }
 
   const signout = (cb: () => void) => {
