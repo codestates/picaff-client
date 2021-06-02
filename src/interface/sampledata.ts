@@ -1,4 +1,4 @@
-import { itemResult, TestResult } from './types'
+import { itemResult, TestResult, CrawlingType } from './types'
 
 export const testResultTempArr: TestResult[] = [
   {
@@ -144,6 +144,46 @@ export const coffeetempArr: itemResult[] = [
     isLiked: true,
     tag: [{ id: 3, tagName: 'wellmade' }],
   },
+  {
+    id: 1,
+    itemName: 'Starbucks Coffee',
+    itemPrice: 2000,
+    itemDetail: 'starbucky',
+    type: 'coffee',
+    imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+    iso: 'BR',
+    coffeeCharacter: {
+      id: 1,
+      sweetness: 3,
+      sourness: 3,
+      balance: 4,
+      body: 5,
+      aroma: 4,
+      afterTaste: 5,
+    },
+    isLiked: true,
+    tag: [{ id: 3, tagName: 'wellmade' }],
+  },
+  {
+    id: 1,
+    itemName: 'Starbucks Coffee',
+    itemPrice: 2000,
+    itemDetail: 'starbucky',
+    type: 'coffee',
+    imageUrl: 'https://picaff-image.s3.ap-northeast-2.amazonaws.com/capsule-machine.jpg',
+    iso: 'BR',
+    coffeeCharacter: {
+      id: 1,
+      sweetness: 3,
+      sourness: 3,
+      balance: 4,
+      body: 5,
+      aroma: 4,
+      afterTaste: 5,
+    },
+    isLiked: true,
+    tag: [{ id: 3, tagName: 'wellmade' }],
+  },
 ]
 
 export const productTempArr: itemResult[] = [
@@ -214,5 +254,48 @@ export const productTempArr: itemResult[] = [
     },
     isLiked: true,
     tag: [{ id: 3, tagName: 'wellmade' }],
+  },
+]
+
+export const crawlingDataSample: CrawlingType[] = [
+  {
+    imageURL: 'https://shopping-phinf.pstatic.net/main_8264430/82644304796.jpg?type=f200',
+    title: '달구네커피 브라질 산토스 파인컵 500g 당일로스팅한 고소한 맛의 데일리용 원두커피',
+    price: '7,800',
+    seller: '달구네커피',
+    linkURL:
+      'http://prod.danawa.com/bridge/loadingBridgePowerShopping.php?sLink=aHR0cHM6Ly9hZGNyLm5hdmVyLmNvbS9hZGNyP3g9RjFXUENReGI4NXd3YXpESllFZTQvZi8vL3c9PWs0by82Wk5xMUx6MnZpUFp4cUtGc0d1ditsV0F4MWJmUlRETkw1ZUhvZHViSXJxb1FZTk51YkxDZ080d0hSbGk1SXZVMnVvMlRFYWp6MTlQaHpycUtwS0lhQlV0dUJGRjFneU8xRGwwRzJZdFBLWklxelVvUlJJQTFvOVFzSVZtbEFQeFFlR1BUWHBSdFpmaGxUYUVwaDRIV05JYUJMT3kyblhZWWJuR083MmJXTlcrR2E3ZGNmeGd3VjlHU20wS0trTjZYZzhtMTMrR2ZtNy9hQ3VKMGwvN0JPeEFhQ0d2S2lKd2NKWXppMXVFNUJVVEhld25MOHcra2dHKy83NzBZMXNJMmh0SnR2UHFhVzdabXJKZzMwS3VRWlVFbjJCYXV6d3FhbUtXZElWdk9keXcvSG1Mb3lHRVZMdSs3bDQwRUVHbjVCMWpwT0VsWVkrcFcxVm1TN2hydWJZNUFJdkRHY05NNmx0cGFUYTBhU3VFMW1yaGxydU5TSlorbTFKczBVOTNHV1dSNU05QUliMnh0aFE3RFgyK1BzcDNZM3lKdnozOVRhS3dVaFJPdTUyUTE4VlAzVEtLVUVnaGJZYXlOaTI1cjFHQ0NLWnBlaEd6b3hrb1B5cXFHTnJCZmY4UEhHN2VUS0hEbEZ4WFJUK3Zzc0svSitWYThxMkVsdHBmcXFuYlQ2NU41eVV0SDhlRTMvQlpGbnkyVDRXRWgxZTNnSCtsbS9TSWNiOEN3eU1RTllEZlNmTGNqNm1BWTBBSnFRQk9Za3NTekdHMmRJdFRzZmYwWUpjT0M5TmNxb3lVUjB5TnNmS2gzUUtEUkN2Z0FGN2F4bzhtVjJqdFNVb09kYmtGVkhUcE9WUmZVZ3BmN2g1YSt1ZE1xdDkwQm50NC9FUDBGT0RvdlFpR1VMWVJ1RDRKblVaNjJVRlJnWVAvQTRVYUZOVklhRk4yS2tNanJBVmxjeGc9PQ==&minPrice=7800&shipFee=2500&r=16225254582918',
+  },
+  {
+    imageURL: 'https://shopping-phinf.pstatic.net/main_8260720/82607204104.jpg?type=f200',
+    title: '달구네커피 브라질 산토스 파인컵 1Kg 당일로스팅한 고소한 맛의 데일리용 원두커피',
+    price: '10,600',
+    seller: '달구네커피',
+    linkURL:
+      'http://prod.danawa.com/bridge/loadingBridgePowerShopping.php?sLink=aHR0cHM6Ly9hZGNyLm5hdmVyLmNvbS9hZGNyP3g9RkFMSmdwTmNYNmJsdGdPVkprL20rZi8vL3c9PWs0by82Wk5xMUx6MnZpUFp4cUtGc0dzRmtrV0wzQm5PV3BzY3Nsb2JIR2dVTXNlVkltUTN2eUVST29XSHc0VHdMMTVBV3hQb3ptcnl4Z25vM1V4WWVrdXZWQTgydGVjdkFiNy9ERnpvWUhNNndxVjNyeE5Sa1ZabTZYQmNIbTdYMFl3WDZNbWRiOXZieUVUcmJVeWdGdXZ1RWNFL0p1SnIxaWNLejdYdXNDOTFqSHVvRnV2NklOZFhwbGJCUDRscXBzb2FabjdqRC9qbHAvYjJOK0pLc2MyU1JRUWpHb0FCbHZnN011ZGdOV3lIaUR2U3pib0lmUG9QOU1kRmgyVXg4RTVrN003Y3NhM29XdkpGSHcyTERDVGMvWFQzU2Vtc2tLUGROdjNVdTlrMGZZR2hpRTNXR2lWNlBRR2E4RnRvRW1maXdVSTdTUVRnUnlMRDAwR2FPSThWN2EvOEh5OE5qcFhuQmJoUS9yS3o1bjVnR0w2eDBGbUphaENjZjMzbWRodE9uQWRDWkd4VHRqeVpRcHR2RnFYKzk2dk9tbnlhSjB5RFNXMzE3ZHJaV1orU1l2Q2xoVWhnbm5Ra0FadEtBQzZhcnIrSndHTjRkaW1QOUlwOWhyR2IrVTdka0F5Q2tITWU5TC8yVnNJWlhtTStPQkFDZTFWVGNqOTJaVysrOGFDV0tmNWlVVk85MkhUWjZGTFZOdEttSU0zYVlORUtsdkl5QVFlQUtrdWkzcjhUaFFITHZwVWlKbmMwOE0wVVV1U1dQWVUzVEUxRWxxUWFndDZjNHNibHpGRGRpOTNsejRsTnp2ajVuMkNPMDdiTzQrMDRMakFLSFhGdnNHSkdIMVFpTEhBZHU1ejlPZjhGSHBoZTRVOWZTOTRocTE0SXRzVmxsODhhcVBmc0lYNllwcWZLUGprYjVCTVpwbUpUeg==&minPrice=10600&shipFee=2500&r=16225254582918',
+  },
+  {
+    imageURL: 'https://shopping-phinf.pstatic.net/main_1309276/13092761731.jpg?type=f200',
+    title: '제로커피 1kg 브라질 산토스',
+    price: '11,900',
+    seller: '제로커피',
+    linkURL:
+      'http://prod.danawa.com/bridge/loadingBridgePowerShopping.php?sLink=aHR0cHM6Ly9hZGNyLm5hdmVyLmNvbS9hZGNyP3g9enNhYTBOYmdDMFlHY242c3prVGt3UC8vL3c9PWtpSUNONDg1MjkyYXUyanh6bmk1UHpaem5ZalNqVEE1dXNMeE9UdjgxeitHMjdNZlZydXJIWkI4NjIvUnM3WG1MTWUxeW1qN1JmdnFpa2tLdVU1bXd5MEhoNjFNVGNyU2NOcm1KTGJCOHhjTzN2YW1iWjEzTy9neUZjNDRBMnhKeDJTZXlPWEhrS21BOFgyVVBla0UrNGllSlQwRXNTYUxoWFprSFZYT3l2Mit3ckVVRDZUTC9tRFZLN3lSdFJvSjRHZjdESGZnTDR5OEpJMWJ0V0p4QmEwQ2ZsL1g1czBxd1JUMERzdHozT0wyM0UvUm92OU9ET3FYa3o3RHVVYzFyeWZPTldzQ1BFWmp1TW51M0UrUjBIL2k4TnRCNlZhSUZWeS9neUJQQ1NBTWtkelF6RGR5Ui9OdERlYkNrL0NlR0tPSWsyTjF5cHVZYm5FdGoxN1NSWVp4Y0JWUWFlY044MmZTWGRybzUvRjU0V1BmSEl1MGFKcWtlY1lYOEpvUEQzVVpIS0dlcFhLL3NaVzV4WWdiS2JPMGhNWlhCOGpxTFNScGEzVE9pWnBvbzRBQzdSS2lpNm1FcmdRa051TzFRUmNLL3ZmWnZ2ZkR0RHY0OWF5b2VEdnF4SnJ0eVhTM0hVRVpSRkVYNUlCVXBDYzlwNklwUkNFVEtjUTFjYTBET2ZlTjVGRWNMdDdUVUtSdndGRFNEM1lxNHVxbHRkL0xpQ2tyZVZuemlzWlBhREhxUXp6NlpEZWhQekNJdTV5blVnMkx6eE91RTFwM3pGZUJuek80bzlZbnR0aDY2Ympsejk0UEd2M28zN1RzYjlBVFVhcjkwR3VOb0pOZ01kOThBdkFMTkhyWmdUd2V1L2c2c3Q1QXhlbHhJVk9Od3pSNlkyQkRJem1QTHYxMzMzNWVJd1A4RTBFUkYrekt4cFdZVXR5VERQUkt2OTUrTnBJKzdtSE40K2x2MkFBQUlFR0tWVzJaN21ZdTJVRkNFaCtUM0NsWG9hdDk3Q0lET3RSWk1PWWhHWWFBSUk5RXFGcmFoOFJSM29BPT0=&minPrice=11900&shipFee=2500&r=16225254582918',
+  },
+  {
+    imageURL: 'https://shopping-phinf.pstatic.net/main_1374245/13742451258.1.jpg?type=f200',
+    title: '제로커피 500g브라질 산토스',
+    price: '7,100',
+    seller: '제로커피',
+    linkURL:
+      'http://prod.danawa.com/bridge/loadingBridgePowerShopping.php?sLink=aHR0cHM6Ly9hZGNyLm5hdmVyLmNvbS9hZGNyP3g9elRDd2ozd1JPZkJKZ0ppOEMrdVNNLy8vL3c9PWtObEE0OEwxTFozWWVvNkNpNzF1dGVwKzlVZkdyL1NnQW9yQkJZK1F0RVJxdndLVnB4QUVMOGVHSHIrdkJ2emJTVmZJZHphd2hiNzBwdDAvU0RkTjFlRnJlRUI2V1E1ditlSXBmaVd5SlpFS0VMOXo2c1c1S0RqZzNFbHM1TldvdEh5azAzWFk5S2FST3kxRTJjMktZai9LdHBSK0ZSUWxvVGQ1aHlodDdXN3BLNWxPODBQN3ZNZjg3aWlOZDYxdXczMi96NG1MRjUwYTloVnNkTktsU0xZRVZwR2R3ei9KZEpCSnpoZ1R2b0hFTTYwVFRpRTBvdlhzNmxRbUFZOXlwSWs5SWltbEVsWERKWGFUeURQQmVPMFN3RFBSUE5CTHZQQllCQW9GR3dYb1lsQXRJR21zZS9tL2UydkhHYTlhVXhZK0xMMlJ1WGNRVElSTXpNVGwvaHI3Wno4WG9hQUIyaDJZYWZHeS9SQzYwdFF3Mkp3ZWc1V3lzWjZxWG5CSmVkQnRLNzZ1YkFmZE9sQktBZTJBcHp0bjRBSFRveHNmWG9OclljbDM2dTRtV0EyS1dNVjVUYUZoSEx2U2gvVStJdVJJVHlFVjBSekJIbkR3UHdPSGlNZFZIQlRUODBuWmM3RlpxeVNsRkRtRlNZR1htd0dibGcxRFFuSUUzK2xscFhISm5KeWNPcWxMM1hpVXFKaGNIcDZUajBicTYrSW95ZDdGTUdRRDVhVmhrZzEvSmpvbm14ZmNSb1NlMzRFeGFRS0UrdFk2N2xURkEyM1h1bmtLN1FlNEFkVW0xQ0VIMUFETWIxZVc5a3JENzFtSWJiZHAyeGhpVnRXelVXNlJMbDAvTWdGeGhYdjVTUGY1TnFFRlpNVUg0UitGNmhBYnk4YnVIYWFUM2Rqb0lKZWFYcGxtM2c1eWtGc3JiOEllR1RTTElzcXRGR0FLL3AzMktvUm5CenBaYjdVU2FCYmJUMHM4cG9ndm01WGNlbjh1MjAwMEZ3cGZ1SDU0Vnl1SGhlZlpwTWFSUkpTQkQwTnZZa0R3UkEzYitSUUYyZ0Y2NHg4THZBYXQydkVvPQ==&minPrice=7100&shipFee=2500&r=16225254582918',
+  },
+  {
+    imageURL: 'https://shopping-phinf.pstatic.net/main_8264703/82647035818.jpg?type=f200',
+    title: '달구네커피 브라질 산토스 파인컵 200g 당일로스팅한 고소한 맛의 데일리용 원두커피',
+    price: '4,500',
+    seller: '달구네커피',
+    linkURL:
+      'http://prod.danawa.com/bridge/loadingBridgePowerShopping.php?sLink=aHR0cHM6Ly9hZGNyLm5hdmVyLmNvbS9hZGNyP3g9ZUs1VTZmSlZlYmJUREpjc21oTW1IZi8vL3c9PWs0by82Wk5xMUx6MnZpUFp4cUtGc0dwMHYyUDBsdjlLZjJZZG9TbktCQmVqSXJxb1FZTk51YkxDZ080d0hSbGk1OTVtL3JvVklRZ2F3NERZWnM2UzYrc0d1dWJDUFZaUXRTdXdjazZGUURGeGtIMjdTUngzR29tV2c5a1VKRHUxeGtHK1JhQkl6UlBRaTBLcW91c3JhL25nNUV3b1pxWFdjVzFtQkNQd29jLzZmaFpyM0dvV0tZSnJkcEFVTmRnb2R6T2RGY2YwUFd2MEdhMC9jNVhyNVNCV0pJUnJHSml5Zm5YR1RLUUdqZHV3bjlNRTJtcmtOM0ZlTEN2bytuMlZpaUtpUnVJdEZLOXZtRGJ6OXZmUUVteWJpYk5vSmJqTXVZanZITkRqakRIRjVDanVURVR3NnhqN1o2NVNqT2tSdytLbFE0bTVLSHFIczA5ODNRekliWWJNRmgvTmtvNFlGc3JmVEx1VUtYSWYvWWFZUlRQcmRuTXdhU1dIRjR6MlkvNko5RnhSZ0N1TjAvUG1Md0ZicjBBVUVNcnBXTUhxWm5tdHYxOHI1RVVZeUFTUXM4QVZlYUZKZ0VQOEpyM3lpTHRRT3V5Q1pUTG93RDFhZmhBL05DZ0JPRUNOK2VSaGxrMlVXVmNvV1FaVkRDZFRYVkthZUlMZnk0TXRyUWg0TytmQXpVQWkxSlRsdGt2eENqWVBoNEtFL1g4S25RMmlxdGlCOTdiMmN2Y25aRlRoVlQrKzdmdGZrSEVIV1JQSkcyTTBVeHU2QnRpNWY5c3Z5M0NVRlI3UHVlYWpxdzYzNmMxa1dwcVJzR3lFZ1B6WmVKK050dFo3VnhlNXN3TnRTcGlyY21QZ1J2Y0sySjJQQ29zTzczME0wLzYyUnE3RUptYlVWWHgrMWNyNHh1d1p5OE9aUjd4Uk9JbEhNWjBEQjJXamNIUlIwVHJTaWpqalh5c204NkE9PQ==&minPrice=4500&shipFee=2500&r=16225254582918',
   },
 ]

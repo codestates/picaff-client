@@ -1,9 +1,13 @@
 import { useState } from 'react'
-import { CoffeeResultType, itemResult } from 'interface'
+import { CoffeeResultType, itemResult, Tags, CrawlingType } from 'interface'
 import { CoffeeItemContainer } from './CoffeeItem.style'
 import ShareAndLike from 'components/share-and-like/ShareAndLike'
 import CoffeeRadarChart from 'components/radar-chart/CoffeeRadarChart'
 import { AiFillCloseCircle } from 'react-icons/ai'
+import CoffeeMap from 'components/coffee-map/CoffeeMap'
+import Tag from 'components/button/Tag'
+import { crawlingDataSample } from 'interface/sampledata'
+// import axios from 'axios'
 
 type Props = {
   selectedItem: itemResult
@@ -12,7 +16,8 @@ type Props = {
 
 export default function CoffeeItem({ selectedItem, handlechecked }: Props) {
   const [renderItem] = useState<itemResult>(selectedItem)
-  const { itemName, itemDetail, coffeeCharacter } = selectedItem
+  const [crawledData] = useState<CrawlingType[]>(crawlingDataSample)
+  const { itemName, itemDetail, tag, coffeeCharacter } = selectedItem
 
   const radarInfo: CoffeeResultType | undefined = coffeeCharacter && {
     coffeeName: itemName,
@@ -27,6 +32,20 @@ export default function CoffeeItem({ selectedItem, handlechecked }: Props) {
     },
   }
 
+  // useEffect(() => {
+  //   const getCrawlingData = async () => {
+  //     const res = await axios.post('https://localhost:4000/item/crawling', {
+  //       itemName: itemName,
+  //     })
+  //     if (res.status === 200) {
+  //       setCrawledData(res.data)
+  //     } else {
+  //       console.log('크롤링데이터를 받아올 수 없음')
+  //     }
+  //   }
+  //   getCrawlingData()
+  // }, [])
+
   return (
     <CoffeeItemContainer>
       <div className='closebtn'>
@@ -34,33 +53,41 @@ export default function CoffeeItem({ selectedItem, handlechecked }: Props) {
           <AiFillCloseCircle />
         </button>
       </div>
-      <div className='top_container'>
+
+      <div className='section_result'>
         <div className='back1' />
-        <section className='section_top'>
-          <div className='section_top_map'>
-            <div className='map'>확대 지도</div>
-            <div className='title'>{itemName}</div>
+
+        <div className='section_left'>
+          <div className='box_map'>
+            <CoffeeMap type={selectedItem.iso || 'All'} coffee={selectedItem} />
           </div>
-          <div className='section_top_chart'>
-            {radarInfo && <CoffeeRadarChart radarInfo={radarInfo} />}
-            <span className='title'>Radar Chart : {itemName}</span>
-          </div>
-        </section>
-        <section className='section_bottom'>
-          <div className='section_bottom_left'>
-            <div className='title'>쌈바의 맛을 느낄수 있는 브라질</div>
-            <div className='description'>{itemDetail}</div>
-          </div>
-          <div className='section_bottom_right'>
-            <div className='market'>
-              <img alt=''></img>
-              <div className='box_info'>
-                <span>품명</span>
-                <span>가격</span>
-              </div>
+          <div className='box_market'>
+            <div className='marketTable'>
+              {crawledData.map((singleList: CrawlingType) => (
+                <div className='singleList'>
+                  <img src={singleList.imageURL} />
+                  <div className='itemInfo'>
+                    <div>{singleList.title}</div>
+                    <div>가격: {singleList.price} 원</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </section>
+        </div>
+
+        <div className='section_right'>
+          <div className='box_desc'>
+            <div className='name'>{itemName}</div>
+            <div className='text'>{itemDetail}</div>
+            <div className='tag'>
+              {tag.map((singleTag: Tags) => (
+                <Tag style='ClearTag' key={singleTag.id} value={singleTag.tagName} />
+              ))}
+            </div>
+          </div>
+          <div className='box_radar'>{radarInfo && <CoffeeRadarChart radarInfo={radarInfo} />}</div>
+        </div>
       </div>
       <ShareAndLike renderItem={renderItem} />
     </CoffeeItemContainer>

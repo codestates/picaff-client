@@ -100,3 +100,11 @@ export type MapOption = {
   zoom: number
   center: { lat: number; lng: number }
 }
+
+export type CrawlingType = {
+  imageURL: string
+  title: string
+  price: string
+  seller: string
+  linkURL: string
+}

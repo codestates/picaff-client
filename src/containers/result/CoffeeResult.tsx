@@ -15,7 +15,7 @@ type Props = {
 
 const initdata: itemResult = {
   id: 0,
-  itemName: '',
+  itemName: 'Coffee example',
   itemPrice: 0,
   itemDetail: '',
   type: 'product',
@@ -32,7 +32,8 @@ export default function CoffeeResult({ data }: Props) {
   const [CoffeeDataArr, setCoffeeDataArr] = useState<itemResult[]>(coffeetempArr)
   const [CoffeeData, setCoffeeData] = useState<itemResult>(initdata)
 
-  console.log(data)
+  console.log('data', data)
+  console.log('CoffeeData', CoffeeData)
 
   const radarInfo: CoffeeResultType | undefined = data.coffeeCharacter && {
     coffeeName: data.itemName,
@@ -70,18 +71,12 @@ export default function CoffeeResult({ data }: Props) {
     <CoffeeResultContainer className='section_coffee'>
       <section className='section_result'>
         <div className='box_map'>
-          <CoffeeMap type={selectedItem.iso || 'All'} />
+          <CoffeeMap type={selectedItem.iso || 'All'} coffee={data} />
         </div>
         <div className='parent_desc'>
           <div className='box_desc'>
             <div className='name'>{data.itemName}</div>
-            <div className='text'>
-              {data.itemDetail}는 부드럽고 향이 풍부하며 묵직한 바디감을 즐길 수 있는 원두입니다.
-              브라질은 세계 최대 규모의 커피 생산국이며, 대규모 농장에서 경작하는 경우가 많습니다.
-              약한 산미와 비교적 묵직한 바디감으로 블랜딩커피의 베이스로도 자주 사용되며, 신맛을
-              싫어하시는 분들이 많이 찾으시는 커피입니다. 브라질 고유의 Pulped-natural 가공방식과
-              동글동글하고 납작한 콩의 외관이 브라질 커피의 또다른 특징입니다.
-            </div>
+            <div className='text'>{data.itemDetail}</div>
             <div className='tag'>
               {data.tag.map((singleTag: Tags) => (
                 <Tag style='ClearTag' key={singleTag.id} value={singleTag.tagName} />
