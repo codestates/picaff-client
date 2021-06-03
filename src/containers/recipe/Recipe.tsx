@@ -1,27 +1,22 @@
 import { RecipeContainer } from './Recipe.style'
+import { MenuType } from 'interface'
 import { useState } from 'react'
 
 export default function Recipe() {
   const [coffeeName, setCoffeeName] = useState<string>('CHOOSE YOUR COFFEE')
-  const [americano, setAmericano] = useState<boolean>(false)
-  const [latte, setLatte] = useState<boolean>(false)
-  const [cappuccino, setCappuccino] = useState<boolean>(false)
-  const [macchiato, setMacchiato] = useState<boolean>(false)
-  const [mocha, setMocha] = useState<boolean>(false)
-  const [flatwhite, setFlatwhite] = useState<boolean>(false)
-  const [vienna, setVienna] = useState<boolean>(false)
-  const [espresso, setEspresso] = useState<boolean>(false)
+  const [menu, setMenu] = useState<MenuType>({
+    americano: false,
+    latte: false,
+    cappuccino: false,
+    macchiato: false,
+    mocha: false,
+    flatwhite: false,
+    vienna: false,
+    espresso: false,
+  })
 
   return (
-    <RecipeContainer
-      americano={americano}
-      latte={latte}
-      cappuccino={cappuccino}
-      mocha={mocha}
-      flatwhite={flatwhite}
-      vienna={vienna}
-      macchiato={macchiato}
-      espresso={espresso}>
+    <RecipeContainer menu={menu}>
       <div className='container'>
         <h1 className='coffee_name'>{coffeeName}</h1>
         <div className='cup'>
@@ -41,7 +36,16 @@ export default function Recipe() {
         <button
           id='americano'
           onClick={() => {
-            setAmericano(!americano)
+            setMenu({
+              americano: true,
+              latte: false,
+              cappuccino: false,
+              macchiato: false,
+              mocha: false,
+              flatwhite: false,
+              vienna: false,
+              espresso: false,
+            })
             setCoffeeName('Americano')
           }}>
           AMERICANO
@@ -49,7 +53,16 @@ export default function Recipe() {
         <button
           id='latte'
           onClick={() => {
-            setLatte(!latte)
+            setMenu({
+              americano: false,
+              latte: true,
+              cappuccino: false,
+              macchiato: false,
+              mocha: false,
+              flatwhite: false,
+              vienna: false,
+              espresso: false,
+            })
             setCoffeeName('Caffe Latte')
           }}>
           CAFFE LATTE
@@ -57,7 +70,16 @@ export default function Recipe() {
         <button
           id='cappuccino'
           onClick={() => {
-            setCappuccino(!cappuccino)
+            setMenu({
+              americano: false,
+              latte: false,
+              cappuccino: true,
+              macchiato: false,
+              mocha: false,
+              flatwhite: false,
+              vienna: false,
+              espresso: false,
+            })
             setCoffeeName('Cappuccino')
           }}>
           CAPPUCCINO
@@ -65,7 +87,16 @@ export default function Recipe() {
         <button
           id='macchiato'
           onClick={() => {
-            setMacchiato(!macchiato)
+            setMenu({
+              americano: false,
+              latte: false,
+              cappuccino: false,
+              macchiato: true,
+              mocha: false,
+              flatwhite: false,
+              vienna: false,
+              espresso: false,
+            })
             setCoffeeName('Macchiato')
           }}>
           MACCHIATO
@@ -73,7 +104,16 @@ export default function Recipe() {
         <button
           id='mocha'
           onClick={() => {
-            setMocha(!mocha)
+            setMenu({
+              americano: false,
+              latte: false,
+              cappuccino: false,
+              macchiato: false,
+              mocha: true,
+              flatwhite: false,
+              vienna: false,
+              espresso: false,
+            })
             setCoffeeName('Caffe Mocha')
           }}>
           CAFFE MOCHA
@@ -81,7 +121,16 @@ export default function Recipe() {
         <button
           id='flatwhite'
           onClick={() => {
-            setFlatwhite(!flatwhite)
+            setMenu({
+              americano: false,
+              latte: false,
+              cappuccino: false,
+              macchiato: false,
+              mocha: false,
+              flatwhite: true,
+              vienna: false,
+              espresso: false,
+            })
             setCoffeeName('Flat White')
           }}>
           FLAT WHITE
@@ -89,7 +138,16 @@ export default function Recipe() {
         <button
           id='vienna'
           onClick={() => {
-            setVienna(!vienna)
+            setMenu({
+              americano: false,
+              latte: false,
+              cappuccino: false,
+              macchiato: false,
+              mocha: false,
+              flatwhite: false,
+              vienna: true,
+              espresso: false,
+            })
             setCoffeeName('Vienna Coffee')
           }}>
           VIENNA COFFEE
@@ -97,7 +155,16 @@ export default function Recipe() {
         <button
           id='espresso'
           onClick={() => {
-            setEspresso(!espresso)
+            setMenu({
+              americano: false,
+              latte: false,
+              cappuccino: false,
+              macchiato: false,
+              mocha: false,
+              flatwhite: false,
+              vienna: false,
+              espresso: true,
+            })
             setCoffeeName('Espresso')
           }}>
           ESPRESSO
