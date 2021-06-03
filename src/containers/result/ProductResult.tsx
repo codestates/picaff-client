@@ -1,21 +1,23 @@
 import { ProductResultContainer } from './ProductResult.style'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { itemResult, ProductResultType, Tags, TestResult } from 'interface'
 import ProductRadarChart from 'components/radar-chart/ProductRadarChart'
 import ProductItem from 'containers/item/ProductItem'
 import Tag from 'components/button/Tag'
 import Image from 'components/image/Image'
-import axios from 'axios'
+import { RequestAllItem } from 'module/Coffeemap'
 
 type Props = {
   TestResult: TestResult
 }
 
 export default function ProductResult({ TestResult }: Props) {
-  const [allItems, setAllItems] = useState<itemResult[]>([])
+  const [ProducItems, setProductItems] = useState<itemResult[]>([])
   const [selectedItem, setSelectedItem] = useState<itemResult>(TestResult.productResult)
   const [isItemClicked, setIsItemClicked] = useState<boolean>(false)
   const [selectedTag, setSelectedTag] = useState<string>('')
+
+  const productRef = useRef<HTMLElement>(null)
 
   const radarInfo: ProductResultType | undefined = selectedItem.productCharacter && {
     productName: selectedItem.itemName,
@@ -28,42 +30,17 @@ export default function ProductResult({ TestResult }: Props) {
   }
 
   useEffect(() => {
-    const getAllItems = async () => {
-      const res = await axios.get(`https://localhost:4000/item/all?type=product`, {
-        headers: {
-          // 'Authorization': `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-          'withCredentials': true,
-        },
-      })
-      // 받아 온 아이템리스트를 allItems 상태에 넣어줌
-      if (res.status === 200) {
-        setAllItems(res.data)
-      } else if (res.status === 404) {
-        console.log('아이템을 받아오지 못했습니다')
-      }
+    async function GetProductData() {
+      setProductItems(await RequestAllItem('product'))
     }
-    getAllItems()
+
+    GetProductData()
   }, [])
 
-  // 태그 클릭시 해당 태그를 갖고 있는 아이템 리스트를 받아옴
-  // useEffect(() => {
-  //   const getSelectedTags = async () => {
-  //     const res = await axios.get(
-  //       `https://localhost:4000/item/tag?itemType=product&tagId=${selectedTag}`,
-  //       {}
-  //     )
-  //     if (res.status === 200) {
-  //       // 태그버튼 클릭시 요청 보냄 - response로 오는 id와 이미지버튼 key값이랑 같은지 체크
-  //       // => 같을 경우 className 추가하는 형식으로 스타일 효과주기
-  //       // 태그클릭 state 생성 필요
-  //     }
-  //   }
-  //   getSelectedTags()
-  // }, [])
-
   const handleTagClick = (tag: Tags) => {
+    productRef.current?.scrollIntoView()
     setSelectedTag(tag.tagName)
+    if (isItemClicked) setIsItemClicked(false)
   }
 
   return (
@@ -75,7 +52,16 @@ export default function ProductResult({ TestResult }: Props) {
         <div className='parent_desc'>
           <div className='box_desc'>
             <div className='name'>{selectedItem.itemName}</div>
-            <div className='text'>{selectedItem.itemDetail}</div>
+            <div className='text'>
+              <p>
+                {selectedItem.itemDetail.content.map((content) => (
+                  <>
+                    {content}
+                    <br />
+                  </>
+                ))}
+              </p>
+            </div>
             <div className='tag'>
               {selectedItem.tag.map((singleTag: Tags) => (
                 <Tag
@@ -88,12 +74,14 @@ export default function ProductResult({ TestResult }: Props) {
             </div>
           </div>
         </div>
-        <div className='box_radar'>{radarInfo && <ProductRadarChart radarInfo={radarInfo} />}</div>
+        <div className='box_radar'>
+          {radarInfo && <ProductRadarChart type='result' radarInfo={radarInfo} />}
+        </div>
       </section>
-      <section className='section_image'>
-        <div className='title'>더욱 다양한 용품들을 만나보세요.</div>
+      <section className='section_image' ref={productRef}>
+        <h2 className='title'>더욱 다양한 용품들을 만나보세요.</h2>
         <div className='image_box'>
-          {allItems.map((singleItem: itemResult, idx) => {
+          {ProducItems.map((singleItem: itemResult, idx) => {
             let active = false
             for (let i = 0; i < singleItem.tag.length; i++) {
               if (selectedTag === singleItem.tag[i].tagName) {
@@ -127,6 +115,7 @@ export default function ProductResult({ TestResult }: Props) {
           selectedItem={selectedItem}
           TestResult={TestResult}
           handlechecked={() => setIsItemClicked(!selectedItem)}
+          handleTagClick={handleTagClick}
         />
       ) : (
         ''

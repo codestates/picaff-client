@@ -14,6 +14,10 @@ type maptype = {
   selectedTag?: string
 }
 
+type position = {
+  letlng: google.maps.LatLng | null
+}
+
 const getWindowDimension = (): number => {
   const { innerWidth: width } = window
   return width
@@ -34,7 +38,9 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
     center: { lat: 5, lng: 170.644 },
   })
   const [screenwidth, setscreenwidth] = useState<number>(getWindowDimension())
+  const [mousePosition, setMousePosition] = useState<position>({ letlng: null })
   useEffect(() => {
+    console.log(mousePosition)
     setMapOption(GetMapOptions(type))
 
     function handleResize() {
@@ -123,7 +129,10 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
                     id: 0,
                     itemName: '',
                     itemPrice: 0,
-                    itemDetail: '',
+                    itemDetail: {
+                      title: '',
+                      content: [],
+                    },
                     type: 'coffee',
                     imageUrl: '',
                     iso: '',
@@ -152,6 +161,7 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
                     }
                     onLoad={() => console.log('loaddone')}
                     onUnmount={() => console.log('unload')}
+                    onMouseMove={(e) => setMousePosition({ letlng: e.latLng })}
                     options={
                       idx === index || active
                         ? {
@@ -174,7 +184,11 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
                   />
                   {idx === index && (
                     <OverlayView
-                      position={GetMapOptions(RegionArr[index].iso).center}
+                      position={
+                        mousePosition.letlng
+                          ? mousePosition.letlng
+                          : GetMapOptions(RegionArr[index].iso).center
+                      }
                       mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
                       <Overlay
                         coffeeItem={Array.isArray(coffee) ? coffeeArr![index] : coffee}

@@ -56,7 +56,7 @@ export type itemResult = {
   id: number
   itemName: string
   itemPrice: number
-  itemDetail: string
+  itemDetail: ItemDetail
   type: 'product' | 'coffee'
   imageUrl: string
   iso: 'KE' | 'GT' | 'CO' | 'ET' | 'BR' | 'All' | ''
@@ -64,6 +64,11 @@ export type itemResult = {
   coffeeCharacter?: CoffeeCharacter
   isLiked: boolean
   tag: Tags[]
+}
+
+type ItemDetail = {
+  title: string
+  content: string[]
 }
 
 type ProductCharacter = {

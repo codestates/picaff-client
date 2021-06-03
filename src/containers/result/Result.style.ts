@@ -33,7 +33,7 @@ export const ResultContainer = styled.div<IsTabActiveType>`
   .section_btn > button {
     width: 100%;
     height: 100%;
-    font-size: 4rem;
+    font-size: 3.3rem;
     font-weight: 600;
     border: none;
     outline: none;
