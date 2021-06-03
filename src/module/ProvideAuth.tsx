@@ -40,6 +40,8 @@ export function useProvideAuth() {
   }
 
   const signout = (cb: () => void) => {
+    sessionStorage.removeItem('accessToken')
+    sessionStorage.removeItem('refreshToken')
     setaccessToken(null)
     cb()
   }

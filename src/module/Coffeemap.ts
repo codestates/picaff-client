@@ -27,7 +27,7 @@ export const GetMapOptions = (type: string, width?: string): MapOption => {
     case 'ET':
       return { zoom: 3, center: { lat: 9.10802, lng: 39.710975 } }
     case 'BR':
-      return { zoom: 2, center: { lat: -8.097442, lng: -58.317086 } }
+      return { zoom: 3, center: { lat: -8.097442, lng: -50.317086 } }
     default:
       return { zoom: 3, center: { lat: 5, lng: 170.644 } }
   }

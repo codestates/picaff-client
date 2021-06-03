@@ -57,16 +57,17 @@ export default function CoffeeResult({ TestResult }: Props) {
 
   // 이함수는 테스트 결과 페이지에서 맵을 불러올때 사용해야할 것 같습니다
   const handleRegionClick = (Region: string) => {
-    setIsItemClicked(!isItemClicked)
     CoffeeDataArr.forEach((coffee) => {
       if (coffee.iso === Region) {
         setCoffeeData(coffee)
       }
     })
+    setIsItemClicked(!isItemClicked)
   }
 
   const handleTagClick = (tag: Tags) => {
     setSelectedTag(tag.tagName)
+    if (isItemClicked) setIsItemClicked(false)
   }
 
   return (
@@ -103,6 +104,7 @@ export default function CoffeeResult({ TestResult }: Props) {
       </section>
       {isItemClicked ? (
         <CoffeeItem
+          handleTagClick={handleTagClick}
           TestResult={TestResult}
           CoffeeData={CoffeeData}
           handlechecked={() => setIsItemClicked(!isItemClicked)}

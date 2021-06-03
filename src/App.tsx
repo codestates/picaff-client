@@ -10,6 +10,7 @@ import SignIn from 'containers/login/Login'
 import Main from 'containers/main/Main'
 import Result from 'containers/result/Result'
 import Mypage from 'containers/mypage/Mypage'
+import Landing from 'components/main/Landing'
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
               <Main />
             </Route>
             <Route path='/test'>
-              <TestImpls />
+              <Landing>
+                <TestImpls />
+              </Landing>
             </Route>
             <Route path='/sample'>
               <Sample />

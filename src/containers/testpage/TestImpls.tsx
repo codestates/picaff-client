@@ -71,6 +71,20 @@ export default function TestImpls() {
         ))}
       </div>
       {isDone && <EndedTest handleSubmit={handleSubmit} score={scoreArr} />}
+
+      <section>
+        <div className='wave wave1'></div>
+        <div className='wave wave2'></div>
+        <div className='wave wave3'></div>
+        <div className='wave wave4'></div>
+      </section>
+
+      <svg width='0' height='0'>
+        <filter id='fog'>
+          <feTurbulence type='fractalNoise' baseFrequency='.01' numOctaves='10' />
+          <feDisplacementMap in='SourceGraphic' scale='180' />
+        </filter>
+      </svg>
     </SliderContainer>
   )
 }

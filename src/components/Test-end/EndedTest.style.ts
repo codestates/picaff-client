@@ -8,12 +8,11 @@ export const EndedTestContainer = styled.div`
   width: 100%;
   top: 10vh;
   height: 100%;
-  z-index: 9999;
   overflow: hidden;
 
   & > .background {
     position: absolute;
-    z-index: -1;
+    z-index: 0;
     width: 40%;
     height: 40%;
     border-radius: 50%;
@@ -21,10 +20,10 @@ export const EndedTestContainer = styled.div`
     background-color: ${({ theme }) => theme.color.PointC}80;
   }
 
-  & video {
+  & .video {
     display: block;
     object-fit: cover;
-    z-index: 998;
+    z-index: 2;
     position: relative;
     margin: 0 auto;
     top: 5%;
@@ -34,6 +33,7 @@ export const EndedTestContainer = styled.div`
 
   & button {
     position: absolute;
+    z-index: 4;
     top: 440px;
     width: 160px;
     height: 80px;
