@@ -29,7 +29,9 @@ export default function EndedTest({ handleSubmit, score }: TestFinish) {
   return (
     <EndedTestContainer>
       <h1>내게 맞는 커피취향 알아보는 중</h1>
-      <video src='/coffee1_VP9.webm' muted={true} autoPlay />
+      <div className='video'>
+        <video src='/coffee1_VP9.webm' muted={true} autoPlay />
+      </div>
       <div className='background'></div>
       {data && (
         <Button type='button' style='MainBtnIvory' handleClick={handleClick} value='결과확인하기' />

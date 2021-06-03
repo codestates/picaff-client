@@ -84,7 +84,6 @@ export const CoffeeResultContainer = styled.div`
     height: 100vh;
     justify-content: center;
     align-items: center;
-    margin: 10px;
 
     & .ItemModal {
       height: 100vh;
