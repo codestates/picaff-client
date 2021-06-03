@@ -3,15 +3,15 @@ import { useState } from 'react'
 import { TestResult } from 'interface'
 import CoffeeResult from './CoffeeResult'
 import ProductResult from './ProductResult'
-// import { IoIosPaperPlane } from 'react-icons/io'
 import { MdShare } from 'react-icons/md'
-
 import { useLocation } from 'react-router'
+import Share from 'components/share-and-like/Share'
 
 export default function Result() {
   const location = useLocation<TestResult>()
   const TestResult = location.state
   const [isTabActive, setIsTabActive] = useState<boolean>(true)
+  const [isShareOpen, setIsShareOpen] = useState<boolean>(false)
 
   return (
     <ResultContainer isTabActive={isTabActive}>
@@ -26,7 +26,7 @@ export default function Result() {
             </button>
           </div>
           <div className='section_share'>
-            <button className='btn_share'>
+            <button className='btn_share' onClick={() => setIsShareOpen(!isShareOpen)}>
               <MdShare />
             </button>
           </div>
@@ -37,6 +37,7 @@ export default function Result() {
           )}
         </div>
       </div>
+      <Share isShareOpen={isShareOpen} />
     </ResultContainer>
   )
 }

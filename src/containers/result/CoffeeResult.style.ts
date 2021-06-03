@@ -46,7 +46,7 @@ export const CoffeeResultContainer = styled.div`
           padding-left: 16px;
           margin-top: 30px;
           font-size: 1.1rem;
-          font-family: 'NanumSquareRoundR';
+          font-family: 'NanumSquare';
         }
 
         .tag {

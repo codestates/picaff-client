@@ -110,3 +110,14 @@ export type CrawlingType = {
   seller: string
   linkURL: string
 }
+
+export type MenuType = {
+  americano: boolean
+  latte: boolean
+  cappuccino: boolean
+  macchiato: boolean
+  mocha: boolean
+  flatwhite: boolean
+  vienna: boolean
+  espresso: boolean
+}
