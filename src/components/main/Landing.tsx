@@ -1,10 +1,9 @@
-import Button from 'components/button/Button'
 import TestImpls from 'containers/testpage/TestImpls'
 import React, { useState } from 'react'
 import LandingComponent from './Landing.style'
 export default function Landing() {
   const [isTest, setisTest] = useState(false)
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault()
     setisTest(true)
   }
@@ -17,27 +16,34 @@ export default function Landing() {
       ) : (
         <>
           <section className='mainContainer'>
-            <h1>홈 카페를 시작하는 첫 걸음</h1>
-            <p>
-              원두는 너무 많아 고르기 힘들고
-              <br /> 맛있게 내리기는 너무 어려워요
-            </p>
-            <div className='buttonContainer'>
-              <Button
-                style='MainBtnBrown'
-                value='커피취향 알아보기'
-                handleClick={handleClick}
-                type='button'
-              />
+            <div className='subdec'>
+              <div className='style'>
+                <hr className='bar' />
+                <span>COFFEE RECOMMEND</span>
+              </div>
+            </div>
+            <div className='Container dec'>
+              <span className='title a'>C</span>
+              <span className='title b'>O</span>
+              <span className='title c'>F</span>
+              <span className='title d'>F</span>
+              <span className='title e'>E</span>
+              <span className='title f'>E</span>
+            </div>
+            <div className='Container p'>
+              <p>
+                처음 시작하는 홈 카페 <br />
+                picaff와 함께 시작하세요
+              </p>
+            </div>
+            <div className='Container button' onClick={handleClick}>
+              <a className='btn'>커피취향 알아보기</a>
             </div>
           </section>
           <div className='VideoContainer'>
             <video className='video' muted autoPlay loop>
-              <source src='coffee2_VP9.webm' />
+              <source src='mainvideo.mp4' />
             </video>
-            <div className='backContainer'>
-              <div className='imageBack'></div>
-            </div>
           </div>
         </>
       )}

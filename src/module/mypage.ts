@@ -16,9 +16,9 @@ export const requestUserInfo = async (
   const response = await axios.get<Res>('http://localhost:4000/user', {
     headers: {
       'Content-Type': 'application/json',
-      'Credential': true,
       'authorization': `Bearer ${auth}`,
     },
+    withCredentials: true,
   })
 
   const { userInfo, testResult, likedCoffeeList, likedProductList } = response.data

@@ -22,7 +22,7 @@ export default function Oauth({ responseGoogle, responseKakao }: Oauth) {
             </button>
           )}
           onSuccess={responseGoogle}
-          onFailure={(res) => alert(res.error)}
+          onFailure={(res) => console.log('fail', res)}
           cookiePolicy={'single_host_origin'}
         />
         <KakaoLogin

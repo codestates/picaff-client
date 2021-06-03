@@ -19,7 +19,8 @@ export default function EndedTest({ handleSubmit, score }: TestFinish) {
   const auth = useAuth()
   useEffect(() => {
     async function ResData() {
-      setdata(await getitemResult(score, auth.accessToken))
+      auth.refreshAccessToken &&
+        setdata(await getitemResult(score, auth.accessToken, auth.refreshAccessToken))
     }
 
     ResData()

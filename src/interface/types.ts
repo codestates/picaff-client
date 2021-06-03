@@ -16,7 +16,7 @@ export type CheckEmail = {
 export type Authorization = {
   accessToken: string | null
   refreshToken?: string | null
-  refreshAccessToken?: () => void
+  refreshAccessToken?: () => Promise<string | null>
   signin?: (accessToken: string, refreshToeken: string, cb: () => void) => void
   signout?: (cb: () => void) => void
 }
