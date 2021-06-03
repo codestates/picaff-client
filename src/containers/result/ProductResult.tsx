@@ -6,14 +6,13 @@ import ProductItem from 'containers/item/ProductItem'
 import Tag from 'components/button/Tag'
 import Image from 'components/image/Image'
 import axios from 'axios'
-import { productTempArr } from 'interface/sampledata'
 
 type Props = {
   TestResult: TestResult
 }
 
 export default function ProductResult({ TestResult }: Props) {
-  const [allItems, setAllItems] = useState<itemResult[]>(productTempArr)
+  const [allItems, setAllItems] = useState<itemResult[]>([])
   const [selectedItem, setSelectedItem] = useState<itemResult>(TestResult.productResult)
   const [isItemClicked, setIsItemClicked] = useState<boolean>(false)
   const [selectedTag, setSelectedTag] = useState<string>('')

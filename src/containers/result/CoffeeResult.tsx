@@ -7,7 +7,6 @@ import Tag from 'components/button/Tag'
 import CoffeeMap from 'components/coffee-map/CoffeeMap'
 import CoffeeItem from 'containers/item/CoffeeItem'
 import { RequestAllItem } from 'module/Coffeemap'
-import { coffeetempArr } from 'interface/sampledata'
 
 type Props = {
   TestResult: TestResult
@@ -29,7 +28,7 @@ const initdata: itemResult = {
 export default function CoffeeResult({ TestResult }: Props) {
   const [selectedItem] = useState<itemResult>(TestResult.coffeeResult)
   const [isItemClicked, setIsItemClicked] = useState<boolean>(false)
-  const [CoffeeDataArr, setCoffeeDataArr] = useState<itemResult[]>(coffeetempArr)
+  const [CoffeeDataArr, setCoffeeDataArr] = useState<itemResult[]>([])
   const [CoffeeData, setCoffeeData] = useState<itemResult>(initdata)
   const [selectedTag, setSelectedTag] = useState<string>('')
 

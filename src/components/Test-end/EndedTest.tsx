@@ -24,7 +24,8 @@ export default function EndedTest({ handleSubmit, score }: TestFinish) {
       //   // setdata(testResultTempArr[0])
       // }, 3000)
       console.log('score is here@@@@@@@@@@@@@', score)
-      setdata(await getitemResult(score, auth.accessToken))
+      auth.refreshAccessToken &&
+        setdata(await getitemResult(score, auth.accessToken, auth.refreshAccessToken))
     }
 
     ResData()

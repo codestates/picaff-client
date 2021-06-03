@@ -6,7 +6,7 @@ export const EndedTestContainer = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  top: 0px;
+  top: 10vh;
   height: 100%;
   z-index: 9999;
   overflow: hidden;
@@ -22,11 +22,14 @@ export const EndedTestContainer = styled.div`
   }
 
   & video {
-    @media ${({ theme }) => theme.device.mobile} {
-      width: ${({ theme }) => theme.deviceSizes.mobile - 30}px;
-    }
-    object-fit: contain;
-    width: 100%;
+    display: block;
+    object-fit: cover;
+    z-index: 998;
+    position: relative;
+    margin: 0 auto;
+    top: 5%;
+    width: 50%;
+    height: 50%;
   }
 
   & button {

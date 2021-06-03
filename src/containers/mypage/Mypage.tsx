@@ -4,7 +4,6 @@ import Modify from 'components/modify/Modify'
 import TestResultList from 'components/test-result-list/TestResultList'
 import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 import { itemResult, TestResult, UserInfo } from 'interface'
-import { coffeetempArr, productTempArr, testResultTempArr } from 'interface/sampledata'
 import { requestUserInfo } from 'module/mypage'
 import React, { useEffect, useState } from 'react'
 import { MypageContainer } from './Mypage.style'
@@ -16,9 +15,9 @@ export default function Mypage() {
     id: 0,
     auth: { accessToken: '' },
   })
-  const [TestResult, setTestResult] = useState<TestResult[]>(testResultTempArr)
-  const [LikeCoffees, setLikeCoffees] = useState<itemResult[]>(coffeetempArr)
-  const [LikeProducts, setLikeProducts] = useState<itemResult[]>(productTempArr)
+  const [TestResult, setTestResult] = useState<TestResult[]>([])
+  const [LikeCoffees, setLikeCoffees] = useState<itemResult[]>([])
+  const [LikeProducts, setLikeProducts] = useState<itemResult[]>([])
   const [isModify, setisModify] = useState(false)
 
   const auth = useAuth()

@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 import { TestResult, UserInfo } from 'interface'
 
 type requestType = {
@@ -22,7 +21,8 @@ export const requestOauth = async (
   callback: (userInfo: UserInfo) => void
 ) => {
   const response = await axios.post<UserInfo>(endpoint, data, {
-    headers: { 'Content-Type': 'application/json', 'Credential': true },
+    headers: { 'Content-Type': 'application/json' },
+    withCredentials: true,
   })
   console.log(response)
   const userInfo = response.data
@@ -31,7 +31,8 @@ export const requestOauth = async (
 
 export const saveBeforeTest = async (
   testResult: TestResult,
-  accessToken: string | null
+  accessToken: string | null,
+  cb?: () => Promise<string | null>
 ): Promise<void> => {
   const res = await axios.patch(
     'https://localhost/user/test',
@@ -40,9 +41,8 @@ export const saveBeforeTest = async (
       headers: { Authorization: `Bearer ${accessToken}` },
     }
   )
-  const auth = useAuth()
-  if (res.status === 401 && auth.refreshAccessToken) {
-    await auth.refreshAccessToken()
-    await saveBeforeTest(testResult, auth.accessToken)
+  if (res.status === 401) {
+    if (cb) accessToken = await cb()
+    await saveBeforeTest(testResult, accessToken)
   }
 }
