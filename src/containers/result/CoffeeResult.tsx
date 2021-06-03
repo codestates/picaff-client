@@ -106,7 +106,7 @@ export default function CoffeeResult({ TestResult }: Props) {
           </div>
         </div>
         <div className='box_radar'>
-          {radarInfo && <CoffeeRadarChart type='result' radarInfo={radarInfo} />}
+          {!isItemClicked && radarInfo && <CoffeeRadarChart type='result' radarInfo={radarInfo} />}
         </div>
       </section>
       <section className='section_map' ref={mapRef}>
@@ -117,15 +117,13 @@ export default function CoffeeResult({ TestResult }: Props) {
           selectedTag={selectedTag}
         />
       </section>
-      {isItemClicked ? (
+      {isItemClicked && (
         <CoffeeItem
           TestResult={TestResult}
           CoffeeData={CoffeeData}
           handlechecked={() => setIsItemClicked(!isItemClicked)}
           handleTagClick={handleTagClick}
         />
-      ) : (
-        ''
       )}
     </CoffeeResultContainer>
   )

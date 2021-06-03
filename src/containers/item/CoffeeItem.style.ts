@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const CoffeeItemContainer = styled.div`
   position: fixed;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   left: 0px;
   top: 0px;

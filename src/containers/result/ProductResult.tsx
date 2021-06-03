@@ -75,7 +75,7 @@ export default function ProductResult({ TestResult }: Props) {
           </div>
         </div>
         <div className='box_radar'>
-          {radarInfo && <ProductRadarChart type='result' radarInfo={radarInfo} />}
+          {!isItemClicked && radarInfo && <ProductRadarChart type='result' radarInfo={radarInfo} />}
         </div>
       </section>
       <section className='section_image' ref={productRef}>
@@ -110,15 +110,13 @@ export default function ProductResult({ TestResult }: Props) {
           })}
         </div>
       </section>
-      {isItemClicked ? (
+      {isItemClicked && (
         <ProductItem
           selectedItem={selectedItem}
           TestResult={TestResult}
           handlechecked={() => setIsItemClicked(!selectedItem)}
           handleTagClick={handleTagClick}
         />
-      ) : (
-        ''
       )}
     </ProductResultContainer>
   )

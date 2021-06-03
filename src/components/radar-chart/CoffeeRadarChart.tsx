@@ -69,7 +69,7 @@ export default function CoffeeRadarChart({ radarInfo, type }: Props) {
         },
       }
     }
-  }, [])
+  }, [type])
   RadarOptions.plugins.title.text = radarInfo.coffeeName
   return (
     <RadarChartComponent className='radarChart'>
