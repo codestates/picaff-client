@@ -4,6 +4,7 @@ import MenuBtn from './buttons/MenuBtn'
 import UserBtn from './buttons/UserBtn'
 import GreenTag from './tags/GreenTag'
 import ClearTag from './tags/ClearTag'
+import ModifyBtn from './buttons/ModifyBtn'
 
 const deviceSizes = {
   mobile: 375,
@@ -38,6 +39,7 @@ const theme = {
   UserBtn,
   GreenTag,
   ClearTag,
+  ModifyBtn,
 }
 
 export default theme
