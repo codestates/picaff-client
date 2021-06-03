@@ -37,7 +37,7 @@ export default function Result() {
           )}
         </div>
       </div>
-      <Share isShareOpen={isShareOpen} />
+      {isShareOpen ? <Share isShareOpen={isShareOpen} /> : ''}
     </ResultContainer>
   )
 }
