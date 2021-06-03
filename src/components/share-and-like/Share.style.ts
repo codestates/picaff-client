@@ -51,20 +51,12 @@ export const ShareComponent = styled.div`
   @media ${({ theme }) => theme.device.laptop} {
     display: flex;
     align-items: center;
-
-    padding: 10px;
-    border-radius: 20px;
-
     top: 50%;
     right: 9%;
-
     width: 80vw;
     height: 20vh;
-
-    -webkit-animation: none;
-    -webkit-animation-delay: none;
-    animation: none;
-    animation-delay: none;
+    padding: 10px;
+    border-radius: 20px;
 
     .box_btn {
       display: flex;
