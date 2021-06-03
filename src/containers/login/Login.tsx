@@ -65,7 +65,7 @@ export default function SignIn() {
     if ('tokenId' in res) {
       const { accessToken: access_token, tokenId: id_token } = res
       await requestOauth(
-        'http:localhost:4000/user/google',
+        'http://localhost:4000/user/google',
         { access_token, id_token },
         (userInfo) => {
           setUserInfo(userInfo)
@@ -77,7 +77,7 @@ export default function SignIn() {
   const handleKakaoLogin = async (res: KakaoLoginResponse) => {
     console.log(res)
     const { access_token } = res
-    await requestOauth('http:localhost:4000/user/kakao', { access_token }, (userInfo) => {
+    await requestOauth('http://localhost:4000/user/kakao', { access_token }, (userInfo) => {
       setUserInfo(userInfo)
     })
   }

@@ -31,6 +31,7 @@ export const GlobalStyled = createGlobalStyle`
 
   html, body, {
     height: 100%;
+    letter-spacing: 0.53px;
   }
 
   h1 {
