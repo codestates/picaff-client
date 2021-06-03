@@ -5,7 +5,7 @@ export const ShareComponent = styled.div`
   align-items: center;
   position: absolute;
 
-  top: 12rem;
+  top: 13rem;
   right: -36rem;
   width: 20%;
   height: 11%;
@@ -51,21 +51,34 @@ export const ShareComponent = styled.div`
   @media ${({ theme }) => theme.device.laptop} {
     display: flex;
     align-items: center;
-    top: 50%;
-    right: 9%;
-    width: 80vw;
-    height: 20vh;
-    padding: 10px;
-    border-radius: 20px;
+    top: 20%;
+    left: -36rem;
+    width: 60%;
+    height: 10%;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 20px;
+
+    animation: slide 1s forwards;
+
+    @keyframes slide {
+      100% {
+        left: 0;
+      }
+    }
 
     .box_btn {
       display: flex;
       flex-direction: row;
+      width: 100%;
+      height: 100%;
+      align-items: center;
 
       & > img {
         flex: 1 1 0;
-        width: 10%;
-        border-radius: 10px;
+        border-radius: 20%;
         margin: 10px;
       }
     }
