@@ -32,6 +32,7 @@ export const ModifyContainer = styled.div`
     }
   }
   button {
-    display: none;
+    margin-left: 1rem;
+    display: true;
   }
 `

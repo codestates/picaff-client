@@ -64,8 +64,9 @@ export default function SignIn() {
   const handleGoogleLogin = async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     if ('tokenId' in res) {
       const { accessToken: access_token, tokenId: id_token } = res
+
       await requestOauth(
-        'http://localhost:4000/user/google',
+        'https:localhost:4000/user/google',
         { access_token, id_token },
         (userInfo) => {
           setUserInfo(userInfo)
