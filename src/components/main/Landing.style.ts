@@ -111,10 +111,8 @@ export const LandingComponent = styled.section`
         font: normal normal 17px/26px 'NanumSquare';
         color: #fff;
         font-weight: 400;
-
         margin-top: 1rem;
-        flex: 0 0 50%;
-        max-width: 50%;
+        flex: 0 0 75%;
         display: block;
         margin-block-start: 1em;
         margin-block-end: 1em;
@@ -208,7 +206,7 @@ export const LandingComponent = styled.section`
     z-index: 1000;
     opacity: 0.7;
     animation-delay: 0s;
-    bottom: 0;
+    bottom: -5px;
     filter: brightness(48%) sepia(1) contrast(1.8);
     animation: wave 5s linear infinite;
   }
@@ -226,7 +224,7 @@ export const LandingComponent = styled.section`
     z-index: 998;
     opacity: 0.7;
     animation-delay: -2s;
-    bottom: 15px;
+    bottom: -15px;
     filter: brightness(38%) sepia(1) contrast(3);
     animation: wave 2s linear infinite;
   }
@@ -235,26 +233,26 @@ export const LandingComponent = styled.section`
     z-index: 997;
     opacity: 0.7;
     animation-delay: 2s;
-    bottom: 20px;
+    bottom: -20px;
     filter: brightness(38%) sepia(1) contrast(3);
     animation: wave-reverse 4.2s ease-in infinite, wave-Y 8s infinite;
   }
 
   @keyframes wave-Y {
     0% {
-      bottom: -4px;
+      bottom: -20px;
     }
     25% {
-      bottom: 0px;
+      bottom: -10px;
     }
     50% {
       bottom: -30px;
     }
     75% {
-      bottom: 0px;
+      bottom: -10px;
     }
     100% {
-      bottom: -4px;
+      bottom: -20px;
     }
   }
 

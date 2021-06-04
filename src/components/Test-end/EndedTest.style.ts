@@ -34,8 +34,20 @@ export const EndedTestContainer = styled.div`
   & button {
     position: absolute;
     z-index: 4;
-    top: 440px;
+    top: 40vh;
     width: 160px;
     height: 80px;
+  }
+  @media (max-width: 992px) {
+    top: 3vh;
+    & .video {
+      width: 88%;
+      height: 50%;
+    }
+    & button {
+      width: 160px;
+      height: 60px;
+      top: 40vh;
+    }
   }
 `
