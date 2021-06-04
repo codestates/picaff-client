@@ -3,7 +3,6 @@ import theme from './styles/theme'
 import Navbar from 'components/nav/Navbar'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import TestImpls from 'containers/testpage/TestImpls'
-import Sample from 'Sample'
 import ProvideAuth from 'containers/ProvideAuth/ProvideAuth'
 import SignUp from 'containers/sign-up/SignUp'
 import SignIn from 'containers/login/Login'
@@ -26,9 +25,6 @@ function App() {
               <Landing>
                 <TestImpls />
               </Landing>
-            </Route>
-            <Route path='/sample'>
-              <Sample />
             </Route>
             <Route path='/result'>
               <Result />
