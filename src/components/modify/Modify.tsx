@@ -4,7 +4,6 @@ import { UserInfo } from 'interface'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import { ModifyContainer } from './Modify.style'
-// import { User } from 'interface'
 
 type ModifyProps = {
   userInfo: UserInfo
@@ -12,16 +11,11 @@ type ModifyProps = {
 
 export default function Modify({ userInfo }: ModifyProps) {
   const [isModify, setisModify] = useState(false)
-  // const [user, setUser] = useState<User>({
-  //   name: userInfo.userName,
-  //   email: userInfo.email,
-  //   password: '',
-  // }) //added
-
-  const { userName, email } = userInfo
+  let { userName, email } = userInfo
   const auth = useAuth()
   const history = useHistory()
   const [alertMessage, setAlertMessage] = useState<string>('')
+  const [UserInfo, setUserInfo] = useState<UserInfo>(userInfo)
 
   const handleSignOut = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
@@ -31,8 +25,9 @@ export default function Modify({ userInfo }: ModifyProps) {
 
   const handleSignOff = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
+
     const res = await axios.delete('https://localhost:4000/user', {
-      headers: { Authorization: auth.accessToken },
+      headers: { Authorization: `Bearer ${auth.accessToken}` },
     })
 
     if (res.status === 202) {
@@ -47,27 +42,36 @@ export default function Modify({ userInfo }: ModifyProps) {
     setisModify(!isModify)
   }
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+    console.log(value)
+    setUserInfo({
+      ...UserInfo,
+      userName: value,
+    })
+  }
+
   const handleModify = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    console.log(e)
-    const { name, value } = e.target 
-    
-    // if (!userName || !password) {
-    //   setAlertMessage('아이디와 비밀번호를 모두 입력해주세요')
-    // } else {
-    //   console.log('clicked!')
-    //   await axios.patch(
-    //     'https://localhost:4000/user',
-    //     {
-    //       userName: userName,
-    //       password: password,
-    //     },
-    //     {
-    //       headers: { Authorization: auth.accessToken },
-    //     }
-    //   )
-    //   setisModify(!isModify)
-    // }
+    if (UserInfo.userName === userInfo.userName) {
+      setAlertMessage('이름을 변경해 주세요.')
+    } else {
+      setisModify(!isModify)
+      const response = await axios.patch(
+        'https://localhost:4000/user',
+        {
+          userName: UserInfo.userName,
+        },
+        {
+          headers: { Authorization: `Bearer ${auth.accessToken}` },
+        }
+      )
+      console.log(response.data)
+      setUserInfo({
+        ...UserInfo,
+        userName: response.data.userName,
+      })
+    }
   }
 
   return (
@@ -77,41 +81,42 @@ export default function Modify({ userInfo }: ModifyProps) {
           <div>
             <span>name</span>
             <h2>
-              <input type='name' value={newUserName} placeholder='이곳에 이름을 입력하세요.' />
+              <input
+                type='name'
+                className='modifyInput'
+                placeholder={userName}
+                onChange={handleChange}
+              />
+              <span className='alertspan'>{alertMessage}</span>
             </h2>
           </div>
-          <div>
-            <span>password</span>
-            <h2>
-              <input type='password' value={newPassword} placeholder='이곳에 비밀번호를 입력하세요.' />
-            </h2>
-            <span className='alert'>{alertMessage}</span>
-            <button onClick={handleModify} id='letsModify' className='textbtn'>
-              수정하기
-            </button>
-          </div>
+          <button onClick={handleModify} id='letsModify' className='modifyButton'>
+            수정하기
+          </button>
         </ModifyContainer>
       ) : (
         <ModifyContainer>
           <div>
             <span>name</span>
-            <h2>{userName}</h2>
+            <h2>
+              {UserInfo.userName}
+              <button onClick={handleClick} id='letsModify' className='modifyButton'>
+                이름 변경
+              </button>
+            </h2>
           </div>
           <div>
             <span>email</span>
             <h2>{email}</h2>
           </div>
-          <button onClick={handleClick} id='letsModify' className='textbtn'>
-            수정하기
-          </button>
           <section className='buttonContainer'>
             <div>
               <label htmlFor='logout'>로그아웃</label>
-              <button onClick={handleSignOut} id='logout' className='textbtn' />
+              <button onClick={handleSignOut} id='logout' className='normalButton'></button>
             </div>
             <div>
               <label htmlFor='SignOut'>회원탈퇴</label>
-              <button onClick={handleSignOff} id='SignOut' className='textbtn' />
+              <button onClick={handleSignOff} id='SignOut' className='normalButton'></button>
             </div>
           </section>
         </ModifyContainer>

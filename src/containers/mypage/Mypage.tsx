@@ -26,6 +26,7 @@ export default function Mypage() {
   useEffect(() => {
     async function getUserData(accessToken: string) {
       requestUserInfo(accessToken, 'user', (data) => {
+        console.log('setUserInfo DATA@@@@@@@@@@@@@@@@@@', data)
         setUserInfo(data as UserInfo)
       })
       requestUserInfo(accessToken, 'test', (data) => {
@@ -39,6 +40,7 @@ export default function Mypage() {
       })
     }
     auth.accessToken && getUserData(auth.accessToken)
+    console.log('Mypage UserInfo::::::::::::', UserInfo)
   }, [])
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -47,6 +49,7 @@ export default function Mypage() {
   }
 
   const { email, userName } = UserInfo
+  console.log('렌더바로전 Mypage UserInfo::::::::::::', UserInfo)
   return (
     <>
       {isModify ? (
