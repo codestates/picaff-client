@@ -4,6 +4,7 @@ import Modify from 'components/modify/Modify'
 import TestResultList from 'components/test-result-list/TestResultList'
 import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 import { itemResult, TestResult, UserInfo } from 'interface'
+import { coffeetempArr, productTempArr, testResultTempArr } from 'interface/sampledata'
 import { requestUserInfo } from 'module/mypage'
 import React, { useEffect, useState } from 'react'
 import { MypageContainer } from './Mypage.style'
@@ -18,13 +19,13 @@ type response = {
 export default function Mypage() {
   const [UserInfo, setUserInfo] = useState<UserInfo>({
     email: 'email',
-    name: 'name',
+    userName: 'userName',
     id: 0,
     auth: { accessToken: '' },
   })
-  const [TestResult, setTestResult] = useState<TestResult[]>([])
-  const [LikeCoffees, setLikeCoffees] = useState<itemResult[]>([])
-  const [LikeProducts, setLikeProducts] = useState<itemResult[]>([])
+  const [TestResult, setTestResult] = useState<TestResult[]>(testResultTempArr)
+  const [LikeCoffees, setLikeCoffees] = useState<itemResult[]>(coffeetempArr)
+  const [LikeProducts, setLikeProducts] = useState<itemResult[]>(productTempArr)
   const [isModify, setisModify] = useState(false)
   const auth = useAuth()
 
@@ -46,7 +47,7 @@ export default function Mypage() {
     setisModify(!isModify)
   }
 
-  const { email, name } = UserInfo
+  const { email, userName } = UserInfo
   return (
     <>
       {isModify ? (
@@ -54,10 +55,15 @@ export default function Mypage() {
       ) : (
         <MypageContainer>
           <div className='modify'>
-            <Button handleClick={handleClick} type='button' style='UserBtn' value='회원정보 변경' />
+            <Button
+              handleClick={handleClick}
+              type='button'
+              style='ModifyBtn'
+              value='회원정보 변경하기'
+            />
           </div>
           <span>name</span>
-          <h1>{name}</h1>
+          <h1>{userName}</h1>
           <span>email</span>
           <h1>{email}</h1>
           <h3>내 커피 취향</h3>

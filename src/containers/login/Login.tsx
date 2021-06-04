@@ -25,7 +25,7 @@ export default function SignIn() {
   const [user, setUser] = useState<User>({ name: '', email: '', password: '' })
   const [userInfo, setUserInfo] = useState<UserInfo>({
     id: 0,
-    name: '',
+    userName: '',
     email: '',
     auth: { accessToken: '' },
   })
@@ -67,7 +67,7 @@ export default function SignIn() {
     if (!email || !password) {
       setAlertMessage('아이디와 비밀번호를 모두 입력해주세요')
     } else {
-      await requestOauth('http://localhost:4000/user/signin', { email, password }, (userInfo) => {
+      await requestOauth('https://localhost:4000/user/signin', { email, password }, (userInfo) => {
         setUserInfo(userInfo)
       })
     }
@@ -76,8 +76,9 @@ export default function SignIn() {
   const handleGoogleLogin = async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     if ('tokenId' in res) {
       const { accessToken: access_token, tokenId: id_token } = res
+
       await requestOauth(
-        'http://localhost:4000/user/google',
+        'https:localhost:4000/user/google',
         { access_token, id_token },
         (userInfo) => {
           setUserInfo(userInfo)
@@ -89,7 +90,7 @@ export default function SignIn() {
   const handleKakaoLogin = async (res: KakaoLoginResponse) => {
     console.log(res)
     const { access_token } = res
-    await requestOauth('http://localhost:4000/user/kakao', { access_token }, (userInfo) => {
+    await requestOauth('https://localhost:4000/user/kakao', { access_token }, (userInfo) => {
       setUserInfo(userInfo)
     })
   }

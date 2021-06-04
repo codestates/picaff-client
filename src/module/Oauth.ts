@@ -35,7 +35,7 @@ export const saveBeforeTest = async (
   cb?: () => Promise<string | null>
 ): Promise<void> => {
   const res = await axios.patch(
-    'http://localhost/user/test',
+    'https://localhost/user/test',
     { testId: testResult.testResultId },
     {
       headers: { Authorization: `Bearer ${accessToken}` },

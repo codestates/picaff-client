@@ -52,7 +52,8 @@ export default function SignUp() {
     } else {
       setAlertMessage('')
       const { name: userName, email, password } = User
-      const res = await axios.post('http://localhost:4000/user/signup', {
+      console.log(User)
+      const res = await axios.post('https://localhost:4000/user/signup', {
         email,
         userName,
         password,
@@ -76,7 +77,7 @@ export default function SignUp() {
     if (!email) {
       alert('email을 입력해주세요')
     } else {
-      const res = await axios.post('http://localhost:4000/user/email', { email })
+      const res = await axios.post('https://localhost:4000/user/email', { email })
       const { serialnum } = res.data
 
       // 잘못된 이메일(중복된 email) 입력 에러처리 해야함
