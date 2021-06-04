@@ -25,17 +25,15 @@ export default function Select({ title, handleTestResult, preSelect }: Select) {
           />
         </defs>
       </svg>
-      <div>
-        <div>
-          <h1>{title}</h1>
-        </div>
+      <div className='contentContainer'>
+        <div className='title'>{title}</div>
         <div className='selectcontainer'>
           <p dir='rtl'>
             {idx.map((i, idx) => (
               <button
                 title={i}
                 value={idx}
-                className={idx === preSelect ? 'active rate' : 'rate'}
+                className={idx === preSelect ? `active rate th${idx}` : `rate th${idx}`}
                 onClick={handleClick}
                 key={idx}>
                 <svg

@@ -62,4 +62,7 @@ export const ModifyContainer = styled.div`
     font-size: 1.3rem;
     height: 35px;
   }
+  // .signOff{
+  //   display: inline;
+  // }
 `

@@ -8,7 +8,7 @@ export const BtnComponent = styled.div<BtnComponentProps>`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 30%;
+  top: 45%;
   right: 5%;
 
   width: 75px;
@@ -16,33 +16,22 @@ export const BtnComponent = styled.div<BtnComponentProps>`
   background-color: ${({ theme }) => theme.color.NavC};
   border-radius: 50px;
 
-  .active {
-    animation: slide 1s forwards;
-  }
-
-  .close {
-    animation: outslide 1s forwards;
-  }
-
   & > button {
     flex: 1 1 0;
 
     width: 100%;
     height: 50px;
     font-size: 35px;
+    z-index: 999;
     background-color: transparent;
     border: none;
     outline: none;
     cursor: pointer;
-
-    &:hover {
-      color: ${({ theme }) => theme.color.PointC};
-    }
   }
 
   & > .share {
     margin-top: 15px;
-    color: #696b6a;
+    color: ${({ theme }) => theme.color.PointC};
   }
 
   & > .like {

@@ -9,7 +9,7 @@ export default function Overlay({ coffeeItem, name }: Props) {
   return (
     <OverlayContainer>
       <div className='image'>
-        <img src={coffeeItem.imageUrl} alt='' />
+        <img src={coffeeItem.imageURL} alt='' />
       </div>
       <span>{name}</span>
     </OverlayContainer>

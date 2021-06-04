@@ -32,7 +32,9 @@ export default function TestImpls() {
 
   const handleBackBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, idx: number) => {
     e.preventDefault()
-    setindex(idx - 1)
+    if (idx !== 0) {
+      setindex(idx - 1)
+    }
   }
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: TestResult) => {
     e.preventDefault()
@@ -55,18 +57,14 @@ export default function TestImpls() {
                 handleNextBtn(Number(data), idx)
               }}
             />
-            {idx !== 0 ? (
-              <div className='btnContainer'>
-                <Button
-                  type='button'
-                  style='MainBtnIvory'
-                  handleClick={(e) => handleBackBtn(e, idx)}
-                  value='뒤로가기'
-                />
-              </div>
-            ) : (
-              ''
-            )}
+            <div className='btnContainer'>
+              <Button
+                type='button'
+                style='MainBtnIvory'
+                handleClick={(e) => handleBackBtn(e, idx)}
+                value='뒤로가기'
+              />
+            </div>
           </div>
         ))}
       </div>

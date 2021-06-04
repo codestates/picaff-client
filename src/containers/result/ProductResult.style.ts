@@ -13,11 +13,22 @@ export const ProductResultContainer = styled.div`
     height: 100vh;
 
     .box_image {
-      flex: 1 1 0;
+      position: relative;
+      display: block;
       width: 100%;
-      height: 60%;
-      margin-top: -10px;
+      max-width: 40vw;
+      height: fit-content;
+      margin-top: 5rem;
       margin-left: 90px;
+      border-radius: 30px;
+      overflow: hidden;
+
+      & img {
+        padding: 5px;
+        border: 2px solid #0b421a;
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .parent_desc {
@@ -162,10 +173,16 @@ export const ProductResultContainer = styled.div`
       flex-direction: column;
       height: 100%;
 
-      .box_map {
+      .box_image {
+        margin: 0 auto;
+        position: relative;
+        display: block;
         width: 100%;
-        margin: 0;
-        height: 30%;
+        max-width: 95%;
+        height: fit-content;
+        padding: 1rem 1rem;
+        border-radius: 30px;
+        overflow: hidden;
       }
 
       .parent_desc {
@@ -185,6 +202,9 @@ export const ProductResultContainer = styled.div`
           .name {
             height: 70%;
             margin: 0;
+          }
+          .text {
+            padding-right: 16px;
           }
         }
       }

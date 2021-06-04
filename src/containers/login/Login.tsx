@@ -6,11 +6,16 @@ import Button from 'components/button/Button'
 import Oauth from 'components/social-Oauth/Oauth'
 import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
 import { requestOauth, saveBeforeTest } from 'module/Oauth'
-import { RedirectProps, useHistory, useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 
-interface Props extends RedirectProps {
-  testResult: TestResult
+interface Props extends Location {
+  from: {
+    pathname: string
+    state?: {
+      testResult: TestResult
+    }
+  }
 }
 
 export default function SignIn() {
@@ -34,17 +39,24 @@ export default function SignIn() {
       [name]: value,
     })
   }
-
   useEffect(() => {
     if (auth.signin && userInfo.auth) {
       const accessToken = userInfo.auth ? userInfo.auth.accessToken : ''
       const refreshToken = userInfo.auth ? userInfo.auth.refreshToken : ''
       if (accessToken && refreshToken) {
-        const { from } = location.state || { from: '/' }
+        const { from } = location.state || { from: { pathname: '/' } }
         if (location.state && 'testResult' in location.state) {
-          saveBeforeTest(location.state.testResult, accessToken)
+          console.log(from.state)
+          saveBeforeTest(location.state['testResult'], accessToken)
+          auth.signin(accessToken, refreshToken, () =>
+            history.replace({
+              pathname: from.pathname,
+              state: from.state,
+            })
+          )
+        } else {
+          auth.signin(accessToken, refreshToken, () => history.replace({ pathname: from.pathname }))
         }
-        auth.signin(accessToken, refreshToken, () => history.replace({ pathname: from }))
       }
     }
   }, [userInfo])

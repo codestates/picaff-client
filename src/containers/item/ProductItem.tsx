@@ -6,12 +6,13 @@ import ProductRadarChart from 'components/radar-chart/ProductRadarChart'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import Tag from 'components/button/Tag'
 import axios from 'axios'
-import Loading from 'components/Loading/Loading'
+import LoadingIndicator from 'components/loading-indicator/Loading'
+
 type Props = {
-  TestResult: TestResult
+  TestResult?: TestResult
   selectedItem: itemResult
   handlechecked: () => void
-  handleTagClick: (tag: Tags) => void
+  handleTagClick?: (tag: Tags) => void
 }
 
 export default function ProductItem({
@@ -22,7 +23,7 @@ export default function ProductItem({
 }: Props) {
   const [renderItem] = useState<itemResult>(selectedItem)
   const [crawledData, setCrawledData] = useState<CrawlingType[]>([])
-  const { itemName, itemDetail, imageUrl, productCharacter, tag } = selectedItem
+  const { itemName, itemDetail, imageURL, productCharacter, tag } = selectedItem
 
   const radarInfo: ProductResultType | undefined = productCharacter && {
     productName: itemName,
@@ -61,7 +62,7 @@ export default function ProductItem({
       </div>
       <section className='Container'>
         <div className='box_image'>
-          <img src={imageUrl} alt=''></img>
+          <img src={imageURL} alt=''></img>
         </div>
 
         <div className='box_radar'>
@@ -86,13 +87,14 @@ export default function ProductItem({
                 style='ClearTag'
                 key={singleTag.id}
                 value={singleTag.tagName}
-                onClick={() => handleTagClick(singleTag)}
+                onClick={() => (handleTagClick ? handleTagClick(singleTag) : undefined)}
               />
             ))}
           </div>
         </div>
 
         <div className='box_market'>
+          <div className='title'>관련 제품 정보</div>
           <div className='marketTable'>
             {crawledData.length !== 0 ? (
               crawledData.map((singleList: CrawlingType) => (
@@ -105,7 +107,7 @@ export default function ProductItem({
                 </div>
               ))
             ) : (
-              <Loading />
+              <LoadingIndicator />
             )}
           </div>
         </div>

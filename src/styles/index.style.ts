@@ -17,13 +17,14 @@ export const GlobalStyled = createGlobalStyle`
     font-family: 'yg-jalnan';
   }
 
-  html, body, {
+  html, body {
     height: 100%;
     letter-spacing: 0.53px;
   }
 
   h1 {
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    line-height: 5rem;
     font-size: 1.5rem;
   }
 
@@ -36,5 +37,13 @@ export const GlobalStyled = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #FFFEFC;
+  }
+
+  @media (max-width: 425px) {
+    h1 {
+      letter-spacing: 3px;
+      line-height: 3rem;
+      font-size: 1rem;
+    }
   }
 `
