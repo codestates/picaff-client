@@ -29,7 +29,7 @@ export default function Share({ isShareOpen }: Props) {
 
   return (
     <ShareComponent id='slide' className={isShareOpen ? 'active' : 'close'}>
-      <div className='box_btn'>
+      <div className={'box_btn'}>
         <img src='./icons/kakaotalk.png' onClick={shareKakao} alt='' id='btnKakao'></img>
         <img src='./icons/naverblog.png' onClick={shareNaverBlog} alt=''></img>
         <img src='./icons/twitter.png' onClick={shareTwitter} alt=''></img>

@@ -5,48 +5,42 @@ export const ProductResultContainer = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  margin-top: 10vh;
+  padding-top: 10vh;
 
   .section_result {
     display: flex;
     flex-direction: row;
-    height: 81vh;
-    width: 100%;
+    height: 100vh;
 
     .box_image {
-      flex: 1 1 1;
+      flex: 1 1 0;
+      width: 100%;
       height: 60%;
-      margin-left: 5%;
-      min-width: 418px;
-
-      & > img {
-        height: 90%;
-        width: 100%;
-        object-fit: contain;
-      }
+      margin-top: -10px;
+      margin-left: 90px;
     }
 
     .parent_desc {
-      flex: 1.4 1 1;
+      flex: 1 1 0;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       flex-direction: row;
       align-items: center;
       margin-top: auto;
-      margin-bottom: 35vh;
+      margin-bottom: 27vh;
       margin-left: 2vw;
 
       .box_desc {
         display: flex;
         flex-direction: column;
         position: relative;
+        bottom: 7rem;
 
         .name {
           flex: 1 1 0;
           padding-left: 16px;
           font-weight: 600;
-          font-size: 3.5rem;
+          font-size: 2.3rem;
         }
 
         .text {
@@ -54,7 +48,9 @@ export const ProductResultContainer = styled.div`
           padding-left: 16px;
           margin-top: 30px;
           font-size: 1.1rem;
-          font-family: 'NanumSquare';
+          p {
+            font-family: 'NanumSquare';
+          }
         }
 
         .tag {
@@ -66,17 +62,24 @@ export const ProductResultContainer = styled.div`
     }
 
     .box_radar {
-      flex: 1.4 1 2;
-      margin-left: -70px;
-      margin-right: 30px;
-      height: 70vh;
-      width: 100%;
-      margin-top: 200px;
+      flex: 1.2 1 0;
+      width: 30%;
 
       .radarChart {
-        height: 100%;
-        width: 40vw;
+        margin-top: 40px;
+        margin-right: 30px;
       }
+    }
+  }
+
+  & .closebtn {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 0px;
+    margin-right: 5%;
+    & .close {
+      font-size: 60px;
     }
   }
 
@@ -90,20 +93,14 @@ export const ProductResultContainer = styled.div`
     align-items: center;
 
     .title {
-      flex: 0.5 1 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 7vh;
-      margin-left: 18vw;
       font-size: 2rem;
     }
 
     .image_box {
       margin-top: 5vh;
-      column-count: 2;
       column-gap: 2rem;
       align-items: center;
+      column-count: 2;
 
       .itemContainer {
         height: 40vh;
@@ -117,8 +114,8 @@ export const ProductResultContainer = styled.div`
         position: relative;
         display: flex;
         align-items: center;
-        margin-left: 10%;
-        margin-bottom: 2rem;
+        padding-left: 10%;
+        padding-bottom: 2rem;
         width: 100%;
         min-width: 280px;
       }
@@ -127,7 +124,7 @@ export const ProductResultContainer = styled.div`
         display: block;
         align-items: center;
         font-size: 1.5rem;
-        margin-left: 3vw;
+        padding-left: 5vw;
         margin-top: 15vh;
       }
 
@@ -149,33 +146,26 @@ export const ProductResultContainer = styled.div`
     }
   }
 
-  & .ItemModal {
-    height: 100vh;
-    position: absolute;
-    transform: translateY(100vh);
-    transition: transform 2s;
+  @media (max-width: 1400px) {
+    .image_box {
+      column-count: 2;
+    }
   }
 
   @media ${({ theme }) => theme.device.laptop} {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    height: 100vh;
 
     .section_result {
       display: flex;
       flex-direction: column;
       height: 100%;
 
-      .box_image {
-        height: 30%;
+      .box_map {
         width: 100%;
         margin: 0;
-        display: flex;
-        justify-content: center;
-
-        & > img {
-          height: 100%;
-        }
+        height: 30%;
       }
 
       .parent_desc {
@@ -190,6 +180,7 @@ export const ProductResultContainer = styled.div`
           display: flex;
           flex-direction: column;
           position: relative;
+          bottom: 0px;
 
           .name {
             height: 70%;
@@ -200,32 +191,33 @@ export const ProductResultContainer = styled.div`
 
       .box_radar {
         width: 100%;
-        height: 50vh;
+        height: 30%;
+        min-height: 40vh;
+
         display: flex;
         justify-content: center;
-        position: relative;
-        margin: 0;
 
         .radarChart {
           width: 100%;
+          margin: 0;
         }
       }
     }
 
     .section_image {
-      display: inline-block;
+      display: flex;
       flex-direction: column;
       width: 100%;
       height: 100%;
       position: relative;
+      justify-items: center;
+      align-items: center;
 
       .title {
-        height: 10%;
-        margin: 0;
+        margin: 0 10%;
       }
 
       .image_box {
-        column-count: 1;
         .itemContainer {
           display: flex;
           flex-direction: column;
@@ -255,6 +247,12 @@ export const ProductResultContainer = styled.div`
       .image_box:nth-child(3) {
         padding: 0;
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .image_box {
+      column-count: 1 !important;
     }
   }
 `

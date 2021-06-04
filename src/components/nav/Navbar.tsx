@@ -18,13 +18,10 @@ export default function Navbar() {
           <Button style='MenuBtn' type='button' value='HOME' />
         </Link>
         <Link to='/test' id='test'>
-          <Button style='MenuBtn' type='button' value='PICAFF TEST' />
+          <Button style='MenuBtn' type='button' value='RECOMMEND' />
         </Link>
-        <Link to='/magazin' id='magazine'>
-          <Button style='MenuBtn' type='button' value='PICAFF MAGAZINE' />
-        </Link>
-        <Link to='/sample' id='sample'>
-          <Button style='MenuBtn' type='button' value='SAMPLE' />
+        <Link to='/magazine' id='magazine'>
+          <Button style='MenuBtn' type='button' value='RECIPE' />
         </Link>
       </ul>
       <ul className='navbar_user'>
