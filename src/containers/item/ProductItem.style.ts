@@ -161,6 +161,11 @@ export const ProductItemContainer = styled.div`
     }
   }
 
+  #loading {
+    padding-top: 100px;
+    padding-right: 152px;
+  }
+
   @media (max-width: 1400px) {
     .box_market {
       right: 10%;

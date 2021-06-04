@@ -7,7 +7,7 @@ import { AiFillCloseCircle } from 'react-icons/ai'
 import CoffeeMap from 'components/coffee-map/CoffeeMap'
 import Tag from 'components/button/Tag'
 import axios from 'axios'
-import Loading from 'components/Loading/Loading'
+import LoadingIndicator from 'components/loading-indicator/Loading'
 
 type Props = {
   TestResult?: TestResult
@@ -110,7 +110,7 @@ export default function CoffeeItem({
                 </div>
               ))
             ) : (
-              <Loading />
+              <LoadingIndicator />
             )}
           </div>
         </div>
