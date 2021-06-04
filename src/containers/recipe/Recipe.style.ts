@@ -69,7 +69,7 @@ export const RecipeContainer = styled.div<MenuProps>`
 
   .options {
     display: flex;
-    margin-top: -60px;
+    margin-top: -20px;
 
     & > button {
       user-select: none;
