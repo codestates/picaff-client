@@ -5,12 +5,12 @@ export const CoffeeResultContainer = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  margin-top: 10vh;
+  padding-top: 10vh;
 
   .section_result {
     display: flex;
     flex-direction: row;
-    height: 81vh;
+    height: 100vh;
 
     .box_map {
       flex: 1 1 0;
@@ -33,12 +33,13 @@ export const CoffeeResultContainer = styled.div`
         display: flex;
         flex-direction: column;
         position: relative;
+        bottom: 7rem;
 
         .name {
           flex: 1 1 0;
           padding-left: 16px;
           font-weight: 600;
-          font-size: 3.5rem;
+          font-size: 2.3rem;
         }
 
         .text {
@@ -46,7 +47,9 @@ export const CoffeeResultContainer = styled.div`
           padding-left: 16px;
           margin-top: 30px;
           font-size: 1.1rem;
-          font-family: 'NanumSquare';
+          p {
+            font-family: 'NanumSquare';
+          }
         }
 
         .tag {
@@ -60,6 +63,8 @@ export const CoffeeResultContainer = styled.div`
     .box_radar {
       flex: 1.2 1 0;
       width: 30%;
+      height: 50vw;
+      max-height: 80%;
 
       .radarChart {
         margin-top: 40px;
@@ -121,6 +126,7 @@ export const CoffeeResultContainer = styled.div`
           display: flex;
           flex-direction: column;
           position: relative;
+          bottom: 0px;
 
           .name {
             height: 70%;
@@ -131,13 +137,14 @@ export const CoffeeResultContainer = styled.div`
 
       .box_radar {
         width: 100%;
-        height: 30%;
+        height: 50vh;
 
         display: flex;
         justify-content: center;
 
         .radarChart {
           width: 100%;
+          height: 100%;
           margin: 0;
         }
       }

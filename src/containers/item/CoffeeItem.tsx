@@ -62,18 +62,29 @@ export default function CoffeeItem({
       </div>
 
       <div className='back1'>
-        <video src='./backvideo.mp4' muted autoPlay loop></video>
+        <video src='./backvideo.mp4' muted autoPlay loop />
       </div>
-      <div className='Container'>
+      <section className='Container'>
         <div className='box_map'>
           <CoffeeMap type={renderItem.iso || 'All'} coffee={renderItem} />
         </div>
 
-        <div className='box_radar'>{radarInfo && <CoffeeRadarChart radarInfo={radarInfo} />}</div>
+        <div className='box_radar'>
+          {radarInfo && <CoffeeRadarChart type='item' radarInfo={radarInfo} />}
+        </div>
 
         <div className='box_desc'>
-          <div className='name'>{itemName}</div>
-          <div className='text'>{itemDetail}</div>
+          <div className='name'>{itemDetail.title}</div>
+          <div className='text'>
+            <p>
+              {itemDetail.content.map((content) => (
+                <>
+                  {content}
+                  <br />
+                </>
+              ))}
+            </p>
+          </div>
           <div className='tag'>
             {tag.map((singleTag: Tags) => (
               <Tag
@@ -103,7 +114,7 @@ export default function CoffeeItem({
             )}
           </div>
         </div>
-      </div>
+      </section>
       <ShareAndLike renderItem={renderItem} testResult={TestResult} />
     </CoffeeItemContainer>
   )

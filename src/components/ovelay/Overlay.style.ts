@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const OverlayContainer = styled.div`
   position: absolute;
   bottom: 0px;
-  left: -10px;
+  left: -50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
