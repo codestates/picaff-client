@@ -13,8 +13,10 @@ export const SliderContainer = styled.div<Index>`
     position: relative;
     background-color: ${({ theme }) => theme.color.PointC};
     width: ${({ index }) => ((index + 1) / 11) * 100}%;
-    height: 3px;
+    height: 4px;
     transition: width 1s;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
   & .slider {
     white-space: nowrap;
