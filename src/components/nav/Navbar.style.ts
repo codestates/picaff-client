@@ -10,6 +10,7 @@ export const NavComponent = styled.nav<NavbarType>`
   align-items: center;
   background-color: ${({ theme }) => theme.color.NavC};
   padding: 0 24px 0 24px;
+  width: 100vw;
   height: 80px;
   padding-left: 10px;
 
@@ -44,13 +45,17 @@ export const NavComponent = styled.nav<NavbarType>`
 
   .navbar_user {
     display: flex;
-    padding-left: 0;
+
     & > a > button {
       margin: 0 5px;
       padding: 2px 8px;
       width: 100px;
+      height: 35px;
       font-size: 0.9rem;
       border: 3px solid ${({ theme }) => theme.color.PointC};
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
@@ -71,6 +76,9 @@ export const NavComponent = styled.nav<NavbarType>`
     flex-direction: column;
     align-items: flex-start;
     height: ${({ isActive }) => (isActive ? '50%' : '80px')};
+    z-index: 1;
+    width: 100%;
+    padding: 0;
 
     .navbar_menu {
       display: ${({ isActive }) => (isActive ? 'flex' : 'none')};
@@ -78,10 +86,10 @@ export const NavComponent = styled.nav<NavbarType>`
       align-items: center;
       margin-bottom: 20px;
       width: 100%;
-      padding: 0px;
+      padding: 0;
 
       & > a {
-        width: 100%;
+        width: 90%;
         margin: 2px 0;
 
         & > button {
@@ -106,9 +114,10 @@ export const NavComponent = styled.nav<NavbarType>`
       justify-content: center;
       align-items: center;
       width: 100%;
+      margin-bottom: 10px;
 
       & > a {
-        width: 100%;
+        width: 90%;
         margin: 5px;
       }
 
