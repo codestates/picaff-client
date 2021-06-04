@@ -55,18 +55,18 @@ export default function TestImpls() {
                 handleNextBtn(Number(data), idx)
               }}
             />
-            {idx !== 0 ? (
-              <div className='btnContainer'>
+            <div className='btnContainer'>
+              {idx !== 0 ? (
                 <Button
                   type='button'
                   style='MainBtnIvory'
                   handleClick={(e) => handleBackBtn(e, idx)}
                   value='뒤로가기'
                 />
-              </div>
-            ) : (
-              ''
-            )}
+              ) : (
+                ''
+              )}
+            </div>
           </div>
         ))}
       </div>

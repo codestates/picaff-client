@@ -35,7 +35,7 @@ export const SliderContainer = styled.div<Index>`
     }
     .slide:first-child {
       position: relative;
-      top: -8rem;
+      top: -7.2rem;
     }
 
     & .btnContainer {
