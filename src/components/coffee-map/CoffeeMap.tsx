@@ -1,9 +1,9 @@
-import { GoogleMap, LoadScript, OverlayView, Polygon } from '@react-google-maps/api'
+import { GoogleMap, OverlayView, Polygon, useLoadScript } from '@react-google-maps/api'
 import Overlay from 'components/ovelay/Overlay'
 import { itemResult, MapOption } from 'interface'
 import { GetMapOptions } from 'module/Coffeemap'
 import { ConvertLatLng } from 'module/Polygon'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CoffeeMapContainer } from './CoffeeMap.style'
 import { default as coord } from './polygon.json'
 
@@ -20,6 +20,11 @@ const getWindowDimension = (): number => {
 }
 
 export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag }: maptype) {
+  const { isLoaded, loadError } = useLoadScript({
+    mapIds: ['ae2e13f24821623f'],
+    googleMapsClientId: process.env.REACT_APP_GOOGLE_CLIENT_ID as string,
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY as string,
+  })
   const [PolygonData, setPolygonData] =
     useState<(google.maps.LatLng[] | google.maps.LatLng[][])[] | undefined>(undefined)
   const [index, setindex] = useState<number>(0)
@@ -64,7 +69,11 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
     }
   }, [RegionArr])
 
-  const onLoad = () => {
+  const handleMouseOver = (idx: number) => {
+    setindex(idx)
+  }
+
+  const onLoad = React.useCallback(function callback() {
     const result = coord.map<google.maps.LatLng[] | google.maps.LatLng[][]>((el) =>
       ConvertLatLng(el)
     )
@@ -75,19 +84,17 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
       }))
     )
     setPolygonData(result)
-  }
+  }, [])
 
-  const handleMouseOver = (idx: number) => {
-    setindex(idx)
+  if (loadError) {
+    return <div>reload</div>
   }
 
   return (
     <CoffeeMapContainer>
-      <LoadScript
-        onLoad={onLoad}
-        mapIds={['ae2e13f24821623f']}
-        googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY as string}>
+      {isLoaded ? (
         <GoogleMap
+          onLoad={onLoad}
           zoom={mapOption.zoom}
           center={mapOption.center}
           mapContainerStyle={{
@@ -95,7 +102,7 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
             height: '100%',
           }}
           options={{
-            mapId: 'ae2e13f24821623f',
+            // mapId: 'ae2e13f24821623f',
             disableDefaultUI: true,
             disableDoubleClickZoom: true,
             minZoom: 1,
@@ -179,7 +186,9 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
               )
             })}
         </GoogleMap>
-      </LoadScript>
+      ) : (
+        ''
+      )}
     </CoffeeMapContainer>
   )
 }

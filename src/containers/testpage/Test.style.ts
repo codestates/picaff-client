@@ -5,11 +5,10 @@ type Index = {
 }
 
 export const SliderContainer = styled.div<Index>`
-  position: absolute;
+  position: relative;
   margin: 0 auto;
-  width: 100%;
-  height: 100%;
-  padding-top-top: 3rem;
+  width: 100vw;
+  height: calc(100vh - 80px);
   & .progress {
     position: relative;
     background-color: ${({ theme }) => theme.color.PointC};

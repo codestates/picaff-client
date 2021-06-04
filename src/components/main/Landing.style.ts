@@ -63,8 +63,8 @@ export const LandingComponent = styled.section`
       -webkit-text-stroke-color: #f3f1ef;
       color: transparent;
       & .title {
-        font-size: 110px;
         margin-top: 10px;
+        font-size: 5rem;
       }
       & > :hover {
         color: white;
@@ -88,6 +88,7 @@ export const LandingComponent = styled.section`
       }
       @media (min-width: 768px) {
         max-width: 720px;
+        font-size: 3rem;
       }
       @media (min-width: 992px) {
         max-width: 960px;
