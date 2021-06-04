@@ -1,6 +1,5 @@
 import Button from 'components/button/Button'
 import Likeitems from 'components/like-items/Likeitems'
-// import LandingComponent from 'components/main/Landing.style'
 import Modify from 'components/modify/Modify'
 import TestResultList from 'components/test-result-list/TestResultList'
 import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
@@ -49,7 +48,6 @@ export default function Mypage() {
   }
 
   const { email, userName } = UserInfo
-  console.log('렌더바로전 Mypage UserInfo::::::::::::', UserInfo)
   return (
     <>
       {isModify ? (

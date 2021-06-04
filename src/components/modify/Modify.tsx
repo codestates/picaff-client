@@ -89,7 +89,6 @@ export default function Modify({ userInfo }: ModifyProps) {
           headers: { Authorization: `Bearer ${auth.accessToken}` },
         }
       )
-      console.log(response.data)
       setUserInfo({
         ...UserInfo,
         userName: response.data.userName,
