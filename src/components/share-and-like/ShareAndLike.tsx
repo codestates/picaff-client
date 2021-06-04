@@ -30,7 +30,6 @@ export default function ShareAndLike({ renderItem, testResult }: Props) {
   }
 
   const AddLike = async () => {
-    console.log(auth.accessToken)
     if (isLogin()) {
       const res = await axios.put(
         'http://localhost:4000/item/liked',
@@ -44,11 +43,10 @@ export default function ShareAndLike({ renderItem, testResult }: Props) {
         }
       )
       console.log(res.status)
-      if (res.status === 201) {
-        setIsLiked(!isLiked)
-        console.log('좋아요 상태 변경 요청 성공')
-      } else {
-        console.log('권한이 없습니다 혹은 다시 시도하십시오')
+      if (res.status === 200) {
+        setIsLiked(true)
+      } else if (res.status === 202) {
+        setIsLiked(false)
       }
     }
   }

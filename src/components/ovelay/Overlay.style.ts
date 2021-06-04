@@ -8,6 +8,7 @@ export const OverlayContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 100px;
   width: 100px;
   height: 100px;
   padding: 5px;

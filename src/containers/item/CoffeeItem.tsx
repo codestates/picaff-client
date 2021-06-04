@@ -74,7 +74,7 @@ export default function CoffeeItem({
         </div>
 
         <div className='box_desc'>
-          <div className='name'>{itemDetail.title}</div>
+          <h1 className='name'>{itemDetail.title}</h1>
           <div className='text'>
             <p>
               {itemDetail.content.map((content) => (
@@ -98,6 +98,7 @@ export default function CoffeeItem({
         </div>
 
         <div className='box_market'>
+          <div className='title'>관련 제품 정보</div>
           <div className='marketTable'>
             {crawledData.length !== 0 ? (
               crawledData.map((singleList: CrawlingType) => (

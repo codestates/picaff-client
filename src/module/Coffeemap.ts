@@ -10,7 +10,7 @@ export const GetMapOptions = (type: string, width?: string): MapOption => {
   switch (type) {
     case 'All':
       if (width === 'S') {
-        return { zoom: 2, center: { lat: 5, lng: -20.644 } }
+        return { zoom: 1, center: { lat: 5, lng: -20.644 } }
       } else if (width === 'M') {
         return { zoom: 2, center: { lat: 5, lng: -20.644 } }
       } else if (width === 'L') {

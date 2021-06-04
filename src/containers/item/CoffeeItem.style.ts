@@ -86,18 +86,25 @@ export const CoffeeItemContainer = styled.div`
     height: 40%;
     width: auto;
     display: flex;
+    flex-direction: column;
     position: absolute;
     bottom: 5%;
     right: 15%;
     transition: all 0.8s ease-in-out;
-    overflow-y: scroll;
-    ::-webkit-scrollbar {
-      display: none;
-    }
 
+    & .title {
+      color: #f7f7f4;
+      font-size: 1.5rem;
+      margin-left: 5px;
+      margin-bottom: 0.5rem;
+    }
     .marketTable {
       max-width: 360px;
       right: 0px;
+      overflow-y: scroll;
+      ::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     .singleList {
@@ -120,7 +127,7 @@ export const CoffeeItemContainer = styled.div`
         justify-content: center;
 
         & .itemName {
-          font: italic normal 13px/20px 'sans-serif';
+          font: italic normal 13px/20px 'NanumSquare';
           padding-top: 1rem;
         }
         & .price {
@@ -139,14 +146,6 @@ export const CoffeeItemContainer = styled.div`
     flex-direction: column;
     margin: 0;
     color: white;
-
-    .name {
-      -webkit-text-stroke-width: 1.5px;
-      -webkit-text-stroke-color: #f3f1ef;
-      color: transparent;
-      margin-top: 60px;
-      font-size: 4rem;
-    }
 
     .text {
       margin-top: 2rem;
@@ -189,6 +188,9 @@ export const CoffeeItemContainer = styled.div`
     .box_desc {
       margin: 0 auto;
       padding: 0;
+      .name {
+        font-size: 3rem;
+      }
     }
     .box_map {
       max-width: 80%;
@@ -220,6 +222,14 @@ export const CoffeeItemContainer = styled.div`
     }
   }
   @media (max-width: 576px) {
+  }
+
+  .name {
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #f3f1ef;
+    color: transparent;
+    margin-top: 60px;
+    font-size: 4rem;
   }
 
   @keyframes slide {

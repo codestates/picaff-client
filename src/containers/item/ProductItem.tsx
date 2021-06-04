@@ -94,6 +94,7 @@ export default function ProductItem({
         </div>
 
         <div className='box_market'>
+          <div className='title'>관련 제품 정보</div>
           <div className='marketTable'>
             {crawledData.length !== 0 ? (
               crawledData.map((singleList: CrawlingType) => (
