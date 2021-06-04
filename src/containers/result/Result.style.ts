@@ -7,11 +7,22 @@ type IsTabActiveType = {
 export const ResultContainer = styled.div<IsTabActiveType>`
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
 
   .top_container {
     display: flex;
     justify-content: center;
     width: 100%;
+  }
+  .active {
+    animation: slide 1s forwards;
+  }
+
+  .close {
+    animation: outslide 1s forwards;
   }
 
   .content {
@@ -33,7 +44,7 @@ export const ResultContainer = styled.div<IsTabActiveType>`
   .section_btn > button {
     width: 100%;
     height: 100%;
-    font-size: 4rem;
+    font-size: 3.3rem;
     font-weight: 600;
     border: none;
     outline: none;

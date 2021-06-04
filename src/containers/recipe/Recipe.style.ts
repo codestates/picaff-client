@@ -69,7 +69,7 @@ export const RecipeContainer = styled.div<MenuProps>`
 
   .options {
     display: flex;
-    margin-top: -80px;
+    margin-top: -60px;
 
     & > button {
       user-select: none;
@@ -77,12 +77,15 @@ export const RecipeContainer = styled.div<MenuProps>`
       color: ${({ theme }) => theme.color.WhiteC};
       background-color: rgba(11, 66, 26, 0.45);
       width: 10vw;
-      height: 6vh;
+      height: 7vh;
       padding: 15px;
       font-size: 1.2rem;
       box-shadow: none;
       box-sizing: border-box;
       border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &#americano {
         border-top-left-radius: 10px;
@@ -273,7 +276,7 @@ export const RecipeContainer = styled.div<MenuProps>`
     }
 
     .filling div {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
 
     .options {
@@ -307,8 +310,8 @@ export const RecipeContainer = styled.div<MenuProps>`
   }
 
   @media ${({ theme }) => theme.device.tablet} {
-    .coffee_name {
-      font-size: 1.7rem;
+    .filling div {
+      font-size: 0.7rem;
     }
   }
 `

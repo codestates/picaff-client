@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CoffeeResultContainer } from './CoffeeResult.style'
 import { itemResult, CoffeeResultType, Tags, TestResult } from 'interface'
 import CoffeeRadarChart from 'components/radar-chart/CoffeeRadarChart'
-// import CoffeeItem from 'containers/item/CoffeeItem'
 import Tag from 'components/button/Tag'
 import CoffeeMap from 'components/coffee-map/CoffeeMap'
 import CoffeeItem from 'containers/item/CoffeeItem'
@@ -16,7 +15,10 @@ const initdata: itemResult = {
   id: 0,
   itemName: 'Coffee example',
   itemPrice: 0,
-  itemDetail: '',
+  itemDetail: {
+    title: '',
+    content: [],
+  },
   type: 'product',
   imageUrl:
     'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Kenya.svg/600px-Flag_of_Kenya.svg.png',
@@ -31,6 +33,7 @@ export default function CoffeeResult({ TestResult }: Props) {
   const [CoffeeDataArr, setCoffeeDataArr] = useState<itemResult[]>([])
   const [CoffeeData, setCoffeeData] = useState<itemResult>(initdata)
   const [selectedTag, setSelectedTag] = useState<string>('')
+  const mapRef = useRef<HTMLElement>(null)
 
   const { coffeeCharacter } = selectedItem
   const radarInfo: CoffeeResultType | undefined = coffeeCharacter && {
@@ -66,6 +69,7 @@ export default function CoffeeResult({ TestResult }: Props) {
   }
 
   const handleTagClick = (tag: Tags) => {
+    mapRef.current?.scrollIntoView()
     setSelectedTag(tag.tagName)
     if (isItemClicked) setIsItemClicked(false)
   }
@@ -78,8 +82,17 @@ export default function CoffeeResult({ TestResult }: Props) {
         </div>
         <div className='parent_desc'>
           <div className='box_desc'>
-            <div className='name'>{selectedItem.itemName}</div>
-            <div className='text'>{selectedItem.itemDetail}</div>
+            <div className='name'>{selectedItem.itemDetail.title}</div>
+            <div className='text'>
+              <p>
+                {selectedItem.itemDetail.content.map((content) => (
+                  <>
+                    {content}
+                    <br />
+                  </>
+                ))}
+              </p>
+            </div>
             <div className='tag'>
               {selectedItem.tag.map((singleTag: Tags) => (
                 <Tag
@@ -92,9 +105,11 @@ export default function CoffeeResult({ TestResult }: Props) {
             </div>
           </div>
         </div>
-        <div className='box_radar'>{radarInfo && <CoffeeRadarChart radarInfo={radarInfo} />}</div>
+        <div className='box_radar'>
+          {!isItemClicked && radarInfo && <CoffeeRadarChart type='result' radarInfo={radarInfo} />}
+        </div>
       </section>
-      <section className='section_map'>
+      <section className='section_map' ref={mapRef}>
         <CoffeeMap
           type={'All'}
           handleRegionClick={handleRegionClick}
@@ -102,15 +117,13 @@ export default function CoffeeResult({ TestResult }: Props) {
           selectedTag={selectedTag}
         />
       </section>
-      {isItemClicked ? (
+      {isItemClicked && (
         <CoffeeItem
-          handleTagClick={handleTagClick}
           TestResult={TestResult}
           CoffeeData={CoffeeData}
           handlechecked={() => setIsItemClicked(!isItemClicked)}
+          handleTagClick={handleTagClick}
         />
-      ) : (
-        ''
       )}
     </CoffeeResultContainer>
   )
