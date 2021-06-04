@@ -1,5 +1,5 @@
 export const RadarData = {
-  labels: ['accessibility', 'convenience', 'effectiveness'],
+  labels: ['접근성', '편의성', '효율성'],
   datasets: [
     {
       label: '',
@@ -27,6 +27,7 @@ export const RadarOptions = {
       color: '#EAC784',
       font: {
         size: 25,
+        family: 'yg-jalnan',
       },
     },
   },
@@ -56,6 +57,7 @@ export const RadarOptions = {
         color: '#fff',
         font: {
           size: 20,
+          family: 'NanumSquare',
         },
       },
     },

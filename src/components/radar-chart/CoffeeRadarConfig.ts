@@ -1,5 +1,5 @@
 export const RadarData = {
-  labels: ['sweetness', 'sourness', 'balance', 'body', 'aroma', 'after taste'],
+  labels: ['단맛', '신맛', '밸런스', '바디감', '아로마', '끝맛'],
   datasets: [
     {
       label: '',
@@ -27,6 +27,7 @@ export const RadarOptions = {
       color: '#EAC784',
       font: {
         size: 25,
+        family: 'yg-jalnan',
       },
     },
   },
@@ -56,6 +57,7 @@ export const RadarOptions = {
         color: '#fff',
         font: {
           size: 20,
+          family: 'NanumSquare',
         },
       },
     },
