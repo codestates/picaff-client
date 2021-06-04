@@ -16,6 +16,14 @@ export const BtnComponent = styled.div<BtnComponentProps>`
   background-color: ${({ theme }) => theme.color.NavC};
   border-radius: 50px;
 
+  .active {
+    animation: slide 1s forwards;
+  }
+
+  .close {
+    animation: outslide 1s forwards;
+  }
+
   & > button {
     flex: 1 1 0;
 

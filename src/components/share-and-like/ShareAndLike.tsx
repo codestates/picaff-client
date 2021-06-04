@@ -59,7 +59,7 @@ export default function ShareAndLike({ renderItem, testResult }: Props) {
       <button className='like' onClick={() => AddLike()}>
         <MdFavorite />
       </button>
-      {isShareOpen && <Share isShareOpen={isShareOpen} />}
+      <Share isShareOpen={isShareOpen} />
     </BtnComponent>
   )
 }

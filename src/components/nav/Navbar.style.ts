@@ -21,29 +21,21 @@ export const NavComponent = styled.nav<NavbarType>`
   }
 
   .navbar_menu {
-    width: 40%;
+    padding-left: 25px;
+    flex: 1 1 0;
     display: flex;
-    align-items: center;
-    padding-left: 0;
+    align-items: flex-start;
+    justify-content: start;
 
     & > a {
-      width: 100%;
+      margin-left: 1rem;
       text-decoration: none !important;
-
-      &#home {
-        flex: 1.3 1 0;
-      }
-
-      &#test,
-      &#magazine {
-        flex: 2 1 0;
-      }
 
       & > button {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 8px 12px;
+        padding: 2px 8px;
         font-weight: 700;
         font-size: 1.2rem;
       }
@@ -55,7 +47,7 @@ export const NavComponent = styled.nav<NavbarType>`
     padding-left: 0;
     & > a > button {
       margin: 0 5px;
-      padding: 8px 12px;
+      padding: 2px 8px;
       width: 100px;
       font-size: 0.9rem;
       border: 3px solid ${({ theme }) => theme.color.PointC};
@@ -84,8 +76,9 @@ export const NavComponent = styled.nav<NavbarType>`
       display: ${({ isActive }) => (isActive ? 'flex' : 'none')};
       flex-direction: column;
       align-items: center;
-      margin: 20px 0;
+      margin-bottom: 20px;
       width: 100%;
+      padding: 0px;
 
       & > a {
         width: 100%;
@@ -94,7 +87,7 @@ export const NavComponent = styled.nav<NavbarType>`
         & > button {
           width: 100%;
           text-align: center;
-          padding-top: 10px;
+          padding-top: 5px;
           outline: none;
           font-size: 1.2rem;
 

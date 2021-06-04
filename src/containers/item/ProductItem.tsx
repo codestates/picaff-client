@@ -47,7 +47,7 @@ export default function ProductItem({
     }
     getCrawlingData()
   }, [])
-  console.log(selectedItem)
+
   return (
     <ProductItemContainer>
       <div className='closebtn'>
