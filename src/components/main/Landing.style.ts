@@ -5,7 +5,8 @@ export const LandingComponent = styled.section`
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background: linear-gradient(#f2f1e5, 85%, #ffe6bd);
+  background: linear-gradient(#f2f1e5, 80%, #ddc3a6);
+  padding-bottom: 18px;
 
   & .mainContainer {
     position: absolute;
@@ -107,9 +108,9 @@ export const LandingComponent = styled.section`
     & .p {
       margin-bottom: 0.2rem !important;
       p {
-        font: normal normal 17px/26px 'sans-serif';
+        font: normal normal 17px/26px 'NanumSquare';
         color: #fff;
-        font-weight: 300;
+        font-weight: 400;
 
         margin-top: 1rem;
         flex: 0 0 50%;
@@ -130,7 +131,7 @@ export const LandingComponent = styled.section`
         position: relative;
         display: inline-block;
         background-color: transparent;
-        font: normal normal 1rem/0.8rem 'halyard-display', 'sans-serif';
+        font: normal normal 1.2rem/1.2rem 'sans-serif', 'sans-serif';
         letter-spacing: 2.93px;
         text-transform: uppercase;
         font-weight: 600;
@@ -142,6 +143,7 @@ export const LandingComponent = styled.section`
       .btn:active {
         letter-spacing: 5px;
         color: ${({ theme }) => theme.color.YelloC};
+        cursor: pointer;
       }
 
       .btn:after {

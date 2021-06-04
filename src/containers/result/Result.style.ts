@@ -130,6 +130,7 @@ export const ResultContainer = styled.div<IsTabActiveType>`
       font-size: 2.2rem;
       color: ${({ theme }) => theme.color.PointC};
       cursor: pointer;
+      z-index: -1;
     }
 
     .section_share > button {

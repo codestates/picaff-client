@@ -57,6 +57,7 @@ export const RecipeContainer = styled.div<MenuProps>`
     justify-content: center;
     width: 70vw;
     height: 50vh;
+    margin-top: 35px;
   }
 
   .coffee_name {
@@ -269,6 +270,7 @@ export const RecipeContainer = styled.div<MenuProps>`
 
     .container {
       flex: 0.8 1 0;
+      margin: 0;
     }
 
     .coffee_name {
