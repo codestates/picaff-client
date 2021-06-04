@@ -10,12 +10,29 @@ export const SelectContainer = styled.section`
   height: 100%;
   width: 30%;
   margin: 0 auto;
-  min-width: ${({ theme }) => theme.deviceSizes.mobile - 70 + 'px'};
+  min-width: ${({ theme }) => theme.deviceSizes.mobile - 80 + 'px'};
   & > div {
     width: 100%;
   }
 
-  h1,
+  .th0 {
+    &::before {
+      right: 13px;
+    }
+  }
+  .th4 {
+    &::before {
+      right: -30px;
+    }
+  }
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
   p {
     margin: auto auto;
     color: ${({ theme }) => theme.color.YelloC};
@@ -26,15 +43,17 @@ export const SelectContainer = styled.section`
     display: flex;
     justify-content: center;
   }
-
   .title {
+    max-width: 330px;
     width: 100%;
-    h1 {
-      font-size: 1.2rem;
-    }
+    color: ${({ theme }) => theme.color.YelloC};
+    height: fit-content;
+    overflow-wrap: break-all;
+    white-space: pre-wrap;
+    text-align: center;
   }
 
-  & .selectcontainer {
+  .selectcontainer {
     height: 100%;
     border-radius: 15px;
     background-color: ${({ theme }) => theme.color.NavC};
@@ -54,6 +73,10 @@ export const SelectContainer = styled.section`
     & svg {
       animation: rateHover 0.5s ease-out forwards;
     }
+  }
+
+  p {
+    width: 100%;
   }
 
   .icon-star {
@@ -89,6 +112,20 @@ export const SelectContainer = styled.section`
     fill: rgba(242, 242, 194, 0.6);
   }
 
+  @media (max-width: 998px) {
+    h1 {
+      font-size: 1rem;
+    }
+    .selectcontainer {
+      height: 100%;
+      border-radius: 15px;
+      background-color: ${({ theme }) => theme.color.NavC};
+      padding-top: 0.5rem;
+      padding-bottom: 1rem;
+      margin: 0;
+    }
+  }
+
   button {
     position: relative;
     display: inline-block;
@@ -105,18 +142,17 @@ export const SelectContainer = styled.section`
     -moz-appearance: none;
     appearance: none;
     outline: none;
-
     & svg {
       width: 100%;
       height: 100%;
       transition: transform 0.3s;
       background-color: transparent;
     }
+
     &::before {
       position: absolute;
+      display: inline-block;
       bottom: 0rem;
-      left: 0;
-      right: 0;
       display: block;
       margin: auto;
       opacity: 0;
