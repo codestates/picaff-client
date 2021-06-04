@@ -6,7 +6,8 @@ import ProductRadarChart from 'components/radar-chart/ProductRadarChart'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import Tag from 'components/button/Tag'
 import axios from 'axios'
-import Loading from 'components/Loading/Loading'
+import LoadingIndicator from 'components/loading-indicator/Loading'
+
 type Props = {
   TestResult: TestResult
   selectedItem: itemResult
@@ -105,7 +106,7 @@ export default function ProductItem({
                 </div>
               ))
             ) : (
-              <Loading />
+              <LoadingIndicator />
             )}
           </div>
         </div>
