@@ -20,7 +20,7 @@ const initdata: itemResult = {
     content: [],
   },
   type: 'product',
-  imageUrl:
+  imageURL:
     'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Kenya.svg/600px-Flag_of_Kenya.svg.png',
   iso: '',
   isLiked: false,

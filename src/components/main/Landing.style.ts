@@ -83,7 +83,7 @@ export const LandingComponent = styled.section`
       vertical-align: baseline;
 
       margin-bottom: 3rem !important;
-      font: normal 500 50px/55px 'mandrel-normal', 'sans-serif';
+      font: normal 500 50px/55px 'NanumSquare', 'sans-serif';
       @media (min-width: 576px) {
         max-width: 540px;
       }

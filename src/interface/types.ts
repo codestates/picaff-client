@@ -58,7 +58,7 @@ export type itemResult = {
   itemPrice: number
   itemDetail: ItemDetail
   type: 'product' | 'coffee'
-  imageUrl: string
+  imageURL: string
   iso: 'KE' | 'GT' | 'CO' | 'ET' | 'BR' | 'All' | ''
   productCharacter?: ProductCharacter
   coffeeCharacter?: CoffeeCharacter

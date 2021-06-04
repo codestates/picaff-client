@@ -45,4 +45,7 @@ export const LikeitemsContainer = styled.div`
     left: 50px;
     transition: 0.4s ease-out;
   }
+  .empty {
+    width: fit-content;
+  }
 `

@@ -26,7 +26,7 @@ export default function Select({ title, handleTestResult, preSelect }: Select) {
         </defs>
       </svg>
       <div>
-        <div>
+        <div className='title'>
           <h1>{title}</h1>
         </div>
         <div className='selectcontainer'>

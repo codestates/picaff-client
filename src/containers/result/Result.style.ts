@@ -17,13 +17,6 @@ export const ResultContainer = styled.div<IsTabActiveType>`
     justify-content: center;
     width: 100%;
   }
-  .active {
-    animation: slide 1s forwards;
-  }
-
-  .close {
-    animation: outslide 1s forwards;
-  }
 
   .content {
     display: flex;
@@ -99,10 +92,11 @@ export const ResultContainer = styled.div<IsTabActiveType>`
       margin: 0 auto;
       margin-top: 3rem;
       border: none;
+      justify-content: space-evenly;
 
       & > button {
         width: 25vw;
-        font-size: 2rem;
+        font-size: 1.7rem;
         padding-bottom: 2vh;
       }
     }
@@ -137,6 +131,18 @@ export const ResultContainer = styled.div<IsTabActiveType>`
       position: absolute;
       top: 210px;
       right: 4%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section_btn {
+      width: 95%;
+      justify-content: space-evenly;
+      & > button {
+        width: 40vw;
+        font-size: 1.2rem;
+        padding-bottom: 2vh;
+      }
     }
   }
 `

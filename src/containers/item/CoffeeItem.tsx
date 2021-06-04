@@ -10,10 +10,10 @@ import axios from 'axios'
 import LoadingIndicator from 'components/loading-indicator/Loading'
 
 type Props = {
-  TestResult: TestResult
+  TestResult?: TestResult
   CoffeeData: itemResult
   handlechecked: () => void
-  handleTagClick: (tag: Tags) => void
+  handleTagClick?: (tag: Tags) => void
 }
 
 export default function CoffeeItem({
@@ -74,7 +74,7 @@ export default function CoffeeItem({
         </div>
 
         <div className='box_desc'>
-          <div className='name'>{itemDetail.title}</div>
+          <h1 className='name'>{itemDetail.title}</h1>
           <div className='text'>
             <p>
               {itemDetail.content.map((content) => (
@@ -91,13 +91,14 @@ export default function CoffeeItem({
                 style='ClearTag'
                 key={singleTag.id}
                 value={singleTag.tagName}
-                onClick={() => handleTagClick(singleTag)}
+                onClick={() => (handleTagClick ? handleTagClick(singleTag) : undefined)}
               />
             ))}
           </div>
         </div>
 
         <div className='box_market'>
+          <div className='title'>관련 제품 정보</div>
           <div className='marketTable'>
             {crawledData.length !== 0 ? (
               crawledData.map((singleList: CrawlingType) => (

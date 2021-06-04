@@ -20,6 +20,7 @@ export const ProductItemContainer = styled.div`
     & button {
       border: inherit;
       color: #fff;
+      font-size: 60px;
     }
     & button:hover {
       color: ${({ theme }) => theme.color.YelloC};
@@ -40,8 +41,8 @@ export const ProductItemContainer = styled.div`
     position: absolute;
     top: -35vh;
     height: 80vh;
-    width: 110%;
-    left: -10vw;
+    width: 120%;
+    left: -21vw;
     overflow: hidden;
     z-index: -1;
     transform-origin: 50% 0%;
@@ -58,18 +59,21 @@ export const ProductItemContainer = styled.div`
     }
   }
 
-  .box_map {
+  .box_image {
     position: relative;
     display: block;
-    max-width: 30vw;
+    max-width: 40vw;
     left: 2rem;
     top: 2rem;
     width: 100%;
     height: 35vh;
     margin: 0;
-    border: 1px solid lightblue;
     border-radius: 15px;
     overflow: hidden;
+    & img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .box_radar {
@@ -85,18 +89,25 @@ export const ProductItemContainer = styled.div`
     height: 40%;
     width: auto;
     display: flex;
+    flex-direction: column;
     position: absolute;
     bottom: 5%;
     right: 15%;
     transition: all 0.8s ease-in-out;
-    overflow-y: scroll;
-    ::-webkit-scrollbar {
-      display: none;
-    }
 
+    & .title {
+      color: #f7f7f4;
+      font-size: 1.5rem;
+      margin-left: 5px;
+      margin-bottom: 0.5rem;
+    }
     .marketTable {
       max-width: 360px;
       right: 0px;
+      overflow-y: scroll;
+      ::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     .singleList {
@@ -139,14 +150,6 @@ export const ProductItemContainer = styled.div`
     margin: 0;
     color: white;
 
-    .name {
-      -webkit-text-stroke-width: 1.5px;
-      -webkit-text-stroke-color: #f3f1ef;
-      color: transparent;
-      margin-top: 60px;
-      font-size: 4rem;
-    }
-
     .text {
       margin-top: 2rem;
       font-size: 1.2rem;
@@ -188,9 +191,21 @@ export const ProductItemContainer = styled.div`
     .box_desc {
       margin: 0 auto;
       padding: 0;
+      .name {
+        font-size: 3rem;
+      }
     }
-    .box_map {
-      max-width: 80%;
+    .box_image {
+      position: relative;
+      display: block;
+      left: 2rem;
+      top: 2rem;
+      width: 100%;
+      max-width: 90%;
+      height: fit-content;
+      border-radius: 30px;
+      overflow: hidden;
+      left: 0px;
     }
     .box_radar {
       margin: 0 auto;
@@ -199,6 +214,7 @@ export const ProductItemContainer = styled.div`
       max-height: 400px;
       height: 100%;
       width: 100%;
+      right: 0px;
     }
     .box_market {
       position: relative;
@@ -218,6 +234,13 @@ export const ProductItemContainer = styled.div`
     }
   }
   @media (max-width: 576px) {
+  }
+  .name {
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #f3f1ef;
+    color: transparent;
+    margin-top: 60px;
+    font-size: 4rem;
   }
 
   @keyframes slide {
