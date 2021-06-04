@@ -10,10 +10,10 @@ import axios from 'axios'
 import Loading from 'components/Loading/Loading'
 
 type Props = {
-  TestResult: TestResult
+  TestResult?: TestResult
   CoffeeData: itemResult
   handlechecked: () => void
-  handleTagClick: (tag: Tags) => void
+  handleTagClick?: (tag: Tags) => void
 }
 
 export default function CoffeeItem({
@@ -91,7 +91,7 @@ export default function CoffeeItem({
                 style='ClearTag'
                 key={singleTag.id}
                 value={singleTag.tagName}
-                onClick={() => handleTagClick(singleTag)}
+                onClick={() => (handleTagClick ? handleTagClick(singleTag) : undefined)}
               />
             ))}
           </div>

@@ -23,7 +23,9 @@ export default function EndedTest({ handleSubmit, score }: TestFinish) {
         setdata(await getitemResult(score, auth.accessToken, auth.refreshAccessToken))
     }
 
-    ResData()
+    setTimeout(() => {
+      ResData()
+    }, 2000)
   }, [])
 
   return (

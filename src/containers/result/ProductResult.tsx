@@ -47,7 +47,7 @@ export default function ProductResult({ TestResult }: Props) {
     <ProductResultContainer className='section_product'>
       <section className='section_result'>
         <div className='box_image'>
-          <img src={selectedItem.imageUrl}></img>
+          <img src={selectedItem.imageURL}></img>
         </div>
         <div className='parent_desc'>
           <div className='box_desc'>
@@ -95,7 +95,7 @@ export default function ProductResult({ TestResult }: Props) {
                     style='ButtonImage'
                     type='button'
                     key={singleItem.id}
-                    src={singleItem.imageUrl}
+                    src={singleItem.imageURL}
                     onClick={() => {
                       setSelectedItem(singleItem)
                       setIsItemClicked(!isItemClicked)

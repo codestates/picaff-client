@@ -12,7 +12,7 @@ export const testResultTempArr: TestResult[] = [
         content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
       },
       type: 'product',
-      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+      imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: '',
       productCharacter: {
         id: 1,
@@ -32,7 +32,7 @@ export const testResultTempArr: TestResult[] = [
         content: ['이건커피 입니다', '커피 본문입니다.'],
       },
       type: 'coffee',
-      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+      imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: 'KE',
       coffeeCharacter: {
         id: 1,
@@ -58,7 +58,7 @@ export const testResultTempArr: TestResult[] = [
         content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
       },
       type: 'product',
-      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+      imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: '',
       productCharacter: {
         id: 1,
@@ -78,7 +78,7 @@ export const testResultTempArr: TestResult[] = [
         content: ['이건커피 입니다', '커피 본문입니다.'],
       },
       type: 'coffee',
-      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+      imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: 'KE',
       coffeeCharacter: {
         id: 1,
@@ -105,7 +105,7 @@ export const coffeetempArr: itemResult[] = [
       content: ['이건커피 입니다', '커피 본문입니다.'],
     },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'KE',
     coffeeCharacter: {
       id: 1,
@@ -128,7 +128,7 @@ export const coffeetempArr: itemResult[] = [
       content: ['이건커피 입니다', '커피 본문입니다.'],
     },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'ET',
     coffeeCharacter: {
       id: 1,
@@ -151,7 +151,7 @@ export const coffeetempArr: itemResult[] = [
       content: ['이건커피 입니다', '커피 본문입니다.'],
     },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'BR',
     coffeeCharacter: {
       id: 1,
@@ -174,7 +174,7 @@ export const coffeetempArr: itemResult[] = [
       content: ['이건커피 입니다', '커피 본문입니다.'],
     },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'KE',
     coffeeCharacter: {
       id: 1,
@@ -197,7 +197,7 @@ export const coffeetempArr: itemResult[] = [
       content: ['이건커피 입니다', '커피 본문입니다.'],
     },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'KE',
     coffeeCharacter: {
       id: 1,
@@ -220,7 +220,7 @@ export const coffeetempArr: itemResult[] = [
       content: ['이건커피 입니다', '커피 본문입니다.'],
     },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'KE',
     coffeeCharacter: {
       id: 1,
@@ -246,7 +246,7 @@ export const productTempArr: itemResult[] = [
       content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
     },
     type: 'product',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,
@@ -266,7 +266,7 @@ export const productTempArr: itemResult[] = [
       content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
     },
     type: 'product',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,
@@ -286,7 +286,7 @@ export const productTempArr: itemResult[] = [
       content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
     },
     type: 'product',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,
@@ -306,7 +306,7 @@ export const productTempArr: itemResult[] = [
       content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
     },
     type: 'product',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,

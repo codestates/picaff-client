@@ -8,10 +8,10 @@ import Tag from 'components/button/Tag'
 import axios from 'axios'
 import Loading from 'components/Loading/Loading'
 type Props = {
-  TestResult: TestResult
+  TestResult?: TestResult
   selectedItem: itemResult
   handlechecked: () => void
-  handleTagClick: (tag: Tags) => void
+  handleTagClick?: (tag: Tags) => void
 }
 
 export default function ProductItem({
@@ -22,7 +22,7 @@ export default function ProductItem({
 }: Props) {
   const [renderItem] = useState<itemResult>(selectedItem)
   const [crawledData, setCrawledData] = useState<CrawlingType[]>([])
-  const { itemName, itemDetail, imageUrl, productCharacter, tag } = selectedItem
+  const { itemName, itemDetail, imageURL, productCharacter, tag } = selectedItem
 
   const radarInfo: ProductResultType | undefined = productCharacter && {
     productName: itemName,
@@ -61,7 +61,7 @@ export default function ProductItem({
       </div>
       <section className='Container'>
         <div className='box_image'>
-          <img src={imageUrl} alt=''></img>
+          <img src={imageURL} alt=''></img>
         </div>
 
         <div className='box_radar'>
@@ -86,7 +86,7 @@ export default function ProductItem({
                 style='ClearTag'
                 key={singleTag.id}
                 value={singleTag.tagName}
-                onClick={() => handleTagClick(singleTag)}
+                onClick={() => (handleTagClick ? handleTagClick(singleTag) : undefined)}
               />
             ))}
           </div>

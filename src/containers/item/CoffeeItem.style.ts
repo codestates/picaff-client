@@ -20,6 +20,7 @@ export const CoffeeItemContainer = styled.div`
     & button {
       border: inherit;
       color: #fff;
+      font-size: 60px;
     }
     & button:hover {
       color: ${({ theme }) => theme.color.YelloC};
@@ -194,6 +195,7 @@ export const CoffeeItemContainer = styled.div`
       max-height: 400px;
       height: 100%;
       width: 100%;
+      right: 0px;
     }
     .box_market {
       position: relative;

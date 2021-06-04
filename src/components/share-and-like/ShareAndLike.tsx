@@ -10,7 +10,7 @@ import { useHistory, useLocation } from 'react-router'
 
 type Props = {
   renderItem: itemResult
-  testResult: TestResult
+  testResult?: TestResult
 }
 
 export default function ShareAndLike({ renderItem, testResult }: Props) {
@@ -30,19 +30,21 @@ export default function ShareAndLike({ renderItem, testResult }: Props) {
   }
 
   const AddLike = async () => {
+    console.log(auth.accessToken)
     if (isLogin()) {
-      const res = await axios.post(
-        'https://localhost:4000/item/liked',
+      const res = await axios.put(
+        'http://localhost:4000/item/liked',
         { itemId: renderItem.id },
         {
           headers: {
-            // 'Authorization': `Bearer ${acceccToken}`,
+            'Authorization': `Bearer ${auth.accessToken}`,
             'Content-Type': 'application/json',
             'withCredentials': true,
           },
         }
       )
-      if (res.status === 200) {
+      console.log(res.status)
+      if (res.status === 201) {
         setIsLiked(!isLiked)
         console.log('좋아요 상태 변경 요청 성공')
       } else {

@@ -8,9 +8,9 @@ export const SelectContainer = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   height: 100%;
-  width: 60%;
+  width: 30%;
   margin: 0 auto;
-  min-width: ${({ theme }) => theme.deviceSizes.mobile + 'px'};
+  min-width: ${({ theme }) => theme.deviceSizes.mobile - 70 + 'px'};
   & > div {
     width: 100%;
   }
@@ -24,8 +24,14 @@ export const SelectContainer = styled.section`
     transition: color 0.5s;
     background-color: transparent;
     display: flex;
-    flex-direction: row-reverse;
     justify-content: center;
+  }
+
+  .title {
+    width: 100%;
+    h1 {
+      font-size: 1.2rem;
+    }
   }
 
   & .selectcontainer {

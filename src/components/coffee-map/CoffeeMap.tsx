@@ -134,7 +134,7 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
                       content: [],
                     },
                     type: 'coffee',
-                    imageUrl: '',
+                    imageURL: '',
                     iso: '',
                     isLiked: false,
                     tag: [{ id: 0, tagName: '' }],
