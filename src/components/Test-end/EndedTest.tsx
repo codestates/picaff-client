@@ -19,11 +19,6 @@ export default function EndedTest({ handleSubmit, score }: TestFinish) {
   const auth = useAuth()
   useEffect(() => {
     async function ResData() {
-      // 임시 data용
-      // await setTimeout(() => {
-      //   // setdata(testResultTempArr[0])
-      // }, 3000)
-      console.log('score is here@@@@@@@@@@@@@', score)
       auth.refreshAccessToken &&
         setdata(await getitemResult(score, auth.accessToken, auth.refreshAccessToken))
     }
