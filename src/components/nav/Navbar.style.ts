@@ -77,7 +77,7 @@ export const NavComponent = styled.nav<NavbarType>`
     align-items: flex-start;
     height: ${({ isActive }) => (isActive ? '50%' : '80px')};
     z-index: 1;
-    width: 100%;
+    width: 100vw;
     padding: 0;
 
     .navbar_menu {

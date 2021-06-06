@@ -11,6 +11,7 @@ export const SelectContainer = styled.section`
   width: 45%;
   margin: 0 auto;
   min-width: ${({ theme }) => theme.deviceSizes.mobile - 80 + 'px'};
+
   & > div {
     width: 100%;
   }
@@ -33,6 +34,7 @@ export const SelectContainer = styled.section`
     display: flex;
     justify-content: center;
   }
+
   .title {
     align-items: center;
     width: 100%;
@@ -42,21 +44,24 @@ export const SelectContainer = styled.section`
     white-space: pre-wrap;
     text-align: center;
     font-size: 1.7rem;
+    margin-top: 30px;
   }
 
   .selectcontainer {
-    height: 100%;
-    border-radius: 15px;
+    height: 25vh;
+    border-radius: 20px;
     background-color: ${({ theme }) => theme.color.NavC};
     padding-top: 1rem;
     padding-bottom: 2rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    padding-top: 5vh;
   }
 
   .active .icon-star {
     fill: rgba(242, 242, 194, 1);
     stroke-opacity: 1;
   }
+
   .active {
     &::after {
       transform: scale(1.4);
@@ -91,12 +96,14 @@ export const SelectContainer = styled.section`
 
   .th0 {
     &::before {
-      right: 11px;
+      right: 20%;
+      font-size: 1rem;
     }
   }
   .th4 {
     &::before {
-      left: 10px;
+      left: 15%;
+      font-size: 1rem;
     }
   }
 
@@ -142,8 +149,8 @@ export const SelectContainer = styled.section`
     position: relative;
     display: inline-block;
     box-sizing: border-box;
-    width: 6rem;
-    height: 7rem;
+    width: 7rem;
+    height: 8rem;
     padding: 2rem 0.5rem;
     border: none;
     background-color: transparent;
@@ -152,6 +159,7 @@ export const SelectContainer = styled.section`
     transition: opacity 0.3s;
     appearance: none;
     outline: none;
+
     & svg {
       width: 100%;
       height: 100%;
@@ -237,6 +245,12 @@ export const SelectContainer = styled.section`
     100% {
       transform: rotate(10deg) translateY(1px) scale(1);
       opacity: 0;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .title {
+      font-size: 1rem;
     }
   }
 `

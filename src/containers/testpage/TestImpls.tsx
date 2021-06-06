@@ -26,7 +26,11 @@ export default function TestImpls() {
   }, [testData])
 
   useEffect(() => {
-    if (scoreArr[0] !== null) setindex(index + 1)
+    if (scoreArr[0] !== null) {
+      setTimeout(() => {
+        setindex(index + 1)
+      }, 200)
+    }
     scoreArr.indexOf(null) === -1 ? setisDone(true) : ''
   }, [scoreArr])
 
@@ -69,6 +73,11 @@ export default function TestImpls() {
         ))}
       </div>
       {isDone && <EndedTest handleSubmit={handleSubmit} score={scoreArr} />}
+
+      <div>
+        <div className='bubble1'></div>
+        <div className='bubble2'></div>
+      </div>
 
       <section>
         <div className='wave wave1'></div>

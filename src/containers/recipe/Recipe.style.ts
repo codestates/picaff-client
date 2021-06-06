@@ -16,7 +16,7 @@ type MenuProps = {
 export const RecipeContainer = styled.div<MenuProps>`
   width: 100%;
   height: 100vh;
-  background-color: ${({ theme }) => theme.color.NavC};
+  background-color: ${({ theme }) => theme.color.StrongBrownC};
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -24,8 +24,8 @@ export const RecipeContainer = styled.div<MenuProps>`
   margin: auto;
   overflow: hidden;
 
-  --main-bg-color: ${({ theme }) => theme.color.YelloC};
-  --cup-color: #6e6b68;
+  --main-bg-color: #f9eebd;
+  --cup-color: #505050;
   --cup-width: 22vw;
   --cup-height: 17vw;
   --cup-handle-width: 5vw;
@@ -62,7 +62,7 @@ export const RecipeContainer = styled.div<MenuProps>`
 
   .coffee_name {
     text-align: center;
-    color: ${({ theme }) => theme.color.StrongBrownC};
+    color: ${({ theme }) => theme.color.WhiteC};
     font-size: 4rem;
     margin-top: -80px;
     margin-bottom: 10px;
@@ -75,8 +75,8 @@ export const RecipeContainer = styled.div<MenuProps>`
     & > button {
       user-select: none;
       outline: none;
-      color: ${({ theme }) => theme.color.WhiteC};
-      background-color: rgba(11, 66, 26, 0.45);
+      color: ${({ theme }) => theme.color.BrownC};
+      background-color: ${({ theme }) => theme.color.YelloC};
       width: 10vw;
       height: 7vh;
       padding: 15px;
@@ -101,6 +101,7 @@ export const RecipeContainer = styled.div<MenuProps>`
 
     & > button:hover {
       cursor: pointer;
+      color: ${({ theme }) => theme.color.WhiteC};
       background-color: ${({ theme }) => theme.color.PointC};
       font-weight: 600;
       border-width: 3px;
@@ -313,7 +314,8 @@ export const RecipeContainer = styled.div<MenuProps>`
 
   @media ${({ theme }) => theme.device.tablet} {
     .filling div {
-      font-size: 0.7rem;
+      font-weight: 300;
+      font-size: 0.4rem;
     }
   }
 `
