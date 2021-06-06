@@ -46,7 +46,6 @@ export default function SignIn() {
       if (accessToken && refreshToken) {
         const { from } = location.state || { from: { pathname: '/' } }
         if (location.state && 'testResult' in location.state) {
-          console.log(from.state)
           saveBeforeTest(location.state['testResult'], accessToken)
           auth.signin(accessToken, refreshToken, () =>
             history.replace({
@@ -55,7 +54,11 @@ export default function SignIn() {
             })
           )
         } else {
-          auth.signin(accessToken, refreshToken, () => history.replace({ pathname: from.pathname }))
+          from.pathname === '/signup'
+            ? auth.signin(accessToken, refreshToken, () => history.replace({ pathname: '/' }))
+            : auth.signin(accessToken, refreshToken, () =>
+                history.replace({ pathname: from.pathname })
+              )
         }
       }
     }
@@ -67,7 +70,7 @@ export default function SignIn() {
     if (!email || !password) {
       setAlertMessage('아이디와 비밀번호를 모두 입력해주세요')
     } else {
-      await requestOauth('https://localhost:4000/user/signin', { email, password }, (userInfo) => {
+      await requestOauth('http://localhost:4000/user/signin', { email, password }, (userInfo) => {
         setUserInfo(userInfo)
       })
     }
@@ -90,7 +93,7 @@ export default function SignIn() {
   const handleKakaoLogin = async (res: KakaoLoginResponse) => {
     console.log(res)
     const { access_token } = res
-    await requestOauth('https://localhost:4000/user/kakao', { access_token }, (userInfo) => {
+    await requestOauth('http://localhost:4000/user/kakao', { access_token }, (userInfo) => {
       setUserInfo(userInfo)
     })
   }

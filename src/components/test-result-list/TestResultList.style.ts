@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const TestResultListContainer = styled.section`
+export const TestResultListContainer = styled.div`
   max-width: ${({ theme }) => theme.device.modile - 10}px;
   width: 100%;
   height: 230px;
@@ -49,5 +49,8 @@ export const TestResultListContainer = styled.section`
     position: relative;
     left: 50px;
     transition: 0.4s ease-out;
+  }
+  .empty {
+    width: fit-content;
   }
 `

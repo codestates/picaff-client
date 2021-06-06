@@ -28,9 +28,7 @@ export default function TestResultList({ testResult }: Props) {
           </div>
         ))
       ) : (
-        <div>
-          <span>테스트를 진행해 주세요</span>
-        </div>
+        <div className='empty'>테스트를 진행해 주세요</div>
       )}
     </TestResultListContainer>
   )

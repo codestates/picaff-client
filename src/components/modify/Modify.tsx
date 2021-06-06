@@ -1,23 +1,21 @@
 import axios from 'axios'
+import Button from 'components/button/Button'
 import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
-import { User, UserInfo } from 'interface'
+import { UserInfo } from 'interface'
 import React, { useState } from 'react'
-import { useHistory } from 'react-router'
+import { useHistory, useLocation } from 'react-router'
+import InfoUpdate from './InfoUpdate'
 import { ModifyContainer } from './Modify.style'
+import SignOff from './SignOff'
 
-type ModifyProps = {
-  userInfo: UserInfo
-}
-
-export default function Modify({ userInfo }: ModifyProps) {
+export default function Modify() {
+  const [serialNum, setserialNum] = useState('')
   const [isModify, setisModify] = useState(false) // new added by B. K
   const [isSignOff, setisSignOff] = useState(false) // new added by B. K
-  let { userName, email } = userInfo
+  const location = useLocation<UserInfo>()
   const auth = useAuth()
   const history = useHistory()
-  const [alertMessage, setAlertMessage] = useState<string>('') // new added by B. K
-  const [UserInfo, setUserInfo] = useState<UserInfo>(userInfo) // new added by B. K for Modify
-  const [User, setUser] = useState<User>({ name: '', email: '', password: '', ConfirmPassword: '' }) // new added by B. K for Sign Off
+  let { userName, email, type } = location.state
 
   const handleSignOut = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
@@ -25,149 +23,68 @@ export default function Modify({ userInfo }: ModifyProps) {
     auth.signout!(() => history.push({ pathname: '/' }))
   }
 
-  const handleSignOff = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault()
-    if (!User.password) {
-      setAlertMessage('비밀번호를 입력해 주세요.')
-    } else {
-      const res = await axios.delete(
-        'https://localhost:4000/user',
-        {
-          headers: { Authorization: `Bearer ${auth.accessToken}` },
-        }
-      )
-      if (res.status === 202) {
-        history.push({ pathname: '/' })
-      } else {
-        alert('다시 시도해 주세요')
-      }
-    }
+  async function SendCheckMail(email: string) {
+    const res = await axios.post('http://localhost:4000/user/email?type=signoff', { email })
+    const { serialnum } = res.data
+
+    setserialNum(serialnum)
   }
 
-  const handleSignOffChange = (e: React.ChangeEvent<HTMLInputElement>) => { // new added by B. K for Sign Off
-    const { value } = e.target
-    console.log(value)
-    User.password = value
-    setUser({
-      ...User,
-      password: value,
-    })
-    console.log(User.password)
-  }
-
-  const handleSignOffClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { // new added by B. K for Sign Off
+  const handleSignOffClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    // new added by B. K for Sign Off
     e.preventDefault()
+    SendCheckMail(email)
     setisSignOff(!isSignOff)
-  }
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { // new added by B. K for Modify
-    e.preventDefault()
-    setisModify(!isModify)
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => { // new added by B. K for Modify
-    const { value } = e.target
-    console.log(value)
-    setUserInfo({
-      ...UserInfo,
-      userName: value,
-    })
-  }
-
-  const handleModify = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { // new added by B. K for Modify
-    e.preventDefault()
-    if (UserInfo.userName === userInfo.userName) {
-      setAlertMessage('이름을 변경해 주세요.')
-    } else {
-      setisModify(!isModify)
-      const response = await axios.patch(
-        'https://localhost:4000/user',
-        {
-          userName: UserInfo.userName,
-        },
-        {
-          headers: { Authorization: `Bearer ${auth.accessToken}` },
-        }
-      )
-      setUserInfo({
-        ...UserInfo,
-        userName: response.data.userName,
-      })
-    }
   }
 
   return (
     <>
-      {isModify ? ( // modify 조건부 렌더
-        <ModifyContainer>
-          <div>
-            <span>name</span>
-            <h2>
-              <input
-                type='name'
-                className='modifyInput'
-                placeholder={userName}
-                onChange={handleChange}
-              />
-              <span className='alertspan'>{alertMessage}</span>
-            </h2>
-          </div>
-          <button onClick={handleModify} id='letsModify' className='modifyButton'>
-            수정하기
-          </button>
-        </ModifyContainer>
-      ) : (
-        <ModifyContainer>
-          <div>
-            <span>name</span>
-            <h2>
-              {UserInfo.userName}
-              <button onClick={handleClick} id='letsModify' className='modifyButton'>
-                이름 변경
-              </button>
-            </h2>
-          </div>
-          <div>
-            <span>email</span>
-            <h2>{email}</h2>
-          </div>
-          <section className='buttonContainer'>
-            <div>
-              <label htmlFor='logout'>로그아웃</label>
-              <button onClick={handleSignOut} id='logout' className='normalButton'></button>
+      <ModifyContainer>
+        <div>
+          <span>name</span>
+          {!isModify ? (
+            <div className='modifyContainer'>
+              <h2>{userName}</h2>
+              <div className='modify'>
+                <Button
+                  style='MenuBtn'
+                  type='button'
+                  value='수정하기'
+                  handleClick={() => setisModify(!isModify)}
+                />
+              </div>
             </div>
-            {isSignOff ? ( // signOff 조건부 렌더
-              <ModifyContainer>
-                <div className='signOff'>
-                  <span>회원 탈퇴하기</span>
-                  <h2>
-                    <input
-                      type='name'
-                      className='modifyInput'
-                      placeholder='비밀번호를 입력해 주세요.'
-                      onChange={handleSignOffChange}
-                    />
-                    <span className='alertspan'>{alertMessage}</span>
-                  </h2>
-                </div>
-                <button onClick={handleSignOff} id='signOff' className='modifyButton'>
-                  회원 탈퇴
-                </button>
-              </ModifyContainer>
+          ) : (
+            <div className='inputContainer'>
+              <InfoUpdate
+                userInfo={location.state}
+                handleModifyForm={() => setisModify(!isModify)}
+              />
+            </div>
+          )}
+        </div>
+        <div>
+          <span>email</span>
+          <h2>{email}</h2>
+        </div>
+        <section className='buttonContainer'>
+          <div>
+            <label htmlFor='logout'>로그아웃</label>
+            <button onClick={handleSignOut} id='logout' className='normalButton'></button>
+          </div>
+          {type === 'normal' &&
+            (!isSignOff ? (
+              <div>
+                <label htmlFor='Signoff'>회원탈퇴</label>
+                <button onClick={handleSignOffClick} id='Signoff' className='normalButton'></button>
+              </div>
             ) : (
-              <ModifyContainer>
-                {/* <section className='buttonContainer'> */}
-                <label htmlFor='SignOut'>회원탈퇴</label>
-                <button
-                  onClick={handleSignOffClick}
-                  id='SignOut'
-                  className='signOffButton'></button>
-                {/* </section> */}
-              </ModifyContainer>
-            )}
-          </section>
-        </ModifyContainer>
-      )}
+              <div className='SignOffContainer'>
+                <SignOff serialNum={serialNum} />
+              </div>
+            ))}
+        </section>
+      </ModifyContainer>
     </>
   )
 }

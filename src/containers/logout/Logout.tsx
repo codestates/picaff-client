@@ -6,7 +6,7 @@ import Button from 'components/button/Button'
 export default function SignOut() {
   const handleLogout = async () => {
     await axios
-      .post('https://localhost:4000/user/signout', null, {
+      .post('http://localhost:4000/user/signout', null, {
         headers: {
           //   'Authorization': `Bearer ${acceccToken}`,
           'Content-Type': 'application/json',

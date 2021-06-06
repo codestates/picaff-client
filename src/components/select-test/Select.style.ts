@@ -8,23 +8,13 @@ export const SelectContainer = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   height: 100%;
-  width: 30%;
+  width: 45%;
   margin: 0 auto;
   min-width: ${({ theme }) => theme.deviceSizes.mobile - 80 + 'px'};
   & > div {
     width: 100%;
   }
 
-  .th0 {
-    &::before {
-      right: 13px;
-    }
-  }
-  .th4 {
-    &::before {
-      right: -30px;
-    }
-  }
   .contentContainer {
     display: flex;
     flex-direction: column;
@@ -44,13 +34,14 @@ export const SelectContainer = styled.section`
     justify-content: center;
   }
   .title {
-    max-width: 330px;
+    align-items: center;
     width: 100%;
     color: ${({ theme }) => theme.color.YelloC};
     height: fit-content;
     overflow-wrap: break-all;
     white-space: pre-wrap;
     text-align: center;
+    font-size: 1.7rem;
   }
 
   .selectcontainer {
@@ -98,6 +89,41 @@ export const SelectContainer = styled.section`
     display: none;
   }
 
+  .th0 {
+    &::before {
+      right: 11px;
+    }
+  }
+  .th4 {
+    &::before {
+      left: 10px;
+    }
+  }
+
+  @media (max-width: 998px) {
+    .title {
+      font-size: 1rem;
+    }
+    .selectcontainer {
+      height: 100%;
+      border-radius: 15px;
+      background-color: ${({ theme }) => theme.color.NavC};
+      padding-top: 0.5rem;
+      padding-bottom: 1rem;
+      margin: 0;
+    }
+    .th0 {
+      &::before {
+        font-size: 0.7rem;
+      }
+    }
+    .th4 {
+      &::before {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
   .rate:hover {
     &::after {
       animation: starHover 0.5s;
@@ -112,21 +138,7 @@ export const SelectContainer = styled.section`
     fill: rgba(242, 242, 194, 0.6);
   }
 
-  @media (max-width: 998px) {
-    h1 {
-      font-size: 1rem;
-    }
-    .selectcontainer {
-      height: 100%;
-      border-radius: 15px;
-      background-color: ${({ theme }) => theme.color.NavC};
-      padding-top: 0.5rem;
-      padding-bottom: 1rem;
-      margin: 0;
-    }
-  }
-
-  button {
+  .rate {
     position: relative;
     display: inline-block;
     box-sizing: border-box;
@@ -138,8 +150,6 @@ export const SelectContainer = styled.section`
     color: ${({ theme }) => theme.color.BrownC};
     font-family: inherit;
     transition: opacity 0.3s;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     outline: none;
     & svg {

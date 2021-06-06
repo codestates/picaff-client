@@ -17,7 +17,15 @@ export const InputContainer = styled.div`
     height: calc(34%);
     font-size: 0.9rem;
     right: 3px;
-    top: 1.95rem;
+    top: 1.9rem;
+  }
+  & > .modify {
+    position: absolute;
+    width: calc(40%);
+    height: calc(34%);
+    font-size: 0.9rem;
+    right: 3px;
+    top: -8px;
   }
 
   & > input {
