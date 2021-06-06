@@ -90,6 +90,7 @@ export const CoffeeResultContainer = styled.div`
     height: 100vh;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 
     & .ItemModal {
       height: 100vh;
@@ -113,7 +114,7 @@ export const CoffeeResultContainer = styled.div`
       .box_map {
         width: 100%;
         margin: 0;
-        height: 30%;
+        height: 100%;
       }
 
       .parent_desc {

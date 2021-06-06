@@ -9,9 +9,10 @@ export const NavComponent = styled.nav<NavbarType>`
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.color.NavC};
-  padding: 12px 24px 0 24px;
+  padding: 12px 24px 12px 24px;
   width: 100vw;
   height: 80px;
+
   .navbar_logo {
     width: 70px;
     height: 70px;
@@ -118,7 +119,6 @@ export const NavComponent = styled.nav<NavbarType>`
       justify-content: center;
       align-items: center;
       width: 100%;
-      margin-bottom: 10px;
 
       & > a {
         width: 90%;

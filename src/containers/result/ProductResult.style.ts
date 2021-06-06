@@ -106,6 +106,7 @@ export const ProductResultContainer = styled.div`
     justify-content: center;
     align-items: center;
     background: ${({ theme }) => theme.color.WhiteC};
+    z-index: 1;
 
     .title {
       font-size: 2rem;
