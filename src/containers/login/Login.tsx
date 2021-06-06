@@ -119,7 +119,7 @@ export default function SignIn() {
           </div>
           <Oauth responseGoogle={handleGoogleLogin} responseKakao={handleKakaoLogin} />
         </div>
-        <span className='greeting'>are you new member?</span>
+        <span className='greeting'>Are you a new member?</span>
         <div className='box_signup'>
           <button onClick={handleclick} id='signup'>
             Sign-up

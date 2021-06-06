@@ -172,7 +172,7 @@ export default function SignUp() {
         <div className='button'>
           <Button style='MainBtnBrown' type='submit' value='Sign Up' />
         </div>
-        <span className='greeting'>are you exist Account?</span>
+        <span className='greeting'>Do you have an existing account?</span>
       </form>
       <div className='box_signup'>
         <button onClick={handleClick} id='signup'>
