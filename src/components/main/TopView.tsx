@@ -26,10 +26,9 @@ export default function TopView() {
         </div>
         <div className='Container p'>
           <p>
-            처음 시작하는 홈카페 <br />
-            뭐부터 해야 할지 고민되시나요? <br />
-            간단한 테스트를 통해 나의 취향을 알아보고 <br />
-            PICAFF와 함께 나만의 홈카페를 시작해보세요
+            원두는 너무 많아 고르기 힘들고
+            <br />
+            맛있게 내리기는 더 어려운 홈 카페
           </p>
         </div>
         <div className='Container button' onClick={handleClick}>

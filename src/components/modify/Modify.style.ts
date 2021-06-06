@@ -14,14 +14,36 @@ export const ModifyContainer = styled.div`
     font-size: 1.3rem;
     margin-left: 0.3rem;
   }
+  .inputContainer {
+    width: 60%;
+  }
   h2 {
     color: ${({ theme }) => theme.color.PointC};
     margin: 2rem;
   }
+  .modifyContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    h2 {
+      width: fit-content;
+    }
+    .modify {
+      margin-top: 0px;
+      margin-left: 15vw;
+    }
+  }
+
+  .SignOffContainer {
+    width: fit-content;
+  }
+
   .buttonContainer {
-    margin-top: 5rem;
+    margin-top: 4rem;
     & > div {
-      margin-top: 2rem;
+      margin-top: 3rem;
       padding: 2px;
       label {
         color: ${({ theme }) => theme.color.PointC};
@@ -37,32 +59,5 @@ export const ModifyContainer = styled.div`
   }
   .normalButton {
     display: none;
-    }
   }
-  .modifyButton {
-    margin-left: 2vw;
-    font-size: 1.3rem;
-    // margin-left: 1%;
-    width: 110px;
-    height: 35px;
-    background-color: ${({ theme }) => theme.color.PointC};
-    color: ${({ theme }) => theme.color.WhiteC};
-    border: transparent;
-    border-radius: 10px;
-    outline: none;
-    cursor: pointer;
-
-    &:hover {
-      background-color: transparent;
-      color: ${({ theme }) => theme.color.PointC};
-      border: 3px solid ${({ theme }) => theme.color.PointC};
-    }
-  }
-  .modifyInput {
-    font-size: 1.3rem;
-    height: 35px;
-  }
-  // .signOff{
-  //   display: inline;
-  // }
 `

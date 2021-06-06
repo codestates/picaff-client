@@ -25,6 +25,7 @@ export type UserInfo = {
   email: string
   userName: string
   id: number
+  type?: 'normal' | 'Oauth'
   auth?: Authorization
 }
 

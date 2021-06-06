@@ -9,7 +9,7 @@ import { TestResult } from 'interface'
 //   // console.log('UserInfo.auth:::::::::::::::::::::', accessToken)
 //   console.log('now sending the score!!! =>>>>>>>>>>>>>>>', score)
 //   const res = await axios.post<TestResult>(
-//     'https://localhost:4000/test',
+//     'http://localhost:4000/test',
 //     { score: score },
 //     { headers: { 'Content-Type': 'application/json' } }
 //   )
@@ -20,7 +20,7 @@ export const getitemResult = async (
 ): Promise<TestResult> => {
   const Token = accessToken ? `Bearer ${accessToken}` : null
   const res = await axios.post<TestResult>(
-    'https://localhost:4000/test',
+    'http://localhost:4000/test',
     { score },
     {
       headers: { 'Content-Type': 'application/json', 'Authorization': Token },

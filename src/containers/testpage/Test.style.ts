@@ -116,6 +116,10 @@ export const SliderContainer = styled.div<Index>`
   }
 
   @media (max-width: 998px) {
+    .selectcontainer {
+      margin-top: 30px;
+      margin-bottom: 12px;
+    }
     & .slider {
       white-space: nowrap;
       transition: ease 1000ms;
@@ -145,13 +149,14 @@ export const SliderContainer = styled.div<Index>`
       margin-top: 30px;
       margin-bottom: 12px;
     }
-
-    .slide {
-      padding-top: 8vh;
+    & .slider {
+      & .slide {
+        top: 0vh;
+      }
     }
 
     .title {
-      font-size: 1.25rem;
+      font-size: 1rem;
     }
   }
 `

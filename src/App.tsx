@@ -10,6 +10,7 @@ import Main from 'containers/main/Main'
 import Result from 'containers/result/Result'
 import Mypage from 'containers/mypage/Mypage'
 import Landing from 'components/main/Landing'
+import Modify from 'components/modify/Modify'
 
 function App() {
   return (
@@ -35,8 +36,11 @@ function App() {
             <Route path='/signup'>
               <SignUp />
             </Route>
-            <Route path='/mypage'>
+            <Route exact path='/mypage'>
               <Mypage />
+            </Route>
+            <Route exact path='/mypage/modify'>
+              <Modify />
             </Route>
           </Switch>
         </Router>

@@ -26,7 +26,11 @@ export default function TestImpls() {
   }, [testData])
 
   useEffect(() => {
-    if (scoreArr[0] !== null) setindex(index + 1)
+    if (scoreArr[0] !== null) {
+      setTimeout(() => {
+        setindex(index + 1)
+      }, 200)
+    }
     scoreArr.indexOf(null) === -1 ? setisDone(true) : ''
   }, [scoreArr])
 

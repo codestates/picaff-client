@@ -8,25 +8,12 @@ export const SelectContainer = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   height: 100%;
-  width: 30%;
+  width: 45%;
   margin: 0 auto;
   min-width: ${({ theme }) => theme.deviceSizes.mobile - 80 + 'px'};
 
   & > div {
     width: 100%;
-  }
-
-  .th0 {
-    &::before {
-      right: 5px;
-      font-size: 1rem;
-    }
-  }
-  .th4 {
-    &::before {
-      right: 8px;
-      font-size: 1rem;
-    }
   }
 
   .contentContainer {
@@ -49,7 +36,7 @@ export const SelectContainer = styled.section`
   }
 
   .title {
-    // max-width: 330px;
+    align-items: center;
     width: 100%;
     color: ${({ theme }) => theme.color.YelloC};
     height: fit-content;
@@ -107,6 +94,43 @@ export const SelectContainer = styled.section`
     display: none;
   }
 
+  .th0 {
+    &::before {
+      right: 20%;
+      font-size: 1rem;
+    }
+  }
+  .th4 {
+    &::before {
+      left: 15%;
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 998px) {
+    .title {
+      font-size: 1rem;
+    }
+    .selectcontainer {
+      height: 100%;
+      border-radius: 15px;
+      background-color: ${({ theme }) => theme.color.NavC};
+      padding-top: 0.5rem;
+      padding-bottom: 1rem;
+      margin: 0;
+    }
+    .th0 {
+      &::before {
+        font-size: 0.7rem;
+      }
+    }
+    .th4 {
+      &::before {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
   .rate:hover {
     &::after {
       animation: starHover 0.5s;
@@ -121,34 +145,18 @@ export const SelectContainer = styled.section`
     fill: rgba(242, 242, 194, 0.6);
   }
 
-  @media (max-width: 998px) {
-    h1 {
-      font-size: 1rem;
-    }
-    .selectcontainer {
-      height: 100%;
-      border-radius: 15px;
-      background-color: ${({ theme }) => theme.color.NavC};
-      padding-top: 0.5rem;
-      padding-bottom: 1rem;
-      margin: 0;
-    }
-  }
-
-  button {
+  .rate {
     position: relative;
     display: inline-block;
     box-sizing: border-box;
-    width: 6rem;
-    height: 7rem;
+    width: 7rem;
+    height: 8rem;
     padding: 2rem 0.5rem;
     border: none;
     background-color: transparent;
     color: ${({ theme }) => theme.color.BrownC};
     font-family: inherit;
     transition: opacity 0.3s;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     outline: none;
 

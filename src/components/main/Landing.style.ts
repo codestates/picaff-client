@@ -67,6 +67,13 @@ export const LandingComponent = styled.section`
         margin-top: 10px;
         font-size: 5rem;
       }
+      @media (max-width: 992px) {
+        & .title {
+          margin-top: 50px;
+          font-size: 3rem;
+          line-height: 0.6rem;
+        }
+      }
       & > :hover {
         color: white;
       }
@@ -85,17 +92,17 @@ export const LandingComponent = styled.section`
       margin-bottom: 3rem !important;
       font: normal 500 50px/55px 'NanumSquare', 'sans-serif';
       @media (min-width: 576px) {
-        max-width: 540px;
+        max-width: 500px;
       }
       @media (min-width: 768px) {
-        max-width: 720px;
+        max-width: 620px;
         font-size: 3rem;
       }
       @media (min-width: 992px) {
-        max-width: 960px;
+        max-width: 830px;
       }
       @media (min-width: 1200px) {
-        max-width: 1140px;
+        max-width: 1024px;
         padding: 0 5% 0 15%;
       }
       @media (min-width: 1400px) {
@@ -119,6 +126,14 @@ export const LandingComponent = styled.section`
         margin-inline-start: 0px;
         margin-inline-end: 0px;
         text-align: left;
+        flex-wrap: wrap;
+        word-break: keep-all;
+      }
+      @media (max-width: 992px) {
+        p {
+          margin-top: 0.3rem;
+          font-size: 1rem;
+        }
       }
     }
     & .button {
@@ -129,7 +144,7 @@ export const LandingComponent = styled.section`
         position: relative;
         display: inline-block;
         background-color: transparent;
-        font: normal normal 1.2rem/1.2rem 'sans-serif', 'sans-serif';
+        font: normal normal 1rem/1rem 'sans-serif', 'sans-serif';
         letter-spacing: 2.93px;
         text-transform: uppercase;
         font-weight: 600;

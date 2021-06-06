@@ -9,10 +9,9 @@ export const MypageContainer = styled.section`
   max-width: ${({ theme }) => theme.device.modile - 10}px;
   width: 100%;
 
-  & .modify {
-    justify-content: end;
-    align-items: center;
-    width: 100%;
+  & .UserModify {
+    margin: 0 auto;
+    width: fit-content;
   }
   & > * {
     margin-bottom: 1rem;
