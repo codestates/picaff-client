@@ -25,7 +25,7 @@ export const ProductResultContainer = styled.div`
       & img {
         padding: 5px;
         border: 2px solid ${({ theme }) => theme.color.BrownC};
-        border-radius: 30px;
+        border-radius: 20px;
 
         width: 100%;
         height: 100%;

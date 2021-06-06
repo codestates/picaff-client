@@ -18,10 +18,7 @@ export default function Navbar() {
           <Button style='MenuBtn' type='button' value='HOME' />
         </Link>
         <Link to='/test' id='test'>
-          <Button style='MenuBtn' type='button' value='RECOMMEND' />
-        </Link>
-        <Link to='/magazine' id='magazine'>
-          <Button style='MenuBtn' type='button' value='RECIPE' />
+          <Button style='MenuBtn' type='button' value='PICAFF SUGGESTIONS' />
         </Link>
       </ul>
       <ul className='navbar_user'>

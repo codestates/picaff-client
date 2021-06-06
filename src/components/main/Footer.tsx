@@ -9,7 +9,7 @@ export default function Footer() {
       </div>
       <div className='info'>
         <div id='repo' onClick={() => window.open('https://github.com/codestates/picaff-client')}>
-          Picaff Repository
+          picaff repository 🌻
         </div>
         <div id='crew'>
           <span onClick={() => window.open('https://github.com/byronkim')}>GYUTAE KIM</span>

@@ -290,6 +290,7 @@ export const RecipeContainer = styled.div<MenuProps>`
       justify-content: center;
       align-items: center;
       width: 80%;
+      margin-bottom: 1rem;
 
       & > button {
         width: 100%;
