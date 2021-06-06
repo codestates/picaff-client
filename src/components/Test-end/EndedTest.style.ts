@@ -1,14 +1,58 @@
 import styled from 'styled-components'
 
-export const EndedTestContainer = styled.div`
+type EndedTestContainer = {
+  onLoading: boolean
+}
+
+export const EndedTestContainer = styled.div<EndedTestContainer>`
   position: absolute;
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
-  top: 10vh;
+  top: 25vh;
   height: 100%;
   overflow: hidden;
+  text-align: center;
+
+  h1 {
+    color: ${({ theme }) => theme.color.WhiteC};
+  }
+
+  #testLoading {
+    margin-top: 15px;
+    display-flex: center;
+    justify-content: center;
+    width: 25%;
+    margin-bottom: 75px;
+  }
+
+  .loadingStart {
+    display: ${({ onLoading }) => (onLoading ? 'flex' : 'none')};
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+    .video {
+      display: block;
+      object-fit: cover;
+      z-index: 2;
+      margin: 0 auto;
+      width: 55%;
+      height: 55%;
+      padding-top: 12px;
+    }
+  }
+
+  .loadingEnd {
+    display: ${({ onLoading }) => (!onLoading ? 'flex' : 'none')};
+
+    & button {
+      margin-top: 5vh;
+      width: 200px;
+      height: 80px;
+    }
+  }
 
   & > .background {
     position: absolute;
@@ -17,37 +61,27 @@ export const EndedTestContainer = styled.div`
     height: 40%;
     border-radius: 50%;
     top: 20%;
-    background-color: ${({ theme }) => theme.color.PointC}80;
+    background-color: ${({ theme }) => theme.color.PointC};
   }
 
-  & .video {
-    display: block;
-    object-fit: cover;
-    z-index: 2;
-    position: relative;
-    margin: 0 auto;
-    top: 5%;
-    width: 50%;
-    height: 50%;
-  }
-
-  & button {
-    position: absolute;
-    z-index: 4;
-    top: 40vh;
-    width: 160px;
-    height: 80px;
-  }
   @media (max-width: 992px) {
-    top: 3vh;
-    & .video {
-      width: 88%;
-      height: 50%;
+    top: 20vh;
+
+    & #testLoading {
+      width: 55%;
+      margin-bottom: 70px;
     }
-    & button {
-      width: 160px;
-      height: 60px;
-      top: 40vh;
+
+    & .video {
+      width: 50%;
+    }
+
+    .loadingEnd {
+      & button {
+        margin-top: 3vh;
+        width: 170px;
+        height: 70px;
+      }
     }
   }
 `

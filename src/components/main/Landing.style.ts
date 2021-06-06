@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const LandingComponent = styled.section`
   position: relative;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
   background: linear-gradient(#f2f1e5, 80%, #ddc3a6);
   padding-bottom: 18px;
