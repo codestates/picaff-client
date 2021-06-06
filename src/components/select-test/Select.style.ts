@@ -44,7 +44,7 @@ export const SelectContainer = styled.section`
     white-space: pre-wrap;
     text-align: center;
     font-size: 1.7rem;
-    margin-top: 30px;
+    margin-top: 4rem;
   }
 
   .selectcontainer {
@@ -109,6 +109,7 @@ export const SelectContainer = styled.section`
 
   @media (max-width: 998px) {
     .title {
+      margin-top: 5rem;
       font-size: 1rem;
     }
     .selectcontainer {
@@ -118,6 +119,8 @@ export const SelectContainer = styled.section`
       padding-top: 0.5rem;
       padding-bottom: 1rem;
       margin: 0;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
     }
     .th0 {
       &::before {

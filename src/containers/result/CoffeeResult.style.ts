@@ -4,13 +4,13 @@ export const CoffeeResultContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 80px);
   padding-top: 10vh;
 
   .section_result {
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: 100%;
 
     .box_map {
       flex: 1 1 0;
@@ -28,6 +28,7 @@ export const CoffeeResultContainer = styled.div`
       margin-top: auto;
       margin-bottom: 27vh;
       margin-left: 2vw;
+      padding-top: 15vh;
 
       .box_desc {
         display: flex;
@@ -102,6 +103,7 @@ export const CoffeeResultContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: 100%;
 
     .section_result {
       display: flex;
@@ -121,6 +123,7 @@ export const CoffeeResultContainer = styled.div`
         margin: 0;
         margin-top: 2vh;
         margin-left: 2vw;
+        padding-top: 0;
 
         .box_desc {
           display: flex;

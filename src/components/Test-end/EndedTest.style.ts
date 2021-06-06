@@ -72,8 +72,8 @@ export const EndedTestContainer = styled.div<EndedTestContainer>`
       margin-bottom: 70px;
     }
 
-    & .video {
-      width: 50%;
+    .video {
+      width: 0%;
     }
 
     .loadingEnd {

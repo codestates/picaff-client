@@ -10,6 +10,7 @@ export const ResultContainer = styled.div<IsTabActiveType>`
   overflow: auto;
   overflow-x: hidden;
   width: 100%;
+  height: cal(100vh - 80px);
   margin: 0;
 
   .top_container {

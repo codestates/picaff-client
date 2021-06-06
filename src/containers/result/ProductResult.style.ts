@@ -4,28 +4,29 @@ export const ProductResultContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 80px);
   padding-top: 10vh;
 
   .section_result {
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: 100%;
 
     .box_image {
       position: relative;
       display: block;
       width: 100%;
-      max-width: 40vw;
+      max-width: 32vw;
       height: fit-content;
-      margin-top: 5rem;
+      margin-top: 2rem;
       margin-left: 90px;
-      border-radius: 30px;
       overflow: hidden;
 
       & img {
         padding: 5px;
-        border: 2px solid #0b421a;
+        border: 2px solid ${({ theme }) => theme.color.BrownC};
+        border-radius: 20px;
+
         width: 100%;
         height: 100%;
       }
@@ -40,6 +41,7 @@ export const ProductResultContainer = styled.div`
       margin-top: auto;
       margin-bottom: 27vh;
       margin-left: 2vw;
+      padding-top: 25vh;
 
       .box_desc {
         display: flex;
@@ -75,6 +77,7 @@ export const ProductResultContainer = styled.div`
     .box_radar {
       flex: 1.2 1 0;
       width: 30%;
+      padding-right: 2rem;
 
       .radarChart {
         margin-top: 40px;
@@ -102,13 +105,15 @@ export const ProductResultContainer = styled.div`
     height: 100vh;
     justify-content: center;
     align-items: center;
+    background: ${({ theme }) => theme.color.WhiteC};
 
     .title {
       font-size: 2rem;
+      margin-top: 5vh;
     }
 
     .image_box {
-      margin-top: 5vh;
+      // margin-top: 5vh;
       column-gap: 2rem;
       align-items: center;
       column-count: 2;
@@ -167,6 +172,7 @@ export const ProductResultContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: 100%;
 
     .section_result {
       display: flex;
@@ -192,6 +198,7 @@ export const ProductResultContainer = styled.div`
         margin: 0;
         margin-top: 2vh;
         margin-left: 2vw;
+        padding-top: 0;
 
         .box_desc {
           display: flex;
@@ -234,7 +241,8 @@ export const ProductResultContainer = styled.div`
       align-items: center;
 
       .title {
-        margin: 0 10%;
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
       }
 
       .image_box {

@@ -6,6 +6,7 @@ export const LoadingComponent = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  padding-left: 1.5rem;
 
   .message {
     font-size: 1.2rem;

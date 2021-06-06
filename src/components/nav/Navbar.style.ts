@@ -9,11 +9,9 @@ export const NavComponent = styled.nav<NavbarType>`
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.color.NavC};
-  padding: 0 24px 0 24px;
+  padding: 12px 24px 0 24px;
   width: 100vw;
   height: 80px;
-  padding-left: 10px;
-
   .navbar_logo {
     width: 70px;
     height: 70px;
@@ -45,6 +43,7 @@ export const NavComponent = styled.nav<NavbarType>`
 
   .navbar_user {
     display: flex;
+    padding-right: 1rem;
 
     & > a > button {
       margin: 0 5px;
@@ -79,6 +78,11 @@ export const NavComponent = styled.nav<NavbarType>`
     z-index: 1;
     width: 100vw;
     padding: 0;
+
+    .navbar_logo {
+      margin-left: 10px;
+      margin-top: 10px;
+    }
 
     .navbar_menu {
       display: ${({ isActive }) => (isActive ? 'flex' : 'none')};

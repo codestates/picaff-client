@@ -18,6 +18,7 @@ export const GlobalStyled = createGlobalStyle`
   }
 
   html, body {
+    width: 100vw;
     height: 100%;
     letter-spacing: 0.53px;
     background: #F7F7F4;
