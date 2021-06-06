@@ -7,7 +7,7 @@ type Select = {
 }
 
 export default function Select({ title, handleTestResult, preSelect }: Select) {
-  const idx: string[] = ['매우 아니다', '', '', '', '매우 좋아한다']
+  const idx: string[] = ['매우 아니다', '', '', '', '매우 그렇다']
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
@@ -26,7 +26,7 @@ export default function Select({ title, handleTestResult, preSelect }: Select) {
         </defs>
       </svg>
       <div className='contentContainer'>
-        <div className='title'>{title}</div>
+        <div className='title'>나는 {title}</div>
         <div className='selectcontainer'>
           <p dir='rtl'>
             {idx.map((i, idx) => (

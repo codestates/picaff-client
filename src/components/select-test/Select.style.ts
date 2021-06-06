@@ -11,20 +11,24 @@ export const SelectContainer = styled.section`
   width: 30%;
   margin: 0 auto;
   min-width: ${({ theme }) => theme.deviceSizes.mobile - 80 + 'px'};
+
   & > div {
     width: 100%;
   }
 
   .th0 {
     &::before {
-      right: 13px;
+      right: 5px;
+      font-size: 1rem;
     }
   }
   .th4 {
     &::before {
-      right: -30px;
+      right: 8px;
+      font-size: 1rem;
     }
   }
+
   .contentContainer {
     display: flex;
     flex-direction: column;
@@ -43,29 +47,34 @@ export const SelectContainer = styled.section`
     display: flex;
     justify-content: center;
   }
+
   .title {
-    max-width: 330px;
+    // max-width: 330px;
     width: 100%;
     color: ${({ theme }) => theme.color.YelloC};
     height: fit-content;
     overflow-wrap: break-all;
     white-space: pre-wrap;
     text-align: center;
+    font-size: 1.7rem;
+    margin-top: 30px;
   }
 
   .selectcontainer {
-    height: 100%;
-    border-radius: 15px;
+    height: 25vh;
+    border-radius: 20px;
     background-color: ${({ theme }) => theme.color.NavC};
     padding-top: 1rem;
     padding-bottom: 2rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    padding-top: 5vh;
   }
 
   .active .icon-star {
     fill: rgba(242, 242, 194, 1);
     stroke-opacity: 1;
   }
+
   .active {
     &::after {
       transform: scale(1.4);
@@ -142,6 +151,7 @@ export const SelectContainer = styled.section`
     -moz-appearance: none;
     appearance: none;
     outline: none;
+
     & svg {
       width: 100%;
       height: 100%;
@@ -227,6 +237,12 @@ export const SelectContainer = styled.section`
     100% {
       transform: rotate(10deg) translateY(1px) scale(1);
       opacity: 0;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .title {
+      font-size: 1rem;
     }
   }
 `

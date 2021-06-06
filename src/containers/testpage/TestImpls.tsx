@@ -70,6 +70,11 @@ export default function TestImpls() {
       </div>
       {isDone && <EndedTest handleSubmit={handleSubmit} score={scoreArr} />}
 
+      <div>
+        <div className='bubble1'></div>
+        <div className='bubble2'></div>
+      </div>
+
       <section>
         <div className='wave wave1'></div>
         <div className='wave wave2'></div>
