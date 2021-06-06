@@ -68,7 +68,6 @@ export const SliderContainer = styled.div<Index>`
 
   & .bar {
     background: rgba(255, 255, 255, 0.2);
-    margin-top: 10px;
   }
 
   & .progress {
@@ -158,6 +157,10 @@ export const SliderContainer = styled.div<Index>`
 
     .title {
       font-size: 1rem;
+    }
+
+    & .bar {
+      margin-top: 10px;
     }
   }
 `
