@@ -9,8 +9,8 @@
 
 ### Repository
 
-- `Client` [https://github.com/codestates/picaff-client](https://github.com/codestates/picaff-client)
-- `Server` [https://github.com/codestates/picaff-server](https://github.com/codestates/picaff-server)
+- [Client repository](https://github.com/codestates/picaff-client)
+- [Server repository](https://github.com/codestates/picaff-server)
 
 ### OPTIMIZED CREW (OC) 🧞
 
@@ -119,18 +119,25 @@
 
 # Flow Chart
 
+## Client Side
+
 ### User
 
-<img src="https://user-images.githubusercontent.com/72856436/121034647-201c5580-c7e8-11eb-826b-d81b168d3d47.jpg" width="800px">
+![picaff - user (1) (1)](https://user-images.githubusercontent.com/72856436/121060107-2b2db080-c7fd-11eb-8db2-1047d8eaa112.jpg)
 
 ### Test
 
-<img src="https://user-images.githubusercontent.com/72856436/121034674-26aacd00-c7e8-11eb-9512-be1a85bac4db.jpg" width="800px">
+![picaff - main (4) (2)](https://user-images.githubusercontent.com/72856436/121059488-7d220680-c7fc-11eb-9f44-15269c64d011.jpg)
 
 ### Result & Item
 
-<img src="https://user-images.githubusercontent.com/72856436/121034664-23afdc80-c7e8-11eb-8d86-4feefb07985f.jpg" width="800px">
+![picaff - Market (1)](https://user-images.githubusercontent.com/72856436/121060038-14875980-c7fd-11eb-894b-0682226884f2.jpg)
+
+## Server Side
+
+![picaff - Frame 7 (1) (1)](https://user-images.githubusercontent.com/72856436/121059502-81e6ba80-c7fc-11eb-9f66-d3403fe387e0.jpg)
 
 <br />
+
 
 [🎈 For more details about PICAFF project, please check our Wiki!](https://github.com/codestates/picaff-client/wiki)
