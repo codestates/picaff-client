@@ -36,7 +36,7 @@ export const BtnComponent = styled.div<BtnComponentProps>`
 
   & > .like {
     margin-bottom: 15px;
-    color: ${({ isLiked, theme }) => (isLiked ? theme.color.PointC : '#ed3232')};
+    color: ${({ isLiked, theme }) => (isLiked ? '#ed3232' : theme.color.PointC)};
   }
 `
 

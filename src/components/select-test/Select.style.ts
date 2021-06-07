@@ -48,6 +48,7 @@ export const SelectContainer = styled.section`
   }
 
   .selectcontainer {
+    z-index: 999;
     height: 25vh;
     border-radius: 20px;
     background-color: ${({ theme }) => theme.color.NavC};

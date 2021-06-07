@@ -9,7 +9,7 @@ export const ProductItemContainer = styled.div`
   z-index: 999;
   overflow: hidden;
   background: #dfa73b;
-  animation: slide 0.5s ease-ease-in-out;
+  animation: slide 0.8s ease-in-out;
 
   .closebtn {
     position: absolute;

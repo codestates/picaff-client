@@ -7,10 +7,8 @@ type IsTabActiveType = {
 export const ResultContainer = styled.div<IsTabActiveType>`
   display: flex;
   flex-direction: column;
-  overflow: auto;
-  overflow-x: hidden;
   width: 100%;
-  height: cal(100vh - 80px);
+  height: 100%;
   margin: 0;
 
   .top_container {
@@ -125,7 +123,8 @@ export const ResultContainer = styled.div<IsTabActiveType>`
       font-size: 2.2rem;
       color: ${({ theme }) => theme.color.PointC};
       cursor: pointer;
-      z-index: -1;
+      top: 50px;
+      z-index: 5;
     }
 
     .section_share > button {
