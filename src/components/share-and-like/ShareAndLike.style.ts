@@ -10,7 +10,6 @@ export const BtnComponent = styled.div<BtnComponentProps>`
   position: absolute;
   top: 45%;
   right: 5%;
-
   width: 75px;
   height: 150px;
   background-color: ${({ theme }) => theme.color.NavC};
@@ -18,7 +17,6 @@ export const BtnComponent = styled.div<BtnComponentProps>`
 
   & > button {
     flex: 1 1 0;
-
     width: 100%;
     height: 50px;
     font-size: 35px;
@@ -39,5 +37,3 @@ export const BtnComponent = styled.div<BtnComponentProps>`
     color: ${({ isLiked, theme }) => (isLiked ? '#ed3232' : theme.color.PointC)};
   }
 `
-
-export default BtnComponent

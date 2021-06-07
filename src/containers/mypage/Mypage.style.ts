@@ -25,7 +25,6 @@ export const MypageContainer = styled.section`
   }
   & div {
     margin: 0 auto;
-    width: 100%;
     align-items: center;
     justify-content: center;
     max-width: ${({ theme }) => theme.device.modile - 60}px;
