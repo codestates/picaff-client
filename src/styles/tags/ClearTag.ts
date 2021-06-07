@@ -10,6 +10,11 @@ const ClearTag = styled.button`
   border: transparent;
   border-radius: 10px;
   outline: none;
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.color.YelloC};
+  }
 `
 
 export default ClearTag
