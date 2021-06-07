@@ -61,7 +61,7 @@ export const LandingComponent = styled.section`
 
     & .dec {
       -webkit-text-stroke-width: 1.5px;
-      -webkit-text-stroke-color: #f3f1ef;
+      -webkit-text-stroke-color: ${({ theme }) => theme.color.BackC};
       color: transparent;
       & .title {
         margin-top: 10px;
@@ -75,7 +75,8 @@ export const LandingComponent = styled.section`
         }
       }
       & > :hover {
-        color: white;
+        color: ${({ theme }) => theme.color.YelloC};
+        -webkit-text-stroke-color: ${({ theme }) => theme.color.YelloC};
       }
     }
     & .Container {
@@ -85,7 +86,7 @@ export const LandingComponent = styled.section`
       padding-right: 15px;
       padding-left: 15px;
       margin-right: auto;
-      margin-left: auto;
+      margin-left: 15vw;
       width: 100%;
       vertical-align: baseline;
 
@@ -116,10 +117,10 @@ export const LandingComponent = styled.section`
       margin-bottom: 0.2rem !important;
       p {
         font: normal normal 17px/26px 'NanumSquare';
-        color: #fff;
+        color: ${({ theme }) => theme.color.BackC};
         font-weight: 400;
         margin-top: 1rem;
-        flex: 0 0 75%;
+        flex: 0 0 85%;
         display: block;
         margin-block-start: 1em;
         margin-block-end: 1em;

@@ -4,21 +4,18 @@ export const CoffeeResultContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - 80px);
+  height: 100%;
   padding-top: 10vh;
-
   .section_result {
     display: flex;
     flex-direction: row;
-    height: 100%;
-
+    height: calc(100vh - 60px);
     .box_map {
       flex: 1 1 0;
       height: 60%;
       margin-top: -10px;
       margin-left: 90px;
     }
-
     .parent_desc {
       flex: 1 1 0;
       display: flex;
@@ -28,21 +25,17 @@ export const CoffeeResultContainer = styled.div`
       margin-top: auto;
       margin-bottom: 27vh;
       margin-left: 2vw;
-      padding-top: 15vh;
-
       .box_desc {
         display: flex;
         flex-direction: column;
         position: relative;
         bottom: 7rem;
-
         .name {
           flex: 1 1 0;
           padding-left: 16px;
           font-weight: 600;
           font-size: 2.3rem;
         }
-
         .text {
           flex: 1 1 0;
           padding-left: 16px;
@@ -52,7 +45,6 @@ export const CoffeeResultContainer = styled.div`
             font-family: 'NanumSquare';
           }
         }
-
         .tag {
           flex: 1 1 0;
           margin-top: 10px;
@@ -60,20 +52,17 @@ export const CoffeeResultContainer = styled.div`
         }
       }
     }
-
     .box_radar {
       flex: 1.2 1 0;
       width: 30%;
       height: 50vw;
       max-height: 80%;
-
       .radarChart {
         margin-top: 40px;
         margin-right: 30px;
       }
     }
   }
-
   & .closebtn {
     position: absolute;
     width: 60px;
@@ -84,14 +73,11 @@ export const CoffeeResultContainer = styled.div`
       font-size: 60px;
     }
   }
-
   .section_map {
     display: flex;
     height: 100vh;
     justify-content: center;
     align-items: center;
-    z-index: 1;
-
     & .ItemModal {
       height: 100vh;
       position: absolute;
@@ -99,24 +85,19 @@ export const CoffeeResultContainer = styled.div`
       transition: transform 2s;
     }
   }
-
   @media ${({ theme }) => theme.device.laptop} {
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 100%;
-
     .section_result {
       display: flex;
       flex-direction: column;
       height: 100%;
-
       .box_map {
         width: 100%;
         margin: 0;
-        height: 100%;
+        height: 30%;
       }
-
       .parent_desc {
         justify-content: center;
         flex-direction: row;
@@ -124,28 +105,22 @@ export const CoffeeResultContainer = styled.div`
         margin: 0;
         margin-top: 2vh;
         margin-left: 2vw;
-        padding-top: 0;
-
         .box_desc {
           display: flex;
           flex-direction: column;
           position: relative;
           bottom: 0px;
-
           .name {
             height: 70%;
             margin: 0;
           }
         }
       }
-
       .box_radar {
         width: 100%;
         height: 50vh;
-
         display: flex;
         justify-content: center;
-
         .radarChart {
           width: 100%;
           height: 100%;
@@ -155,5 +130,3 @@ export const CoffeeResultContainer = styled.div`
     }
   }
 `
-
-export default CoffeeResultContainer
