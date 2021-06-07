@@ -21,6 +21,8 @@
 |🏠 김규태|Back-end|https://github.com/byronkim|
 |🏠 이정민|Back-end|https://github.com/Lucky-kor|
 
+- [Check our dev-logs!](https://github.com/codestates/im27project15-client-/projects/3)
+
 <br />
 
 # Service Intro
@@ -138,6 +140,5 @@
 ![picaff - Frame 7 (1) (1)](https://user-images.githubusercontent.com/72856436/121059502-81e6ba80-c7fc-11eb-9f66-d3403fe387e0.jpg)
 
 <br />
-
 
 [🎈 For more details about PICAFF project, please check our Wiki!](https://github.com/codestates/picaff-client/wiki)
