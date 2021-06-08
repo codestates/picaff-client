@@ -23,8 +23,9 @@ export type Authorization = {
 
 export type UserInfo = {
   email: string
-  name: string
+  userName: string
   id: number
+  type?: 'normal' | 'Oauth'
   auth?: Authorization
 }
 
@@ -56,14 +57,19 @@ export type itemResult = {
   id: number
   itemName: string
   itemPrice: number
-  itemDetail: string
+  itemDetail: ItemDetail
   type: 'product' | 'coffee'
-  imageUrl: string
+  imageURL: string
   iso: 'KE' | 'GT' | 'CO' | 'ET' | 'BR' | 'All' | ''
   productCharacter?: ProductCharacter
   coffeeCharacter?: CoffeeCharacter
   isLiked: boolean
   tag: Tags[]
+}
+
+type ItemDetail = {
+  title: string
+  content: string[]
 }
 
 type ProductCharacter = {
@@ -109,4 +115,15 @@ export type CrawlingType = {
   price: string
   seller: string
   linkURL: string
+}
+
+export type MenuType = {
+  americano: boolean
+  latte: boolean
+  cappuccino: boolean
+  macchiato: boolean
+  mocha: boolean
+  flatwhite: boolean
+  vienna: boolean
+  espresso: boolean
 }

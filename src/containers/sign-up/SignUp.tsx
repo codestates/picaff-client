@@ -52,6 +52,7 @@ export default function SignUp() {
     } else {
       setAlertMessage('')
       const { name: userName, email, password } = User
+      console.log(User)
       const res = await axios.post('http://localhost:4000/user/signup', {
         email,
         userName,
@@ -76,15 +77,18 @@ export default function SignUp() {
     if (!email) {
       alert('email을 입력해주세요')
     } else {
-      const res = await axios.post('http://localhost:4000/user/email', { email })
-      const { serialnum } = res.data
-
-      // 잘못된 이메일(중복된 email) 입력 에러처리 해야함
-      setcheckSerial({
-        ...checkSerial,
-        isSend: true,
-        serialNum: serialnum,
-      })
+      try {
+        const res = await axios.post('http://localhost:4000/user/email', { email })
+        const { serialnum } = res.data
+        // 잘못된 이메일(중복된 email) 입력 에러처리 해야함
+        setcheckSerial({
+          ...checkSerial,
+          isSend: true,
+          serialNum: serialnum,
+        })
+      } catch (err) {
+        alert('이미 사용중인 email 입니다')
+      }
     }
   }
 
@@ -116,7 +120,7 @@ export default function SignUp() {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    history.push('/login')
+    history.replace('/login')
   }
 
   const { name, email, password, ConfirmPassword } = User
@@ -171,7 +175,7 @@ export default function SignUp() {
         <div className='button'>
           <Button style='MainBtnBrown' type='submit' value='Sign Up' />
         </div>
-        <span className='greeting'>are you exist Account?</span>
+        <span className='greeting'>Do you have an existing account?</span>
       </form>
       <div className='box_signup'>
         <button onClick={handleClick} id='signup'>

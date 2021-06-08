@@ -6,11 +6,16 @@ import Button from 'components/button/Button'
 import Oauth from 'components/social-Oauth/Oauth'
 import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
 import { requestOauth, saveBeforeTest } from 'module/Oauth'
-import { RedirectProps, useHistory, useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 
-interface Props extends RedirectProps {
-  testResult: TestResult
+interface Props extends Location {
+  from: {
+    pathname: string
+    state?: {
+      testResult: TestResult
+    }
+  }
 }
 
 export default function SignIn() {
@@ -20,7 +25,7 @@ export default function SignIn() {
   const [user, setUser] = useState<User>({ name: '', email: '', password: '' })
   const [userInfo, setUserInfo] = useState<UserInfo>({
     id: 0,
-    name: '',
+    userName: '',
     email: '',
     auth: { accessToken: '' },
   })
@@ -34,17 +39,27 @@ export default function SignIn() {
       [name]: value,
     })
   }
-
   useEffect(() => {
     if (auth.signin && userInfo.auth) {
       const accessToken = userInfo.auth ? userInfo.auth.accessToken : ''
       const refreshToken = userInfo.auth ? userInfo.auth.refreshToken : ''
       if (accessToken && refreshToken) {
-        const { from } = location.state || { from: '/' }
+        const { from } = location.state || { from: { pathname: '/' } }
         if (location.state && 'testResult' in location.state) {
-          saveBeforeTest(location.state.testResult, accessToken)
+          saveBeforeTest(location.state['testResult'], accessToken)
+          auth.signin(accessToken, refreshToken, () =>
+            history.replace({
+              pathname: from.pathname,
+              state: from.state,
+            })
+          )
+        } else {
+          from.pathname === '/signup'
+            ? auth.signin(accessToken, refreshToken, () => history.replace({ pathname: '/' }))
+            : auth.signin(accessToken, refreshToken, () =>
+                history.replace({ pathname: from.pathname })
+              )
         }
-        auth.signin(accessToken, refreshToken, () => history.replace({ pathname: from }))
       }
     }
   }, [userInfo])
@@ -64,8 +79,9 @@ export default function SignIn() {
   const handleGoogleLogin = async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     if ('tokenId' in res) {
       const { accessToken: access_token, tokenId: id_token } = res
+
       await requestOauth(
-        'http:localhost:4000/user/google',
+        'https:localhost:4000/user/google',
         { access_token, id_token },
         (userInfo) => {
           setUserInfo(userInfo)
@@ -77,7 +93,7 @@ export default function SignIn() {
   const handleKakaoLogin = async (res: KakaoLoginResponse) => {
     console.log(res)
     const { access_token } = res
-    await requestOauth('http:localhost:4000/user/kakao', { access_token }, (userInfo) => {
+    await requestOauth('http://localhost:4000/user/kakao', { access_token }, (userInfo) => {
       setUserInfo(userInfo)
     })
   }
@@ -106,7 +122,7 @@ export default function SignIn() {
           </div>
           <Oauth responseGoogle={handleGoogleLogin} responseKakao={handleKakaoLogin} />
         </div>
-        <span className='greeting'>are you new member?</span>
+        <span className='greeting'>Are you a new member?</span>
         <div className='box_signup'>
           <button onClick={handleclick} id='signup'>
             Sign-up

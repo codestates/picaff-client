@@ -1,56 +1,90 @@
 import axios from 'axios'
+import Button from 'components/button/Button'
 import { useAuth } from 'containers/ProvideAuth/ProvideAuth'
 import { UserInfo } from 'interface'
-import React from 'react'
-import { useHistory } from 'react-router'
+import React, { useState } from 'react'
+import { useHistory, useLocation } from 'react-router'
+import InfoUpdate from './InfoUpdate'
 import { ModifyContainer } from './Modify.style'
+import SignOff from './SignOff'
 
-type ModifyProps = {
-  userInfo: UserInfo
-}
-
-export default function Modify({ userInfo }: ModifyProps) {
-  const { name, email } = userInfo
+export default function Modify() {
+  const [serialNum, setserialNum] = useState('')
+  const [isModify, setisModify] = useState(false) // new added by B. K
+  const [isSignOff, setisSignOff] = useState(false) // new added by B. K
+  const location = useLocation<UserInfo>()
   const auth = useAuth()
   const history = useHistory()
+  let { userName, email, type } = location.state
+
   const handleSignOut = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     console.log('logout')
     auth.signout!(() => history.push({ pathname: '/' }))
   }
 
-  const handleSignOff = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault()
-    const res = await axios.delete('http://localhost:4000/user', {
-      headers: { Authorization: auth.accessToken },
-    })
+  async function SendCheckMail(email: string) {
+    const res = await axios.post('http://localhost:4000/user/email?type=signoff', { email })
+    const { serialnum } = res.data
 
-    if (res.status === 202) {
-      history.push({ pathname: '/' })
-    } else {
-      alert('다시 시도해 주세요')
-    }
+    setserialNum(serialnum)
   }
+
+  const handleSignOffClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    // new added by B. K for Sign Off
+    e.preventDefault()
+    SendCheckMail(email)
+    setisSignOff(!isSignOff)
+  }
+
   return (
-    <ModifyContainer>
-      <div>
-        <span>name</span>
-        <h2>{name}</h2>
-      </div>
-      <div>
-        <span>email</span>
-        <h2>{email}</h2>
-      </div>
-      <section className='buttonContainer'>
+    <>
+      <ModifyContainer>
         <div>
-          <label htmlFor='logout'>로그아웃</label>
-          <button onClick={handleSignOut} id='logout' className='textbtn' />
+          <span>name</span>
+          {!isModify ? (
+            <div className='modifyContainer'>
+              <h2>{userName}</h2>
+              <div className='modify'>
+                <Button
+                  style='MenuBtn'
+                  type='button'
+                  value='수정하기'
+                  handleClick={() => setisModify(!isModify)}
+                />
+              </div>
+            </div>
+          ) : (
+            <div className='inputContainer'>
+              <InfoUpdate
+                userInfo={location.state}
+                handleModifyForm={() => setisModify(!isModify)}
+              />
+            </div>
+          )}
         </div>
         <div>
-          <label htmlFor='SignOut'>회원탈퇴</label>
-          <button onClick={handleSignOff} id='SignOut' className='textbtn' />
+          <span>email</span>
+          <h2>{email}</h2>
         </div>
-      </section>
-    </ModifyContainer>
+        <section className='buttonContainer'>
+          <div>
+            <label htmlFor='logout'>로그아웃</label>
+            <button onClick={handleSignOut} id='logout' className='normalButton'></button>
+          </div>
+          {type === 'normal' &&
+            (!isSignOff ? (
+              <div>
+                <label htmlFor='Signoff'>회원탈퇴</label>
+                <button onClick={handleSignOffClick} id='Signoff' className='normalButton'></button>
+              </div>
+            ) : (
+              <div className='SignOffContainer'>
+                <SignOff serialNum={serialNum} />
+              </div>
+            ))}
+        </section>
+      </ModifyContainer>
+    </>
   )
 }

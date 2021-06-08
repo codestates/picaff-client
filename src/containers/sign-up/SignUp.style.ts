@@ -12,6 +12,7 @@ export const SignUpContainer = styled.div`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 2rem;
 
   h2 {
     margin-bottom: 1.7rem;
@@ -24,7 +25,7 @@ export const SignUpContainer = styled.div`
     justify-content: center;
     margin-bottom: 1rem;
     color: ${({ theme }) => theme.color.PointC};
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .box_signup {

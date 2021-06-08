@@ -7,9 +7,12 @@ export const testResultTempArr: TestResult[] = [
       id: 3,
       itemName: 'French Press',
       itemPrice: 5000,
-      itemDetail: 'special machine used to make coffee',
+      itemDetail: {
+        title: '이건 소제목입니다',
+        content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
+      },
       type: 'product',
-      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+      imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: '',
       productCharacter: {
         id: 1,
@@ -24,9 +27,12 @@ export const testResultTempArr: TestResult[] = [
       id: 1,
       itemName: 'Starbucks Coffee',
       itemPrice: 2000,
-      itemDetail: 'starbucky',
+      itemDetail: {
+        title: '이건 커피입니다',
+        content: ['이건커피 입니다', '커피 본문입니다.'],
+      },
       type: 'coffee',
-      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+      imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: 'KE',
       coffeeCharacter: {
         id: 1,
@@ -47,9 +53,12 @@ export const testResultTempArr: TestResult[] = [
       id: 3,
       itemName: 'French Press',
       itemPrice: 5000,
-      itemDetail: 'special machine used to make coffee',
+      itemDetail: {
+        title: '이건 소제목입니다',
+        content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
+      },
       type: 'product',
-      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+      imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: '',
       productCharacter: {
         id: 1,
@@ -64,9 +73,12 @@ export const testResultTempArr: TestResult[] = [
       id: 1,
       itemName: 'Starbucks Coffee',
       itemPrice: 2000,
-      itemDetail: 'starbucky',
+      itemDetail: {
+        title: '이건 커피입니다',
+        content: ['이건커피 입니다', '커피 본문입니다.'],
+      },
       type: 'coffee',
-      imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+      imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
       iso: 'KE',
       coffeeCharacter: {
         id: 1,
@@ -88,9 +100,12 @@ export const coffeetempArr: itemResult[] = [
     id: 1,
     itemName: 'Starbucks Coffee',
     itemPrice: 2000,
-    itemDetail: 'starbucky',
+    itemDetail: {
+      title: '이건 커피입니다',
+      content: ['이건커피 입니다', '커피 본문입니다.'],
+    },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'KE',
     coffeeCharacter: {
       id: 1,
@@ -108,9 +123,12 @@ export const coffeetempArr: itemResult[] = [
     id: 2,
     itemName: 'Starbucks Coffee',
     itemPrice: 2000,
-    itemDetail: 'starbucky',
+    itemDetail: {
+      title: '이건 커피입니다',
+      content: ['이건커피 입니다', '커피 본문입니다.'],
+    },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'ET',
     coffeeCharacter: {
       id: 1,
@@ -128,9 +146,12 @@ export const coffeetempArr: itemResult[] = [
     id: 1,
     itemName: 'Starbucks Coffee',
     itemPrice: 2000,
-    itemDetail: 'starbucky',
+    itemDetail: {
+      title: '이건 커피입니다',
+      content: ['이건커피 입니다', '커피 본문입니다.'],
+    },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'BR',
     coffeeCharacter: {
       id: 1,
@@ -148,9 +169,12 @@ export const coffeetempArr: itemResult[] = [
     id: 1,
     itemName: 'Starbucks Coffee',
     itemPrice: 2000,
-    itemDetail: 'starbucky',
+    itemDetail: {
+      title: '이건 커피입니다',
+      content: ['이건커피 입니다', '커피 본문입니다.'],
+    },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'KE',
     coffeeCharacter: {
       id: 1,
@@ -168,9 +192,12 @@ export const coffeetempArr: itemResult[] = [
     id: 1,
     itemName: 'Starbucks Coffee',
     itemPrice: 2000,
-    itemDetail: 'starbucky',
+    itemDetail: {
+      title: '이건 커피입니다',
+      content: ['이건커피 입니다', '커피 본문입니다.'],
+    },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'KE',
     coffeeCharacter: {
       id: 1,
@@ -188,9 +215,12 @@ export const coffeetempArr: itemResult[] = [
     id: 1,
     itemName: 'Starbucks Coffee',
     itemPrice: 2000,
-    itemDetail: 'starbucky',
+    itemDetail: {
+      title: '이건 커피입니다',
+      content: ['이건커피 입니다', '커피 본문입니다.'],
+    },
     type: 'coffee',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: 'KE',
     coffeeCharacter: {
       id: 1,
@@ -211,9 +241,12 @@ export const productTempArr: itemResult[] = [
     id: 3,
     itemName: 'French Press',
     itemPrice: 5000,
-    itemDetail: 'special machine used to make coffee',
+    itemDetail: {
+      title: '이건 소제목입니다',
+      content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
+    },
     type: 'product',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,
@@ -228,9 +261,12 @@ export const productTempArr: itemResult[] = [
     id: 3,
     itemName: 'French Press',
     itemPrice: 5000,
-    itemDetail: 'special machine used to make coffee',
+    itemDetail: {
+      title: '이건 소제목입니다',
+      content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
+    },
     type: 'product',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,
@@ -245,9 +281,12 @@ export const productTempArr: itemResult[] = [
     id: 3,
     itemName: 'French Press',
     itemPrice: 5000,
-    itemDetail: 'special machine used to make coffee',
+    itemDetail: {
+      title: '이건 소제목입니다',
+      content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
+    },
     type: 'product',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,
@@ -262,9 +301,12 @@ export const productTempArr: itemResult[] = [
     id: 3,
     itemName: 'French Press',
     itemPrice: 5000,
-    itemDetail: 'special machine used to make coffee',
+    itemDetail: {
+      title: '이건 소제목입니다',
+      content: ['이건 본문의 일종입니다', '그 다음 본문이 될 예정입니다'],
+    },
     type: 'product',
-    imageUrl: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
+    imageURL: 'https://picaff-client-image.s3.ap-northeast-2.amazonaws.com/water-drip.jpg',
     iso: '',
     productCharacter: {
       id: 1,

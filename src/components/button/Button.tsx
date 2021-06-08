@@ -2,13 +2,13 @@ import React from 'react'
 import theme from 'styles/theme'
 
 type Type = {
-  style: 'MainBtnBrown' | 'MenuBtn' | 'UserBtn' | 'MainBtnIvory'
+  style: 'MainBtnBrown' | 'MenuBtn' | 'UserBtn' | 'MainBtnIvory' | 'ModifyBtn'
   type?: 'button' | 'submit' | 'reset'
   handleClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   value: string
 }
 
-const { MainBtnBrown, MenuBtn, UserBtn, MainBtnIvory } = theme
+const { MainBtnBrown, MenuBtn, UserBtn, MainBtnIvory, ModifyBtn } = theme
 
 export default function Button({ style, type, handleClick, value }: Type) {
   switch (style) {
@@ -35,6 +35,12 @@ export default function Button({ style, type, handleClick, value }: Type) {
         <MainBtnIvory type={type} onClick={handleClick}>
           {value}
         </MainBtnIvory>
+      )
+    case 'ModifyBtn':
+      return (
+        <ModifyBtn type={type} onClick={handleClick}>
+          {value}
+        </ModifyBtn>
       )
   }
 }

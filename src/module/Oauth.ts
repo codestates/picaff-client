@@ -21,7 +21,8 @@ export const requestOauth = async (
   callback: (userInfo: UserInfo) => void
 ) => {
   const response = await axios.post<UserInfo>(endpoint, data, {
-    headers: { 'Content-Type': 'application/json', 'Credential': true },
+    headers: { 'Content-Type': 'application/json' },
+    withCredentials: true,
   })
   console.log(response)
   const userInfo = response.data

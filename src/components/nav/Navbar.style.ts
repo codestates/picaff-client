@@ -9,9 +9,9 @@ export const NavComponent = styled.nav<NavbarType>`
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.color.NavC};
-  padding: 0 24px 0 24px;
+  padding: 12px 24px 12px 24px;
+  width: 100vw;
   height: 80px;
-  padding-left: 10px;
 
   .navbar_logo {
     width: 70px;
@@ -21,29 +21,21 @@ export const NavComponent = styled.nav<NavbarType>`
   }
 
   .navbar_menu {
-    width: 40%;
+    padding-left: 25px;
+    flex: 1 1 0;
     display: flex;
-    align-items: center;
-    padding-left: 0;
+    align-items: flex-start;
+    justify-content: start;
 
     & > a {
-      width: 100%;
+      margin-left: 1rem;
       text-decoration: none !important;
-
-      &#home {
-        flex: 1.3 1 0;
-      }
-
-      &#test,
-      &#magazine {
-        flex: 2 1 0;
-      }
 
       & > button {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 8px 12px;
+        padding: 2px 8px;
         font-weight: 700;
         font-size: 1.2rem;
       }
@@ -52,13 +44,18 @@ export const NavComponent = styled.nav<NavbarType>`
 
   .navbar_user {
     display: flex;
-    padding-left: 0;
+    padding-right: 1rem;
+
     & > a > button {
       margin: 0 5px;
-      padding: 8px 12px;
+      padding: 2px 8px;
       width: 100px;
+      height: 35px;
       font-size: 0.9rem;
       border: 3px solid ${({ theme }) => theme.color.PointC};
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
@@ -79,22 +76,31 @@ export const NavComponent = styled.nav<NavbarType>`
     flex-direction: column;
     align-items: flex-start;
     height: ${({ isActive }) => (isActive ? '50%' : '80px')};
+    z-index: 1;
+    width: 100vw;
+    padding: 0;
+
+    .navbar_logo {
+      margin-left: 10px;
+      margin-top: 10px;
+    }
 
     .navbar_menu {
       display: ${({ isActive }) => (isActive ? 'flex' : 'none')};
       flex-direction: column;
       align-items: center;
-      margin: 20px 0;
+      margin-bottom: 20px;
       width: 100%;
+      padding: 0;
 
       & > a {
-        width: 100%;
+        width: 90%;
         margin: 2px 0;
 
         & > button {
           width: 100%;
           text-align: center;
-          padding-top: 10px;
+          padding-top: 5px;
           outline: none;
           font-size: 1.2rem;
 
@@ -115,7 +121,7 @@ export const NavComponent = styled.nav<NavbarType>`
       width: 100%;
 
       & > a {
-        width: 100%;
+        width: 90%;
         margin: 5px;
       }
 

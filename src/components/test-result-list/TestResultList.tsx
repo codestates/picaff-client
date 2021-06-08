@@ -20,7 +20,7 @@ export default function TestResultList({ testResult }: Props) {
         testResult.map((el) => (
           <div className='itemContainer' onClick={(e) => handleClick(e, el)}>
             <div className='image'>
-              <img alt='' src={el.productResult.imageUrl} />
+              <img alt='' src={el.productResult.imageURL} />
             </div>
             <div className='image'>
               <CoffeeMap type={el.coffeeResult.iso || 'All'} coffee={el.coffeeResult} />
@@ -28,9 +28,7 @@ export default function TestResultList({ testResult }: Props) {
           </div>
         ))
       ) : (
-        <div>
-          <span>테스트를 진행해 주세요</span>
-        </div>
+        <div className='empty'>테스트를 진행해 주세요</div>
       )}
     </TestResultListContainer>
   )

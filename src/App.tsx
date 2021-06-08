@@ -3,13 +3,14 @@ import theme from './styles/theme'
 import Navbar from 'components/nav/Navbar'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import TestImpls from 'containers/testpage/TestImpls'
-import Sample from 'Sample'
 import ProvideAuth from 'containers/ProvideAuth/ProvideAuth'
 import SignUp from 'containers/sign-up/SignUp'
 import SignIn from 'containers/login/Login'
 import Main from 'containers/main/Main'
 import Result from 'containers/result/Result'
 import Mypage from 'containers/mypage/Mypage'
+import Landing from 'components/main/Landing'
+import Modify from 'components/modify/Modify'
 
 function App() {
   return (
@@ -22,10 +23,9 @@ function App() {
               <Main />
             </Route>
             <Route path='/test'>
-              <TestImpls />
-            </Route>
-            <Route path='/sample'>
-              <Sample />
+              <Landing>
+                <TestImpls />
+              </Landing>
             </Route>
             <Route path='/result'>
               <Result />
@@ -36,8 +36,11 @@ function App() {
             <Route path='/signup'>
               <SignUp />
             </Route>
-            <Route path='/mypage'>
+            <Route exact path='/mypage'>
               <Mypage />
+            </Route>
+            <Route exact path='/mypage/modify'>
+              <Modify />
             </Route>
           </Switch>
         </Router>

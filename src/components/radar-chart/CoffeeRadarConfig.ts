@@ -1,40 +1,65 @@
 export const RadarData = {
-  labels: ['sweetness', 'sourness', 'balance', 'body', 'aroma', 'after taste'],
+  labels: ['단맛', '신맛', '밸런스', '바디감', '아로마', '끝맛'],
   datasets: [
     {
       label: '',
       data: [],
-      backgroundColor: 'rgba(234, 199, 132, 0.5)',
-      borderColor: 'rgb(234, 199, 132)',
-      borderWidth: 4,
-      borderDash: [2, 2],
-      pointBackgroundColor: 'rgb(234, 199, 132)',
-      pointBorderColor: '#ffffff',
+      backgroundColor: '#0B421A90',
+      borderColor: '#604C4C',
+      borderWidth: 2,
+      pointBackgroundColor: '#362415',
+      pointBorderColor: '#EAC78480',
       pointBorderWidth: 2,
-      pointHoverBackgroundColor: '#ffffff',
-      pointHoverBorderColor: 'rgb(234, 199, 132)',
-      pointHoverBorderWidth: 5,
+      tickColor: '#0B421A80',
     },
   ],
 }
 
 export const RadarOptions = {
-  scale: {
-    ticks: {
-      min: 1,
-      max: 5,
-      stepSize: 1,
-      showLabelBackdrop: true,
+  plugins: {
+    legend: {
+      display: false,
     },
+    title: {
+      display: true,
+      text: '',
+      fullSize: true,
+      color: '#EAC784',
+      font: {
+        size: 25,
+        family: 'yg-jalnan',
+      },
+    },
+  },
+  scales: {
     r: {
+      grid: {
+        color: '#36241550',
+      },
+      ticks: {
+        backdropColor: '#fff0',
+        min: 1,
+        max: 5,
+        stepSize: 1,
+        showLabelBackdrop: true,
+        color: '#fff',
+        font: {
+          size: 19,
+        },
+      },
       angleLines: {
-        display: false,
+        display: true,
+        color: '#fff',
       },
       suggestedMin: 1,
       suggestedMax: 5,
-    },
-    font: {
-      size: 12,
+      pointLabels: {
+        color: '#fff',
+        font: {
+          size: 20,
+          family: 'NanumSquare',
+        },
+      },
     },
   },
   maintainAspectRatio: false,

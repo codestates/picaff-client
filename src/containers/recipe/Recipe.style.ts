@@ -1,20 +1,22 @@
 import styled from 'styled-components'
 
 type MenuProps = {
-  americano: boolean
-  latte: boolean
-  cappuccino: boolean
-  macchiato: boolean
-  mocha: boolean
-  flatwhite: boolean
-  vienna: boolean
-  espresso: boolean
+  menu: {
+    americano: boolean
+    latte: boolean
+    cappuccino: boolean
+    macchiato: boolean
+    mocha: boolean
+    flatwhite: boolean
+    vienna: boolean
+    espresso: boolean
+  }
 }
 
 export const RecipeContainer = styled.div<MenuProps>`
   width: 100%;
   height: 100vh;
-  background-color: ${({ theme }) => theme.color.NavC};
+  background-color: ${({ theme }) => theme.color.StrongBrownC};
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -22,8 +24,8 @@ export const RecipeContainer = styled.div<MenuProps>`
   margin: auto;
   overflow: hidden;
 
-  --main-bg-color: ${({ theme }) => theme.color.YelloC};
-  --cup-color: #6e6b68;
+  --main-bg-color: #f9eebd;
+  --cup-color: #505050;
   --cup-width: 22vw;
   --cup-height: 17vw;
   --cup-handle-width: 5vw;
@@ -44,8 +46,8 @@ export const RecipeContainer = styled.div<MenuProps>`
   --coffee-color: #574739;
   --water-color: #e8f9f9;
   --steamed_milk-color: #fcfcf6;
-  --milk_foam-color: #fbf6e6;
-  --whipped_cream-color: #f0f0f0;
+  --milk_foam-color: #fff3db;
+  --whipped_cream-color: #eefff9;
   --chocolate-color: #625452;
 
   .container {
@@ -55,11 +57,12 @@ export const RecipeContainer = styled.div<MenuProps>`
     justify-content: center;
     width: 70vw;
     height: 50vh;
+    margin-top: 35px;
   }
 
   .coffee_name {
     text-align: center;
-    color: ${({ theme }) => theme.color.StrongBrownC};
+    color: ${({ theme }) => theme.color.WhiteC};
     font-size: 4rem;
     margin-top: -80px;
     margin-bottom: 10px;
@@ -67,20 +70,23 @@ export const RecipeContainer = styled.div<MenuProps>`
 
   .options {
     display: flex;
-    margin-top: -80px;
+    margin-top: -60px;
 
     & > button {
       user-select: none;
       outline: none;
-      color: ${({ theme }) => theme.color.WhiteC};
-      background-color: rgba(11, 66, 26, 0.45);
+      color: ${({ theme }) => theme.color.BrownC};
+      background-color: ${({ theme }) => theme.color.YelloC};
       width: 10vw;
-      height: 6vh;
+      height: 7vh;
       padding: 15px;
       font-size: 1.2rem;
       box-shadow: none;
       box-sizing: border-box;
       border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &#americano {
         border-top-left-radius: 10px;
@@ -95,6 +101,7 @@ export const RecipeContainer = styled.div<MenuProps>`
 
     & > button:hover {
       cursor: pointer;
+      color: ${({ theme }) => theme.color.WhiteC};
       background-color: ${({ theme }) => theme.color.PointC};
       font-weight: 600;
       border-width: 3px;
@@ -164,65 +171,56 @@ export const RecipeContainer = styled.div<MenuProps>`
     box-sizing: border-box;
     overflow: hidden;
 
-    --coffee-bottom: ${({
-      americano,
-      latte,
-      cappuccino,
-      macchiato,
-      mocha,
-      flatwhite,
-      vienna,
-      espresso,
-    }) => {
-      if (americano) {
+    --coffee-bottom: ${({ menu }) => {
+      if (menu.americano) {
         return '-60%'
-      } else if (latte || macchiato || vienna || mocha || espresso) {
+      } else if (menu.latte || menu.macchiato || menu.vienna || menu.mocha || menu.espresso) {
         return '-70%'
-      } else if (cappuccino || flatwhite) {
+      } else if (menu.cappuccino || menu.flatwhite) {
         return '-65%'
       } else {
         return '-100%'
       }
     }};
 
-    --water-bottom: ${({ americano }) => {
-      if (americano) {
+    --water-bottom: ${({ menu }) => {
+      if (menu.americano) {
         return '0%'
       } else {
         return '-100%'
       }
     }};
 
-    --steamed_milk-bottom: ${({ latte, cappuccino, mocha, flatwhite }) => {
-      if (flatwhite) {
+    --steamed_milk-bottom: ${({ menu }) => {
+      if (menu.flatwhite) {
         return '0%'
-      } else if (latte || mocha) {
+      } else if (menu.latte || menu.mocha) {
         return '-20%'
-      } else if (cappuccino) {
+      } else if (menu.cappuccino) {
         return '-35%'
       } else {
         return '-100%'
       }
     }};
 
-    --milk_foam-bottom: ${({ latte, cappuccino, macchiato }) => {
-      if (latte || cappuccino || macchiato) {
+    --milk_foam-bottom: ${({ menu }) => {
+      if (menu.latte || menu.cappuccino || menu.macchiato) {
         return '0%'
       } else {
         return '-100%'
       }
     }};
 
-    --whipped_cream-bottom: ${({ mocha, vienna }) => {
-      if (mocha || vienna) {
+    --whipped_cream-bottom: ${({ menu }) => {
+      if (menu.mocha || menu.vienna) {
         return '0%'
       } else {
         return '-100%'
       }
     }};
 
-    --chocolate-bottom: ${({ mocha }) => {
-      if (mocha) {
+    --chocolate-bottom: ${({ menu }) => {
+      if (menu.mocha) {
         return '-50%'
       } else {
         return '-100%'
@@ -267,31 +265,21 @@ export const RecipeContainer = styled.div<MenuProps>`
     z-index: 5;
   }
 
-  .filling.reset {
-    --coffee-bottom: -100%;
-    --water-bottom: -100%;
-    --milk-bottom: -100%;
-    --steamed_milk-bottom: -100%;
-    --milk_foam-bottom: -100%;
-    --whipped_cream-bottom: -100%;
-    --chocolate-bottom: -100%;
-    --ice_cream-bottom: -100%;
-  }
-
-  @media ${({ theme }) => theme.device.tablet} {
+  @media ${({ theme }) => theme.device.laptop} {
     display: flex;
     flex-direction: column;
 
     .container {
       flex: 0.8 1 0;
+      margin: 0;
     }
 
     .coffee_name {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
 
     .filling div {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
 
     .options {
@@ -302,6 +290,7 @@ export const RecipeContainer = styled.div<MenuProps>`
       justify-content: center;
       align-items: center;
       width: 80%;
+      margin-bottom: 1rem;
 
       & > button {
         width: 100%;
@@ -321,6 +310,13 @@ export const RecipeContainer = styled.div<MenuProps>`
           border-top-right-radius: 0px;
         }
       }
+    }
+  }
+
+  @media ${({ theme }) => theme.device.tablet} {
+    .filling div {
+      font-weight: 300;
+      font-size: 0.4rem;
     }
   }
 `

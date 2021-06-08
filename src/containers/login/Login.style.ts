@@ -5,14 +5,19 @@ export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
-  width: 100%;
+  width: 30vw;
   height: 100%;
   max-width: ${({ theme }) => theme.deviceSizes.mobile - 50}px;
   min-width: ${({ theme }) => theme.deviceSizes.mobile - 75}px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2rem;
+
+  & form {
+    width: 100%;
+  }
 
   h2 {
-    margin-top: 1.7rem;
     margin-bottom: 1.7rem;
     text-align: center;
     color: ${({ theme }) => theme.color.BrownC};
@@ -43,7 +48,7 @@ export const LoginContainer = styled.div`
     justify-content: center;
     margin-bottom: 1rem;
     color: ${({ theme }) => theme.color.PointC};
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .box_signup {

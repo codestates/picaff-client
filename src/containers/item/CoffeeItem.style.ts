@@ -1,119 +1,235 @@
 import styled from 'styled-components'
 
 export const CoffeeItemContainer = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  position: fixed;
+  width: 100vw;
   height: 100vh;
   left: 0px;
-  top: 100vh;
+  top: 0px;
   z-index: 999;
   overflow: hidden;
-  background: #ffdfb9;
-  animation: slide 1s ease-out;
+  background: #dfa73b;
+  animation: slide 0.8s ease-in-out;
 
-  & .back1 {
+  .closebtn {
     position: absolute;
-    top: -40vh;
-    height: 60vh;
-    width: 200%;
+    top: 2%;
+    right: 2%;
+    border: none;
+    z-index: 9999;
+    & button {
+      border: inherit;
+      color: #fff;
+      font-size: 60px;
+    }
+    & button:hover {
+      color: ${({ theme }) => theme.color.YelloC};
+    }
+  }
+  .Container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 92%;
+    height: 100%;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  & .back1 {
+    box-shadow: 2rem 2rem 5rem 1rem ${({ theme }) => theme.color.YelloC}85;
+    position: absolute;
+    top: -35vh;
+    height: 80vh;
+    width: 110%;
+    left: -10vw;
+    overflow: hidden;
     z-index: -1;
     transform-origin: 50% 0%;
     transform: rotate(-5deg);
-    background-position: 400% 400%;
-    background: linear-gradient(-45deg, #921416, #eacda3, #f46b45, #eea849);
-    background-size: 400% 400%;
-    background-repeat: no-repeat;
-    animation: gradient 5s ease infinite;
+    & video {
+      display: block;
+      object-fit: cover;
+      z-index: 998;
+      position: relative;
+      margin: auto;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
-  .section_result {
+  .box_map {
+    position: relative;
+    display: block;
+    max-width: 30vw;
+    left: 2rem;
+    top: 2rem;
+    width: 100%;
+    height: 35vh;
+    margin: 0;
+    border: 1px solid lightblue;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .box_radar {
+    position: absolute;
+    top: 2rem;
+    right: 10vw;
+    height: 50%;
+    min-height: 350px;
+    width: 30vw;
+  }
+
+  .box_market {
+    height: 40%;
+    width: auto;
     display: flex;
-    flex-direction: row;
-    height: 100%;
-  }
+    flex-direction: column;
+    position: absolute;
+    bottom: 5%;
+    right: 15%;
+    transition: all 0.8s ease-in-out;
 
-  .section_left {
-    flex: 1 1 0;
-    height: 100vh;
-    border: 1px solid yellow;
-
-    .box_map {
-      height: 40%;
-      margin: 0;
-      border: 1px solid lightblue;
+    & .title {
+      color: #f7f7f4;
+      font-size: 1.5rem;
+      margin-left: 5px;
+      margin-bottom: 0.5rem;
+    }
+    .marketTable {
+      max-width: 360px;
+      right: 0px;
+      overflow-y: scroll;
+      ::-webkit-scrollbar {
+        display: none;
+      }
     }
 
-    .box_market {
-      height: 60%;
-      border: 1px solid lightblue;
+    .singleList {
+      display: flex;
+      align-items: center;
+      justify-content: start;
 
-      .marketTable {
-        width: 90%;
-        border: 1px solid white;
+      & > img {
+        margin-top: 10px;
+        margin-left: 5px;
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+      }
 
-        .singleList {
-          display: flex;
+      & > .itemInfo {
+        padding-left: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-          & > img {
-            width: 8%;
-            border-radius: 50%;
-          }
-
-          & > .itemInfo {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          }
-
-
+        & .itemName {
+          font: italic normal 13px/20px 'NanumSquare';
+          padding-top: 1rem;
+        }
+        & .price {
+          padding-top: 0.3rem;
+          font: bold 13px 'sans-serif';
         }
       }
     }
   }
 
-  .section_right {
-    flex: 1 1 0;
+  .box_desc {
+    display: inline-block;
+    width: 100%;
+    padding-right: 40vw;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    margin: 0;
+    color: white;
 
-    .box_desc {
-      flex: 1 1 0;
-      display: flex;
-      flex-direction: column;
-      margin: 0;
-
-      .name {
-        flex: 1 1 0;
-        font-size: 3.5rem;
-        margin-top: auto;
-        padding-top: 6vh;
-      }
-
-      .text {
-        flex: 1.5 1 0;
-        padding-right: 10vw;
-        font-size: 1.2rem;
+    .text {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      p {
         font-family: 'NanumSquareRoundR';
       }
-
-      .tag {
-        flex: 1 1 0;
-      }
     }
 
+    .tag {
+      margin-top: 2rem;
+    }
+  }
+
+  #loading {
+    padding-top: 100px;
+    padding-right: 152px;
+  }
+
+  @media (max-width: 1400px) {
+    .box_market {
+      right: 10%;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .box_map {
+      height: 30vh;
+    }
+    .box_market {
+      right: 5%;
+    }
+  }
+  @media (max-width: 992px) {
+    scrollbar-width: none;
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .box_desc {
+      margin: 0 auto;
+      padding: 0;
+      .name {
+        font-size: 3rem;
+      }
+    }
+    .box_map {
+      max-width: 80%;
+    }
     .box_radar {
-      flex: 1 1 0;
-      width: 75%;
-      height: 60%;
-      
-      .radarChart {
-        margin: 0;
-        padding-left: 10vw;
+      margin: 0 auto;
+      position: relative;
+      display: inline-block;
+      max-height: 400px;
+      height: 100%;
+      width: 100%;
+      right: 0px;
+    }
+    .box_market {
+      position: relative;
+      display: inline-block;
+      margin: 0 auto;
+      margin-top: 2rem;
+      bottom: 0px;
+      .marketTable {
+        max-width: 100%;
       }
     }
+  }
+  @media (max-width: 768px) {
+    .box_market {
+      right: 0px;
+      margin-right: 1rem;
+    }
+  }
+  @media (max-width: 576px) {
+  }
+
+  .name {
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #f3f1ef;
+    color: transparent;
+    margin-top: 60px;
+    font-size: 4rem;
   }
 
   @keyframes slide {
@@ -125,49 +241,15 @@ export const CoffeeItemContainer = styled.div`
     }
   }
 
-  @media ${({ theme }) => theme.device.laptop} {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-
-    .section_result {
-      display: flex;
-      flex-direction: column;
-
-      .section_right {
-        flex: 1 1 0;
-        display: flex;
-        flex-direction: column;
-    
-        .box_desc {
-          
-    
-          .name {
-            font-size: 3.5rem;
-            
-          }
-    
-          .text {
-            padding: 0;
-            font-size: 1.3rem;
-          }
-    
-          .tag {
-          }
-        }
-    
-        .box_radar {
-          flex: 1 1 0;
-          margin: 0;
-
-          .radarChart {
-            padding: 0;
-          }
-        }
+  @keyframes gradient {
+    0% {
+      background-position: 0%;
+    }
+    50% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: 0%;
     }
   }
 `
-
-export default CoffeeItemContainer

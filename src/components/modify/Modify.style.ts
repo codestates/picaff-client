@@ -10,10 +10,36 @@ export const ModifyContainer = styled.div`
   span {
     margin-left: 0.3rem;
   }
+  .alertspan {
+    font-size: 1.3rem;
+    margin-left: 0.3rem;
+  }
+  .inputContainer {
+    width: 60%;
+  }
   h2 {
     color: ${({ theme }) => theme.color.PointC};
     margin: 2rem;
   }
+  .modifyContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    h2 {
+      width: fit-content;
+    }
+    .modify {
+      margin-top: 0px;
+      margin-left: 15vw;
+    }
+  }
+
+  .SignOffContainer {
+    width: fit-content;
+  }
+
   .buttonContainer {
     margin-top: 4rem;
     & > div {
@@ -31,7 +57,7 @@ export const ModifyContainer = styled.div`
       }
     }
   }
-  button {
+  .normalButton {
     display: none;
   }
 `

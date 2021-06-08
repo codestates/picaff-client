@@ -1,24 +1,39 @@
 import styled from 'styled-components'
 
-type ShareComponentProps = {
-  isShareOpen: boolean
-}
-
-export const ShareComponent = styled.div<ShareComponentProps>`
-  display: ${({ isShareOpen }) => (isShareOpen ? 'flex' : 'none')};
+export const ShareComponent = styled.div`
   position: fixed;
-  top: 110px;
-  right: 0;
+  top: 20rem;
+  right: 0rem;
+  width: 20%;
+  min-width: 260px;
+  height: 8%;
 
-  width: 300px;
-  padding: 10px;
-  background-color: ${({ theme }) => theme.color.PointC};
-  border-radius: 10px 0 0 10px;
+  .active {
+    transform: translateX(0rem);
+  }
 
-  img {
-    height: 50px;
-    margin: 5px 10px 5px 5px;
-    border-radius: 10px;
+  .close {
+    transform: translateX(24rem);
+  }
+
+  .box_btn {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: ${({ theme }) => theme.color.PointC};
+    padding-left: 3px;
+    transition: transform 1s;
+
+    img {
+      flex: 1 1 0;
+      min-width: 45px;
+      min-height: 45px;
+      width: 10%;
+      border-radius: 10px;
+      margin: 10px 5px;
+    }
   }
 `
 

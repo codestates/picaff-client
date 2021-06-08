@@ -30,7 +30,7 @@ export function useProvideAuth() {
       const res = await axios.post(
         'http://localhost:4000/user/token',
         { refreshToken },
-        { headers: { Credential: true } }
+        { withCredentials: true }
       )
 
       sessionStorage.setItem('accessToken', JSON.stringify(res.data.cssessToken))
@@ -40,6 +40,8 @@ export function useProvideAuth() {
   }
 
   const signout = (cb: () => void) => {
+    sessionStorage.removeItem('accessToken')
+    sessionStorage.removeItem('refreshToken')
     setaccessToken(null)
     cb()
   }

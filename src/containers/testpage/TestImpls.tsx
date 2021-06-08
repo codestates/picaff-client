@@ -26,13 +26,19 @@ export default function TestImpls() {
   }, [testData])
 
   useEffect(() => {
-    if (scoreArr[0] !== null) setindex(index + 1)
+    if (scoreArr[0] !== null) {
+      setTimeout(() => {
+        setindex(index + 1)
+      }, 200)
+    }
     scoreArr.indexOf(null) === -1 ? setisDone(true) : ''
   }, [scoreArr])
 
   const handleBackBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, idx: number) => {
     e.preventDefault()
-    setindex(idx - 1)
+    if (idx !== 0) {
+      setindex(idx - 1)
+    }
   }
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: TestResult) => {
     e.preventDefault()
@@ -67,6 +73,25 @@ export default function TestImpls() {
         ))}
       </div>
       {isDone && <EndedTest handleSubmit={handleSubmit} score={scoreArr} />}
+
+      <div>
+        <div className='bubble1'></div>
+        <div className='bubble2'></div>
+      </div>
+
+      <section>
+        <div className='wave wave1'></div>
+        <div className='wave wave2'></div>
+        <div className='wave wave3'></div>
+        <div className='wave wave4'></div>
+      </section>
+
+      <svg width='0' height='0'>
+        <filter id='fog'>
+          <feTurbulence type='fractalNoise' baseFrequency='.01' numOctaves='10' />
+          <feDisplacementMap in='SourceGraphic' scale='180' />
+        </filter>
+      </svg>
     </SliderContainer>
   )
 }

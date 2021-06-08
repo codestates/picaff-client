@@ -7,9 +7,11 @@ export const MypageContainer = styled.section`
   align-items: center;
   margin: 1rem auto;
   max-width: ${({ theme }) => theme.device.modile - 10}px;
-  & > .modify {
-    justify-content: end;
-    align-items: center;
+  width: 100%;
+
+  & .UserModify {
+    margin: 0 auto;
+    width: fit-content;
   }
   & > * {
     margin-bottom: 1rem;
@@ -22,8 +24,14 @@ export const MypageContainer = styled.section`
     margin-bottom: 2rem;
   }
   & div {
+    margin: 0 auto;
     align-items: center;
     justify-content: center;
-    max-width: ${({ theme }) => theme.device.modile - 10}px;
+    max-width: ${({ theme }) => theme.device.modile - 60}px;
+  }
+  & .Container {
+    margin: 0 1rem;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
   }
 `

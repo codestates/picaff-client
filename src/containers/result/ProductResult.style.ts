@@ -4,49 +4,56 @@ export const ProductResultContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  margin-top: 10vh;
+  height: calc(100vh - 80px);
+  padding-top: 10vh;
 
   .section_result {
     display: flex;
     flex-direction: row;
-    height: 81vh;
-    width: 100%;
+    height: 100%;
 
     .box_image {
-      flex: 1 1 1;
-      height: 60%;
-      margin-left: 5%;
-      min-width: 418px;
+      position: relative;
+      display: block;
+      width: 100%;
+      max-width: 32vw;
+      height: fit-content;
+      margin-top: 2rem;
+      margin-left: 90px;
+      overflow: hidden;
 
-      & > img {
-        height: 90%;
+      & img {
+        padding: 5px;
+        border: 2px solid ${({ theme }) => theme.color.BrownC};
+        border-radius: 20px;
+
         width: 100%;
-        object-fit: contain;
+        height: 100%;
       }
     }
 
     .parent_desc {
-      flex: 1.4 1 1;
+      flex: 1 1 0;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       flex-direction: row;
       align-items: center;
       margin-top: auto;
-      margin-bottom: 35vh;
+      margin-bottom: 27vh;
       margin-left: 2vw;
+      padding-top: 25vh;
 
       .box_desc {
         display: flex;
         flex-direction: column;
         position: relative;
+        bottom: 7rem;
 
         .name {
           flex: 1 1 0;
           padding-left: 16px;
           font-weight: 600;
-          font-size: 3.5rem;
+          font-size: 2.3rem;
         }
 
         .text {
@@ -54,7 +61,9 @@ export const ProductResultContainer = styled.div`
           padding-left: 16px;
           margin-top: 30px;
           font-size: 1.1rem;
-          font-family: 'NanumSquareRoundR';
+          p {
+            font-family: 'NanumSquare';
+          }
         }
 
         .tag {
@@ -66,17 +75,25 @@ export const ProductResultContainer = styled.div`
     }
 
     .box_radar {
-      flex: 1.4 1 2;
-      margin-left: -70px;
-      margin-right: 30px;
-      height: 70vh;
-      width: 100%;
-      margin-top: 200px;
+      flex: 1.2 1 0;
+      width: 30%;
+      padding-right: 2rem;
 
       .radarChart {
-        height: 100%;
-        width: 40vw;
+        margin-top: 40px;
+        margin-right: 30px;
       }
+    }
+  }
+
+  & .closebtn {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 0px;
+    margin-right: 5%;
+    & .close {
+      font-size: 60px;
     }
   }
 
@@ -88,22 +105,19 @@ export const ProductResultContainer = styled.div`
     height: 100vh;
     justify-content: center;
     align-items: center;
+    background: ${({ theme }) => theme.color.WhiteC};
+    z-index: 1;
 
     .title {
-      flex: 0.5 1 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 7vh;
-      margin-left: 18vw;
       font-size: 2rem;
+      margin-top: 5vh;
     }
 
     .image_box {
-      margin-top: 5vh;
-      column-count: 2;
+      // margin-top: 5vh;
       column-gap: 2rem;
       align-items: center;
+      column-count: 2;
 
       .itemContainer {
         height: 40vh;
@@ -117,8 +131,8 @@ export const ProductResultContainer = styled.div`
         position: relative;
         display: flex;
         align-items: center;
-        margin-left: 10%;
-        margin-bottom: 2rem;
+        padding-left: 10%;
+        padding-bottom: 2rem;
         width: 100%;
         min-width: 280px;
       }
@@ -127,7 +141,7 @@ export const ProductResultContainer = styled.div`
         display: block;
         align-items: center;
         font-size: 1.5rem;
-        margin-left: 3vw;
+        padding-left: 5vw;
         margin-top: 15vh;
       }
 
@@ -149,17 +163,17 @@ export const ProductResultContainer = styled.div`
     }
   }
 
-  & .ItemModal {
-    height: 100vh;
-    position: absolute;
-    transform: translateY(100vh);
-    transition: transform 2s;
+  @media (max-width: 1400px) {
+    .image_box {
+      column-count: 2;
+    }
   }
 
   @media ${({ theme }) => theme.device.laptop} {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
 
     .section_result {
       display: flex;
@@ -167,15 +181,15 @@ export const ProductResultContainer = styled.div`
       height: 100%;
 
       .box_image {
-        height: 30%;
+        margin: 0 auto;
+        position: relative;
+        display: block;
         width: 100%;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-
-        & > img {
-          height: 100%;
-        }
+        max-width: 95%;
+        height: fit-content;
+        padding: 1rem 1rem;
+        border-radius: 30px;
+        overflow: hidden;
       }
 
       .parent_desc {
@@ -185,47 +199,54 @@ export const ProductResultContainer = styled.div`
         margin: 0;
         margin-top: 2vh;
         margin-left: 2vw;
+        padding-top: 0;
 
         .box_desc {
           display: flex;
           flex-direction: column;
           position: relative;
+          bottom: 0px;
 
           .name {
             height: 70%;
             margin: 0;
+          }
+          .text {
+            padding-right: 16px;
           }
         }
       }
 
       .box_radar {
         width: 100%;
-        height: 50vh;
+        height: 30%;
+        min-height: 40vh;
+
         display: flex;
         justify-content: center;
-        position: relative;
-        margin: 0;
 
         .radarChart {
           width: 100%;
+          margin: 0;
         }
       }
     }
 
     .section_image {
-      display: inline-block;
+      display: flex;
       flex-direction: column;
       width: 100%;
       height: 100%;
       position: relative;
+      justify-items: center;
+      align-items: center;
 
       .title {
-        height: 10%;
-        margin: 0;
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
       }
 
       .image_box {
-        column-count: 1;
         .itemContainer {
           display: flex;
           flex-direction: column;
@@ -255,6 +276,12 @@ export const ProductResultContainer = styled.div`
       .image_box:nth-child(3) {
         padding: 0;
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .image_box {
+      column-count: 1 !important;
     }
   }
 `

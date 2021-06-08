@@ -1,9 +1,9 @@
-import { GoogleMap, LoadScript, OverlayView, Polygon } from '@react-google-maps/api'
+import { GoogleMap, OverlayView, Polygon, useLoadScript } from '@react-google-maps/api'
 import Overlay from 'components/ovelay/Overlay'
 import { itemResult, MapOption } from 'interface'
 import { GetMapOptions } from 'module/Coffeemap'
 import { ConvertLatLng } from 'module/Polygon'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CoffeeMapContainer } from './CoffeeMap.style'
 import { default as coord } from './polygon.json'
 
@@ -14,12 +14,21 @@ type maptype = {
   selectedTag?: string
 }
 
+type position = {
+  letlng: google.maps.LatLng | null
+}
+
 const getWindowDimension = (): number => {
   const { innerWidth: width } = window
   return width
 }
 
 export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag }: maptype) {
+  const { isLoaded, loadError } = useLoadScript({
+    mapIds: ['ae2e13f24821623f'],
+    googleMapsClientId: process.env.REACT_APP_GOOGLE_CLIENT_ID as string,
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY as string,
+  })
   const [PolygonData, setPolygonData] =
     useState<(google.maps.LatLng[] | google.maps.LatLng[][])[] | undefined>(undefined)
   const [index, setindex] = useState<number>(0)
@@ -29,7 +38,9 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
     center: { lat: 5, lng: 170.644 },
   })
   const [screenwidth, setscreenwidth] = useState<number>(getWindowDimension())
+  const [mousePosition, setMousePosition] = useState<position>({ letlng: null })
   useEffect(() => {
+    console.log(mousePosition)
     setMapOption(GetMapOptions(type))
 
     function handleResize() {
@@ -64,7 +75,11 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
     }
   }, [RegionArr])
 
-  const onLoad = () => {
+  const handleMouseOver = (idx: number) => {
+    setindex(idx)
+  }
+
+  const onLoad = React.useCallback(function callback() {
     const result = coord.map<google.maps.LatLng[] | google.maps.LatLng[][]>((el) =>
       ConvertLatLng(el)
     )
@@ -75,19 +90,17 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
       }))
     )
     setPolygonData(result)
-  }
+  }, [])
 
-  const handleMouseOver = (idx: number) => {
-    setindex(idx)
+  if (loadError) {
+    return <div>reload</div>
   }
 
   return (
     <CoffeeMapContainer>
-      <LoadScript
-        onLoad={onLoad}
-        mapIds={['ae2e13f24821623f']}
-        googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY as string}>
+      {isLoaded ? (
         <GoogleMap
+          onLoad={onLoad}
           zoom={mapOption.zoom}
           center={mapOption.center}
           mapContainerStyle={{
@@ -95,7 +108,7 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
             height: '100%',
           }}
           options={{
-            mapId: 'ae2e13f24821623f',
+            // mapId: 'ae2e13f24821623f',
             disableDefaultUI: true,
             disableDoubleClickZoom: true,
             minZoom: 1,
@@ -116,9 +129,12 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
                     id: 0,
                     itemName: '',
                     itemPrice: 0,
-                    itemDetail: '',
+                    itemDetail: {
+                      title: '',
+                      content: [],
+                    },
                     type: 'coffee',
-                    imageUrl: '',
+                    imageURL: '',
                     iso: '',
                     isLiked: false,
                     tag: [{ id: 0, tagName: '' }],
@@ -145,6 +161,7 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
                     }
                     onLoad={() => console.log('loaddone')}
                     onUnmount={() => console.log('unload')}
+                    onMouseMove={(e) => setMousePosition({ letlng: e.latLng })}
                     options={
                       idx === index || active
                         ? {
@@ -167,7 +184,11 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
                   />
                   {idx === index && (
                     <OverlayView
-                      position={GetMapOptions(RegionArr[index].iso).center}
+                      position={
+                        mousePosition.letlng
+                          ? mousePosition.letlng
+                          : GetMapOptions(RegionArr[index].iso).center
+                      }
                       mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
                       <Overlay
                         coffeeItem={Array.isArray(coffee) ? coffeeArr![index] : coffee}
@@ -179,7 +200,9 @@ export default function CoffeeMap({ type, handleRegionClick, coffee, selectedTag
               )
             })}
         </GoogleMap>
-      </LoadScript>
+      ) : (
+        ''
+      )}
     </CoffeeMapContainer>
   )
 }

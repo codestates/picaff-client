@@ -8,14 +8,22 @@ export const SelectContainer = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   height: 100%;
-  width: 60%;
+  width: 45%;
   margin: 0 auto;
-  min-width: ${({ theme }) => theme.deviceSizes.mobile + 'px'};
+  min-width: ${({ theme }) => theme.deviceSizes.mobile - 80 + 'px'};
+
   & > div {
     width: 100%;
   }
 
-  h1,
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
   p {
     margin: auto auto;
     color: ${({ theme }) => theme.color.YelloC};
@@ -24,23 +32,37 @@ export const SelectContainer = styled.section`
     transition: color 0.5s;
     background-color: transparent;
     display: flex;
-    flex-direction: row-reverse;
     justify-content: center;
   }
 
-  & .selectcontainer {
-    height: 100%;
-    border-radius: 15px;
+  .title {
+    align-items: center;
+    width: 100%;
+    color: ${({ theme }) => theme.color.YelloC};
+    height: fit-content;
+    overflow-wrap: break-all;
+    white-space: pre-wrap;
+    text-align: center;
+    font-size: 1.7rem;
+    margin-top: 4rem;
+  }
+
+  .selectcontainer {
+    z-index: 999;
+    height: 25vh;
+    border-radius: 20px;
     background-color: ${({ theme }) => theme.color.NavC};
     padding-top: 1rem;
     padding-bottom: 2rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    padding-top: 5vh;
   }
 
   .active .icon-star {
     fill: rgba(242, 242, 194, 1);
     stroke-opacity: 1;
   }
+
   .active {
     &::after {
       transform: scale(1.4);
@@ -48,6 +70,10 @@ export const SelectContainer = styled.section`
     & svg {
       animation: rateHover 0.5s ease-out forwards;
     }
+  }
+
+  p {
+    width: 100%;
   }
 
   .icon-star {
@@ -69,6 +95,46 @@ export const SelectContainer = styled.section`
     display: none;
   }
 
+  .th0 {
+    &::before {
+      right: 20%;
+      font-size: 1rem;
+    }
+  }
+  .th4 {
+    &::before {
+      left: 15%;
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 998px) {
+    .title {
+      margin-top: 5rem;
+      font-size: 1rem;
+    }
+    .selectcontainer {
+      height: 100%;
+      border-radius: 15px;
+      background-color: ${({ theme }) => theme.color.NavC};
+      padding-top: 0.5rem;
+      padding-bottom: 1rem;
+      margin: 0;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .th0 {
+      &::before {
+        font-size: 0.7rem;
+      }
+    }
+    .th4 {
+      &::before {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
   .rate:hover {
     &::after {
       animation: starHover 0.5s;
@@ -83,20 +149,18 @@ export const SelectContainer = styled.section`
     fill: rgba(242, 242, 194, 0.6);
   }
 
-  button {
+  .rate {
     position: relative;
     display: inline-block;
     box-sizing: border-box;
-    width: 6rem;
-    height: 7rem;
+    width: 7rem;
+    height: 8rem;
     padding: 2rem 0.5rem;
     border: none;
     background-color: transparent;
     color: ${({ theme }) => theme.color.BrownC};
     font-family: inherit;
     transition: opacity 0.3s;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     outline: none;
 
@@ -106,11 +170,11 @@ export const SelectContainer = styled.section`
       transition: transform 0.3s;
       background-color: transparent;
     }
+
     &::before {
       position: absolute;
+      display: inline-block;
       bottom: 0rem;
-      left: 0;
-      right: 0;
       display: block;
       margin: auto;
       opacity: 0;
@@ -185,6 +249,12 @@ export const SelectContainer = styled.section`
     100% {
       transform: rotate(10deg) translateY(1px) scale(1);
       opacity: 0;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .title {
+      font-size: 1rem;
     }
   }
 `

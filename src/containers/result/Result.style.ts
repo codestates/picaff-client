@@ -7,6 +7,9 @@ type IsTabActiveType = {
 export const ResultContainer = styled.div<IsTabActiveType>`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 
   .top_container {
     display: flex;
@@ -33,7 +36,7 @@ export const ResultContainer = styled.div<IsTabActiveType>`
   .section_btn > button {
     width: 100%;
     height: 100%;
-    font-size: 4rem;
+    font-size: 3.3rem;
     font-weight: 600;
     border: none;
     outline: none;
@@ -88,10 +91,11 @@ export const ResultContainer = styled.div<IsTabActiveType>`
       margin: 0 auto;
       margin-top: 3rem;
       border: none;
+      justify-content: space-evenly;
 
       & > button {
         width: 25vw;
-        font-size: 2rem;
+        font-size: 1.7rem;
         padding-bottom: 2vh;
       }
     }
@@ -119,12 +123,26 @@ export const ResultContainer = styled.div<IsTabActiveType>`
       font-size: 2.2rem;
       color: ${({ theme }) => theme.color.PointC};
       cursor: pointer;
+      top: 50px;
+      z-index: 5;
     }
 
     .section_share > button {
       position: absolute;
       top: 210px;
       right: 4%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section_btn {
+      width: 95%;
+      justify-content: space-evenly;
+      & > button {
+        width: 40vw;
+        font-size: 1.2rem;
+        padding-bottom: 2vh;
+      }
     }
   }
 `
