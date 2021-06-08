@@ -1,13 +1,48 @@
+import { ThemeProvider } from 'styled-components'
+import theme from './styles/theme'
+import Navbar from 'components/nav/Navbar'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import TestImpls from 'containers/testpage/TestImpls'
+import Sample from 'Sample'
+import ProvideAuth from 'containers/ProvideAuth/ProvideAuth'
+import SignUp from 'containers/sign-up/SignUp'
+import SignIn from 'containers/login/Login'
+import Main from 'containers/main/Main'
+import Result from 'containers/result/Result'
+import Mypage from 'containers/mypage/Mypage'
+
 function App() {
   return (
-    <div style={{ width: '100%', height: '100%' }}>
-      <video className='video' muted autoPlay>
-        <source src='coffee1_VP9.webm' />
-      </video>
-      <video className='video' muted autoPlay>
-        <source src='coffee2_VP9.webm' />
-      </video>
-    </div>
+    <ThemeProvider theme={theme}>
+      <ProvideAuth>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path='/'>
+              <Main />
+            </Route>
+            <Route path='/test'>
+              <TestImpls />
+            </Route>
+            <Route path='/sample'>
+              <Sample />
+            </Route>
+            <Route path='/result'>
+              <Result />
+            </Route>
+            <Route path='/login'>
+              <SignIn />
+            </Route>
+            <Route path='/signup'>
+              <SignUp />
+            </Route>
+            <Route path='/mypage'>
+              <Mypage />
+            </Route>
+          </Switch>
+        </Router>
+      </ProvideAuth>
+    </ThemeProvider>
   )
 }
 
